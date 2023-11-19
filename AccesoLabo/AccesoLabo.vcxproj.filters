@@ -13,10 +13,288 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{a2ff5a59-651e-4e9a-ac2e-ed52c5e8e905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gestion">
+      <UniqueIdentifier>{13146202-4e3b-49d0-b660-e4005c016767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Archivo">
+      <UniqueIdentifier>{f68880b8-dbd8-4fd7-8b01-da85c2a0f303}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Manager">
+      <UniqueIdentifier>{cf75e980-f23c-48ee-9083-ab9c2d7ab723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Fecha">
+      <UniqueIdentifier>{5a12b6ee-33e3-4692-a46a-79fc04d0e6c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Manager">
+      <UniqueIdentifier>{1237a4be-f82c-4924-98df-7d7ab9bded18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Archivos">
+      <UniqueIdentifier>{69c0c138-195a-4e36-a751-d9d2a4363c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu">
+      <UniqueIdentifier>{0f0ba666-73f9-4025-a8ce-e21ca3360aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gestion">
+      <UniqueIdentifier>{c8b981ac-0b64-4270-8dc8-3c044f66dce4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fecha">
+      <UniqueIdentifier>{c1acc597-5357-4526-a093-05f15f66a54c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cadena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncionesGlobales.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AbmPersonasManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="AbmUnidadesManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfiguracionesManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsultasManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportacionManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="InformesManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="PrincipalManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoAutorizacion.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoProveedores.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoRegistro.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoUnidad.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoVisita.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAbmPersonas.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAbmUnidades.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuConfiguraciones.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuConsultas.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuExportacion.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuInformes.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuListado.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPrincipal.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRegistros.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Autorizacion.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Empleado.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Empresa.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Persona.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Proveedor.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Registro.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Residente.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Unidad.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Usuario.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Vehiculo.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Visita.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha.cpp">
+      <Filter>Source Files\Fecha</Filter>
+    </ClCompile>
+    <ClCompile Include="Fecha_horario.cpp">
+      <Filter>Source Files\Fecha</Filter>
+    </ClCompile>
+    <ClCompile Include="Horario.cpp">
+      <Filter>Source Files\Fecha</Filter>
+    </ClCompile>
+    <ClCompile Include="ListadoManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistrosManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cadena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncionesGlobales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAbmPersonas.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAbmUnidades.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuConfiguraciones.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuConsultas.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuExportacion.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuInformes.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuListado.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPrincipal.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRegistros.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoAutorizacion.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoProveedores.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoRegistro.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoUnidad.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoVisita.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="Autorizacion.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfiguracionesManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsultasManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportacionManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InformesManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ListadoManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="PrincipalManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistrosManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AbmPersonasManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AbmUnidadesManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Fecha.h">
+      <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="Fecha_horario.h">
+      <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="Residente.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Registro.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Proveedor.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Persona.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Empresa.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Empleado.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Usuario.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Unidad.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Vehiculo.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Visita.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="Horario.h">
+      <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
