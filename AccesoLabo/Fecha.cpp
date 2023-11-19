@@ -1,6 +1,7 @@
 #include <ctime>
 #include <iostream>
 #include "fecha.h"
+
 Fecha::Fecha() {
     time_t t = time(NULL);
     struct tm* f = localtime(&t);
@@ -13,56 +14,36 @@ Fecha::Fecha(int dia, int mes, int anio) {
     cargar(dia, mes, anio);
     _diaSemana = -1;
 }
-int Fecha::getDia() {
-    return _dia;
-}
-int Fecha::getMes() {
-    return _mes;
-}
-int Fecha::getAnio() {
-    return _anio;
-}
-void Fecha::setDia(int dia) {
-    _dia = dia;
-}
-void Fecha::setMes(int mes) {
-    _mes = mes;
-}
-void Fecha::setAnio(int anio) {
-    _anio = anio;
-}
+int Fecha::getDia() { return _dia; }
+int Fecha::getMes() { return _mes; }
+int Fecha::getAnio() { return _anio; }
+void Fecha::setDia(int dia) { _dia = dia; }
+void Fecha::setMes(int mes) { _mes = mes; }
+void Fecha::setAnio(int anio) { _anio = anio; }
 void Fecha::cargar(int dia, int mes, int anio) {
-
     if (dia > 0 && dia < 32 && mes>0 && mes < 13 && anio >0) {
-
         switch (mes) {
         case 1:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-
             break;
-
         case 2:
             if (dia <= 28 && anio % 4 != 0) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             if (anio % 4 == 0 && dia <= 29) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
-
         case 3:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-
             break;
         case 4:
             if (dia <= 30) {
@@ -71,22 +52,18 @@ void Fecha::cargar(int dia, int mes, int anio) {
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
         case 5:
-
             _dia = dia;
             _mes = mes;
             _anio = anio;
             break;
         case 6:
             if (dia <= 30) {
-
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
         case 7:
             _dia = dia;
@@ -149,6 +126,7 @@ std::string Fecha::getNombreDia() {
     }
     return "";
 }
+
 bool Fecha::operator>(Fecha& fechaActual)
 {
     if (this->getAnio() > fechaActual.getAnio()) {

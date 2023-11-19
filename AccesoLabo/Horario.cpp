@@ -1,24 +1,7 @@
 #include "horario.h"
 #include <ctime>
 
-int Horario::getSegundo() {
-    return _segundo;
-}
-int Horario::getMinuto() {
-    return _minuto;
-}
-int Horario::getHora() {
-    return _hora;
-}
-void Horario::setSegundo(int segundo) {
-    _segundo = segundo;
-}
-void Horario::setMinuto(int minuto) {
-    _minuto = minuto;
-}
-void Horario::setHora(int hora) {
-    _hora = hora;
-}
+//constructores
 Horario::Horario() {
     time_t t = time(NULL);
     struct tm* f = localtime(&t);
@@ -31,6 +14,17 @@ Horario::Horario(int Segundo, int minuto, int hora) {
     setMinuto(minuto);
     setHora(hora);
 }
+
+//sets
+void Horario::setSegundo(int segundo) { _segundo = segundo; }
+void Horario::setMinuto(int minuto) { _minuto = minuto; }
+void Horario::setHora(int hora) { _hora = hora; }
+//gets
+int Horario::getSegundo() { return _segundo; }
+int Horario::getMinuto() { return _minuto; }
+int Horario::getHora() { return _hora; }
+
+//acciones
 std::string Horario::toString() {
     std::string valorADevolver;
     valorADevolver = std::to_string(_hora) + ":" + std::to_string(_minuto) + ":" + std::to_string(_segundo);

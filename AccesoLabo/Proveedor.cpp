@@ -23,6 +23,7 @@ void Proveedor::cargarProveedor(int dni) {
 	cargarPersona();
 	setDni(dni);
 	setTipo('R');
+
 	setArt(10, 10, 2023);
 	setEmpresa("talali");
 	

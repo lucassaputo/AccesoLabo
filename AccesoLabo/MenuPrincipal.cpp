@@ -14,8 +14,7 @@ using namespace std;
 
 
 void MenuPrincipal::Mostrar() {
-    while (true) {
-    system("color 40");
+    while (true) {    
         system("cls");//limpia cuando vuelve de un submenu
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
         cout << "*********     CONTROL DE ACCESOS     *********" << endl;
@@ -70,30 +69,33 @@ void MenuPrincipal::Mostrar() {
         break;
         case 6:
         {
-            MenuInformes menu;
+            MenuConsultas menu;
             menu.Mostrar();
         }
         break;
         case 7:
         {
-            MenuConfiguraciones menu;
+            MenuInformes menu;
             menu.Mostrar();
         }
         break;
         case 8:
         {
+            MenuConfiguraciones menu;
+            menu.Mostrar();
+        }
+        break;
+        case 9:
+        {
             MenuExportacion menu;
             menu.Mostrar();
         }
         break;
-
-        case 9:
-        
-            
-            
-           Creditos();
-            break;
-        
+        case 10:        
+        {
+            Creditos();
+        }
+        break;        
         case 0: {
             return;
             break;

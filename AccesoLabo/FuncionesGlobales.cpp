@@ -18,11 +18,9 @@ void cargarCadena(char* pal, int tam) {
 	fflush(stdin);
 }
 void Creditos() {
-
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
 	cout << "Coll Benegas, Pablo" << endl;
 	cout << "Saputo, Lucas" << endl;
 	system("pause");
-
 }
