@@ -43,9 +43,10 @@ void  Persona::cargarPersona() {
 	cin.ignore();
 	getline(cin, apellidos);
 	strcpy(_apellidos, apellidos.c_str());
-	setNacimiento(02, 11, 2000);
+	setNacimiento(02, 11, 2000);	
 	_estado = true;
 }
+
 void Persona::mostrar()
 {
 	cout << "Nombre: " << _nombres << endl;

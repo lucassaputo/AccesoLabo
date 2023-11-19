@@ -76,7 +76,7 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 	}
 	if(!p.vencido()){
 		vigente = true;
-		cout << "Esta vigente" << endl;
+		//cout << "Esta vigente" << endl;
 	}
 	else
 	{
@@ -92,6 +92,7 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 
 	if (vigente && autorizado) {
 		Registro reg;
+		char r;
 		//reg.setIdUnidad(uni.getId());
 		reg.setIdUnidad(uni);
 		reg = p;//sobrecarga asigna ipProveedor y fecha
@@ -99,18 +100,26 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 		reg.setObservaciones("");
 		reg.setTipoAutorizacion(1);
 		reg.setIdUser(s.getUsuario().getId());
-
-		if (_archivoRegistros.Guardar(reg)) {
-			cout << "Registro guardado correctamente." << endl;
-			//reg.mostrar();
+		cout << "Desea dar el siguiente ingreso?S/N";
+		cin >> r;
+		while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+			cout << "Desea dar el siguiente ingreso?S/N";
+			cin >> r;
+		}
+		if (r == 'S' || r == 's') {
+			if (_archivoRegistros.Guardar(reg)) {
+				cout << "Registro guardado correctamente." << endl;
+				//reg.mostrar();
+			}
+			else {
+				cout << "ERROR al guardar." << endl;
+			}
 		}
 		else {
-			cout << "ERROR al guardar." << endl;
+			cout << "Registro cancelado.";
 		}
 	}
-	else {
-		return;
-	}
+	return;
 }
 void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 

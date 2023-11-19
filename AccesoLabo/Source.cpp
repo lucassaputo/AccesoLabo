@@ -46,11 +46,11 @@ int main() {
 * esta adentro?
 * menues
 * ingreso de fechas mas simple
-* 
+* tipo de proveedor queda?
 */
 
 
 /*
 * tipos de unidades
-
+* sentido 1 entrada 2 salida
 */
