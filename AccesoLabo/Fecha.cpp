@@ -1,6 +1,7 @@
 #include <ctime>
 #include <iostream>
 #include "fecha.h"
+#include <sstream>
 
 Fecha::Fecha() {
     time_t t = time(NULL);
@@ -125,6 +126,40 @@ std::string Fecha::getNombreDia() {
         return nombres[_diaSemana];
     }
     return "";
+}
+
+bool Fecha::ingresarFecha() {
+    std::string fechaStr;
+    // Pedir al usuario que ingrese la fecha
+    std::cout << "Ingrese la fecha (DD/MM/AA): ";
+    std::cin >> fechaStr;
+
+    // Crear un objeto stringstream para analizar la cadena
+    std::istringstream fechaStream(fechaStr);
+
+    // Variables para almacenar el día, mes y año
+    int dia, mes, anio;
+
+    // Extraer los valores de día, mes y año de la cadena
+    char delim1, delim2;
+    fechaStream >> dia >> delim1 >> mes >> delim2 >> anio;
+
+    // Verificar si el formato es correcto y no hay errores de extracción
+    if (fechaStream.fail() || delim1 != '/' || delim2 != '/' || fechaStream.rdbuf()->in_avail() != 0) {
+        //std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato DD/MM/AA." << std::endl;
+        return false; // Salir con código de error
+    }
+    else {
+        cargar(dia, mes, anio);
+    }
+
+    // Imprimir los valores por separado (puedes hacer lo que necesites con ellos)
+   /* std::cout << "Día: " << dia << std::endl;
+    std::cout << "Mes: " << mes << std::endl;
+    std::cout << "Año: " << ano << std::endl;*/
+    
+
+    return true; // Salir sin errores
 }
 
 bool Fecha::operator>(Fecha& fechaActual)

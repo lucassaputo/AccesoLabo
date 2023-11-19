@@ -34,5 +34,4 @@ void Horario::cargar(int seg, int minuto, int hora) {
     setSegundo(seg);
     setMinuto(minuto);
     setHora(hora);
-
 }

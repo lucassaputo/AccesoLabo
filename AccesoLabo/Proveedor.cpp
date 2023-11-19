@@ -20,13 +20,21 @@ std::string Proveedor::getEmpresa() const { return _empresa; }
 //acciones
 
 void Proveedor::cargarProveedor(int dni) {
-	cargarPersona();
+	Fecha aux;
+	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (aux.ingresarFecha()==false) {
+		cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	}
+
+	//cout << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato DD/MM/AA.";
+
+	/*cargarPersona();
 	setDni(dni);
 	setTipo('R');
 
 	setArt(10, 10, 2023);
 	setEmpresa("talali");
-	
+	*/
 	/*char tipo;
 	string empresa;
 	int dia, mes, anio;
