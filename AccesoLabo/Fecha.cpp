@@ -105,8 +105,7 @@ void Fecha::cargar(int dia, int mes, int anio) {
             _anio = anio;
             break;
 
-        default:
-            std::cout << "FECHA INVALIDA , ASIGNACION POR DEFECTO : 1/1/2023";
+        default:            
             _dia = 01;
             _mes = 01;
             _anio = 2023;
