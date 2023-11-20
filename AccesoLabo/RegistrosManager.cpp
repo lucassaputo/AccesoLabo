@@ -142,7 +142,7 @@ void RegistrosManager::Eliminar() {
 }
 
 Unidad RegistrosManager::buscarUnidad(int u) {
-	cout << "FX u: " << u << endl;
+	cout << "FX u: " << u << endl;//
 	int cant = _archivoUnidades.ContarRegistros();
 	Unidad uni;
 	Unidad aux;
