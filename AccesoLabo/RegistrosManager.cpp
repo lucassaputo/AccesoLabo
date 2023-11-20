@@ -147,7 +147,7 @@ void RegistrosManager::Eliminar() {
 }
 
 Unidad RegistrosManager::buscarUnidad(int u) {
-	int cant = _archivoUnidades.ContarRegistros();
+	int cant = _archivoUnidades.ContarRegistros();//
 	Unidad uni;
 	uni.setId(-1);
 	for (int i = 0;i < cant;i++) {
