@@ -27,19 +27,14 @@ void RegistrosManager::Cargar() {
 	}
 	cout << "Ingrese unidad destino: ";
 	cin >> unidad;
-	while (unidad < 1 || unidad>20) {
+	uni = buscarUnidad(unidad);
+	cout << "TTTTTTT: " << uni.getId() << endl;
+	while (uni.getId() < 0) {
 		cout << "Unidad invalida." << endl;
 		cout << "Ingrese unidad destino: " << endl;
 		cin >> unidad;
-	}
-	/*
-	uni = buscarUnidad(unidad);
-	if (uni.getId() < 0) {
-		cout << "Error al encontrar unidad." << endl;
-		system("pause");
-		return;
-	}*/
-	uni.setId(unidad);
+		uni = buscarUnidad(unidad);
+	}	
 	cout << "Ingrese DNI: ";
 	cin >> dni;
 	switch (motivo) {
@@ -147,13 +142,16 @@ void RegistrosManager::Eliminar() {
 }
 
 Unidad RegistrosManager::buscarUnidad(int u) {
+	cout << "FX u: " << u << endl;
 	int cant = _archivoUnidades.ContarRegistros();
 	Unidad uni;
+	Unidad aux;
 	uni.setId(-1);
 	for (int i = 0;i < cant;i++) {
-		uni = _archivoUnidades.Leer(i);
-		if (uni.getId() == u) {
-			return uni;
+		aux = _archivoUnidades.Leer(i);
+		if (aux.getId() == u) {
+			cout << "ACAAAA" << endl;
+			return aux;
 		}
 	}
 	return uni;

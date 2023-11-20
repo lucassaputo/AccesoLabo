@@ -7,6 +7,7 @@ void AbmUnidadesManager::Alta() {
 	system("cls");
 	cout << "Alta unidad." << endl;
 	Unidad u;
+
 	u.cargar();
 	if (_archivoUnidades.Guardar(u)) {
 		cout << "Registro guardado correctamente.";
@@ -14,14 +15,23 @@ void AbmUnidadesManager::Alta() {
 	else {
 		cout << "Error al guardar.";
 	}
-
-
-
 	system("pause");
 }
 void AbmUnidadesManager::Baja() {
 	system("cls");
-	cout << "Baja" << endl;
+
+	for (int i = 0;i < 20;i++) {
+		cout << "Alta unidad." << endl;
+		Unidad u;
+		u.cargar();
+		if (_archivoUnidades.Guardar(u)) {
+			cout << "Registro guardado correctamente.";
+		}
+		else {
+			cout << "Error al guardar.";
+		}
+	}
+	//cout << "Baja" << endl;
 	system("pause");
 }
 void AbmUnidadesManager::Editar() {

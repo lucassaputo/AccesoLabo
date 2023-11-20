@@ -26,9 +26,9 @@ void Unidad::cargar(){
 	string familia, observaciones;
 	cout << "Ingrese numero de unidad: ";
 	cin >> _id;
-	cout << "Ingrese telefono: " << endl;
+	cout << "Ingrese telefono: ";
 	cin >> _telefono;
-	cout << "Ingrese nombre de la familia" << endl;
+	cout << "Ingrese nombre de la familia: ";
 	cin.ignore();
 	getline(cin, familia);
 	setFamilia(familia);
