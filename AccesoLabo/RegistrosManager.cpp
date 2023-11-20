@@ -80,7 +80,14 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 	}
 	else
 	{
-		cout << "ART vencida" << endl;
+		Fecha aux;
+		cout << "ART vencida, ingrese nueva fecha: " << endl;
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		p.setArt(aux);
+		//if(!p.vencido) usar la sobrecarga que pase a fecha
 	}
 
 	Autorizacion a;

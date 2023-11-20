@@ -10,6 +10,7 @@ using namespace std;
 //sets
 void Proveedor::setTipo(char tipo) {_tipo = tipo;}
 void Proveedor::setArt(int dia, int mes, int anio) {_art.cargar(dia, mes, anio);}
+void Proveedor::setArt(Fecha fecha) {_art = fecha;}
 void Proveedor::setEmpresa(std::string empresa) {strcpy(_empresa, empresa.c_str());}
 //gets
 char Proveedor::getTipo() const { return _tipo; }

@@ -130,7 +130,7 @@ std::string Fecha::getNombreDia() {
 bool Fecha::ingresarFecha() {
     std::string fechaStr;
     // Pedir al usuario que ingrese la fecha
-    std::cout << "Ingrese la fecha (DD/MM/AA): ";
+    //std::cout << "Ingrese la fecha (DD/MM/AA): ";
     std::cin >> fechaStr;
 
     // Crear un objeto stringstream para analizar la cadena
