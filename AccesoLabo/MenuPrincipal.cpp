@@ -15,7 +15,7 @@ using namespace std;
 
 void MenuPrincipal::Mostrar() {
     while (true) {    
-        system("cls");//limpia cuando vuelve de un submen
+        system("cls");//limpia cuando vuelve de un submenu
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
         cout << "*********     CONTROL DE ACCESOS     *********" << endl;
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
