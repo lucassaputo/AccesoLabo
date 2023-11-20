@@ -2,18 +2,21 @@
 #include <string>
 
 class Horario {
+private:
+    int _hora, _minuto, _segundo;
 public:
-    int getSegundo();
-    int getMinuto();
-    int getHora();
+    //constructores
+    Horario();
+    Horario(int segundo, int minuto, int hora);
+    //sets
     void setSegundo(int segundo);
     void setMinuto(int minuto);
     void setHora(int hora);
-    Horario();
-    Horario(int segundo, int minuto, int hora);
-    std::string toString();
+    //gets
+    int getSegundo();
+    int getMinuto();
+    int getHora();
+    //acciones
     void cargar(int seg, int minuto, int hora);
-private:
-    int _hora, _minuto, _segundo;
-
+    std::string toString();
 };

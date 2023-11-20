@@ -12,6 +12,7 @@ class Proveedor : public Persona {
 		//sets
 		void setTipo(char tipo);
 		void setArt(int dia, int mes, int anio);
+		void setArt(Fecha fecha);
 		void setEmpresa(std::string empresa);
 
 		//gets

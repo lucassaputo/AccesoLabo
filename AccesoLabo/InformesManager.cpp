@@ -2,7 +2,6 @@
 
 void InformesManager::UnidadesMas50()
 {
-
 }
 
 void InformesManager::InformeProveedores()

@@ -10,6 +10,7 @@ using namespace std;
 //sets
 void Proveedor::setTipo(char tipo) {_tipo = tipo;}
 void Proveedor::setArt(int dia, int mes, int anio) {_art.cargar(dia, mes, anio);}
+void Proveedor::setArt(Fecha fecha) {_art = fecha;}
 void Proveedor::setEmpresa(std::string empresa) {strcpy(_empresa, empresa.c_str());}
 //gets
 char Proveedor::getTipo() const { return _tipo; }
@@ -20,30 +21,19 @@ std::string Proveedor::getEmpresa() const { return _empresa; }
 //acciones
 
 void Proveedor::cargarProveedor(int dni) {
+	Fecha aux;
+	string empresa;
 	cargarPersona();
 	setDni(dni);
-	setTipo('R');
-	setArt(10, 10, 2023);
-	setEmpresa("talali");
-	
-	/*char tipo;
-	string empresa;
-	int dia, mes, anio;
-	setDni(dni);
-	cout << "Ingrese Tipo del proveedor " << endl;
-	cin >> tipo;
-	setTipo(tipo);
+	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (aux.ingresarFecha()==false) {
+		cout << "Formato invalido, ingrese DD/MM/AA";
+		cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	}
 	cin.ignore();
 	cout << "Ingrese Empresa perteneciente " << endl;
-	getline(cin, empresa);
+	std::getline(cin, empresa);
 	setEmpresa(empresa);
-	cout << "Ingrese dia de su Art " << endl;
-	cin >> dia;
-	cout << "Ingrese mes de su Art " << endl;
-	cin >> mes;
-	cout << "Ingrese anio  de su Art" << endl;
-	cin >> anio;
-	setArt(dia, mes, anio);*/
 }
 
 

@@ -1,6 +1,8 @@
 #include <ctime>
 #include <iostream>
 #include "fecha.h"
+#include <sstream>
+
 Fecha::Fecha() {
     time_t t = time(NULL);
     struct tm* f = localtime(&t);
@@ -13,56 +15,36 @@ Fecha::Fecha(int dia, int mes, int anio) {
     cargar(dia, mes, anio);
     _diaSemana = -1;
 }
-int Fecha::getDia() {
-    return _dia;
-}
-int Fecha::getMes() {
-    return _mes;
-}
-int Fecha::getAnio() {
-    return _anio;
-}
-void Fecha::setDia(int dia) {
-    _dia = dia;
-}
-void Fecha::setMes(int mes) {
-    _mes = mes;
-}
-void Fecha::setAnio(int anio) {
-    _anio = anio;
-}
+int Fecha::getDia() { return _dia; }
+int Fecha::getMes() { return _mes; }
+int Fecha::getAnio() { return _anio; }
+void Fecha::setDia(int dia) { _dia = dia; }
+void Fecha::setMes(int mes) { _mes = mes; }
+void Fecha::setAnio(int anio) { _anio = anio; }
 void Fecha::cargar(int dia, int mes, int anio) {
-
     if (dia > 0 && dia < 32 && mes>0 && mes < 13 && anio >0) {
-
         switch (mes) {
         case 1:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-
             break;
-
         case 2:
             if (dia <= 28 && anio % 4 != 0) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             if (anio % 4 == 0 && dia <= 29) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
-
         case 3:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-
             break;
         case 4:
             if (dia <= 30) {
@@ -71,22 +53,18 @@ void Fecha::cargar(int dia, int mes, int anio) {
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
         case 5:
-
             _dia = dia;
             _mes = mes;
             _anio = anio;
             break;
         case 6:
             if (dia <= 30) {
-
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
             }
-
             break;
         case 7:
             _dia = dia;
@@ -127,8 +105,7 @@ void Fecha::cargar(int dia, int mes, int anio) {
             _anio = anio;
             break;
 
-        default:
-            std::cout << "FECHA INVALIDA , ASIGNACION POR DEFECTO : 1/1/2023";
+        default:            
             _dia = 01;
             _mes = 01;
             _anio = 2023;
@@ -149,6 +126,41 @@ std::string Fecha::getNombreDia() {
     }
     return "";
 }
+
+bool Fecha::ingresarFecha() {
+    std::string fechaStr;
+    // Pedir al usuario que ingrese la fecha
+    //std::cout << "Ingrese la fecha (DD/MM/AA): ";
+    std::cin >> fechaStr;
+
+    // Crear un objeto stringstream para analizar la cadena
+    std::istringstream fechaStream(fechaStr);
+
+    // Variables para almacenar el día, mes y año
+    int dia, mes, anio;
+
+    // Extraer los valores de día, mes y año de la cadena
+    char delim1, delim2;
+    fechaStream >> dia >> delim1 >> mes >> delim2 >> anio;
+
+    // Verificar si el formato es correcto y no hay errores de extracción
+    if (fechaStream.fail() || delim1 != '/' || delim2 != '/' || fechaStream.rdbuf()->in_avail() != 0) {
+        //std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato DD/MM/AA." << std::endl;
+        return false; // Salir con código de error
+    }
+    else {
+        cargar(dia, mes, anio);
+    }
+
+    // Imprimir los valores por separado (puedes hacer lo que necesites con ellos)
+   /* std::cout << "Día: " << dia << std::endl;
+    std::cout << "Mes: " << mes << std::endl;
+    std::cout << "Año: " << ano << std::endl;*/
+    
+
+    return true; // Salir sin errores
+}
+
 bool Fecha::operator>(Fecha& fechaActual)
 {
     if (this->getAnio() > fechaActual.getAnio()) {
