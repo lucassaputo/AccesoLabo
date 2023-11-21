@@ -9,7 +9,7 @@
 
 using namespace std;
 Singleton& s = Singleton::getInstance();
-// Obtener el objeto desde el Singleton y llamar a su función
+// Obtener el objeto desde el Singleton y llamar a su funciÃ³n
 //s.getUsuario().mostrar();
 
 
