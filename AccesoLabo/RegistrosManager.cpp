@@ -8,6 +8,7 @@
 
 
 using namespace std;
+
 Singleton& s = Singleton::getInstance();
 // Obtener el objeto desde el Singleton y llamar a su función
 //s.getUsuario().mostrar();
@@ -32,33 +33,35 @@ void RegistrosManager::Cargar() {
 		cout << "Ingrese motivo de ingreso:   (1: Visita | 2: Proveedor | 3: Residente) ";
 		cin >> motivoAux;
 	}	
-	cout << "aca";
 	system("pause");
 	motivo = std::stoi(motivoAux);
 
 	// UNIDAD
-	cout << "Ingrese unidad destino: ";
-	cin.ignore();
-	cin >> unidadAux;
-	while (soloNumeros(unidadAux) == false) {
-		cout << "Solo puede contener numeros, Ingrese unidad destino: ";
+	bool validado = false;
+	while (true) {
+		cout << "Ingrese unidad destino: " << endl;
 		cin.ignore();
 		cin >> unidadAux;
-	}
-	uni = buscarUnidad(std::stoi(unidadAux));
-	cout << "TTTTTTT: " << uni.getId() << endl;
-	while (uni.getId() < 0) {
-		cout << "Unidad invalida." << endl;
-		cout << "Ingrese unidad destino: " << endl;
-		cin >> unidad;
-		uni = buscarUnidad(unidad);
+		while (soloNumeros(unidadAux) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad destino: ";
+			cin.ignore();
+			cin >> unidadAux;
+		}
+		uni = buscarUnidad(std::stoi(unidadAux));		
+		if (uni.getId() >= 0) {
+			break;
+		}
+		else {
+			cout << "La unidad ingresada no existe." << endl;			
+		}
 	}	
+	
 	// DNI
 	cout << "Ingrese DNI: ";
 	cin.ignore();
 	cin >> dniAux;
-	while (soloNumeros(dniAux) == false) {
-		cout << "Solo puede contener numeros, Ingrese DNI: ";
+	while (soloNumeros(dniAux) == false || !(dniAux.size()<10 && dniAux.size()>6)) {
+		cout << "DNI invalido, Ingrese DNI: ";
 		cin.ignore();
 		cin >> dniAux;
 	}
@@ -69,8 +72,8 @@ void RegistrosManager::Cargar() {
 		case 1://VISITA		
 			registroVisitas(uni, dni);		
 			break;
-		case 2://PROVEEDOR		
-			registroProveedores(uni.getId(), dni);
+		case 2://PROVEEDOR
+			registroProveedores(uni, dni);
 			break;		
 		case 3://RESIDENTE
 			registroResidentes(uni, dni);
@@ -82,22 +85,32 @@ void RegistrosManager::Cargar() {
 	//return;
 }
 
-void RegistrosManager::registroProveedores(int uni, int dni) {
+void RegistrosManager::registroProveedores(Unidad uni, int dni) {
 	Proveedor p;
-	int pos;
-	bool vigente = false, autorizado = true;
+	int pos;	
 	pos = _archivoProveedores.Buscar(dni);
 	if (pos >= 0) {
 		p = _archivoProveedores.Leer(pos);
 		p.mostrar();
+		if (adentro(dni)) {
+			egresoProveedor(uni,p);
+		}
+		else {
+			ingresoProveedor(uni,p);
+		}
 	}
 	else {
 		p.cargarProveedor(dni);
 		p.setId(_archivoProveedores.ContarRegistros() + 1);
 		_archivoProveedores.Guardar(p);
 		cout << "Proveedor guardado correctamente." << endl;
-	}
-	if(!p.vencido()){
+		ingresoProveedor(uni,p);
+	}	
+	return;
+}
+void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
+	bool vigente = false, autorizado = true;
+	if (!p.vencido()) {
 		vigente = true;
 		//cout << "Esta vigente" << endl;
 	}
@@ -105,6 +118,7 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 	{
 		Fecha aux;
 		cout << "ART vencida, ingrese nueva fecha: " << endl;
+
 		while (aux.ingresarFecha() == false) {
 			cout << "Formato invalido, ingrese DD/MM/AA";
 			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
@@ -112,19 +126,19 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 		p.setArt(aux);
 		//if(!p.vencido) usar la sobrecarga que pase a fecha
 	}
-
+	/*
 	Autorizacion a;
 	a = getAutorizacion(p);
 	if (a.getIdUnidad() != -1) {
 		autorizado = true;
 		a.mostrar();
 	}
-
+	*/
 	if (vigente && autorizado) {
 		Registro reg;
 		char r;
 		//reg.setIdUnidad(uni.getId());
-		reg.setIdUnidad(uni);
+		reg.setIdUnidad(uni.getId());
 		reg = p;//sobrecarga asigna ipProveedor y fecha
 		reg.setSentido(1);
 		reg.setObservaciones("");
@@ -149,7 +163,12 @@ void RegistrosManager::registroProveedores(int uni, int dni) {
 			cout << "Registro cancelado.";
 		}
 	}
-	return;
+}
+void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p) {
+
+}
+bool RegistrosManager::adentro(int dni) {
+	return false;
 }
 void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 

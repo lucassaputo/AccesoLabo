@@ -17,9 +17,12 @@ class RegistrosManager
 		void Editar();
 		void Eliminar();
 		Unidad buscarUnidad(int u);
-		void registroProveedores(int uni, int dni);
+		void registroProveedores(Unidad uni, int dni);
 		void registroVisitas(Unidad uni, int dni);
 		void registroResidentes(Unidad uni, int dni);
 		Autorizacion getAutorizacion(Proveedor &p);
+		void ingresoProveedor(Unidad& uni, Proveedor& p);
+		void egresoProveedor(Unidad& uni, Proveedor& p);
+		bool adentro(int dni);
 };
 
