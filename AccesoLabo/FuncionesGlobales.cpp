@@ -2,9 +2,6 @@
 #include "Fecha.h"
 #include<iostream>
 using namespace std;
-bool vencido(Fecha fecha) {
-	return false;
-}
 
 void cargarCadena(char* pal, int tam) {
 	int i;
@@ -17,6 +14,18 @@ void cargarCadena(char* pal, int tam) {
 	pal[i] = '\0';
 	fflush(stdin);
 }
+
+bool soloNumeros(string x) {
+	bool esNumero = true;
+	for (char c : x) {
+		if (!isdigit(c)) {
+			esNumero = false;
+			break;
+		}
+	}
+	return esNumero;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
