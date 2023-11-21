@@ -1,33 +1,51 @@
 #include "RegistrosManager.h"
-#include <iostream>
 #include "Visita.h"
 #include "Unidad.h"
 #include "Autorizacion.h"
 #include "Registro.h"
 #include "Singleton.h"
+#include "FuncionesGlobales.h"
+
 
 using namespace std;
 Singleton& s = Singleton::getInstance();
 // Obtener el objeto desde el Singleton y llamar a su función
 //s.getUsuario().mostrar();
 
+
+
 void RegistrosManager::Cargar() {
 	system("cls");
-	int motivo, dni, unidad;
+	string dniAux, unidadAux, motivoAux;
+	int motivo, unidad,dni;
 	Unidad uni;
 	
 	cout << "***********  Nuevo movimiento  ***********" << endl;
+	
+	// MOTIVO
 	cout << "(1: Visita | 2 : Proveedor | 3 : Residente)" << endl;
 	cout << "Ingrese motivo de ingreso: ";
-	cin >> motivo;
-	while (motivo < 1 || motivo>3) {
+	cin.ignore();
+	cin >> motivoAux;
+	while (soloNumeros(motivoAux)==false || !(motivoAux=="1" || motivoAux == "2" || motivoAux == "3")) {
 		cout << "Motivo invalido." << endl;
 		cout << "Ingrese motivo de ingreso:   (1: Visita | 2: Proveedor | 3: Residente) ";
-		cin >> motivo;
-	}
+		cin >> motivoAux;
+	}	
+	cout << "aca";
+	system("pause");
+	motivo = std::stoi(motivoAux);
+
+	// UNIDAD
 	cout << "Ingrese unidad destino: ";
-	cin >> unidad;
-	uni = buscarUnidad(unidad);
+	cin.ignore();
+	cin >> unidadAux;
+	while (soloNumeros(unidadAux) == false) {
+		cout << "Solo puede contener numeros, Ingrese unidad destino: ";
+		cin.ignore();
+		cin >> unidadAux;
+	}
+	uni = buscarUnidad(std::stoi(unidadAux));
 	cout << "TTTTTTT: " << uni.getId() << endl;
 	while (uni.getId() < 0) {
 		cout << "Unidad invalida." << endl;
@@ -35,8 +53,18 @@ void RegistrosManager::Cargar() {
 		cin >> unidad;
 		uni = buscarUnidad(unidad);
 	}	
+	// DNI
 	cout << "Ingrese DNI: ";
-	cin >> dni;
+	cin.ignore();
+	cin >> dniAux;
+	while (soloNumeros(dniAux) == false) {
+		cout << "Solo puede contener numeros, Ingrese DNI: ";
+		cin.ignore();
+		cin >> dniAux;
+	}
+	dni = std::stoi(dniAux);
+
+	// LOGICA
 	switch (motivo) {
 		case 1://VISITA		
 			registroVisitas(uni, dni);		
@@ -169,3 +197,4 @@ Autorizacion RegistrosManager::getAutorizacion(Proveedor &p) {
 	}
 	return a;
 }
+
