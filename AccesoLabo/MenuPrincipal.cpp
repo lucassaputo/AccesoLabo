@@ -4,6 +4,7 @@ using namespace std;
 #include "MenuRegistros.h"
 #include "MenuListado.h"
 #include "MenuConsultas.h"
+#include "MenuAbmAutorizacion.h"
 #include "MenuAbmPersonas.h"
 #include "MenuAbmUnidades.h"
 #include "MenuInformes.h"
@@ -51,7 +52,8 @@ void MenuPrincipal::Mostrar() {
         break;
         case 3:
         {
-            //autorizaciones
+            MenuAbmAutorizacion menu;
+            menu.Mostrar();
         }
         break;
 

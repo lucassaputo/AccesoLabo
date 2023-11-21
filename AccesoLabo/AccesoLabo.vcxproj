@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbmAutorizacionManager.cpp" />
     <ClCompile Include="AbmPersonasManager.cpp" />
     <ClCompile Include="AbmUnidadesManager.cpp" />
     <ClCompile Include="App.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Horario.cpp" />
     <ClCompile Include="InformesManager.cpp" />
     <ClCompile Include="ListadoManager.cpp" />
+    <ClCompile Include="MenuAbmAutorizacion.cpp" />
     <ClCompile Include="MenuAbmPersonas.cpp" />
     <ClCompile Include="MenuAbmUnidades.cpp" />
     <ClCompile Include="MenuConfiguraciones.cpp" />
@@ -183,6 +185,7 @@
     <ClCompile Include="Visita.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbmAutorizacionManager.h" />
     <ClInclude Include="AbmPersonasManager.h" />
     <ClInclude Include="AbmUnidadesManager.h" />
     <ClInclude Include="App.h" />
@@ -204,6 +207,7 @@
     <ClInclude Include="Horario.h" />
     <ClInclude Include="InformesManager.h" />
     <ClInclude Include="ListadoManager.h" />
+    <ClInclude Include="MenuAbmAutorizacion.h" />
     <ClInclude Include="MenuAbmPersonas.h" />
     <ClInclude Include="MenuAbmUnidades.h" />
     <ClInclude Include="MenuConfiguraciones.h" />
