@@ -19,13 +19,14 @@ void ListadoManager::AutorizadosPorUnidad() {
 }
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
-	cout << "ResidentesPorUnidad" << endl;
+	//cout << "ResidentesPorUnidad" << endl;
 	ListarUnidades();
 	system("pause");
 }
 void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
-	cout << "ProveedoresPorRazon" << endl;
+	//cout << "ProveedoresPorRazon" << endl;
+	ListarRegistros();
 	system("pause");
 }
 void ListadoManager::EmpleadosPorDNI() {
@@ -100,5 +101,13 @@ void ListadoManager::ListarUnidades() {
 	for (int i = 0;i < cant;i++) {
 		u = _archivoUnidades.Leer(i);
 		u.mostrar();
+	}
+}
+void ListadoManager::ListarRegistros() {
+	int cant = _archivoRegistros.ContarRegistros();
+	Registro reg;
+	for (int i = 0;i < cant;i++) {
+		reg = _archivoRegistros.Leer(i);
+		reg.mostrar();
 	}
 }
