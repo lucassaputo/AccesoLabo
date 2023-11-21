@@ -21,6 +21,7 @@ class ListadoManager
 		void MostrarCantidadProveedores();
 		void ListarTodosProveedores();
 		void ListarUnidades();
+		void ListarRegistros();
 		
 	private:
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");

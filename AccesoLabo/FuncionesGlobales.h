@@ -1,7 +1,6 @@
 #pragma once
 #include "Fecha.h"
 
-bool vencido(Fecha fecha);
-
 void cargarCadena(char* pal, int tam);
+bool soloNumeros(std::string aux);
 void Creditos();
