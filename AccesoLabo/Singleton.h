@@ -21,6 +21,9 @@ public:
     Usuario& getUsuario() {
         return miClaseObj;
     }
+    void ReiniciarClase() { /// esto deberia reiniciar la clase simulando un cierre de sesion
+        miClaseObj = Usuario();
+    }
 
 private:
     // Constructor privado para evitar la creación de instancias fuera de la clase

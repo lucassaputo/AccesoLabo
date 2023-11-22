@@ -16,13 +16,14 @@ int main() {
 	// Obtener la instancia única del Singleton
 	Singleton& s = Singleton::getInstance();
 	// Crear un objeto de la clase deseada
+	/*
 	Usuario reg;
 	reg.setId(11);
 	reg.setNombres("Lucas");
 	reg.setApellidos("Saputo");
 	reg.setNick("LucasNick");
+	s.setMiClase(reg);*/
 	// Guardar el objeto en el Singleton
-	s.setMiClase(reg);
 	// Obtener el objeto desde el Singleton y llamar a su función
 	//s.getUsuario().mostrar();
 

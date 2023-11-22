@@ -147,6 +147,7 @@
     <ClCompile Include="ArchivoProveedores.cpp" />
     <ClCompile Include="ArchivoRegistro.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
+    <ClCompile Include="ArchivoUsuario.cpp" />
     <ClCompile Include="ArchivoVisita.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
     <ClCompile Include="Cadena.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Horario.cpp" />
     <ClCompile Include="InformesManager.cpp" />
     <ClCompile Include="ListadoManager.cpp" />
+    <ClCompile Include="LogIn.cpp" />
     <ClCompile Include="MenuAbmAutorizacion.cpp" />
     <ClCompile Include="MenuAbmPersonas.cpp" />
     <ClCompile Include="MenuAbmUnidades.cpp" />
@@ -193,6 +195,7 @@
     <ClInclude Include="ArchivoProveedores.h" />
     <ClInclude Include="ArchivoRegistro.h" />
     <ClInclude Include="ArchivoUnidad.h" />
+    <ClInclude Include="ArchivoUsuario.h" />
     <ClInclude Include="ArchivoVisita.h" />
     <ClInclude Include="Autorizacion.h" />
     <ClInclude Include="Cadena.h" />
@@ -207,6 +210,7 @@
     <ClInclude Include="Horario.h" />
     <ClInclude Include="InformesManager.h" />
     <ClInclude Include="ListadoManager.h" />
+    <ClInclude Include="LogIn.h" />
     <ClInclude Include="MenuAbmAutorizacion.h" />
     <ClInclude Include="MenuAbmPersonas.h" />
     <ClInclude Include="MenuAbmUnidades.h" />
