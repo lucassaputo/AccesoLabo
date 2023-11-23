@@ -34,14 +34,15 @@ void Proveedor::cargarProveedor(int dni) {
 	cout << "Ingrese Empresa perteneciente " << endl;
 	std::getline(cin, empresa);
 	setEmpresa(empresa);
+	setArt(aux);
 }
 
 
 void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
-	//cout << " Empresa perteneciente : " << getEmpresa() << endl;
-	//cout << "Fecha de su Art : " << getArt() << endl;
+	cout << " Empresa perteneciente : " << getEmpresa() << endl;
+	cout << "Fecha de su Art : " << getArt() << endl;
 }
 
 bool Proveedor::operator>(Fecha &fechaActual)
@@ -72,10 +73,7 @@ bool Proveedor::operator>(Fecha &fechaActual)
 bool Proveedor::vencido() {
 	Fecha fechaActual;
 	if (_art > fechaActual) {
-		return true;
-	}
-	else
-	{
 		return false;
-	}
+	}	
+	return true;	
 }

@@ -26,9 +26,23 @@ int main() {
 	// Obtener el objeto desde el Singleton y llamar a su función
 	//s.getUsuario().mostrar();
 
+
+
+	Fecha aux;
+	cout << aux.toString() << endl;
+	Fecha tt;
+	tt.cargar(11, 10, 2023);
+	cout << tt.toString() << endl;
+	if (tt > aux) {
+		cout << "si" << endl;
+	}
+	else {
+		cout << "no" << endl;
+	} 
 	//system("pause");
 	App app;
 	app.Ejecutar();
+	
 	return 0;
 }
 

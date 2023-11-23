@@ -111,20 +111,30 @@ void RegistrosManager::registroProveedores(Unidad uni, int dni) {
 void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
 	bool vigente = false, autorizado = true;
 	if (!p.vencido()) {
+		cout << "Vencido: " << p.vencido() << endl;
 		vigente = true;
-		//cout << "Esta vigente" << endl;
+		cout << "Esta vigente" << endl;
 	}
 	else
 	{
 		Fecha aux;
+		Fecha hoy;
 		cout << "ART vencida, ingrese nueva fecha: " << endl;
-
-		while (aux.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
-			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		bool pasado = true;
+		while (true) {
+			while (aux.ingresarFecha() == false) {
+				cout << "Formato invalido, ingrese DD/MM/AA";
+				cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+			}
+			if (!(aux > hoy)) {
+				cout << "La fecha ingresada debe ser mayor a hoy." << endl;
+			}
+			else {
+				cout << "OKFecha" << endl;
+				break;
+			}
 		}
 		p.setArt(aux);
-		//if(!p.vencido) usar la sobrecarga que pase a fecha
 	}
 	/*
 	Autorizacion a;
@@ -162,6 +172,9 @@ void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
 		else {
 			cout << "Registro cancelado.";
 		}
+	}
+	else {
+		cout << "AAAAA" << endl;
 	}
 }
 void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p) {

@@ -171,7 +171,7 @@ bool Fecha::operator>(Fecha& fechaActual)
             return true;
         }
         else if (this->getMes() == fechaActual.getMes()) {
-            if (this->getDia() > fechaActual.getDia()) {
+            if (this->getDia() >= fechaActual.getDia()) {
                 return true;
             }
             else {
