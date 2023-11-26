@@ -65,9 +65,7 @@ int main() {
 * mantener la indentacion
 * ver cuando pasar por referencia objetos o solo pasar el atributo que utilice la funcion
 * hacer sobrevarga de fecha de <
-*/
-/*
-* estado en usuario no va pq lo tiene persona.
+* validar el ingrese de opciones del menu que sean solo numeros
 */
 
 /*

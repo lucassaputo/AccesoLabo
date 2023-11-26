@@ -12,105 +12,173 @@ using namespace std;
 #include "MenuExportacion.h"
 #include "FuncionesGlobales.h"
 #include "LogIn.h"
+#include "Singleton.h"
 
 
 
 void MenuPrincipal::Mostrar() {
-    while (true) {    
-        system("cls");//limpia cuando vuelve de un submenu
-        cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-        cout << "*********     CONTROL DE ACCESOS     *********" << endl;
-        cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-        cout << "1 - Movimientos" << endl;
-        cout << "2 - ABM Personas" << endl;
-        cout << "3 - ABM Autorizaciones" << endl;
-        cout << "4 - ABM Unidades" << endl;
-        cout << "5 - Listados" << endl;
-        cout << "6 - Consultas" << endl;
-        cout << "7 - Informes" << endl;
-        cout << "8 - Configuraciones" << endl;
-        cout << "9 - Backups" << endl;
-        cout << "10 - Usuarios" << endl;
-        cout << "11 - Cerrar sesion" << endl;
-        cout << "12 - Creditos" << endl;
-        cout << "*******************************" << endl;
-        cout << "0 - Salir del programa" << endl;
-
-        int opcion;
-        cin >> opcion;
-        switch (opcion) {
-        case 1:
-        {
-            MenuRegistros menu;
-            menu.Mostrar();
-            //test
-        }
-        break;
-        case 2:
-        {
-            MenuAbmPersonas menu;
-            menu.Mostrar();
-        }
-        break;
-        case 3:
-        {
-            MenuAbmAutorizacion menu;
-            menu.Mostrar();
-        }
-        break;
-
-        case 4:
-        {
-            MenuAbmUnidades menu;
-            menu.Mostrar();
-        }
-        break;
-        case 5:
-        {
-            MenuListado menu;
-            menu.Mostrar();
-        }
-        break;
-        case 6:
-        {
-            MenuConsultas menu;
-            menu.Mostrar();
-        }
-        break;
-        case 7:
-        {
-            MenuInformes menu;
-            menu.Mostrar();
-        }
-        break;
-        case 8:
-        {
-            MenuConfiguraciones menu;
-            menu.Mostrar();
-        }
-        break;
-        case 9:
-        {
-            MenuExportacion menu;
-            menu.Mostrar();
-        }
-        break;
-        case 10:
-        {
-            LogIn log;
-            log.Mostrar();
-        }
-        break;
-        case 11:        
-        {
-            Creditos();
-        }
-        break;        
-        case 0: {
-            return;
+    Singleton& s = Singleton::getInstance();
+    if (s.getUsuario().getNivel() == 1) {
+        while (true) {
+            system("cls");//limpia cuando vuelve de un submenu
+            cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+            cout << "*********     CONTROL DE ACCESOS     *********" << endl;
+            cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+            cout << "1 - Movimientos" << endl;
+            cout << "2 - ABM Personas" << endl;
+            cout << "3 - ABM Autorizaciones" << endl;
+            cout << "4 - ABM Unidades" << endl;
+            cout << "5 - Listados" << endl;
+            cout << "6 - Consultas" << endl;
+            cout << "7 - Informes" << endl;
+            cout << "8 - Configuraciones" << endl;
+            cout << "9 - Backups" << endl;
+            cout << "10 - Usuarios" << endl;
+            cout << "11 - Cerrar sesion" << endl;
+            cout << "12 - Creditos" << endl;
+            cout << "*******************************" << endl;
+            cout << "0 - Salir del programa" << endl;
+            cin.ignore();
+            int opcion;
+            cin >> opcion;
+            switch (opcion) {
+            case 1:
+            {
+                MenuRegistros menu;
+                menu.Mostrar();
+                //test
+            }
             break;
+            case 2:
+            {
+                MenuAbmPersonas menu;
+                menu.Mostrar();
+            }
+            break;
+            case 3:
+            {
+                MenuAbmAutorizacion menu;
+                menu.Mostrar();
+            }
+            break;
+
+            case 4:
+            {
+                MenuAbmUnidades menu;
+                menu.Mostrar();
+            }
+            break;
+            case 5:
+            {
+                MenuListado menu;
+                menu.Mostrar();
+            }
+            break;
+            case 6:
+            {
+                MenuConsultas menu;
+                menu.Mostrar();
+            }
+            break;
+            case 7:
+            {
+                MenuInformes menu;
+                menu.Mostrar();
+            }
+            break;
+            case 8:
+            {
+                MenuConfiguraciones menu;
+                menu.Mostrar();
+            }
+            break;
+            case 9:
+            {
+                MenuExportacion menu;
+                menu.Mostrar();
+            }
+            break;
+            case 10:
+            {
+                LogIn log;
+                log.Mostrar();
+            }
+            break;
+            case 11:
+            {
+                Creditos();
+            }
+            break;
+            case 0: {
+                return;
+                break;
+            }
+            }
         }
+    }
+    else if (s.getUsuario().getNivel() == 2) {
+        while (true) {
+            system("cls");//limpia cuando vuelve de un submenu
+            cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+            cout << "*********     CONTROL DE ACCESOS     *********" << endl;
+            cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+            cout << "1 - Movimientos" << endl;
+            cout << "2 - ABM Personas" << endl;
+            cout << "3 - Listados" << endl;
+            cout << "4 - Consultas" << endl;
+            cout << "5 - Cerrar sesion" << endl;
+            cout << "6 - Creditos" << endl;
+            cout << "*******************************" << endl;
+            cout << "0 - Salir del programa" << endl;
+
+            int opcion;
+            cin >> opcion;
+            switch (opcion) {
+            case 1:
+            {
+                MenuRegistros menu;
+                menu.Mostrar();
+                //test
+            }
+            break;
+            case 2:
+            {
+                MenuAbmPersonas menu;
+                menu.Mostrar();
+            }
+            break;           
+            case 3:
+            {
+                MenuListado menu;
+                menu.Mostrar();
+            }
+            break;
+            case 4:
+            {
+                MenuConsultas menu;
+                menu.Mostrar();
+            }
+            break;
+            case 5:
+            {
+                LogIn log;
+                log.Mostrar();
+            }
+            break;
+            case 6:
+            {
+                Creditos();
+            }
+            break;
+            case 0: {
+                return;
+                break;
+            }
+            }
         }
+    }
+    else {
+        cout << "Error con usuario.";
     }
 }
     

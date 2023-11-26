@@ -7,7 +7,6 @@
 #include <iostream>
 #include <cstring>
 
-
 void LogIn::Mostrar() {	
 	Singleton& s = Singleton::getInstance();
 	system("cls");
@@ -30,6 +29,15 @@ void LogIn::Mostrar() {
 		std::cout << "ingrese password" << std::endl;
 		std::cin >> pasword;
 	}if (strcmp(pasword.c_str(), reg.getPassword().c_str()) != 0) {
+		Usuario reg;
+		reg.setId(11);
+		reg.setNombres("Lucas");
+		reg.setApellidos("Saputo");
+		reg.setNick("LucasNick");
+		reg.setNivel(2);
+		s.setMiClase(reg);
+		
+		
 		s.setMiClase(reg);
 		MenuPrincipal menu;
 		menu.Mostrar();

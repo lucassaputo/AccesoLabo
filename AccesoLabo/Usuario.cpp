@@ -10,16 +10,13 @@ using namespace std;
 void Usuario::setNick(std::string n) { strcpy(_nick, n.c_str()); }
 void Usuario::setPassword(std::string pass) { strcpy(_password, pass.c_str()); }
 void Usuario::setLegajo(int l) { _legajo = l;}
-//void Usuario::setNivel(int n) { _nivel = n; }
-//void Usuario::setPersona(Persona p) { _persona = p; }
-
+void Usuario::setNivel(int n) { _nivel = n; }
 
 //gets
 std::string Usuario::getNick() { return _nick; }
 std::string Usuario::getPassword() { return _password; }
 int Usuario::getLegajo() const { return _legajo; };
 int Usuario::getNivel() const { return _nivel; };
-
 
 //acciones
 void Usuario::cargar()
