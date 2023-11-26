@@ -3,6 +3,7 @@
 #include "ArchivoUnidad.h"
 #include "ArchivoProveedores.h"
 #include "Registro.h"
+#include "FuncionesGlobales.h"
 /*
 		cout << "**************     INFORMES     **************" << endl;
 		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -14,6 +15,8 @@
 class InformesManager
 {	
 	public:
+		void ProvedoresIngresados(int mi, int ai, int mf, int af); // cuenta los proveedores ingresados entre dos fechas especificadas
+		void ContarMovimientosIndicados(int m, int a);//cuenta los movimientos en un mes y año especificado
 		void UnidadesMas50();
 		void InformeProveedores();
 		void HistorialMovimientosxUnidades(); 

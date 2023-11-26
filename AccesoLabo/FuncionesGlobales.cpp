@@ -3,6 +3,14 @@
 #include<iostream>
 using namespace std;
 
+void ponerenCeroVector(int* vec, int tam)
+{
+	for (int x = 0;x < tam;x++) {
+		vec[x] = 0;
+	}
+
+}
+
 void cargarCadena(char* pal, int tam) {
 	int i;
 	fflush(stdin);
