@@ -73,7 +73,7 @@ void RegistrosManager::Cargar() {
 			registroVisitas(uni, dni);		
 			break;
 		case 2://PROVEEDOR
-			registroProveedores(uni, dni);
+			registroProveedores(uni, dni,motivo);
 			break;		
 		case 3://RESIDENTE
 			registroResidentes(uni, dni);
@@ -85,15 +85,16 @@ void RegistrosManager::Cargar() {
 	//return;
 }
 
-void RegistrosManager::registroProveedores(Unidad uni, int dni) {
+void RegistrosManager::registroProveedores(Unidad uni, int dni,  int motivo) {
 	Proveedor p;
 	int pos;	
 	pos = _archivoProveedores.Buscar(dni);
 	if (pos >= 0) {
 		p = _archivoProveedores.Leer(pos);
 		p.mostrar();
-		if (adentro(dni)) {
-			egresoProveedor(uni,p);
+		int x = adentro(p.getDni(), motivo, 2);
+		if (adentro(p.getDni(), motivo, 2)>-1) {
+			egresoProveedor(uni,p,x);
 		}
 		else {
 			ingresoProveedor(uni,p);
@@ -191,11 +192,20 @@ void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
 		cout << "AAAAA" << endl;
 	}
 }
-void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p) {
-
+void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p, int posActivo) {
+	//grabar salida
+	//borrar activo
 }
-bool RegistrosManager::adentro(int dni) {
-	return false;
+int RegistrosManager::adentro(int idPersona,int motivo,int tipoPersona) {
+	Registro r;
+	int cant = _archivoActivos.ContarRegistros();
+	for (int i = 0;i < cant;i++) {
+		r = _archivoActivos.Leer(i);
+		if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getTipoPersona() == tipoPersona && r.getEstado()==true) {
+			return i;
+		}
+	}
+	return -1;
 }
 bool RegistrosManager::autorizado(Unidad uni, Proveedor p) {
 	Autorizacion a;

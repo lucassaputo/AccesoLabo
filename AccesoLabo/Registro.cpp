@@ -11,6 +11,7 @@ Registro::Registro() {
 //sets
 void Registro::setIdUnidad(int u){_idUnidad = u;}
 void Registro::setIdPersona(int p){_idPersona = p;}
+void Registro::setTipoPersona(int t) { _tipoPersona = t; }
 void Registro::setFecha(Fecha f){_fecha = f;}
 void Registro::setSentido(int e){_sentido = e;}
 void Registro::setObservaciones(std::string obs){strcpy(_observaciones,obs.c_str()); }
@@ -21,6 +22,7 @@ void Registro::setEstado(bool e){_estado = e;}
 //gets
 int Registro::getIdUnidad() { return _idUnidad; }
 int Registro::getIdPersona() { return _idPersona; }
+int Registro::getTipoPersona() { return _tipoPersona; }
 Fecha Registro::getFecha() { return _fecha; }
 int Registro::getSentido() { return _sentido; }
 std::string Registro::getObservaciones() { return _observaciones; }

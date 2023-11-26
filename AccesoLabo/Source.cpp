@@ -74,8 +74,13 @@ int main() {
 * tipos de unidades:
 * --------------------
 * sentido 1 entrada 2 salida
+* 
 * nivel usuarios:
 * --------------------
 * 1 admin
 * 2 vigilador
+* 
+* tipos de personas;:
+* --------------------
+* 1: Visita | 2: Proveedor | 3: Residente
 */
