@@ -1,5 +1,6 @@
 #pragma once
 #include "Fecha.h"
+void ordenarVector(int* vec, int tam);
 void ponerenCeroVector(int* vec,int tam);
 void cargarCadena(char* pal, int tam);
 bool soloNumeros(std::string aux);

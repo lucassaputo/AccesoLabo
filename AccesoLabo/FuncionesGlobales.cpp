@@ -3,6 +3,21 @@
 #include<iostream>
 using namespace std;
 
+void ordenarVector(int* vec, int tam)
+{
+	for (int i = 0; i < tam - 1; ++i) {
+		for (int j = 0; j < tam - i - 1; ++j) {
+			if (vec[j] > vec[j + 1]) {
+				// Intercambiar elementos si están en el orden incorrecto
+				int aux = vec[j];
+				vec[j] = vec[j + 1];
+				vec[j + 1] = aux;
+			}
+		}
+	}
+
+}
+
 void ponerenCeroVector(int* vec, int tam)
 {
 	for (int x = 0;x < tam;x++) {

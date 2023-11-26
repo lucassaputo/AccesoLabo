@@ -128,16 +128,83 @@ void InformesManager::InformeProveedores()
 	std::cout << "Anio : " << std::endl;
 	std::cin >> anioF;
 	ProvedoresIngresados(mesI, anioI, mesF, anioF);
-
-
-	system("pause");
+		system("pause");
 }
+
 
 void InformesManager::HistorialMovimientosxUnidades()
 {
 	system("cls");
-	std::cout << "Historial de movimientos por unidades" << std::endl;
+	ArchivoRegistro archRegistro("Registros.dat");
+	Registro regRegistro;
+	Unidad *regUnidades;
+	ArchivoUnidad archUnidades("Unidades.dat");
+
+	int *vecMovimientosUnidades;	
+	int cantUnidades = archUnidades.ContarRegistros();
+	regUnidades = new Unidad[cantUnidades];
+	if (regUnidades == nullptr) {
+		std::cout << "Error" << std::endl;
+		exit(1);
+	}
+	vecMovimientosUnidades = new int[cantUnidades];
+	if (vecMovimientosUnidades == nullptr) {
+		std::cout << "Error" << std::endl;
+		exit(1);
+	}
+	ponerenCeroVector(vecMovimientosUnidades, cantUnidades);
+	int tamRegistros = archRegistro.ContarRegistros();
+	for (int x = 0;x < tamRegistros;x++) {
+		regRegistro = archRegistro.Leer(x);
+		for (int i = 0;i < cantUnidades;i++) {
+			if (regRegistro.getIdUnidad() == regUnidades[i].getId()) {
+				vecMovimientosUnidades[i]++;
+			}
+		}
+
+	}
+	ordenarVectorUnidades(vecMovimientosUnidades, cantUnidades, regUnidades);
+
+
+
+	std::cout << "*****-----Unidades con mas movimientos-----*****" << std::endl;
+	regUnidades[cantUnidades - 1].mostrar();
+	std::cout << " Movimientos: " << vecMovimientosUnidades[cantUnidades - 1] << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	regUnidades[cantUnidades - 2].mostrar();
+	std::cout << " Movimientos: " << vecMovimientosUnidades[cantUnidades - 2] << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	regUnidades[cantUnidades - 3].mostrar();
+	std::cout << " Movimientos: " << vecMovimientosUnidades[cantUnidades - 3] << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	std::cout << "*****-----Unidades con menos movimientos-----*****" << std::endl;
+	regUnidades[0].mostrar();
+	std::cout << " Movimientos: " << vecMovimientosUnidades[0] << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	regUnidades[1].mostrar();
+	std::cout << " Movimientos: " << vecMovimientosUnidades[1] << std::endl;
+	std::cout << "------------------------------" << std::endl;
+	regUnidades[2].mostrar();
+	std::cout  << " Movimientos: " << vecMovimientosUnidades[2] << std::endl;
+	std::cout << "------------------------------" << std::endl;
 	system("pause");
+}
+
+void InformesManager::ordenarVectorUnidades(int* vec, int tam, Unidad* reg)
+{
+	for (int i = 0; i < tam - 1; ++i) {
+		for (int j = 0; j < tam - i - 1; ++j) {
+			if (vec[j] > vec[j + 1]) {
+				// Intercambiar elementos si están en el orden incorrecto
+				int aux = vec[j];
+				Unidad auxU = reg[j];
+				vec[j] = vec[j + 1];
+				reg[j] = reg[j + 1];
+				vec[j + 1] = aux;
+				reg[j + 1] = auxU;
+			}
+		}
+	}
 }
 
 void InformesManager::HistorialMovimientos()
@@ -145,3 +212,4 @@ void InformesManager::HistorialMovimientos()
 	std::cout << "Historial de movimientos " << std::endl;
 	system("pause");
 }
+

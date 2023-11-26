@@ -20,6 +20,7 @@ class InformesManager
 		void UnidadesMas50();
 		void InformeProveedores();
 		void HistorialMovimientosxUnidades(); 
+		void ordenarVectorUnidades(int* vec, int tam, Unidad* reg);
 		void HistorialMovimientos();
 
 	private:
