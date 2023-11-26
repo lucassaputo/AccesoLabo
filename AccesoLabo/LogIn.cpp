@@ -3,11 +3,45 @@
 #include "Usuario.h"
 #include "ArchivoUsuario.h"
 #include "FuncionesGlobales.h"
+#include "MenuPrincipal.h"
 #include <iostream>
 #include <cstring>
 
 
-void LogIn::Mostrar() {
+void LogIn::Mostrar() {	
+	Singleton& s = Singleton::getInstance();
+	system("cls");
+	std::cout << "**Log In**" << std::endl;
+	int legajo;
+	std::string pasword;
+	Usuario reg;
+	ArchivoUsuario archUsuario("Usuarios.dat");
+	system("cls");
+	std::cout << "Ingrese su numero de legajo:" << std::endl;
+	std::cin >> legajo;
+	int pos = archUsuario.Buscar(legajo);
+	if (pos < 0 && s.getUsuario().getEstado() == false) {
+		std::cout << "Legajo inexistente" << std::endl;
+		system("pause");
+	}
+	else {
+		reg = archUsuario.Leer(pos);
+
+		std::cout << "ingrese password" << std::endl;
+		std::cin >> pasword;
+	}if (strcmp(pasword.c_str(), reg.getPassword().c_str()) != 0) {
+		s.setMiClase(reg);
+		MenuPrincipal menu;
+		menu.Mostrar();
+	}
+	else {
+		std::cout << "Password incorrecto" << std::endl;
+		s.ReiniciarClase();
+		system("pause");
+	}	
+}
+
+	/*
 	int opc;
 	int pos = 0;
 	int legajo;
@@ -46,10 +80,12 @@ void LogIn::Mostrar() {
 			}
 			else {
 					reg = archUsuario.Leer(pos);
-					s.setMiClase(reg);
+					
 				std::cout << "ingrese la contraseña" << std::endl;
 				std::cin >> pasword;
-			}if (strcmp(pasword.c_str(), s.getUsuario().getContraseña()) == 0) {
+				x = reg.getPassword();
+			}if (strcmp(pasword.c_str(), reg.getPassword().c_str()) == 0) {
+					s.setMiClase(reg);
 					MenuPrincipal menu;
 					menu.Mostrar();
 				}
@@ -57,8 +93,7 @@ void LogIn::Mostrar() {
 					std::cout << "Contraseña incorrecta" << std::endl;
 					s.ReiniciarClase();
 					system("pause");
-				}			
-								
+				}										
 		}				
 		break;
 		case 2: //cerrar sesion
@@ -127,6 +162,7 @@ void LogIn::Mostrar() {
 			break;
 	}
 	}
-	}
+	*/
+	
 
 

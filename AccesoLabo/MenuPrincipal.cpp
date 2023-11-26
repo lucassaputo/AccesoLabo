@@ -11,6 +11,7 @@ using namespace std;
 #include "MenuConfiguraciones.h"
 #include "MenuExportacion.h"
 #include "FuncionesGlobales.h"
+#include "LogIn.h"
 
 
 
@@ -29,8 +30,9 @@ void MenuPrincipal::Mostrar() {
         cout << "7 - Informes" << endl;
         cout << "8 - Configuraciones" << endl;
         cout << "9 - Backups" << endl;
-        cout << "10 - Creditos" << endl;
-
+        cout << "10 - Usuarios" << endl;
+        cout << "11 - Cerrar sesion" << endl;
+        cout << "12 - Creditos" << endl;
         cout << "*******************************" << endl;
         cout << "0 - Salir del programa" << endl;
 
@@ -93,7 +95,13 @@ void MenuPrincipal::Mostrar() {
             menu.Mostrar();
         }
         break;
-        case 10:        
+        case 10:
+        {
+            LogIn log;
+            log.Mostrar();
+        }
+        break;
+        case 11:        
         {
             Creditos();
         }

@@ -62,10 +62,18 @@ int main() {
 * menues
 * ingreso de fechas mas simple
 * tipo de proveedor queda?
+* mantener la indentacion
+*/
+/*
+* estado en usuario no va pq lo tiene persona.
 */
 
-
 /*
-* tipos de unidades
+* tipos de unidades:
+* --------------------
 * sentido 1 entrada 2 salida
+* nivel usuarios:
+* --------------------
+* 1 admin
+* 2 vigilador
 */

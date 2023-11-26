@@ -173,16 +173,17 @@
     <ClCompile Include="MenuListado.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="MenuRegistros.cpp" />
+    <ClCompile Include="MenuUsuarios.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="PrincipalManager.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Registro.cpp" />
     <ClCompile Include="RegistrosManager.cpp" />
     <ClCompile Include="Residente.cpp" />
-    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Unidad.cpp" />
     <ClCompile Include="Usuario.cpp" />
+    <ClCompile Include="UsuarioManager.cpp" />
     <ClCompile Include="Vehiculo.cpp" />
     <ClCompile Include="Visita.cpp" />
   </ItemGroup>
@@ -221,6 +222,7 @@
     <ClInclude Include="MenuListado.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="MenuRegistros.h" />
+    <ClInclude Include="MenuUsuarios.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="PrincipalManager.h" />
     <ClInclude Include="Proveedor.h" />
@@ -230,6 +232,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Unidad.h" />
     <ClInclude Include="Usuario.h" />
+    <ClInclude Include="UsuarioManager.h" />
     <ClInclude Include="Vehiculo.h" />
     <ClInclude Include="Visita.h" />
   </ItemGroup>
