@@ -127,7 +127,7 @@ void InformesManager::InformeProveedores()
 	std::cin >> mesF;
 	std::cout << "Anio : " << std::endl;
 	std::cin >> anioF;
-
+	ProvedoresIngresados(mesI, anioI, mesF, anioF);
 
 
 	system("pause");
