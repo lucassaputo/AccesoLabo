@@ -4,13 +4,13 @@ using namespace std;
 void Autorizacion::setId(int id) { _id = id; }
 void Autorizacion::setIdPersona(int id) {_idPersona = id; }
 void Autorizacion::setIdUnidad(int u) { _idUnidad = u; }
-void Autorizacion::setHasta(FechaHorario f) { _hasta = f; }
+void Autorizacion::setHasta(Fecha f) { _hasta = f; }
 void Autorizacion::setEstado(bool e) { _estado = e; }
 //gets
 int Autorizacion::getId() { return _id; }
 int Autorizacion::getIdPersona() { return _idPersona; }
 int Autorizacion::getIdUnidad() { return _idUnidad; }
-FechaHorario Autorizacion::getHasta() { return _hasta; }
+Fecha Autorizacion::getHasta() { return _hasta; }
 bool Autorizacion::getEstado() { return _estado; }
 
 //acciones

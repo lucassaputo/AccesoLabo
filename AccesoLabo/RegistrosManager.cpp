@@ -109,7 +109,7 @@ void RegistrosManager::registroProveedores(Unidad uni, int dni) {
 	return;
 }
 void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
-	bool vigente = false, autorizado = true;
+	bool vigente = false, permitido = false;
 	if (!p.vencido()) {
 		cout << "Vencido: " << p.vencido() << endl;
 		vigente = true;
@@ -135,16 +135,30 @@ void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
 			}
 		}
 		p.setArt(aux);
+		vigente = true;
 	}
-	/*
-	Autorizacion a;
-	a = getAutorizacion(p);
-	if (a.getIdUnidad() != -1) {
-		autorizado = true;
-		a.mostrar();
+
+	if (autorizado(uni, p)) {
+		permitido = true;
 	}
-	*/
-	if (vigente && autorizado) {
+	else {
+		char r;
+		cout << "No se encuentra autorizado." << endl;
+		cout << "Llame al: " << uni.getTelefono() << endl;
+		cout << "Fue autorizado el ingreso? S/N";
+		cin >> r;
+		while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+			cout << "Fue autorizado el ingreso? S/N";
+			cin >> r;
+		}
+		if (r == 'S' || r == 's') {
+			permitido = true;
+		}
+		else {
+			cout << "Fin del acceso." << endl;
+		}
+	}
+	if (vigente && permitido) {
 		Registro reg;
 		char r;
 		//reg.setIdUnidad(uni.getId());
@@ -181,6 +195,20 @@ void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p) {
 
 }
 bool RegistrosManager::adentro(int dni) {
+	return false;
+}
+bool RegistrosManager::autorizado(Unidad uni, Proveedor p) {
+	Autorizacion a;
+	Fecha hoy;
+	int cant = _archivoAutorizaciones.ContarRegistros();
+	for (int i = 0;i < cant;i++) {
+		a = _archivoAutorizaciones.Leer(i);
+		if (a.getIdPersona() == p.getId() && a.getIdUnidad() == uni.getId()) {
+			if (!(a.getHasta() < hoy)) {
+				return true;
+			}
+		}
+	}
 	return false;
 }
 void RegistrosManager::registroVisitas(Unidad uni, int dni) {

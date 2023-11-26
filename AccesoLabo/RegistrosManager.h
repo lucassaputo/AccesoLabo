@@ -24,5 +24,6 @@ class RegistrosManager
 		void ingresoProveedor(Unidad& uni, Proveedor& p);
 		void egresoProveedor(Unidad& uni, Proveedor& p);
 		bool adentro(int dni);
+		bool autorizado(Unidad uni, Proveedor p);
 };
 
