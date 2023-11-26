@@ -12,12 +12,12 @@ using namespace std;
 #include "MenuExportacion.h"
 #include "FuncionesGlobales.h"
 #include "LogIn.h"
-#include "Singleton.h"
+#include "UserSingleton.h"
 
 
 
 void MenuPrincipal::Mostrar() {
-    Singleton& s = Singleton::getInstance();
+    UserSingleton& s = UserSingleton::getInstance();
     if (s.getUsuario().getNivel() == 1) {
         while (true) {
             system("cls");//limpia cuando vuelve de un submenu

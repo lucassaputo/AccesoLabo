@@ -1,5 +1,5 @@
 #include "LogIn.h"
-#include "Singleton.h"
+#include "UserSingleton.h"
 #include "Usuario.h"
 #include "ArchivoUsuario.h"
 #include "FuncionesGlobales.h"
@@ -8,18 +8,19 @@
 #include <cstring>
 
 void LogIn::Mostrar() {	
-	Singleton& s = Singleton::getInstance();
-	system("cls");
-	std::cout << "**Log In**" << std::endl;
+	UserSingleton& user = UserSingleton::getInstance();
+	//system("cls");
+	
 	int legajo;
 	std::string pasword;
 	Usuario reg;
 	ArchivoUsuario archUsuario("Usuarios.dat");
 	system("cls");
+	std::cout << "**Log In**" << std::endl;
 	std::cout << "Ingrese su numero de legajo:" << std::endl;
 	std::cin >> legajo;
 	int pos = archUsuario.Buscar(legajo);
-	if (pos < 0 && s.getUsuario().getEstado() == false) {
+	if (pos < 0 && user.getUsuario().getEstado() == false) {
 		std::cout << "Legajo inexistente" << std::endl;
 		system("pause");
 	}
@@ -34,17 +35,17 @@ void LogIn::Mostrar() {
 		reg.setNombres("Lucas");
 		reg.setApellidos("Saputo");
 		reg.setNick("LucasNick");
-		reg.setNivel(2);
-		s.setMiClase(reg);
+		reg.setNivel(1);
+		user.setMiClase(reg);
 		
 		
-		s.setMiClase(reg);
+		user.setMiClase(reg);
 		MenuPrincipal menu;
 		menu.Mostrar();
 	}
 	else {
 		std::cout << "Password incorrecto" << std::endl;
-		s.ReiniciarClase();
+		user.ReiniciarClase();
 		system("pause");
 	}	
 }

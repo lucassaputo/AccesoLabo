@@ -1,11 +1,10 @@
 #pragma once
-#include "Usuario.h"
+#include "ArchivoConfiguraciones.h"
 class ConfiguracionesManager
 {
-public:
-	void ConfiguracionContraseña();
-	void ConfiguracionHorarios();
-private:
-	Usuario _manager;
+	private:
+		ArchivoConfiguraciones _archivoConfiguraciones = ArchivoConfiguraciones("Configuraciones.dat");
+	public:
+		void ConfiguracionHorarios();
 };
 

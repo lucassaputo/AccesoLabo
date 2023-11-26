@@ -144,6 +144,7 @@
     <ClCompile Include="AbmUnidadesManager.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ArchivoAutorizacion.cpp" />
+    <ClCompile Include="ArchivoConfiguraciones.cpp" />
     <ClCompile Include="ArchivoProveedores.cpp" />
     <ClCompile Include="ArchivoRegistro.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
@@ -151,6 +152,8 @@
     <ClCompile Include="ArchivoVisita.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
     <ClCompile Include="Cadena.cpp" />
+    <ClCompile Include="ConfigSingleton.cpp" />
+    <ClCompile Include="Configuracion.cpp" />
     <ClCompile Include="ConfiguracionesManager.cpp" />
     <ClCompile Include="ConsultasManager.cpp" />
     <ClCompile Include="Empleado.cpp" />
@@ -193,6 +196,7 @@
     <ClInclude Include="AbmUnidadesManager.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="ArchivoAutorizacion.h" />
+    <ClInclude Include="ArchivoConfiguraciones.h" />
     <ClInclude Include="ArchivoProveedores.h" />
     <ClInclude Include="ArchivoRegistro.h" />
     <ClInclude Include="ArchivoUnidad.h" />
@@ -200,6 +204,8 @@
     <ClInclude Include="ArchivoVisita.h" />
     <ClInclude Include="Autorizacion.h" />
     <ClInclude Include="Cadena.h" />
+    <ClInclude Include="ConfigSingleton.h" />
+    <ClInclude Include="Configuracion.h" />
     <ClInclude Include="ConfiguracionesManager.h" />
     <ClInclude Include="ConsultasManager.h" />
     <ClInclude Include="Empleado.h" />
@@ -229,7 +235,7 @@
     <ClInclude Include="Registro.h" />
     <ClInclude Include="RegistrosManager.h" />
     <ClInclude Include="Residente.h" />
-    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="UserSingleton.h" />
     <ClInclude Include="Unidad.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioManager.h" />

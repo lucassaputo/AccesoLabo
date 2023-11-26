@@ -3,13 +3,13 @@
 #include "Unidad.h"
 #include "Autorizacion.h"
 #include "Registro.h"
-#include "Singleton.h"
+#include "UserSingleton.h"
 #include "FuncionesGlobales.h"
 
 
 using namespace std;
 
-Singleton& s = Singleton::getInstance();
+UserSingleton& s = UserSingleton::getInstance();
 // Obtener el objeto desde el Singleton y llamar a su función
 //s.getUsuario().mostrar();
 
