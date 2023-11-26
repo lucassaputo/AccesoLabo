@@ -210,6 +210,55 @@ void InformesManager::ordenarVectorUnidades(int* vec, int tam, Unidad* reg)
 void InformesManager::HistorialMovimientos()
 {	system("cls");
 	std::cout << "Historial de movimientos " << std::endl;
+	int mesI, anioI, mesF, anioF;
+	std::cout << "Ingrese el Periodo --- mes y año (MM/AAAA)" << std::endl;
+	std::cout << "Entre: " << std::endl;
+	std::cout << "Mes: " << std::endl;
+	std::cin >> mesI;
+	std::cout << "Anio: " << std::endl;
+	std::cin >> anioI;
+	std::cout << " Y : " << std::endl;
+	std::cout << "Mes : " << std::endl;
+	std::cin >> mesF;
+	std::cout << "Anio : " << std::endl;
+	std::cin >> anioF;
+	MovimientosRealizados(mesI, anioI, mesF, anioF);
 	system("pause");
 }
 
+void InformesManager::MovimientosRealizados(int mi, int ai, int mf, int af)
+{
+	ArchivoRegistro archRegistro("Registros.dat");
+	Registro* regRegistro;
+
+	int* vecContador;// cada posicion es equivalente a la posicion del vector de registros. si tiene mas de 0 significa que hizo movimientos
+
+	int cant = archRegistro.ContarRegistros();
+	regRegistro = new Registro[cant];
+	if (regRegistro == nullptr) {
+		std::cout << "Error" << std::endl;
+		exit(1); // revisar de q otra manera volver
+	}
+	vecContador = new int[cant];
+	if (vecContador == nullptr) {
+		std::cout << "Error" << std::endl;
+		exit(1);// revisar de q otra manera volver
+	}
+	ponerenCeroVector(vecContador, cant);
+
+	for (int j = 0; j < cant;j++) {
+		regRegistro[j] = archRegistro.Leer(j);
+
+		if (regRegistro[j].getFecha().getMes() >= mi && regRegistro[j].getFecha().getMes() <= mf && regRegistro[j].getFecha().getAnio() >= ai && regRegistro[j].getFecha().getAnio() <= af) {
+				vecContador[j]++;
+		}
+
+	}
+	std::cout << "Movimientos realizados en la fecha solicitada: " << std::endl;
+	for (int i = 0;i < cant;i++) {
+		if (vecContador[i] > 0) {
+			regRegistro[i].mostrar();
+		}
+	}
+
+}

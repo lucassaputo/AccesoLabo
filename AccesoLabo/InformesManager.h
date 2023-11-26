@@ -22,6 +22,7 @@ class InformesManager
 		void HistorialMovimientosxUnidades(); 
 		void ordenarVectorUnidades(int* vec, int tam, Unidad* reg);
 		void HistorialMovimientos();
+		void MovimientosRealizados(int mi, int ai, int mf, int af);
 
 	private:
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
