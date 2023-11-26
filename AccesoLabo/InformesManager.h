@@ -16,7 +16,7 @@ class InformesManager
 	public:
 		void UnidadesMas50();
 		void InformeProveedores();
-		void HistorialMovimientosxUnidades(); // cambiamos nombre por Historial Registros?
+		void HistorialMovimientosxUnidades(); 
 		void HistorialMovimientos();
 
 	private:

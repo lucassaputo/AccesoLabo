@@ -1,8 +1,9 @@
 #include "App.h"
-#include "MenuPrincipal.h"
+#include "LogIn.h"
+
 using namespace std;
 
 void App::Ejecutar() {
-    MenuPrincipal menu;
-    menu.Mostrar();
+	LogIn log;
+	log.Mostrar();
 }

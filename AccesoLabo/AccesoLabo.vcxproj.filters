@@ -171,6 +171,18 @@
     <ClCompile Include="RegistrosManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="AbmAutorizacionManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAbmAutorizacion.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="LogIn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoUsuario.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -295,6 +307,18 @@
     </ClInclude>
     <ClInclude Include="Horario.h">
       <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="AbmAutorizacionManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAbmAutorizacion.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LogIn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoUsuario.h">
+      <Filter>Header Files\Archivo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
