@@ -9,7 +9,9 @@ class ListadoManager
 {
 	public:
 		void AutorizadosPorApellido();
-		void AutorizadosPorUnidad();
+		void separarsepararAutorizacionporTipo(Autorizacion* reg, Autorizacion* reg2, Autorizacion* reg3, int& cant, int& cant2, int& cant3);//recibe 3 vectores de autorizacion a uno le asigna el total de los registros//
+		                                                                                                                                  //y los otros dos son para separar visitas y proveedores tmb recibe y modifica los contadores de posiciones de cada vector                                                                       
+		void AutorizadosPorUnidad();		
 		void ordenarVector(Autorizacion* vec, int tam);
 		void ResidentesPorUnidad();
 		void ProveedoresPorRazon();

@@ -8,19 +8,68 @@
 #include <iostream>
 
 using namespace std;
-// falta autorizados por apellido y residentes por unidad (falta archivo residentes)
+//residentes por unidad (falta archivo residentes)
 void ListadoManager::AutorizadosPorApellido() {
-	system("cls");
-	
-	cout << "AutorizadosPorApellido" << endl;
-	// falta
-	
-	
-	
+	system("cls");	
+	Autorizacion *regAut, * regAutVisitas, * regAutProveedores;
+	int CantidadregAutorizacion = 0, CantAutorizadosVisitas = 0, CantAutorizadosProveedores = 0; // contadores para cuando recorra el archivo de autorizados saber cuantos de visita y cuantos de proveedores hay
 		
+	separarsepararAutorizacionporTipo(regAut, regAutVisitas, regAutProveedores, CantidadregAutorizacion, CantAutorizadosVisitas, CantAutorizadosProveedores);
+	if (CantAutorizadosVisitas > 0) {
+		std::cout << "Visitantes Autorizados Por Apellido" << std::endl;
+		for (int i = 0; i < CantAutorizadosVisitas; i++)
+		{
+			regAutVisitas[i].mostrar();
+		}
+	}
+	else if (CantAutorizadosVisitas == 0) {
+		std::cout << "No hay Visitantes autorizados" << std::endl;
+	}
+	if (CantAutorizadosProveedores > 0) {
+	std::cout << "Proveedores Autorizados PorApellido" << std::endl;
+		std::cout << "Visitantes Autorizados Por Apellido" << std::endl;
+		for (int i = 0; i < CantAutorizadosProveedores; i++)
+		{
+			regAutVisitas[i].mostrar();
+		}
+	}
+	else if (CantAutorizadosProveedores == 0) {
+		std::cout << "No hay Proveedores autorizados" << std::endl;
+	}
+			
 	system("pause");
 }
-void ListadoManager::ordenarVector(Autorizacion* vec, int tam)
+void ListadoManager::separarsepararAutorizacionporTipo(Autorizacion* reg, Autorizacion* reg2, Autorizacion* reg3, int& cant, int& cant2, int& cant3) 
+{
+	ArchivoAutorizacion archAutorizacion("Autorizaciones.dat");
+	cant = archAutorizacion.ContarRegistros();
+	reg = new Autorizacion[cant];
+	if (reg == nullptr) {
+		std::cout << "Error en la asignacion de memoria" << std::endl;
+		return;
+	}
+	for (int x = 0; x < cant;x++) {
+		reg[x] = archAutorizacion.Leer(x);
+		if (reg[x].getTipo() == 1) cant2++;
+		if (reg[x].getTipo() == 2) cant3++;
+	}
+	reg2 = new Autorizacion[cant2];
+	reg3 = new Autorizacion[cant3];
+	if (reg2 == nullptr || reg3 == nullptr) {
+		std::cout << "Error en la asignacion de memoria" << std::endl;
+		return;
+	}	
+	int contv = 0,contp = 0;
+	for (int i = 0; i < cant;i++) {
+		if (reg[i].getTipo() == 1) {
+			reg2[contv++] = reg[i];
+		}
+		else if (reg[i].getTipo() == 2) {
+			reg3[contp++] = reg[i];
+		}
+	}
+}
+void ListadoManager::ordenarVector(Autorizacion* vec, int tam) //ordena vector de autorizacion por numero de id
 {
 	for (int i = 0; i < tam - 1; ++i) {
 		for (int j = 0; j < tam - i - 1; ++j) {

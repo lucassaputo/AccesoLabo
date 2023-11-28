@@ -4,12 +4,20 @@ using namespace std;
 void Autorizacion::setId(int id) { _id = id; }
 void Autorizacion::setIdPersona(int id) {_idPersona = id; }
 void Autorizacion::setIdUnidad(int u) { _idUnidad = u; }
+void Autorizacion::setTipo(int t)
+{
+    _tipo = t;
+}
 void Autorizacion::setHasta(FechaHorario f) { _hasta = f; }
 void Autorizacion::setEstado(bool e) { _estado = e; }
 //gets
 int Autorizacion::getId() { return _id; }
 int Autorizacion::getIdPersona() { return _idPersona; }
 int Autorizacion::getIdUnidad() { return _idUnidad; }
+int Autorizacion::getTipo()
+{
+    return _tipo;
+}
 FechaHorario Autorizacion::getHasta() { return _hasta; }
 bool Autorizacion::getEstado() { return _estado; }
 
@@ -19,6 +27,9 @@ void Autorizacion::cargar(){
     setEstado(true);
     cout << "Ingrese el ID: " << endl;
     cin >> _id;
+    cout << "Ingrese el tipo: (1 - Visita || 2 - Proveedor)" << endl;
+    cin >> _tipo;
+
     //poner resto datos
     cin >> d >> m >> a;
     //_hasta.cargar(d, m, a);
@@ -27,6 +38,8 @@ void Autorizacion::cargar(){
 void Autorizacion::mostrar()
 {
     cout << "ID: " << _id << endl;
+    cout << "Tipo: " << _tipo << endl;
+
     cout << "Autorizado hasta: " << endl;
     _hasta.toString();
 }
