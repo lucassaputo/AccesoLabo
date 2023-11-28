@@ -186,6 +186,9 @@
     <ClCompile Include="UsuarioManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArchivoResidente.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h">
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="UsuarioManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoResidente.h">
+      <Filter>Header Files\Archivo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

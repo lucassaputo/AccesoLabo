@@ -146,6 +146,7 @@
     <ClCompile Include="ArchivoAutorizacion.cpp" />
     <ClCompile Include="ArchivoProveedores.cpp" />
     <ClCompile Include="ArchivoRegistro.cpp" />
+    <ClCompile Include="ArchivoResidente.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
     <ClCompile Include="ArchivoUsuario.cpp" />
     <ClCompile Include="ArchivoVisita.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="ArchivoAutorizacion.h" />
     <ClInclude Include="ArchivoProveedores.h" />
     <ClInclude Include="ArchivoRegistro.h" />
+    <ClInclude Include="ArchivoResidente.h" />
     <ClInclude Include="ArchivoUnidad.h" />
     <ClInclude Include="ArchivoUsuario.h" />
     <ClInclude Include="ArchivoVisita.h" />

@@ -5,6 +5,7 @@
 #include "ArchivoProveedores.h"
 #include "Registro.h"
 #include "Autorizacion.h"
+#include "Residente.h"
 class ListadoManager
 {
 	public:
@@ -13,6 +14,7 @@ class ListadoManager
 		                                                                                                                                  //y los otros dos son para separar visitas y proveedores tmb recibe y modifica los contadores de posiciones de cada vector                                                                       
 		void AutorizadosPorUnidad();		
 		void ordenarVector(Autorizacion* vec, int tam);
+		void ordenarVector(Residente* vec, int tam);
 		void ResidentesPorUnidad();
 		void ProveedoresPorRazon();
 		void ordenarVector(std::string* vec, Proveedor* regp, int tam);

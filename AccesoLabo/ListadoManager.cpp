@@ -3,6 +3,7 @@
 #include "Autorizacion.h"
 #include "ArchivoAutorizacion.h"
 #include "Residente.h"
+#include "ArchivoResidente.h"
 
 
 #include <iostream>
@@ -11,7 +12,7 @@ using namespace std;
 //residentes por unidad (falta archivo residentes)
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");	
-	Autorizacion *regAut, * regAutVisitas, * regAutProveedores;
+	Autorizacion *regAut = nullptr, * regAutVisitas = nullptr, * regAutProveedores=nullptr;
 	int CantidadregAutorizacion = 0, CantAutorizadosVisitas = 0, CantAutorizadosProveedores = 0; // contadores para cuando recorra el archivo de autorizados saber cuantos de visita y cuantos de proveedores hay
 		
 	separarsepararAutorizacionporTipo(regAut, regAutVisitas, regAutProveedores, CantidadregAutorizacion, CantAutorizadosVisitas, CantAutorizadosProveedores);
@@ -83,6 +84,19 @@ void ListadoManager::ordenarVector(Autorizacion* vec, int tam) //ordena vector d
 
 }
 
+void ListadoManager::ordenarVector(Residente* vec, int tam)
+{
+	for (int i = 0; i < tam - 1; ++i) {
+		for (int j = 0; j < tam - i - 1; ++j) {
+			if (vec[j].getId() > vec[j + 1].getId()) {
+				Residente aux = vec[j];
+				vec[j] = vec[j + 1];
+				vec[j + 1] = aux;
+			}
+		}
+	}
+}
+
 void ListadoManager::AutorizadosPorUnidad() {
 	system("cls");
 	ArchivoAutorizacion archAut("Autorizaciones.dat");
@@ -109,9 +123,25 @@ void ListadoManager::AutorizadosPorUnidad() {
 
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
+	ArchivoResidente archResidente("Residentes.dat");
+	Residente* regResidente;
+	int cantreg = archResidente.ContarRegistros();
+	regResidente = new Residente[cantreg];
+	if (regResidente == nullptr) {
+		std::cout << "Error" << std::endl;
+		exit(1);
+	}
 
-	/// falta archivo residentes
-	cout << "ResidentesPorUnidad" << endl;
+	for (int x = 0;x < cantreg;x++) {
+		regResidente[x] = archResidente.Leer(x);
+	}
+	ordenarVector(regResidente, cantreg);
+	cout << "Residentes Por Unidad" << endl;
+	for (int i = 0;i < cantreg;i++) {
+		regResidente[i].mostrar();
+	}
+
+	delete regResidente;
 	system("pause");
 }
 void ListadoManager::ProveedoresPorRazon() {
