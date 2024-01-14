@@ -9,16 +9,18 @@ using namespace std;
 // Inicialización estática de la instancia como nullptr
 UserSingleton* UserSingleton::instance = nullptr;
 ConfigSingleton* ConfigSingleton::instance = nullptr;
-int main() {		
 
-	
-	
+int main() {			
 	App app;
 	app.Ejecutar();
 
 	return 0;
 }
-
+//2024
+/*
+* falta estado en usuario
+*/
+// 
 //HACER
 /*
 * hacer algun tipo de escape en medio del registro

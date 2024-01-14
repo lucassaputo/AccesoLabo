@@ -17,7 +17,6 @@ class Configuracion
 		
 		//acciones
 		void cargar(int dni);
-		void mostrar();
-		
+		void mostrar();		
 };
 

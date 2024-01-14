@@ -20,7 +20,7 @@ void LogIn::Mostrar() {
 	std::cout << "Ingrese su numero de legajo:" << std::endl;
 	std::cin >> legajo;
 	int pos = archUsuario.Buscar(legajo);
-	if (pos < 0 && user.getUsuario().getEstado() == false) {
+	if (pos < 0 && user.getUsuario().getEstado() == false) {//que hace?
 		std::cout << "Legajo inexistente" << std::endl;
 		system("pause");
 	}
