@@ -9,8 +9,7 @@
 
 void LogIn::Mostrar() {	
 	UserSingleton& user = UserSingleton::getInstance();
-	//system("cls");
-	
+
 	int legajo;
 	std::string pasword;
 	Usuario reg;
@@ -29,7 +28,8 @@ void LogIn::Mostrar() {
 
 		std::cout << "ingrese password" << std::endl;
 		std::cin >> pasword;
-	}if (strcmp(pasword.c_str(), reg.getPassword().c_str()) != 0) {
+	}
+	if (strcmp(pasword.c_str(), reg.getPassword().c_str()) != 0) {
 		Usuario reg;
 		reg.setId(11);
 		reg.setNombres("Lucas");

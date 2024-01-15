@@ -10,6 +10,7 @@ using namespace std;
 #include "MenuInformes.h"
 #include "MenuConfiguraciones.h"
 #include "MenuExportacion.h"
+#include "MenuUsuarios.h"
 #include "FuncionesGlobales.h"
 #include "LogIn.h"
 #include "UserSingleton.h"
@@ -100,8 +101,11 @@ void MenuPrincipal::Mostrar() {
             break;
             case 10:
             {
+                MenuUsuarios menu;
+                menu.Mostrar();
+                /*
                 LogIn log;
-                log.Mostrar();
+                log.Mostrar();*/
             }
             break;
             case 11:

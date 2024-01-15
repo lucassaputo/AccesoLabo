@@ -17,25 +17,18 @@ void MenuUsuarios::Mostrar() {
         int opcion;
         cin >> opcion;
         switch (opcion) {
-            case 1:
-            {
-                _manager.Cargar();
-            }
+        case 1:
+            _manager.Cargar();
             break;
-            case 2:
-            {
-                _manager.Editar();
-            }
+        case 2:
+            _manager.Editar();
             break;
-            case 3:
-            {
-                _manager.Eliminar();
-            }
+        case 3:
+            _manager.Eliminar();
             break;
-            case 0: {
-                return;
-                break;
-            }
+        case 0:
+             return;
+             break;
         }
     }
 }
