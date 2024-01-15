@@ -10,10 +10,9 @@
 using namespace std;
 
 UserSingleton& s = UserSingleton::getInstance();
-// Obtener el objeto desde el Singleton y llamar a su función
+// Obtener el objeto desde el Singleton y llamar a su funciï¿½n
+
 //s.getUsuario().mostrar();
-
-
 
 void RegistrosManager::Cargar() {
 	system("cls");
