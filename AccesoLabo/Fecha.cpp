@@ -171,7 +171,33 @@ bool Fecha::operator>(Fecha& fechaActual)
             return true;
         }
         else if (this->getMes() == fechaActual.getMes()) {
-            if (this->getDia() > fechaActual.getDia()) {
+            if (this->getDia() >= fechaActual.getDia()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
+bool Fecha::operator<(Fecha& fechaActual)
+{
+    return false;
+    if (this->getAnio() > fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio()) {
+        if (this->getMes() > fechaActual.getMes()) {
+            return true;
+        }
+        else if (this->getMes() == fechaActual.getMes()) {
+            if (this->getDia() >= fechaActual.getDia()) {
                 return true;
             }
             else {

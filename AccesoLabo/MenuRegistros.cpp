@@ -27,11 +27,8 @@ void MenuRegistros::Mostrar() {
             _manager.Eliminar();
             break;
         case 0:
-
             return;
             break;
         }
-
-
     }
 }

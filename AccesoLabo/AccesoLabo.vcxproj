@@ -139,16 +139,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AbmAutorizacionManager.cpp" />
     <ClCompile Include="AbmPersonasManager.cpp" />
     <ClCompile Include="AbmUnidadesManager.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ArchivoAutorizacion.cpp" />
+    <ClCompile Include="ArchivoConfiguraciones.cpp" />
     <ClCompile Include="ArchivoProveedores.cpp" />
     <ClCompile Include="ArchivoRegistro.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
+    <ClCompile Include="ArchivoUsuario.cpp" />
     <ClCompile Include="ArchivoVisita.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
     <ClCompile Include="Cadena.cpp" />
+    <ClCompile Include="ConfigSingleton.cpp" />
+    <ClCompile Include="Configuracion.cpp" />
     <ClCompile Include="ConfiguracionesManager.cpp" />
     <ClCompile Include="ConsultasManager.cpp" />
     <ClCompile Include="Empleado.cpp" />
@@ -160,6 +165,8 @@
     <ClCompile Include="Horario.cpp" />
     <ClCompile Include="InformesManager.cpp" />
     <ClCompile Include="ListadoManager.cpp" />
+    <ClCompile Include="LogIn.cpp" />
+    <ClCompile Include="MenuAbmAutorizacion.cpp" />
     <ClCompile Include="MenuAbmPersonas.cpp" />
     <ClCompile Include="MenuAbmUnidades.cpp" />
     <ClCompile Include="MenuConfiguraciones.cpp" />
@@ -169,30 +176,36 @@
     <ClCompile Include="MenuListado.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="MenuRegistros.cpp" />
+    <ClCompile Include="MenuUsuarios.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="PrincipalManager.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Registro.cpp" />
     <ClCompile Include="RegistrosManager.cpp" />
     <ClCompile Include="Residente.cpp" />
-    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Unidad.cpp" />
     <ClCompile Include="Usuario.cpp" />
+    <ClCompile Include="UsuarioManager.cpp" />
     <ClCompile Include="Vehiculo.cpp" />
     <ClCompile Include="Visita.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbmAutorizacionManager.h" />
     <ClInclude Include="AbmPersonasManager.h" />
     <ClInclude Include="AbmUnidadesManager.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="ArchivoAutorizacion.h" />
+    <ClInclude Include="ArchivoConfiguraciones.h" />
     <ClInclude Include="ArchivoProveedores.h" />
     <ClInclude Include="ArchivoRegistro.h" />
     <ClInclude Include="ArchivoUnidad.h" />
+    <ClInclude Include="ArchivoUsuario.h" />
     <ClInclude Include="ArchivoVisita.h" />
     <ClInclude Include="Autorizacion.h" />
     <ClInclude Include="Cadena.h" />
+    <ClInclude Include="ConfigSingleton.h" />
+    <ClInclude Include="Configuracion.h" />
     <ClInclude Include="ConfiguracionesManager.h" />
     <ClInclude Include="ConsultasManager.h" />
     <ClInclude Include="Empleado.h" />
@@ -204,6 +217,8 @@
     <ClInclude Include="Horario.h" />
     <ClInclude Include="InformesManager.h" />
     <ClInclude Include="ListadoManager.h" />
+    <ClInclude Include="LogIn.h" />
+    <ClInclude Include="MenuAbmAutorizacion.h" />
     <ClInclude Include="MenuAbmPersonas.h" />
     <ClInclude Include="MenuAbmUnidades.h" />
     <ClInclude Include="MenuConfiguraciones.h" />
@@ -213,15 +228,17 @@
     <ClInclude Include="MenuListado.h" />
     <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="MenuRegistros.h" />
+    <ClInclude Include="MenuUsuarios.h" />
     <ClInclude Include="Persona.h" />
     <ClInclude Include="PrincipalManager.h" />
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="Registro.h" />
     <ClInclude Include="RegistrosManager.h" />
     <ClInclude Include="Residente.h" />
-    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="UserSingleton.h" />
     <ClInclude Include="Unidad.h" />
     <ClInclude Include="Usuario.h" />
+    <ClInclude Include="UsuarioManager.h" />
     <ClInclude Include="Vehiculo.h" />
     <ClInclude Include="Visita.h" />
   </ItemGroup>

@@ -7,6 +7,7 @@ class Registro
 private:
 	int _idUnidad;
 	int _idPersona;
+	int _tipoPersona;
 	Fecha _fecha;
 	int _sentido;
 	char _observaciones[50];
@@ -21,6 +22,7 @@ public:
 	//sets
 	void setIdUnidad(int u);
 	void setIdPersona(int p);
+	void setTipoPersona(int t);
 	void setFecha(Fecha f);
 	void setSentido(int s);
 	void setObservaciones(std::string obs);
@@ -31,6 +33,7 @@ public:
 	//gets
 	int getIdUnidad();
 	int getIdPersona();
+	int getTipoPersona();
 	Fecha getFecha();
 	int getSentido();
 	std::string getObservaciones();

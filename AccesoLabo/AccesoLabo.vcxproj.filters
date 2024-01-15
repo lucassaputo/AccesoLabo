@@ -43,21 +43,15 @@
     <Filter Include="Source Files\Fecha">
       <UniqueIdentifier>{c1acc597-5357-4526-a093-05f15f66a54c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Generales">
+      <UniqueIdentifier>{581cd23e-6394-4ab8-b827-ebe25d0ce153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Generales">
+      <UniqueIdentifier>{c52b00b3-ce41-48a9-b455-a511740fd4da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cadena.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FuncionesGlobales.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Singleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AbmPersonasManager.cpp">
@@ -171,20 +165,44 @@
     <ClCompile Include="RegistrosManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="AbmAutorizacionManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuAbmAutorizacion.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoUsuario.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="LogIn.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Source Files\Generales</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoConfiguraciones.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Configuracion.cpp">
+      <Filter>Source Files\Gestion</Filter>
+    </ClCompile>
+    <ClCompile Include="Cadena.cpp">
+      <Filter>Source Files\Generales</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncionesGlobales.cpp">
+      <Filter>Source Files\Generales</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuUsuarios.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="UsuarioManager.cpp">
+      <Filter>Source Files\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigSingleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cadena.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FuncionesGlobales.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuAbmPersonas.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
@@ -225,9 +243,6 @@
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoVisita.h">
-      <Filter>Header Files\Archivo</Filter>
-    </ClInclude>
-    <ClInclude Include="Autorizacion.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ConfiguracionesManager.h">
@@ -295,6 +310,48 @@
     </ClInclude>
     <ClInclude Include="Horario.h">
       <Filter>Header Files\Fecha</Filter>
+    </ClInclude>
+    <ClInclude Include="AbmAutorizacionManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuAbmAutorizacion.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoUsuario.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="LogIn.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="App.h">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoConfiguraciones.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="Cadena.h">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuracion.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncionesGlobales.h">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuUsuarios.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="UserSingleton.h">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="UsuarioManager.h">
+      <Filter>Header Files\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Autorizacion.h">
+      <Filter>Header Files\Gestion</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigSingleton.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,10 @@
 #pragma once
+#include "ArchivoConfiguraciones.h"
 class ConfiguracionesManager
 {
-
+	private:
+		ArchivoConfiguraciones _archivoConfiguraciones = ArchivoConfiguraciones("Configuraciones.dat");
+	public:
+		void ConfiguracionHorarios();
 };
 

@@ -1,37 +1,26 @@
 #include <iostream>
 #include<cstdio>
 using namespace std;
-#include "FuncionesGlobales.h"
 #include <string>
 #include "App.h"
-#include "Empresa.h"
-#include "Fecha.h"
-#include "Singleton.h"
-#include "Usuario.h"
+#include "UserSingleton.h"
+#include "ConfigSingleton.h"
 
 // Inicialización estática de la instancia como nullptr
-Singleton* Singleton::instance = nullptr;
+UserSingleton* UserSingleton::instance = nullptr;
+ConfigSingleton* ConfigSingleton::instance = nullptr;
 
-int main() {		
-	// Obtener la instancia única del Singleton
-	Singleton& s = Singleton::getInstance();
-	// Crear un objeto de la clase deseada
-	Usuario reg;
-	reg.setId(11);
-	reg.setNombres("Lucas");
-	reg.setApellidos("Saputo");
-	reg.setNick("LucasNick");
-	// Guardar el objeto en el Singleton
-	s.setMiClase(reg);
-	// Obtener el objeto desde el Singleton y llamar a su función
-	//s.getUsuario().mostrar();
-
-	//system("pause");
+int main() {			
 	App app;
 	app.Ejecutar();
+
 	return 0;
 }
-
+//2024
+/*
+* falta estado en usuario
+*/
+// 
 //HACER
 /*
 * hacer algun tipo de escape en medio del registro
@@ -47,10 +36,23 @@ int main() {
 * menues
 * ingreso de fechas mas simple
 * tipo de proveedor queda?
+* mantener la indentacion
+* ver cuando pasar por referencia objetos o solo pasar el atributo que utilice la funcion
+* hacer sobrevarga de fecha de <
+* validar el ingrese de opciones del menu que sean solo numeros
 */
 
-
 /*
-* tipos de unidades
+* tipos de unidades:
+* --------------------
 * sentido 1 entrada 2 salida
+* 
+* nivel usuarios:
+* --------------------
+* 1 admin
+* 2 vigilador
+* 
+* tipos de personas;:
+* --------------------
+* 1: Visita | 2: Proveedor | 3: Residente
 */

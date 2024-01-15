@@ -26,4 +26,5 @@ public:
     void cargar(int dia, int mes, int  anio);
     std::string toString();
     bool operator>(Fecha& fechaActual);
+    bool operator<(Fecha& fechaActual);
 };
