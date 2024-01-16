@@ -22,7 +22,7 @@ void RegistrosManager::Cargar() {
 	
 	cout << "***********  Nuevo movimiento  ***********" << endl;
 	
-	// MOTIVO
+	// IN MOTIVO
 	cout << "(1: Visita | 2 : Proveedor | 3 : Residente)" << endl;
 	cout << "Ingrese motivo de ingreso: ";
 	cin.ignore();
@@ -35,7 +35,7 @@ void RegistrosManager::Cargar() {
 	system("pause");
 	motivo = std::stoi(motivoAux);
 
-	// UNIDAD
+	// IN UNIDAD
 	bool validado = false;
 	while (true) {
 		cout << "Ingrese unidad destino: " << endl;
@@ -55,7 +55,7 @@ void RegistrosManager::Cargar() {
 		}
 	}	
 	
-	// DNI
+	// IN DNI
 	cout << "Ingrese DNI: ";
 	cin.ignore();
 	cin >> dniAux;

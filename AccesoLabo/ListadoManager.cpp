@@ -55,14 +55,17 @@ void ListadoManager::Mostrar(Registro reg) {
 	//cout << "observaciones " << reg.getObservaciones() << endl;
 	//cout << "estado" << reg.getEstado() << endl;
 }
-
+/*
 void ListadoManager::MostrarCantidadRegistros() {
 	int cantidadRegistros = _archivoRegistros.ContarRegistros();
 	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
+}*/
+void ListadoManager::MostrarCantidadRegistros() {
+	int cantidadRegistros = _archivoUnidades.ContarRegistros();
+	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
 }
-
+/*
 void ListadoManager::ListarTodos() {
-
 	int cantidadRegistros = _archivoRegistros.ContarRegistros();
 	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
 	Registro reg;
@@ -71,8 +74,17 @@ void ListadoManager::ListarTodos() {
 		cout << endl << "CANT: " << i << endl;
 		reg = _archivoRegistros.Leer(i);
 		reg.mostrar();
-		
-
+	}
+}*/
+void ListadoManager::ListarTodos() {
+	int cantidadRegistros = _archivoUnidades.ContarRegistros();
+	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
+	Unidad reg;
+	for (int i = 0; i < cantidadRegistros; i++) {
+		//Mostrar(_archivoRegistros.Leer(i));
+		cout << endl << "CANT: " << i << endl;
+		reg = _archivoUnidades.Leer(i);
+		reg.mostrar();
 	}
 }
 void ListadoManager::MostrarCantidadProveedores() {
