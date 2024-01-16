@@ -26,6 +26,17 @@ bool soloNumeros(string x) {
 	return esNumero;
 }
 
+bool soloLetras(string x) {
+	bool esLetra = true;
+	for (char c : x) {
+		if (isdigit(c)) {
+			esLetra = false;
+			break;
+		}
+	}
+	return esLetra;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

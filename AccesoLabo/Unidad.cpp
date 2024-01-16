@@ -42,13 +42,16 @@ void Unidad::cargar(){
 //acciones
 void Unidad::editar() {
 	string familia, observaciones;
+	cout << "Telefono actual: " << _telefono << endl;
 	cout << "Ingrese telefono: ";
 	cin >> _telefono;
+	cout << "Nombre de la familia actual: " << _familia << endl;
 	cout << "Ingrese nombre de la familia: ";
 	cin.ignore();
 	getline(cin, familia);
 	setFamilia(familia);
 	//cin.ignore();
+	cout << "Observaciones actuales: " << _observaciones << endl;
 	cout << "Observaciones: " << endl;
 	getline(cin, observaciones);
 	setObservaciones(observaciones);

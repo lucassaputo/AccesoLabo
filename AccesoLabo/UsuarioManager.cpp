@@ -4,7 +4,10 @@ using namespace std;
 
 void UsuarioManager::Cargar() {
 	system("cls");
-	cout << "**CargarLog In**" << std::endl;
+	cout << "ALTA USUARIO" << std::endl;
+	cout << "---------------------------" << endl;
+	Usuario u;
+	u.cargar();
 	system("pause");
 }
 void UsuarioManager::Editar() {

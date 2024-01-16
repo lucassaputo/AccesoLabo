@@ -18,7 +18,7 @@ int main() {
 }
 //2024
 /*
-* falta estado en usuario
+* mostrar lo existente en el mensaje y cin de ingresar
 */
 // 
 //HACER

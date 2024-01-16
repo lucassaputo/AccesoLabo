@@ -57,7 +57,8 @@ void AbmUnidadesManager::Editar() {
 	u= _archivoUnidades.BuscarObj(std::stoi(id));
 	if (u.getId()>=0) {
 		if (!u.getEstado()) {
-			cout << "Unidad dada de baja, desea habilitarla? S/N:";
+			cout << "La unidad no existe, realice el alta." << endl;
+			/*cout << "Unidad dada de baja, desea habilitarla? S/N:";
 			cin.ignore();
 			cin >> decision;
 			while (soloNumeros(decision) || !(decision == "S" || decision == "s" || decision == "N" || decision == "n")) {
@@ -67,12 +68,25 @@ void AbmUnidadesManager::Editar() {
 			}
 			if (decision == "S" || decision == "s") {
 				u.editar();
+				if (_archivoUnidades.Modificar(u)) {
+					cout << "Registro modificado correctamente." << endl;
+				}
+				else {
+					cout << "Error al guardar." << endl;
+				}
 			}
 			else {
 				cout << "Accion cancelada." << endl;
-			}
+			}*/
+			
 		}else {
 			u.editar();
+			if (_archivoUnidades.Modificar(u)) {
+				cout << "Registro eliminado correctamente." << endl;
+			}
+			else {
+				cout << "Error al guardar." << endl;
+			}
 		}
 	}
 	else {
@@ -107,7 +121,7 @@ void AbmUnidadesManager::Baja() {
 			cin >> decision;
 			while (soloNumeros(decision) || !(decision == "S" || decision == "s" || decision == "N" || decision == "n")) {
 				cout << "Ingrese S (si) o N (no)." << endl;
-				cout << "Unidad dada de baja, desea habilitarla? S/N:";
+				cout << "Desea darle la baja? S/N:";
 				cin >> decision;
 			}
 			if (decision == "S" || decision == "s") {
