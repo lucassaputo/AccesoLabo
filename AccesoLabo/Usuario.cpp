@@ -32,11 +32,27 @@ void Usuario::cargar()
 	std::cout << "Nick: " << endl;
 	std::cin >> nick;
 	strcpy(_nick, nick.c_str());
-	std::cout << "Legajo: " << std::endl;
-	std::cin >> _legajo;
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
 	strcpy(_password, password.c_str());	
+}
+
+void Usuario::editar()
+{
+	string nick, password;
+	int dni;
+	Persona::editarPersona();
+	std::cout << "Ingrese el DNI: " << std::endl;
+	std::cin >> dni;
+	std::cout << "Ingrese el nivel: " << std::endl;
+	std::cin >> _nivel;
+	Persona::setDni(dni);
+	std::cout << "Nick: " << endl;
+	std::cin >> nick;
+	strcpy(_nick, nick.c_str());
+	std::cout << "Pasword: " << std::endl;
+	std::cin >> password;
+	strcpy(_password, password.c_str());
 }
 
 void Usuario::mostrar() {

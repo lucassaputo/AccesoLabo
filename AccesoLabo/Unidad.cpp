@@ -23,9 +23,7 @@ bool Unidad::getEstado(){return _estado;}
 
 //acciones
 void Unidad::cargar(){	
-	string familia, observaciones;
-	cout << "Ingrese numero de unidad: ";
-	cin >> _id;
+	string familia, observaciones;	
 	cout << "Ingrese telefono: ";
 	cin >> _telefono;
 	cout << "Ingrese nombre de la familia: ";

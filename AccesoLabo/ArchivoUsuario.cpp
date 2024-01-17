@@ -20,6 +20,17 @@ bool ArchivoUsuario::Guardar(Usuario reg) {
     return pudoEscribir;
 }
 
+bool ArchivoUsuario::Guardar(Usuario reg, int nroRegistro) {
+    bool pudoEscribir;
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) {
+        return false;
+    }
+    fseek(p, nroRegistro * sizeof(Usuario), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Usuario), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}
 
 int ArchivoUsuario::ContarRegistros() {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
@@ -77,4 +88,63 @@ bool ArchivoUsuario::ListarUsuarios()
     }
     fclose(p);
     return true;
+}
+
+int ArchivoUsuario::BuscarPos(int id) {
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Usuario reg;
+    while (fread(&reg, sizeof(Usuario), 1, p)) {
+        if (reg.getId() == id) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
+Usuario ArchivoUsuario::BuscarObj(int id) {
+    Usuario u;
+    u.setLegajo(-1);
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return u;
+    }
+    int i = 0;
+    Usuario reg;
+    while (fread(&reg, sizeof(Usuario), 1, p)) {
+        if (reg.getLegajo() == id) {
+            fclose(p);
+            return reg;
+        }
+        i++;
+    }
+    fclose(p);
+    return u;
+}
+
+bool ArchivoUsuario::Modificar(Usuario reg) {
+    bool pudoEscribir;
+    int nroRegistro;
+    Usuario aux;
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) {
+        return false;
+    }
+    int cant = ContarRegistros();
+    for (nroRegistro = 0;nroRegistro < cant;nroRegistro++) {
+        aux = Leer(nroRegistro);
+        if (aux.getId() == reg.getId()) {
+            break;
+        }
+    }
+    fseek(p, nroRegistro * sizeof(Usuario), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Usuario), 1, p);
+    fclose(p);
+    return pudoEscribir;
 }
