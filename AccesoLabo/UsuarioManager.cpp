@@ -34,7 +34,7 @@ void UsuarioManager::Cargar() {
 	else {
 		cout << "ACAAA22" << endl;
 		u.setLegajo(std::stoi(legajo));
-		int id = _archivoUsuario.ContarRegistros() + 1;
+		int id = _archivoUsuario.ContarRegistros() + 1;//
 		u.setId(id);
 		u.cargar();
 		if (_archivoUsuario.Guardar(u)) {
