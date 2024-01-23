@@ -73,3 +73,43 @@ int ArchivoProveedores::Buscar(int dni) {
     fclose(p);
     return -1;
 }
+
+int ArchivoProveedores::Buscar(const char* a)
+{
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Proveedor), 1, p)) {
+        if (strcmp(reg.getApellidos().c_str(), a) == 0) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
+int ArchivoProveedores::BuscarxID(int id)
+{
+
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Proveedor), 1, p)) {
+        if (reg.getId() == id) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+
+}

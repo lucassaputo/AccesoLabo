@@ -3,11 +3,13 @@
 
 class ConsultasManager{
 public:
-	void ConsultaAutorizados();
-	void ConsultaResidentes();
-	void ConsultaProveedores();
-	void ConsultaEmpleados();
-	void ConsultaUnidades();
+	void ConsultaAutorizadosxUnidad();
+	void ConsultaAutorizadosxApellido();
+	void ConsultaResidentesxUnidad();
+	void ConsultaResidentesxApellido();
+	void ConsultaProveedoresxRazonSocial();
+	void ConsultaProveedoresxCuit();
+	void ConsultaUnidadesxNombre();
 
 private:
 	ArchivoAutorizacion _archivo = ArchivoAutorizacion("Autorizados.dat");

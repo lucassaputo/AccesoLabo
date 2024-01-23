@@ -21,19 +21,19 @@ void MenuConsultas::Mostrar() {
         cin >> opcion;
         switch (opcion) {
         case 1:
-            _manager.ConsultaAutorizados();
+            //_manager.ConsultaAutorizados();
             break;
         case 2:
-            _manager.ConsultaResidentes();
+          //  _manager.ConsultaResidentes();
             break;
         case 3:
-            _manager.ConsultaProveedores();
+           // _manager.ConsultaProveedores();
             break;
         case 4:
-            _manager.ConsultaEmpleados();
+          //  _manager.ConsultaEmpleados();
             break;
         case 5:
-            _manager.ConsultaUnidades();
+           // _manager.ConsultaUnidades();
             break;
         case 0:
             return;

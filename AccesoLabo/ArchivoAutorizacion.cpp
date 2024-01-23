@@ -51,7 +51,7 @@ Autorizacion ArchivoAutorizacion::Leer(int nroRegistro) {
     return reg;
 }
 
-int ArchivoAutorizacion::Buscar(int dni) {
+int ArchivoAutorizacion::Buscar(int id) {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return -1;
@@ -59,7 +59,44 @@ int ArchivoAutorizacion::Buscar(int dni) {
     int i = 0;
     Autorizacion reg;
     while (fread(&reg, sizeof(Autorizacion), 1, p)) {
-        if (reg.getIdPersona() == dni) {//cambiar
+        if (reg.getIdPersona() == id) {//cambiar
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
+int  ArchivoAutorizacion::Buscar(const char* a)
+{
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Autorizacion reg;
+    while (fread(&reg, sizeof(Autorizacion), 1, p)) {
+        if (strcmp(reg.getApellidos().c_str(), a) == 0) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+int ArchivoAutorizacion::BuscarxUnidad(int u)
+{
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Autorizacion reg;
+    while (fread(&reg, sizeof(Autorizacion), 1, p)) {
+        if (reg.getIdUnidad() == u) {//cambiar
             fclose(p);
             return i;
         }

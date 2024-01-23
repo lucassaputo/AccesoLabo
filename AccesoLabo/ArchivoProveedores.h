@@ -10,6 +10,8 @@ public:
     int ContarRegistros();
     Proveedor Leer(int nroRegistro);
     int Buscar(int dni);
+    int Buscar(const char* a);
+    int BuscarxID(int id);
 
 private:
     std::string _nombreArchivo;
