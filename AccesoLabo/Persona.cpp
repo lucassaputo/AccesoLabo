@@ -34,15 +34,21 @@ string Persona::getApellidosyNombres() {
 
 void  Persona::cargarPersona() {
 	string nombres, apellidos;
-	cout << "Nombre/s: ";
+	/*cout << "Nombre/s: ";
 	cin.ignore();
 	getline(cin, nombres);
 	//strcpy(_nombres, nombres.c_str());
-	setNombres(nombres);
-	cout << "Apellido/s: ";
+	while (!(soloLetras(nombres))) {
+		cout << "Nombre/s: ";
+		cin.ignore();
+		getline(cin, nombres);
+	}*/	
+	/*cout << "Apellido/s: ";
 	cin.ignore();
-	getline(cin, apellidos);
-	strcpy(_apellidos, apellidos.c_str());
+	getline(cin, apellidos);*/
+	//strcpy(_apellidos, apellidos.c_str());
+	setNombres(cargarString("Nombre"));
+	setApellidos(cargarString("Apellido"));
 	setNacimiento(02, 11, 2000);	
 	_estado = true;
 }

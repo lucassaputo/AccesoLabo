@@ -16,6 +16,5 @@ class ArchivoUsuario
         bool Modificar(Usuario reg);
     private:
         std::string _nombreArchivo;
-
 };
 

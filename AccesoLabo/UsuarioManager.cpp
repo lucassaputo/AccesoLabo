@@ -19,10 +19,11 @@ void UsuarioManager::Cargar() {
 		}
 		else {
 			cout << "ACAAA11" << endl;
-			u.cargar();//validar cargar strings
-			int id = _archivoUsuario.ContarRegistros()+1;
-			u.setId(id);
 			u.setLegajo(std::stoi(legajo));
+			u.cargar();//validar cargar strings
+			//int id = _archivoUsuario.ContarRegistros()+1;
+			//u.setId(id);
+			
 			if (_archivoUsuario.Modificar(u)) {
 				cout << "Registro guardado correctamente." << endl;
 			}
@@ -118,8 +119,8 @@ string UsuarioManager::ingresarLegajo() {
 	cout << "Ingrese legajo: " << endl;
 	cin.ignore();
 	cin >> legajo;
-	while (soloNumeros(legajo) == false) {
-		cout << "Solo puede contener numeros, ingrese unidad: ";
+	while (!(soloNumeros(legajo))) {
+		cout << "Solo puede contener numeros, ingrese legajo: ";
 		cin.ignore();
 		cin >> legajo;
 	}

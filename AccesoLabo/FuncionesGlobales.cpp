@@ -15,6 +15,47 @@ void cargarCadena(char* pal, int tam) {
 	fflush(stdin);
 }
 
+string cargarNombre() {
+	string nombre = "";
+	cout << "Nombre/s: ";
+	cin.ignore();
+	getline(cin, nombre);
+	//strcpy(_nombres, nombres.c_str());
+	while (!(soloLetras(nombre))) {
+		cout << "El Nombre no puede contener números//   Nombre / s: ";
+		cin.ignore();
+		getline(cin, nombre);
+	}
+	return nombre;
+}
+
+string cargarString(string campo) {
+	string cadena = "";
+	cout << campo + ": ";
+	cin.ignore();
+	getline(cin, cadena);
+	//strcpy(_nombres, nombres.c_str());
+	while (!(soloLetras(cadena))) {
+		cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
+		cin.ignore();
+		getline(cin, cadena);
+	}
+	return cadena;
+}
+
+int cargarDni() {
+	string aux = "";
+	cout << "Ingrese DNI: ";
+	cin.ignore();
+	cin >> aux;
+	while (soloNumeros(aux) == false || !(aux.size() < 10 && aux.size() > 6)) {
+		cout << "DNI invalido, Ingrese DNI: ";
+		cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
+}
+
 bool soloNumeros(string x) {
 	bool esNumero = true;
 	for (char c : x) {

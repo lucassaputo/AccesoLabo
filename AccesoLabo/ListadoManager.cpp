@@ -6,8 +6,9 @@ using namespace std;
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
 	cout << "AutorizadosPorApellido" << endl;
-	MostrarCantidadRegistros();
-	ListarTodos();	
+	//MostrarCantidadRegistros();
+	//ListarTodos();	
+	ListarUsuarios();
 	system("pause");
 }
 void ListadoManager::AutorizadosPorUnidad() {
@@ -121,5 +122,14 @@ void ListadoManager::ListarRegistros() {
 	for (int i = 0;i < cant;i++) {
 		reg = _archivoRegistros.Leer(i);
 		reg.mostrar();
+	}
+}
+
+void ListadoManager::ListarUsuarios() {
+	int cant = _archivoUsuarios.ContarRegistros();
+	Usuario u;
+	for (int i = 0;i < cant;i++) {
+		u = _archivoUsuarios.Leer(i);
+		u.mostrar();
 	}
 }

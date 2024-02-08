@@ -40,6 +40,8 @@ int main() {
 * ver cuando pasar por referencia objetos o solo pasar el atributo que utilice la funcion
 * hacer sobrevarga de fecha de <
 * validar el ingrese de opciones del menu que sean solo numeros
+* dniString en persona se rompio
+* 
 */
 
 /*
