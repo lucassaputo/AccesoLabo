@@ -41,7 +41,11 @@ int main() {
 * hacer sobrevarga de fecha de <
 * validar el ingrese de opciones del menu que sean solo numeros
 * dniString en persona se rompio
-* 
+* ingresar fecha nacimiento en usuario y persona
+* validar password usuario
+* maximo de caracteres en legajo
+* estado activo o no es de usuario o persona? o de ambos?
+* como se hace referencia a un atributo de la clase padre en el cpp de la hija? quiero acceder a _dni pero no pude, sera pq el encapsulamiento? this no funciono
 */
 
 /*

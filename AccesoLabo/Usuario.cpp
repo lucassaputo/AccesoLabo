@@ -23,15 +23,11 @@ bool Usuario::getEstado() { return _estado; };
 //acciones
 void Usuario::cargar()
 {
-	string nick,password;
-	int dni;
+	string password;
 	Persona::cargarPersona();	
 	Persona::setDni(cargarDni());
 	setNivel(ingresarNivel());
-
-	std::cout << "Nick: " << endl;
-	std::cin >> nick;
-	strcpy(_nick, nick.c_str());
+	setNick(cargarString("Nick"));	
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
 	strcpy(_password, password.c_str());
@@ -40,17 +36,15 @@ void Usuario::cargar()
 
 void Usuario::editar()
 {
-	string nick, password;
-	int dni;
+	string password;
 	Persona::editarPersona();
-	std::cout << "Ingrese el DNI: " << std::endl;
-	std::cin >> dni;
-	std::cout << "Ingrese el nivel: " << std::endl;
-	std::cin >> _nivel;
-	Persona::setDni(dni);
-	std::cout << "Nick: " << endl;
-	std::cin >> nick;
-	strcpy(_nick, nick.c_str());
+	Persona::cargarPersona();
+	cout << "DNI actual: " << getDni() << endl;
+	Persona::setDni(cargarDni());
+	cout << "Nivel actual: " << _nivel << endl;
+	setNivel(ingresarNivel());
+	cout << "Nick actual: " << _nivel << endl;
+	setNick(cargarString("Nick"));
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
 	strcpy(_password, password.c_str());

@@ -18,11 +18,8 @@ void UsuarioManager::Cargar() {
 			cout << "El usuario ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
 		else {
-			cout << "ACAAA11" << endl;
-			u.setLegajo(std::stoi(legajo));
-			u.cargar();//validar cargar strings
-			//int id = _archivoUsuario.ContarRegistros()+1;
-			//u.setId(id);
+			cout << "ACAAA11" << endl;			
+			u.cargar();
 			
 			if (_archivoUsuario.Modificar(u)) {
 				cout << "Registro guardado correctamente." << endl;
@@ -35,8 +32,7 @@ void UsuarioManager::Cargar() {
 	else {
 		cout << "ACAAA22" << endl;
 		u.setLegajo(std::stoi(legajo));
-		int id = _archivoUsuario.ContarRegistros() + 1;//
-		u.setId(id);
+		u.setId(_archivoUsuario.ContarRegistros() + 1);
 		u.cargar();
 		if (_archivoUsuario.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;
@@ -86,7 +82,7 @@ void UsuarioManager::Eliminar() {
 			cout << "El usuario no existe.";
 		}
 		else {
-			cout << "Desea dar la baja del usuario " << legajo << "? S/N : ";
+			cout << "Desea dar la baja del usuario de legajo:  " << legajo << "? S/N : ";
 			cin.ignore();
 			cin >> decision;
 			while (soloNumeros(decision) || !(decision == "S" || decision == "s" || decision == "N" || decision == "n")) {
@@ -109,7 +105,7 @@ void UsuarioManager::Eliminar() {
 		}
 	}
 	else {
-		cout << "El usuario no existe, realice el alta." << endl;
+		cout << "El usuario no existe." << endl;
 	}
 	system("pause");
 }

@@ -56,16 +56,9 @@ void  Persona::cargarPersona() {
 void  Persona::editarPersona() {
 	string nombres, apellidos;
 	cout << "Nombre/s actuales: " << _nombres << endl;
-	cout << "Nombre/s: ";
-	cin.ignore();
-	getline(cin, nombres);
-	//strcpy(_nombres, nombres.c_str());
-	setNombres(nombres);
+	setNombres(cargarString("Nombre"));
 	cout << "Apellido/s actuales: " << _apellidos << endl;
-	cout << "Apellido/s: ";
-	cin.ignore();
-	getline(cin, apellidos);
-	strcpy(_apellidos, apellidos.c_str());
+	setApellidos(cargarString("Apellido"));	
 	setNacimiento(02, 11, 2000);
 	_estado = true;
 }
