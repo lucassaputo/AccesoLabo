@@ -13,41 +13,12 @@ void ListadoManager::AutorizadosPorApellido() {
 	system("pause");
 }
 void ListadoManager::AutorizadosPorUnidad() {
-	Unidad *reg;
-	ArchivoUnidad archU;
 	system("cls");
-	cout << "AutorizadosPorUnidad" << endl;
-	int cantReg = archU.ContarRegistros();
-	reg = new Unidad[cantReg];
-	if (reg == nullptr) {
-		cout << "Error de asignacion de memoria" << endl;
-		return;
-	}
-	for (int i = 0;i < cantReg;i++) {
-		reg[i] = archU.Leer(i);
-	}
-	OrdenarVectorUnidadxNumero(reg, cantReg);
-	for (int j = 0;j < cantReg;j++) {
-		cout << "j=" << j << endl;
-		reg[j].mostrar();
-	}
+	
 
 	system("pause");
 }
 
-void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
-{
-	Unidad aux;
-	for (int i = 0;i < tam;i++) {
-		for (int x = 0;x < tam - i - 1;x++) {
-			if (reg[x].getId() > reg[x + 1].getId()) {
-				aux = reg[x];
-				reg[x] = reg[x + 1];
-				reg[x + 1] = aux;
-			}
-		}
-	}
-}
 
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
@@ -70,7 +41,37 @@ void ListadoManager::ProveedoresPorDNI() {
 void ListadoManager::UnidadesPorNumero() {
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
+	Unidad* reg;
+	ArchivoUnidad archU("Unidades.dat");
+	cout << "AutorizadosPorUnidad" << endl;
+	int cantReg = archU.ContarRegistros();
+	reg = new Unidad[cantReg];
+	if (reg == nullptr) {
+		cout << "Error de asignacion de memoria" << endl;
+		return;
+	}
+	for (int i = 0;i < cantReg;i++) {
+		reg[i] = archU.Leer(i);
+	}
+	OrdenarVectorUnidadxNumero(reg, cantReg);
+	for (int j = 0;j < cantReg;j++) {
+		cout << "j=" << j << endl;
+		reg[j].mostrar();
+	}
 	system("pause");
+}
+void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
+{
+	Unidad aux;
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (reg[x].getId() > reg[x + 1].getId()) {
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
+			}
+		}
+	}
 }
 void ListadoManager::UnidadesPorFamilia() {
 	system("cls");

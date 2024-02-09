@@ -10,12 +10,12 @@ class ListadoManager
 	public:
 		void AutorizadosPorApellido();
 		void AutorizadosPorUnidad(); // punto 2
-		void OrdenarVectorUnidadxNumero(Unidad *reg, int tam);
 		void ResidentesPorUnidad();//punto 3
-		void ProveedoresPorRazon();
-		void ProveedoresPorDNI();
-		void UnidadesPorNumero();
-		void UnidadesPorFamilia();
+		void ProveedoresPorRazon();//punto4
+		void ProveedoresPorDNI();//punto5
+		void UnidadesPorNumero();//punto 6
+		void OrdenarVectorUnidadxNumero(Unidad *reg, int tam);
+		void UnidadesPorFamilia();//punto 7
 		void Mostrar(Registro reg);
 		//Registro LeerRegistro(int pos);
 		void MostrarCantidadUnidades();
