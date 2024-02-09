@@ -14,9 +14,43 @@ void ListadoManager::AutorizadosPorApellido() {
 }
 void ListadoManager::AutorizadosPorUnidad() {
 	system("cls");
-	
+
+	cout << "AutorizadosPorUnidad" << endl;
+	Autorizacion *regAut;
+	ArchivoAutorizacion archAut("Autorizaciones.dat");
+	int cantReg = archAut.ContarRegistros();
+	if (cantReg == 0) {
+		cout << "No hay registros de autorizados cargados" << endl;
+	}
+	regAut = new Autorizacion[cantReg];
+	if (regAut == nullptr) {
+		cout << "Error de asignacion de memoria " << endl;
+		return;
+	}
+	for (int x = 0;x < cantReg;x++) {
+		regAut[x] = archAut.Leer(x);
+	}
+	OrdenarVectorAutorizadosxNumero(regAut, cantReg);
+	for (int i = 0;i < cantReg;i++) {
+		regAut[i].mostrar();
+	}
 
 	system("pause");
+}
+
+void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
+{
+	 Autorizacion aux;
+	 
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (reg[x].getId() > reg[x + 1].getId()) {
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
+			}
+		}
+	}
 }
 
 
