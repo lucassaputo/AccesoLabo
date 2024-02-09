@@ -84,9 +84,39 @@ void ListadoManager::ResidentesPorUnidad() {
 }
 void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
-	//cout << "ProveedoresPorRazon" << endl;
-	ListarRegistros();
+	cout << "ProveedoresPorRazon" << endl;
+	Proveedor* regProv;
+	ArchivoProveedores archProv("Proveedores.dat");
+	int cantReg = archProv.ContarRegistros();
+	regProv = new Proveedor[cantReg];
+	if (regProv == nullptr) {
+		cout << "Error en la asignacion de memoria" << endl;
+		return;
+	}
+	for (int x = 0;x < cantReg;x++) {
+		regProv[x] = archProv.Leer(x);
+	}
+	OrdenarVectorProveedoresxRazon(regProv, cantReg);
+	for (int i = 0;i < cantReg;i++) {
+		regProv[i].mostrar();
+	}
+
+
 	system("pause");
+}
+
+void ListadoManager::OrdenarVectorProveedoresxRazon(Proveedor* reg, int tam)
+{
+	Proveedor aux;
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(reg[x]->getApellidos(), reg[x+1].getApellidos())>0){
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
+			}
+		}
+	}
 }
 
 void ListadoManager::ProveedoresPorDNI() {

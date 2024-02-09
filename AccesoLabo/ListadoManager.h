@@ -14,6 +14,7 @@ class ListadoManager
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
 		void ResidentesPorUnidad();//punto 3
 		void ProveedoresPorRazon();//punto4
+		void OrdenarVectorProveedoresxRazon(Proveedor* reg, int tam);
 		void ProveedoresPorDNI();//punto5
 		void OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam);
 		void UnidadesPorNumero();//punto 6
