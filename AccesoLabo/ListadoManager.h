@@ -8,12 +8,14 @@
 class ListadoManager
 {
 	public:
-		void AutorizadosPorApellido();
+		void AutorizadosPorApellido(); // punto 1
+		void OrdenarVectorAutorizadosxApellido(Autorizacion* reg, int tam);
 		void AutorizadosPorUnidad(); // punto 2
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
 		void ResidentesPorUnidad();//punto 3
 		void ProveedoresPorRazon();//punto4
 		void ProveedoresPorDNI();//punto5
+		void OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam);
 		void UnidadesPorNumero();//punto 6
 		void OrdenarVectorUnidadxNumero(Unidad *reg, int tam);	
 		void UnidadesPorFamilia();//punto 7
