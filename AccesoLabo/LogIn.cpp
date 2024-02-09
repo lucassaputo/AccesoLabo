@@ -7,18 +7,20 @@
 #include <iostream>
 #include <cstring>
 
-void LogIn::Mostrar() {	
+void LogIn::Mostrar() {
 	UserSingleton& user = UserSingleton::getInstance();
 
-	int legajo;
+	std::string legajo;
 	std::string pasword;
 	Usuario reg;
 	ArchivoUsuario archUsuario("Usuarios.dat");
 	system("cls");
 	std::cout << "**Log In**" << std::endl;
-	std::cout << "Ingrese su numero de legajo:" << std::endl;
-	std::cin >> legajo;
+	//std::cout << "Ingrese su numero de legajo:" << std::endl;
+	//std::cin >> legajo;
+	legajo = ingresarLegajo();
 	int pos = archUsuario.Buscar(legajo);
+	std::cout << pos;
 	if (pos < 0 && user.getUsuario().getEstado() == false) {//que hace?
 		std::cout << "Legajo inexistente" << std::endl;
 		system("pause");
@@ -36,9 +38,7 @@ void LogIn::Mostrar() {
 		reg.setApellidos("Saputo");
 		reg.setNick("LucasNick");
 		reg.setNivel(1);
-		user.setMiClase(reg);
-		
-		
+
 		user.setMiClase(reg);
 		MenuPrincipal menu;
 		menu.Mostrar();
@@ -47,7 +47,7 @@ void LogIn::Mostrar() {
 		std::cout << "Password incorrecto" << std::endl;
 		user.ReiniciarClase();
 		system("pause");
-	}	
+	}
 }
 
 	/*

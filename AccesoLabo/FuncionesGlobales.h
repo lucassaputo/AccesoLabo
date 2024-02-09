@@ -7,4 +7,5 @@ std::string cargarString(std::string campo);
 int cargarDni();
 bool soloNumeros(std::string aux);
 bool soloLetras(std::string x);
+std::string ingresarLegajo();
 void Creditos();

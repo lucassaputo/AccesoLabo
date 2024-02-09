@@ -9,18 +9,19 @@ void UsuarioManager::Cargar() {
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Usuario u;
 	string legajo = ingresarLegajo();	
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
+	u = _archivoUsuario.BuscarObj(legajo);
 	cout << "eeee:     " << u.getLegajo();
 	u.mostrar();
-	if (u.getLegajo() >= 0) {
+	cout << "DDDDDDDDDDDDDD2222222222222222222222" << endl;
+	if (u.getLegajo() != "-1") {
+		cout << "DDDDDDDDDDDDDD" << endl;
 		if (u.getEstado()) {
 			u.mostrar();
 			cout << "El usuario ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
 		else {
 			cout << "ACAAA11" << endl;			
-			u.cargar();
-			
+			u.cargar();			
 			if (_archivoUsuario.Modificar(u)) {
 				cout << "Registro guardado correctamente." << endl;
 			}
@@ -31,9 +32,10 @@ void UsuarioManager::Cargar() {
 	}
 	else {
 		cout << "ACAAA22" << endl;
-		u.setLegajo(std::stoi(legajo));
+		u.setLegajo(legajo);
 		u.setId(_archivoUsuario.ContarRegistros() + 1);
 		u.cargar();
+		u.mostrar();system("pause");
 		if (_archivoUsuario.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;
 		}
@@ -49,8 +51,8 @@ void UsuarioManager::Editar() {
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Usuario u;
 	string legajo = ingresarLegajo();
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
-	if (u.getLegajo() >= 0) {
+	u = _archivoUsuario.BuscarObj(legajo);
+	if (u.getLegajo() != "-1") {
 		if (!u.getEstado()) {
 			cout << "El usuario no existe, realice el alta." << endl;
 		}
@@ -76,8 +78,8 @@ void UsuarioManager::Eliminar() {
 	Usuario u;
 	string decision;
 	string legajo = ingresarLegajo();
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
-	if (u.getLegajo() >= 0) {
+	u = _archivoUsuario.BuscarObj(legajo);
+	if (u.getLegajo() != "-1") {
 		if (!u.getEstado()) {
 			cout << "El usuario no existe.";
 		}
@@ -110,15 +112,3 @@ void UsuarioManager::Eliminar() {
 	system("pause");
 }
 
-string UsuarioManager::ingresarLegajo() {
-	string legajo;
-	cout << "Ingrese legajo: " << endl;
-	cin.ignore();
-	cin >> legajo;
-	while (!(soloNumeros(legajo))) {
-		cout << "Solo puede contener numeros, ingrese legajo: ";
-		cin.ignore();
-		cin >> legajo;
-	}
-	return legajo;
-}

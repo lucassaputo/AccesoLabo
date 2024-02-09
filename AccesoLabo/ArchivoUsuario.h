@@ -9,9 +9,9 @@ class ArchivoUsuario
         bool Guardar(Usuario reg, int nroRegistro);
         int ContarRegistros();
         Usuario Leer(int nroRegistro);
-        int Buscar(int legajo);
+        int Buscar(std::string legajo);
         bool ListarUsuarios();
-        Usuario BuscarObj(int id);
+        Usuario BuscarObj(std::string legajo);
         int BuscarPos(int id);
         bool Modificar(Usuario reg);
     private:

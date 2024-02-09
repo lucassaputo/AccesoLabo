@@ -9,7 +9,8 @@ using namespace std;
 //sets
 void Usuario::setNick(std::string n) { strcpy(_nick, n.c_str()); }
 void Usuario::setPassword(std::string pass) { strcpy(_password, pass.c_str()); }
-void Usuario::setLegajo(int l) { _legajo = l;}
+void Usuario::setLegajo(std::string l) { strcpy(_legajo, l.c_str());
+	;}
 void Usuario::setNivel(int n) { _nivel = n; }
 void Usuario::setEstado(bool b) { _estado = b; }
 
@@ -17,7 +18,7 @@ void Usuario::setEstado(bool b) { _estado = b; }
 //gets
 std::string Usuario::getNick() { return _nick; }
 std::string Usuario::getPassword() { return _password; }
-int Usuario::getLegajo() const { return _legajo; };
+std::string Usuario::getLegajo() const { return _legajo; };
 int Usuario::getNivel() const { return _nivel; };
 bool Usuario::getEstado() { return _estado; };
 //acciones
@@ -38,12 +39,12 @@ void Usuario::editar()
 {
 	string password;
 	Persona::editarPersona();
-	Persona::cargarPersona();
+	//Persona::cargarPersona();
 	cout << "DNI actual: " << getDni() << endl;
 	Persona::setDni(cargarDni());
 	cout << "Nivel actual: " << _nivel << endl;
 	setNivel(ingresarNivel());
-	cout << "Nick actual: " << _nivel << endl;
+	cout << "Nick actual: " << _nick << endl;
 	setNick(cargarString("Nick"));
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
@@ -75,6 +76,7 @@ int Usuario::ingresarNivel() {
 		if (aux == "1" || aux == "2") {
 			valido = true;
 		}
+		cin.ignore();
 	}
 	return std::stoi(aux);
 }

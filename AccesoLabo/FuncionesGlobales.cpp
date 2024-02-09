@@ -32,7 +32,7 @@ string cargarNombre() {
 string cargarString(string campo) {
 	string cadena = "";
 	cout << campo + ": ";
-	cin.ignore();
+	//cin.ignore();
 	getline(cin, cadena);
 	//strcpy(_nombres, nombres.c_str());
 	while (!(soloLetras(cadena))) {
@@ -46,7 +46,7 @@ string cargarString(string campo) {
 int cargarDni() {
 	string aux = "";
 	cout << "Ingrese DNI: ";
-	cin.ignore();
+	//cin.ignore();
 	cin >> aux;
 	while (soloNumeros(aux) == false || !(aux.size() < 10 && aux.size() > 6)) {
 		cout << "DNI invalido, Ingrese DNI: ";
@@ -78,6 +78,19 @@ bool soloLetras(string x) {
 	return esLetra;
 }
 
+string ingresarLegajo() {
+	string legajo;
+	cout << "Ingrese legajo: " << endl;
+	cin.ignore();
+	cin >> legajo;
+	while (!(soloNumeros(legajo))) {
+		cout << "Solo puede contener numeros, ingrese legajo: ";
+		cin.ignore();
+		cin >> legajo;
+	}
+	return legajo;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
@@ -85,3 +98,4 @@ void Creditos() {
 	cout << "Saputo, Lucas" << endl;
 	system("pause");
 }
+
