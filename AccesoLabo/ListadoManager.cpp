@@ -5,22 +5,54 @@ using namespace std;
 
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
+
 	cout << "AutorizadosPorApellido" << endl;
-	MostrarCantidadRegistros();
-	ListarTodos();	
+
+
+
 	system("pause");
 }
 void ListadoManager::AutorizadosPorUnidad() {
+	Unidad *reg;
+	ArchivoUnidad archU;
 	system("cls");
 	cout << "AutorizadosPorUnidad" << endl;
-	MostrarCantidadProveedores();
-	ListarTodosProveedores();
+	int cantReg = archU.ContarRegistros();
+	reg = new Unidad[cantReg];
+	if (reg == nullptr) {
+		cout << "Error de asignacion de memoria" << endl;
+		return;
+	}
+	for (int i = 0;i < cantReg;i++) {
+		reg[i] = archU.Leer(i);
+	}
+	OrdenarVectorUnidadxNumero(reg, cantReg);
+	for (int j = 0;j < cantReg;j++) {
+		cout << "j=" << j << endl;
+		reg[j].mostrar();
+	}
+
 	system("pause");
 }
+
+void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
+{
+	Unidad aux;
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (reg[x].getId() > reg[x + 1].getId()) {
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
+			}
+		}
+	}
+}
+
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
-	//cout << "ResidentesPorUnidad" << endl;
-	ListarUnidades();
+	cout << "ResidentesPorUnidad" << endl;
+	
 	system("pause");
 }
 void ListadoManager::ProveedoresPorRazon() {
@@ -29,9 +61,10 @@ void ListadoManager::ProveedoresPorRazon() {
 	ListarRegistros();
 	system("pause");
 }
-void ListadoManager::EmpleadosPorDNI() {
+
+void ListadoManager::ProveedoresPorDNI() {
 	system("cls");
-	cout << "EmpleadosPorDNI" << endl;
+	cout << "Proveedores Por DNI" << endl;
 	system("pause");
 }
 void ListadoManager::UnidadesPorNumero() {
@@ -55,14 +88,10 @@ void ListadoManager::Mostrar(Registro reg) {
 	//cout << "observaciones " << reg.getObservaciones() << endl;
 	//cout << "estado" << reg.getEstado() << endl;
 }
-/*
-void ListadoManager::MostrarCantidadRegistros() {
-	int cantidadRegistros = _archivoRegistros.ContarRegistros();
-	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
-}*/
-void ListadoManager::MostrarCantidadRegistros() {
-	int cantidadRegistros = _archivoUnidades.ContarRegistros();
-	cout << endl << "CANTIDAD REGISTROS: " << cantidadRegistros << endl;
+
+void ListadoManager::MostrarCantidadUnidades() {
+	int CantidadUnidades = _archivoUnidades.ContarRegistros();
+	cout << endl << "CANTIDAD DE UNIDADES REGISTRADAS: " << CantidadUnidades << endl;
 }
 /*
 void ListadoManager::ListarTodos() {
