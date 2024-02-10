@@ -10,17 +10,17 @@ void UsuarioManager::Cargar() {
 	Usuario u;
 	string legajo = ingresarLegajo();	
 	u = _archivoUsuario.BuscarObj(legajo);
-	cout << "eeee:     " << u.getLegajo();
-	u.mostrar();
+	//cout << "eeee:     " << u.getLegajo();
+	//u.mostrar();
 	cout << "DDDDDDDDDDDDDD2222222222222222222222" << endl;
 	if (u.getLegajo() != "-1") {
-		cout << "DDDDDDDDDDDDDD" << endl;
+		//cout << "DDDDDDDDDDDDDD" << endl;
 		if (u.getEstado()) {
-			u.mostrar();
+			//u.mostrar();
 			cout << "El usuario ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
 		else {
-			cout << "ACAAA11" << endl;			
+			//cout << "ACAAA11" << endl;			
 			u.cargar();			
 			if (_archivoUsuario.Modificar(u)) {
 				cout << "Registro guardado correctamente." << endl;
@@ -31,7 +31,7 @@ void UsuarioManager::Cargar() {
 		}
 	}
 	else {
-		cout << "ACAAA22" << endl;
+		//cout << "ACAAA22" << endl;
 		u.setLegajo(legajo);
 		u.setId(_archivoUsuario.ContarRegistros() + 1);
 		u.cargar();

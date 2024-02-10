@@ -10,17 +10,17 @@ void AbmUnidadesManager::Alta() {
 	cout << "ALTA UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Unidad u, Uaux;
-	string id = ingresarId();
-	u.setId(std::stoi(id));	
+	string id = ingresarIdUnidad();
+	//u.setId(std::stoi(id));	
 	int pos;
 	pos = _archivoUnidades.BuscarPos(std::stoi(id));
 	if (pos >= 0) {
-		Uaux = _archivoUnidades.Leer(pos);
-		if (Uaux.getEstado()) {
+		u = _archivoUnidades.Leer(pos);
+		if (u.getEstado()) {
 			cout << "La unidad ya se encuentra creada, si desea modificarla ingrese en EDITAR" << endl;
 		}
 		else {
-			u.cargar();//validar cargar strings
+			u.cargar();
 			if (_archivoUnidades.Guardar(u, pos)) {
 				cout << "Registro guardado correctamente." << endl;
 			}else {
@@ -29,6 +29,7 @@ void AbmUnidadesManager::Alta() {
 		}
 	}
 	else {
+		u.setId(std::stoi(id));
 		u.cargar();
 		if (_archivoUnidades.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;
@@ -46,7 +47,7 @@ void AbmUnidadesManager::Editar() {
 	Unidad u;
 	cout << "EDICION UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
-	id = ingresarId();
+	id = ingresarIdUnidad();
 	u= _archivoUnidades.BuscarObj(std::stoi(id));
 	if (u.getId()>=0) {
 		if (!u.getEstado()) {
@@ -73,7 +74,7 @@ void AbmUnidadesManager::Baja() {
 	Unidad u;
 	cout << "BAJA UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
-	id = ingresarId();
+	id = ingresarIdUnidad();
 	u = _archivoUnidades.BuscarObj(std::stoi(id));
 	if (u.getId() >= 0) {
 		if (!u.getEstado()) {
@@ -107,17 +108,4 @@ void AbmUnidadesManager::Baja() {
 		cout << "La unidad no existe, realice el alta." << endl;
 	}
 	system("pause");
-}
-
-string AbmUnidadesManager::ingresarId() {
-	string id;
-	cout << "Ingrese numero de unidad: " << endl;
-	cin.ignore();
-	cin >> id;
-	while (soloNumeros(id) == false) {
-		cout << "Solo puede contener numeros, Ingrese unidad: ";
-		cin.ignore();
-		cin >> id;
-	}
-	return id;
 }

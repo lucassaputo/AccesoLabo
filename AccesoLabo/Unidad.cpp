@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Unidad.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -21,38 +22,22 @@ std::string Unidad::getFamilia(){return _familia;}
 std::string Unidad::getObservaciones(){return _observaciones;}
 bool Unidad::getEstado(){return _estado;}
 
-//acciones
-void Unidad::cargar(){	
-	string familia, observaciones;	
-	cout << "Ingrese telefono: ";
-	cin >> _telefono;
-	cout << "Ingrese nombre de la familia: ";
+void Unidad::cargar() {
+	setTelefono(cargarTelefono());
 	cin.ignore();
-	getline(cin, familia);
-	setFamilia(familia);
-	//cin.ignore();
-	cout << "Observaciones: " << endl;
-	getline(cin, observaciones);
-	setObservaciones(observaciones);
+	setFamilia(cargarString("Familia"));
+	setObservaciones(cargarString("Observaciones"));
 	_estado = true;
 }
 
-//acciones
 void Unidad::editar() {
-	string familia, observaciones;
-	cout << "Telefono actual: " << _telefono << endl;
-	cout << "Ingrese telefono: ";
-	cin >> _telefono;
-	cout << "Nombre de la familia actual: " << _familia << endl;
-	cout << "Ingrese nombre de la familia: ";
+	cout << "Telefono actual: " << getTelefono() << endl;
+	setTelefono(cargarTelefono());
+	cout << "Familia actual: " << getFamilia() << endl;
 	cin.ignore();
-	getline(cin, familia);
-	setFamilia(familia);
-	//cin.ignore();
-	cout << "Observaciones actuales: " << _observaciones << endl;
-	cout << "Observaciones: " << endl;
-	getline(cin, observaciones);
-	setObservaciones(observaciones);
+	setFamilia(cargarString("Familia"));
+	cout << "Observaciones actuales: " << getObservaciones() << endl;
+	setObservaciones(cargarString("Observaciones"));
 	_estado = true;
 }
 
