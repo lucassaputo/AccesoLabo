@@ -57,7 +57,8 @@ void ListadoManager::AutorizadosPorApellido() {
 	for (int j = 0;j < cantReg;j++) {
 		cout << ApellidoAutorizados[j] << endl;
 	}
-
+	delete [] ApellidoAutorizados;
+	delete [] regAut;
 
 	system("pause");
 }*/
@@ -122,7 +123,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	for (int i = 0;i < cantReg;i++) {
 		regAut[i].mostrar();
 	}
-
+	delete[] regAut;
 	system("pause");
 }
 
@@ -145,8 +146,26 @@ void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
 	cout << "ResidentesPorUnidad" << endl;
-	
+	Residente *reg;
+	ArchivoResidente archResidente("Residentes.dat");
+	int cantReg = archResidente.ContarRegistros();
+	reg = new Residente[cantReg];
+	if (reg == nullptr) {
+		cout << "error de asignacion de memoria" << endl;
+		return;
+	}
+	for (int x = 0;x < cantReg;x++) {
+		reg[x] = archResidente.Leer(x);
+	}
+	OrdenarResidentesxUnidad(reg, cantReg);
+	for (int j = 0;j < cantReg;j++) {
+		reg[j].mostrar();
+	}
+	delete[] reg;
 	system("pause");
+}
+void ListadoManager::OrdenarResidentesxUnidad(Residente* vec, int ram)
+{
 }
 void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
@@ -166,7 +185,7 @@ void ListadoManager::ProveedoresPorRazon() {
 	for (int i = 0;i < cantReg;i++) {
 		regProv[i].mostrar();
 	}
-
+	delete[] regProv;
 
 	system("pause");
 }
@@ -205,7 +224,7 @@ void ListadoManager::ProveedoresPorDNI() {
 		cout << "j=" << j << endl;
 		regProv[j].mostrar();
 	}
-
+	delete[] regProv;
 
 	system("pause");
 }
@@ -241,6 +260,7 @@ void ListadoManager::UnidadesPorNumero() {
 		cout << "j=" << j << endl;
 		reg[j].mostrar();
 	}
+	delete[] reg;
 	system("pause");
 }
 void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
@@ -274,6 +294,7 @@ void ListadoManager::UnidadesPorFamilia(){
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
+	delete[] reg;
 	system("pause");
 }
 

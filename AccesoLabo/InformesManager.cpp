@@ -24,3 +24,33 @@ void InformesManager::HistorialMovimientos()
 	std::cout << "Historial de movimientos " << std::endl;
 	system("pause");
 }
+#include "InformesManager.h"
+using namespace std;
+void UnidadesMas50() {
+	system("cls");
+	int mes, anio;
+	cout << "unidades con mas de 50 movimientos" << endl;
+	cout << "Ingrese el mes: " << endl;
+	cin >> mes;
+	cout << "Ingrese el anio: " << endl;
+	cin >> anio;
+
+
+
+
+
+
+
+
+
+}
+void InformeProveedores() {
+
+}
+void HistorialMovimientosxUnidades() {
+
+}
+void HistorialMovimientos() {
+
+
+}
