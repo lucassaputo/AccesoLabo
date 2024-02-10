@@ -76,12 +76,14 @@ void  Persona::editarPersona() {
 	cout << "Apellido/s actuales: " << _apellidos << endl;
 	setApellidos(cargarString("Apellido"));	
 	//setNacimiento(02, 11, 2000);
+	cout << "Fecha de nacimiento actual: " << _nacimiento.toString() << endl;
 	cout << "Ingrese fecha de nacimiento: " << endl;
 	while (true) {
 		while (aux.ingresarFecha() == false) {
 			cout << "Formato invalido, ingrese DD/MM/AA";
 			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
 		}
+		break;
 	}
 	cout << "dia: " << aux.getDia() << endl;
 	cout << "mes: " << aux.getMes() << endl;
@@ -95,7 +97,8 @@ void Persona::mostrar()
 	cout << "id: " << _id << endl;
 	cout << "Nombre: " << _nombres << endl;
 	cout << "Apellido: " << _apellidos << endl;
-	cout << getDni() << endl;
+	cout << "Documento" << _dni << endl;
+	cout << "Estado" << _estado << endl;
 }
 void Persona::mostrarX()
 {

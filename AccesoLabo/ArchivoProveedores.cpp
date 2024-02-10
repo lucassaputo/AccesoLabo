@@ -74,6 +74,28 @@ int ArchivoProveedores::Buscar(int dni) {
     return -1;
 }
 
+Proveedor ArchivoProveedores::BuscarObj(int dni) {
+    Proveedor prov;
+    prov.setDni(-1);
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return prov;
+    }
+    int i = 0;
+    int comparacion;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Proveedor), 1, p)) {
+        if (reg.getDni() == dni) {
+            fclose(p);
+            return reg;
+        }
+        i++;
+    }
+    fclose(p);
+    return prov;
+}
+
+
 bool ArchivoProveedores::Modificar(Proveedor reg) {
     bool pudoEscribir;
     int nroRegistro;
