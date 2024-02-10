@@ -10,6 +10,7 @@ public:
     int ContarRegistros();
     Registro Leer(int nroRegistro);
     int Buscar(int dni);
+    bool Modificar(Registro reg);
 
 private:
     std::string _nombreArchivo;

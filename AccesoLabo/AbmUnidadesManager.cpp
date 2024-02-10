@@ -23,7 +23,8 @@ void AbmUnidadesManager::Alta() {
 			u.cargar();
 			if (_archivoUnidades.Guardar(u, pos)) {
 				cout << "Registro guardado correctamente." << endl;
-			}else {
+			}
+			else {
 				cout << "Error al guardar." << endl;
 			}
 		}

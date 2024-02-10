@@ -12,7 +12,7 @@ ConfigSingleton* ConfigSingleton::instance = nullptr;
 
 int main() {			
 	App app;
-	app.Ejecutar();
+	app.Ejecutar();//
 
 	return 0;
 }
@@ -57,6 +57,7 @@ int main() {
 * limitar mas los submenus segun usuario logueado
 * poner en rojo algunos textos? o negritas?
 * chequear defaults en switch que tengan todos
+* discriminar errores en buscarObj por ejemplo da igual sino abrio el archivo o si no encontro  registro
 */
 
 /*

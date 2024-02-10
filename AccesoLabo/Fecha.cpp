@@ -116,6 +116,7 @@ bool Fecha::cargar(int dia, int mes, int anio) {
             return true;
         }
     }
+    return false;
 }
 
 std::string Fecha::toString() {

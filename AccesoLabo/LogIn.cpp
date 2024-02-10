@@ -15,7 +15,7 @@ void LogIn::Mostrar() {
 	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);
-	std::cout << "eeee:     " << u.getLegajo();
+	//std::cout << "eeee:     " << u.getLegajo();
 	//u.mostrar();	
 	while (true) {
 		if (u.getLegajo() != "-1") {
