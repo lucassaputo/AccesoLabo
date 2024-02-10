@@ -201,6 +201,9 @@
     <ClCompile Include="ConfigSingleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArchivoResidente.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuAbmPersonas.h">
@@ -352,6 +355,9 @@
     </ClInclude>
     <ClInclude Include="ConfigSingleton.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoResidente.h">
+      <Filter>Header Files\Archivo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
