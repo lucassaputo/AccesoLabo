@@ -19,7 +19,7 @@ void LogIn::Mostrar() {
 		if (u.getLegajo() != "-1") {
 			if (u.getEstado()) {
 				u.mostrar();
-				std::cout << "Ingrese password" << std::endl;
+				std::cout << "Ingrese passwordddd" << std::endl;
 				std::cin >> pasword;
 				if (strcmp(pasword.c_str(), u.getPassword().c_str()) == 0) {
 					user.setMiClase(u);
