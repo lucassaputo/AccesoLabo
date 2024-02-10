@@ -128,8 +128,26 @@ void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
 	cout << "ResidentesPorUnidad" << endl;
-	
+	Residente *reg;
+	ArchivoResidente archResidente("Residentes.dat");
+	int cantReg = archResidente.ContarRegistros();
+	reg = new Residente[cantReg];
+	if (reg == nullptr) {
+		cout << "error de asignacion de memoria" << endl;
+		return;
+	}
+	for (int x = 0;x < cantReg;x++) {
+		reg[x] = archResidente.Leer(x);
+	}
+	OrdenarResidentesxUnidad(reg, cantReg);
+	for (int j = 0;j < cantReg;j++) {
+		reg[j].mostrar();
+	}
+
 	system("pause");
+}
+void ListadoManager::OrdenarResidentesxUnidad(Residente* vec, int ram)
+{
 }
 void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
