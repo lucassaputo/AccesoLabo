@@ -25,7 +25,10 @@ class RegistrosManager
 		void ingresoProveedor(Unidad& uni, Proveedor& p);
 		void egresoProveedor(Unidad& uni, Proveedor& p, int posActivo);
 		int adentro1(int dni, int motivo, int tipoPersona);
-		int adentro(int dni, int motivo, int tipoPersona);
+		bool adentro(int dni, int motivo);
 		bool autorizado(Unidad uni, Proveedor p);
+		bool vencido(Proveedor p);
+		bool checkAutorizacion(Unidad u, Proveedor p);
+		void guardarRegistro(Unidad u, Proveedor p);
 };
 

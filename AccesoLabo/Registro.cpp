@@ -9,22 +9,26 @@ Registro::Registro() {
 }
 
 //sets
+void Registro::setId(int u) { _id = u; }
 void Registro::setIdUnidad(int u){_idUnidad = u;}
 void Registro::setIdPersona(int p){_idPersona = p;}
 void Registro::setTipoPersona(int t) { _tipoPersona = t; }
-void Registro::setFecha(Fecha f){_fecha = f;}
-void Registro::setSentido(int e){_sentido = e;}
+void Registro::setFechaIngreso(FechaHorario f){_fechaIngreso = f;}
+void Registro::setFechaEgreso(FechaHorario f) { _fechaEgreso = f; }
+void Registro::setAdentro(bool a){_adentro = a;}
 void Registro::setObservaciones(std::string obs){strcpy(_observaciones,obs.c_str()); }
 void Registro::setTipoAutorizacion(int aut) { _tipoAutorizacion=aut; }
 void Registro::setIdUser(int id) { _idUser = id; }
 void Registro::setEstado(bool e){_estado = e;}
 
 //gets
+int Registro::getId() { return _id; }
 int Registro::getIdUnidad() { return _idUnidad; }
 int Registro::getIdPersona() { return _idPersona; }
 int Registro::getTipoPersona() { return _tipoPersona; }
-Fecha Registro::getFecha() { return _fecha; }
-int Registro::getSentido() { return _sentido; }
+FechaHorario Registro::getFechaIngreso() { return _fechaIngreso; }
+FechaHorario Registro::getFechaEgreso() { return _fechaEgreso; }
+bool Registro::getAdentro() { return _adentro; }
 std::string Registro::getObservaciones() { return _observaciones; }
 int Registro::getTipoAutorizacion() { return _tipoAutorizacion; }
 int Registro::getIdUser() { return _idUser; }
@@ -36,13 +40,14 @@ void Registro::mostrar()
 {
     cout << "Persona: " << _idPersona << endl;
     cout << "Unidad: " << _idUnidad << endl;
-    cout << _fecha.toString() << endl;
-    cout << "Sentido: " << _sentido << endl;
+    cout << _fechaIngreso.toString() << endl;
+    cout << "Adentro: " << _adentro << endl;
     cout << "Observaciones: " << _observaciones << endl;
     cout << "Tipo Autorizacion: " << _tipoAutorizacion << endl;
+    cout << "Estado: " << _estado << endl;
 }
 void Registro::operator =(Proveedor p) {
-    Fecha aux;
+    FechaHorario aux;
     _idPersona = p.getId();    
-    _fecha = aux;
+    _fechaIngreso = aux;
 }

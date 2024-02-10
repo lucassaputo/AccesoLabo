@@ -10,6 +10,7 @@ public:
     int ContarRegistros();
     Proveedor Leer(int nroRegistro);
     int Buscar(int dni);
+    bool Modificar(Proveedor reg);
 
 private:
     std::string _nombreArchivo;

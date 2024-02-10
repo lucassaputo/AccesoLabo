@@ -73,3 +73,24 @@ int ArchivoProveedores::Buscar(int dni) {
     fclose(p);
     return -1;
 }
+
+bool ArchivoProveedores::Modificar(Proveedor reg) {
+    bool pudoEscribir;
+    int nroRegistro;
+    Proveedor aux;
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) {
+        return false;
+    }
+    int cant = ContarRegistros();
+    for (nroRegistro = 0;nroRegistro < cant;nroRegistro++) {
+        aux = Leer(nroRegistro);
+        if (aux.getId() == reg.getId()) {
+            break;
+        }
+    }
+    fseek(p, nroRegistro * sizeof(Proveedor), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Proveedor), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}
