@@ -32,13 +32,13 @@ void RegistrosManager::Cargar() {
 		cout << "Ingrese motivo de ingreso:   (1: Visita | 2: Proveedor | 3: Residente) ";
 		cin >> motivoAux;
 	}	
-	system("pause");
+	//system("pause");
 	motivo = std::stoi(motivoAux);
 
 	// IN UNIDAD
 	bool validado = false;
 	while (true) {
-		cout << "Ingrese unidad destino: " << endl;
+		cout << "Ingrese unidad destino: ";
 		cin.ignore();
 		cin >> unidadAux;
 		while (soloNumeros(unidadAux) == false) {
@@ -127,19 +127,37 @@ void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
 }
 void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p, int posActivo) {
 	cout << "EGRESO";
-	Registro r;
+	Registro reg;
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int i = cant;i > -1;i--) {
-		r = _archivoRegistros.Leer(i);		
-		if (r.getTipoPersona() == 2 && r.getIdPersona() == p.getId() && r.getEstado() == true) {
-			if (r.getAdentro()) {
+		reg = _archivoRegistros.Leer(i);
+		if (reg.getTipoPersona() == 2 && reg.getIdPersona() == p.getId() && reg.getEstado() == true) {
+			if (reg.getAdentro()) {
 				break;
 			}
 		}
 	}
 	FechaHorario aux;
-	r.setAdentro(false);	
-	r.setFechaEgreso(aux);
+	reg.setAdentro(false);
+	reg.setFechaEgreso(aux);
+	char r;
+	cout << "Desea guardar la salida? S/N";
+	std::cin >> r;
+	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+		cout << "Desea guardar la salida? S/N";
+		cin >> r;
+	}
+	if (r == 'S' || r == 's') {
+		if (_archivoRegistros.Modificar(reg)) {
+			cout << "Salida guardada correctamente." << endl;
+		}
+		else {
+			cout << "ERROR al guardar." << endl;
+		}
+	}
+	else {
+		cout << "Registro cancelado.";
+	}
 }
 
 int RegistrosManager::adentro1(int idPersona,int motivo,int tipoPersona) {
@@ -158,14 +176,14 @@ bool RegistrosManager::adentro(int idPersona, int motivo) {
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int i = cant;i >-1;i--) {
 		r = _archivoRegistros.Leer(i);
-		cout << "AAAAAAAAAA" << i << endl;
+		/*cout << "AAAAAAAAAA" << i << endl;
 		cout << "motivo" << motivo << endl;
 		cout << "r.getTipoPersona()" << r.getTipoPersona() << endl;
 		cout << "idPersona" << idPersona << endl;
 		cout << "r.getIdPersona()" << r.getIdPersona() << endl;
-			cout << "r.getEstado()" << r.getEstado() << endl;
+		cout << "r.getEstado()" << r.getEstado() << endl;*/
 		if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getEstado() == true) {
-			cout << "TTTTTTTTTTTTTTT" << r.getAdentro();
+			//cout << "TTTTTTTTTTTTTTT" << r.getAdentro();
 			if (r.getAdentro()) {
 				return true;
 			}
@@ -206,7 +224,7 @@ void RegistrosManager::Eliminar() {
 }
 
 Unidad RegistrosManager::buscarUnidad(int u) {
-	cout << "FX u: " << u << endl;
+	//cout << "FX u: " << u << endl;
 	int cant = _archivoUnidades.ContarRegistros();
 	Unidad uni;
 	Unidad aux;
@@ -214,7 +232,7 @@ Unidad RegistrosManager::buscarUnidad(int u) {
 	for (int i = 0;i < cant;i++) {
 		aux = _archivoUnidades.Leer(i);
 		if (aux.getId() == u) {
-			cout << "ACAAAA" << endl;
+			//cout << "ACAAAA" << endl;
 			return aux;
 		}
 	}

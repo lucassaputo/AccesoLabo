@@ -22,6 +22,7 @@ std::string Proveedor::getEmpresa() const { return _empresa; }
 
 void Proveedor::cargarProveedor(int dni) {
 	Fecha aux;
+	Fecha hoy;
 	string empresa;
 	cargarPersona();
 	setDni(dni);
@@ -29,12 +30,19 @@ void Proveedor::cargarProveedor(int dni) {
 	while (aux.ingresarFecha()==false) {
 		cout << "Formato invalido, ingrese DD/MM/AA";
 		cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy." << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
 	}
+	setArt(aux);
 	cin.ignore();
 	cout << "Ingrese Empresa perteneciente " << endl;
 	std::getline(cin, empresa);
 	setEmpresa(empresa);
-	setArt(aux);
 }
 
 
