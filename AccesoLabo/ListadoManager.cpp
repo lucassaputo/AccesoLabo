@@ -8,6 +8,7 @@ void ListadoManager::AutorizadosPorApellido() {
     cout << "AutorizadosPorApellido" << endl;
 	Autorizacion* regAut;
 	ArchivoAutorizacion archAut("Autorizaciones.dat");
+	std::string* ApellidoAutorizados;
 	int cantReg = archAut.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
@@ -17,20 +18,68 @@ void ListadoManager::AutorizadosPorApellido() {
 		cout << "Error de asignacion de memoria " << endl;
 		return;
 	}
+	ApellidoAutorizados = new std::string[cantReg];
+	if (ApellidoAutorizados == nullptr) {
+		cout << "Error de asignacion de memoria " << endl;
+		return;
+	}
 	for (int x = 0;x < cantReg;x++) {
 		regAut[x] = archAut.Leer(x);
+		if (regAut[x].getTipo() == 1) {
+			ApellidoAutorizados[x] = BuscarenVisita(regAut[x].getDNI());
+		}
+		else if (regAut[x].getTipo() == 2) {
+			ApellidoAutorizados[x] = BuscarenProveedor(regAut[x].getDNI());
+		}
+		else {
+			cout << "Error de tipo de autorizado" << endl;
+			return;
+		}
+	}
+	OrdenarVectorAutorizadosxApellido(ApellidoAutorizados, cantReg);
+	for (int j = 0;j < cantReg;j++) {
+		cout << ApellidoAutorizados[j] << endl;
 	}
 
 
 	system("pause");
 }
-void ListadoManager::OrdenarVectorAutorizadosxApellido(Autorizacion* reg, int tam)
+std::string ListadoManager::BuscarenVisita(int dni)
 {
-	Autorizacion aux;
+	std::string Apellido;
+	Visita reg;
+	ArchivoVisita archVisita("Visitas.dat");
+	int pos=archVisita.Buscar(dni);
+	reg = archVisita.Leer(pos);
+	Apellido = reg.getApellidos();
+	
+	return Apellido;
+}
+std::string ListadoManager::BuscarenProveedor(int dni)
+{
+	
+	std::string Apellido;
+	Proveedor reg;
+	ArchivoProveedores archProveedor("Proveedores.dat");
+	int pos = archProveedor.Buscar(dni);
+	reg = archProveedor.Leer(pos);
+	Apellido = reg.getApellidos();
+
+	return Apellido;
+
+}
+void ListadoManager::OrdenarVectorAutorizadosxApellido(std::string *reg, int tam)
+{
+	std::string aux;
 
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(reg[x].c_str(), reg[x + 1].c_str()) > 0) {
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
 			
+			}
 		}
 	}
 }
