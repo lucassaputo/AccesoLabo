@@ -5,6 +5,23 @@ using namespace std;
 
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
+	cout << "AutorizadosPorApellido" << endl;
+	//MostrarCantidadRegistros();
+	//ListarTodos();	
+	ListarRegistros();
+	system("pause");
+}
+void ListadoManager::ListarRegistros() {
+	int cant = _archivoRegistros.ContarRegistros();
+	Registro reg;
+	for (int i = 0;i < cant;i++) {
+		reg = _archivoRegistros.Leer(i);
+		reg.mostrar();
+	}
+}
+/*
+void ListadoManager::AutorizadosPorApellido() {
+	system("cls");
     cout << "AutorizadosPorApellido" << endl;
 	Autorizacion* regAut;
 	ArchivoAutorizacion archAut("Autorizaciones.dat");
@@ -44,7 +61,7 @@ void ListadoManager::AutorizadosPorApellido() {
 	delete [] regAut;
 
 	system("pause");
-}
+}*/
 std::string ListadoManager::BuscarenVisita(int dni)
 {
 	std::string Apellido;

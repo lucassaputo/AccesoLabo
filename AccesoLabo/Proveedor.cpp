@@ -22,21 +22,58 @@ std::string Proveedor::getEmpresa() const { return _empresa; }
 
 void Proveedor::cargarProveedor(int dni) {
 	Fecha aux;
+	Fecha hoy;
 	string empresa;
 	cargarPersona();
 	setDni(dni);
 	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
-	while (aux.ingresarFecha()==false) {
-		cout << "Formato invalido, ingrese DD/MM/AA";
-		cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
 	}
+	setArt(aux);
 	cin.ignore();
 	cout << "Ingrese Empresa perteneciente " << endl;
 	std::getline(cin, empresa);
 	setEmpresa(empresa);
-	setArt(aux);
 }
 
+void Proveedor::editarProveedor() {
+	Fecha aux;
+	Fecha hoy;
+	string empresa;
+	Persona::editarPersona();	
+	cout << "Fecha de vencimiento actual: " << _art.toString() << endl;
+	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
+	}
+	setArt(aux);
+	cin.ignore();
+	cout << "Empresa perteneciente actual: " << _empresa << endl;
+	cout << "Ingrese Empresa perteneciente " << endl;
+	std::getline(cin, empresa);
+	setEmpresa(empresa);
+}
 
 void Proveedor::mostrar() {
 	Persona::mostrar();
