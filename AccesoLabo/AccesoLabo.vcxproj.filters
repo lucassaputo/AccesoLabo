@@ -207,7 +207,6 @@
     <ClCompile Include="AbmProveedores.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuAbmPersonas.h">
@@ -365,7 +364,6 @@
     </ClInclude>
     <ClInclude Include="AbmProveedores.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
     </ClInclude>
   </ItemGroup>
 </Project>
