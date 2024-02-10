@@ -54,6 +54,7 @@ void Usuario::editar()
 void Usuario::mostrar() {
 	Persona::mostrar();
 	std::cout << "Nick : " << _nick << std::endl;	
+	std::cout << "Pass : " << _password << std::endl;
 	std::cout << "Legajo: " << _legajo << std::endl;
 	std::cout << "Nivel: " << _nivel << std::endl;	
 	std::cout << "estado: " <<  _estado 

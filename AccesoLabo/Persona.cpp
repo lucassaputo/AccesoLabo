@@ -33,10 +33,31 @@ string Persona::getApellidosyNombres() {
 }
 
 void  Persona::cargarPersona() {
+	Fecha aux;
+	Fecha hoy;
 	cin.ignore();
 	setNombres(cargarString("Nombre"));
 	setApellidos(cargarString("Apellido"));
-	setNacimiento(02, 11, 2000);
+	//setNacimiento(02, 11, 2000);
+	cout << "Ingrese fecha de nacimiento: " << endl;
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy." << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
+	}
+	cout << "dia: " << aux.getDia() << endl;
+	cout << "mes: " << aux.getMes() << endl;
+	cout << "anio: " << aux.getAnio() << endl;
+
+
 	_estado = true;
 
 	//string nombres, apellidos;

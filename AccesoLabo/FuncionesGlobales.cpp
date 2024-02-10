@@ -81,7 +81,7 @@ bool soloLetras(string x) {
 string ingresarLegajo() {
 	string legajo;
 	cout << "Ingrese legajo: " << endl;
-	cin.ignore();
+	//cin.ignore();
 	cin >> legajo;
 	while (!(soloNumeros(legajo))) {
 		cout << "Solo puede contener numeros, ingrese legajo: ";
