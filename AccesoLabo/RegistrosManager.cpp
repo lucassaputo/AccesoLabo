@@ -102,9 +102,13 @@ void RegistrosManager::registroProveedores(Unidad uni, int dni,  int motivo) {
 	else {
 		p.cargarProveedor(dni);
 		p.setId(_archivoProveedores.ContarRegistros() + 1);
-		_archivoProveedores.Guardar(p);
-		cout << "Proveedor guardado correctamente." << endl;
-		ingresoProveedor(uni,p);
+		if (_archivoProveedores.Guardar(p)) {
+			cout << "Proveedor guardado correctamente." << endl;
+			ingresoProveedor(uni, p);
+		}
+		else {
+			cout << "Error al guardar proveedor." << endl;
+		}
 	}	
 	return;
 }
@@ -195,12 +199,23 @@ void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p, int posActivo)
 	//grabar salida
 	//borrar activo
 }
-int RegistrosManager::adentro(int idPersona,int motivo,int tipoPersona) {
+int RegistrosManager::adentro1(int idPersona,int motivo,int tipoPersona) {
 	Registro r;
 	int cant = _archivoActivos.ContarRegistros();
 	for (int i = 0;i < cant;i++) {
 		r = _archivoActivos.Leer(i);
 		if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getTipoPersona() == tipoPersona && r.getEstado()==true) {
+			return i;
+		}
+	}
+	return -1;
+}
+int RegistrosManager::adentro(int idPersona, int motivo, int tipoPersona) {
+	Registro r;
+	int cant = _archivoActivos.ContarRegistros();
+	for (int i = 0;i < cant;i++) {
+		r = _archivoActivos.Leer(i);
+		if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getTipoPersona() == tipoPersona && r.getEstado() == true) {
 			return i;
 		}
 	}

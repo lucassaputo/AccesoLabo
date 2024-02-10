@@ -54,6 +54,9 @@ int main() {
 * metodo para ingresar pass y limitar cant de caracteres
 * permirtir numeros en observaciones unidad
 * tocas y chequear tamaño de los atributos char[xxxxx]
+* limitar mas los submenus segun usuario logueado
+* poner en rojo algunos textos? o negritas?
+* chequear defaults en switch que tengan todos
 */
 
 /*

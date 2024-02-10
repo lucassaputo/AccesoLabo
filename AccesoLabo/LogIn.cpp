@@ -44,7 +44,7 @@ void LogIn::Mostrar() {
 		system("pause");
 		system("cls");
 		std::cout << "BIENVENIDO" << std::endl;
-		std::cout << "++++++++++++++++++++++++++++++" << std::endl;
+		std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 		legajo = ingresarLegajo();
 		u = _archivoUsuario.BuscarObj(legajo);
 		std::cout << "eeee:     " << u.getLegajo();
