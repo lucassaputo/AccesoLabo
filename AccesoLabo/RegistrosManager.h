@@ -24,6 +24,7 @@ class RegistrosManager
 		Autorizacion getAutorizacion(Proveedor &p);
 		void ingresoProveedor(Unidad& uni, Proveedor& p);
 		void egresoProveedor(Unidad& uni, Proveedor& p, int posActivo);
+		int adentro1(int dni, int motivo, int tipoPersona);
 		int adentro(int dni, int motivo, int tipoPersona);
 		bool autorizado(Unidad uni, Proveedor p);
 };
