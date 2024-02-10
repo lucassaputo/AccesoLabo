@@ -9,5 +9,5 @@ public:
 	void Cargar();
 	void Editar();
 	void Eliminar();	
-	std::string ingresarLegajo();
+	//std::string ingresarLegajo();
 };

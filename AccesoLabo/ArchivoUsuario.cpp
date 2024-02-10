@@ -4,7 +4,7 @@
 #include <cstring>
 #include <iostream>
 
-ArchivoUsuario::ArchivoUsuario(std::string nombreArchivo = "Usuarios.dat") {
+ArchivoUsuario::ArchivoUsuario(std::string nombreArchivo = "Usuario.dat") {
     _nombreArchivo = nombreArchivo;
 }
 
@@ -45,7 +45,7 @@ int ArchivoUsuario::ContarRegistros() {
 
 Usuario ArchivoUsuario::Leer(int nroRegistro) {
     Usuario reg;
-    reg.setLegajo(-1);
+    reg.setLegajo("- 1");
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return reg;//agregar como informar este error.
@@ -57,7 +57,7 @@ Usuario ArchivoUsuario::Leer(int nroRegistro) {
 }
 
 
-int ArchivoUsuario::Buscar(int legajo) {
+int ArchivoUsuario::Buscar(std::string legajo) {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return -1;
@@ -108,17 +108,20 @@ int ArchivoUsuario::BuscarPos(int id) {
     return -1;
 }
 
-Usuario ArchivoUsuario::BuscarObj(int id) {
+Usuario ArchivoUsuario::BuscarObj(std::string legajo) {
     Usuario u;
-    u.setLegajo(-1);
+    u.setLegajo("-1");
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return u;
     }
     int i = 0;
+    int comparacion;
     Usuario reg;
     while (fread(&reg, sizeof(Usuario), 1, p)) {
-        if (reg.getLegajo() == id) {
+        //std::cout << "sdfsdfsd  f    " + reg.getLegajo();
+        comparacion = reg.getLegajo().compare(legajo);
+        if (comparacion == 0) {
             fclose(p);
             return reg;
         }

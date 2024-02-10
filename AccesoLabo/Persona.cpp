@@ -33,33 +33,55 @@ string Persona::getApellidosyNombres() {
 }
 
 void  Persona::cargarPersona() {
-	string nombres, apellidos;
-	cout << "Nombre/s: ";
+	Fecha aux;
+	Fecha hoy;
+	cin.ignore();
+	setNombres(cargarString("Nombre"));
+	setApellidos(cargarString("Apellido"));
+	//setNacimiento(02, 11, 2000);
+	cout << "Ingrese fecha de nacimiento: " << endl;
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy." << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
+	}
+	cout << "dia: " << aux.getDia() << endl;
+	cout << "mes: " << aux.getMes() << endl;
+	cout << "anio: " << aux.getAnio() << endl;
+
+
+	_estado = true;
+
+	//string nombres, apellidos;
+	/*cout << "Nombre/s: ";
 	cin.ignore();
 	getline(cin, nombres);
 	//strcpy(_nombres, nombres.c_str());
-	setNombres(nombres);
-	cout << "Apellido/s: ";
+	while (!(soloLetras(nombres))) {
+		cout << "Nombre/s: ";
+		cin.ignore();
+		getline(cin, nombres);
+	}*/	
+	/*cout << "Apellido/s: ";
 	cin.ignore();
-	getline(cin, apellidos);
-	strcpy(_apellidos, apellidos.c_str());
-	setNacimiento(02, 11, 2000);	
-	_estado = true;
+	getline(cin, apellidos);*/
+	//strcpy(_apellidos, apellidos.c_str());
 }
 
 void  Persona::editarPersona() {
-	string nombres, apellidos;
+	cin.ignore();
 	cout << "Nombre/s actuales: " << _nombres << endl;
-	cout << "Nombre/s: ";
-	cin.ignore();
-	getline(cin, nombres);
-	//strcpy(_nombres, nombres.c_str());
-	setNombres(nombres);
+	setNombres(cargarString("Nombre"));
 	cout << "Apellido/s actuales: " << _apellidos << endl;
-	cout << "Apellido/s: ";
-	cin.ignore();
-	getline(cin, apellidos);
-	strcpy(_apellidos, apellidos.c_str());
+	setApellidos(cargarString("Apellido"));	
 	setNacimiento(02, 11, 2000);
 	_estado = true;
 }

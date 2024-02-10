@@ -9,20 +9,19 @@ void UsuarioManager::Cargar() {
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Usuario u;
 	string legajo = ingresarLegajo();	
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
-	cout << "eeee:     " << u.getLegajo();
-	u.mostrar();
-	if (u.getLegajo() >= 0) {
+	u = _archivoUsuario.BuscarObj(legajo);
+	//cout << "eeee:     " << u.getLegajo();
+	//u.mostrar();
+	cout << "DDDDDDDDDDDDDD2222222222222222222222" << endl;
+	if (u.getLegajo() != "-1") {
+		//cout << "DDDDDDDDDDDDDD" << endl;
 		if (u.getEstado()) {
-			u.mostrar();
+			//u.mostrar();
 			cout << "El usuario ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
 		else {
-			cout << "ACAAA11" << endl;
-			u.cargar();//validar cargar strings
-			int id = _archivoUsuario.ContarRegistros()+1;
-			u.setId(id);
-			u.setLegajo(std::stoi(legajo));
+			//cout << "ACAAA11" << endl;			
+			u.cargar();			
 			if (_archivoUsuario.Modificar(u)) {
 				cout << "Registro guardado correctamente." << endl;
 			}
@@ -32,11 +31,11 @@ void UsuarioManager::Cargar() {
 		}
 	}
 	else {
-		cout << "ACAAA22" << endl;
-		u.setLegajo(std::stoi(legajo));
-		int id = _archivoUsuario.ContarRegistros() + 1;
-		u.setId(id);
+		//cout << "ACAAA22" << endl;
+		u.setLegajo(legajo);
+		u.setId(_archivoUsuario.ContarRegistros() + 1);
 		u.cargar();
+		u.mostrar();system("pause");
 		if (_archivoUsuario.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;
 		}
@@ -52,8 +51,8 @@ void UsuarioManager::Editar() {
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Usuario u;
 	string legajo = ingresarLegajo();
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
-	if (u.getLegajo() >= 0) {
+	u = _archivoUsuario.BuscarObj(legajo);
+	if (u.getLegajo() != "-1") {
 		if (!u.getEstado()) {
 			cout << "El usuario no existe, realice el alta." << endl;
 		}
@@ -79,13 +78,13 @@ void UsuarioManager::Eliminar() {
 	Usuario u;
 	string decision;
 	string legajo = ingresarLegajo();
-	u = _archivoUsuario.BuscarObj(std::stoi(legajo));
-	if (u.getLegajo() >= 0) {
+	u = _archivoUsuario.BuscarObj(legajo);
+	if (u.getLegajo() != "-1") {
 		if (!u.getEstado()) {
 			cout << "El usuario no existe.";
 		}
 		else {
-			cout << "Desea dar la baja del usuario " << legajo << "? S/N : ";
+			cout << "Desea dar la baja del usuario de legajo:  " << legajo << "? S/N : ";
 			cin.ignore();
 			cin >> decision;
 			while (soloNumeros(decision) || !(decision == "S" || decision == "s" || decision == "N" || decision == "n")) {
@@ -108,20 +107,8 @@ void UsuarioManager::Eliminar() {
 		}
 	}
 	else {
-		cout << "El usuario no existe, realice el alta." << endl;
+		cout << "El usuario no existe." << endl;
 	}
 	system("pause");
 }
 
-string UsuarioManager::ingresarLegajo() {
-	string legajo;
-	cout << "Ingrese legajo: " << endl;
-	cin.ignore();
-	cin >> legajo;
-	while (soloNumeros(legajo) == false) {
-		cout << "Solo puede contener numeros, ingrese unidad: ";
-		cin.ignore();
-		cin >> legajo;
-	}
-	return legajo;
-}
