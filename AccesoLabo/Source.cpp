@@ -52,6 +52,8 @@ int main() {
 * estado activo o no es de usuario o persona? o de ambos?
 * como se hace referencia a un atributo de la clase padre en el cpp de la hija? quiero acceder a _dni pero no pude, sera pq el encapsulamiento? this no funciono
 * metodo para ingresar pass y limitar cant de caracteres
+* permirtir numeros en observaciones unidad
+* tocas y chequear tamaño de los atributos char[xxxxx]
 */
 
 /*

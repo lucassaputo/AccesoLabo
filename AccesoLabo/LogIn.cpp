@@ -11,15 +11,17 @@ void LogIn::Mostrar() {
 	UserSingleton& user = UserSingleton::getInstance();
 	std::string pasword, legajo;
 	Usuario u;
+	std::cout << "BIENVENIDO" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);
 	std::cout << "eeee:     " << u.getLegajo();
-	u.mostrar();	
+	//u.mostrar();	
 	while (true) {
 		if (u.getLegajo() != "-1") {
 			if (u.getEstado()) {
-				u.mostrar();
-				std::cout << "Ingrese passwordddd" << std::endl;
+				//u.mostrar();
+				std::cout << "Ingrese password" << std::endl;
 				std::cin >> pasword;
 				if (strcmp(pasword.c_str(), u.getPassword().c_str()) == 0) {
 					user.setMiClase(u);
@@ -41,10 +43,12 @@ void LogIn::Mostrar() {
 		}
 		system("pause");
 		system("cls");
+		std::cout << "BIENVENIDO" << std::endl;
+		std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 		legajo = ingresarLegajo();
 		u = _archivoUsuario.BuscarObj(legajo);
 		std::cout << "eeee:     " << u.getLegajo();
-		u.mostrar();
+	//	u.mostrar();
 	}
 	//system("pause");
 }

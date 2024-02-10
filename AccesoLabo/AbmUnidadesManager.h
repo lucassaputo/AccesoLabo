@@ -2,12 +2,10 @@
 #include "ArchivoUnidad.h"
 
 class AbmUnidadesManager {
+private:
+	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 public:
 	void Alta();
 	void Baja();
 	void Editar();
-	std::string ingresarId();
-
-private:
-	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 };

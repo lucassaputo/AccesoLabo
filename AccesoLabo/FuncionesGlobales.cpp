@@ -43,6 +43,18 @@ string cargarString(string campo) {
 	return cadena;
 }
 
+int cargarTelefono() {
+	string aux = "";
+	cout << "Ingrese telefono: ";
+	cin >> aux;
+	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+		cout << "Telefono invalido, Ingrese telefono: ";
+		//cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
+}
+
 int cargarDni() {
 	string aux = "";
 	cout << "Ingrese DNI: ";
@@ -89,6 +101,19 @@ string ingresarLegajo() {
 		cin >> legajo;
 	}
 	return legajo;
+}
+
+string ingresarIdUnidad() {
+	string id;
+	cout << "Ingrese numero de unidad: " << endl;
+	cin.ignore();
+	cin >> id;
+	while (soloNumeros(id) == false) {
+		cout << "Solo puede contener numeros, Ingrese unidad: ";
+		cin.ignore();
+		cin >> id;
+	}
+	return id;
 }
 
 void Creditos() {
