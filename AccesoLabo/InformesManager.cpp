@@ -1,8 +1,16 @@
 #include "InformesManager.h"
 #include <iostream>
 using namespace std;
-void InformesManager::UnidadesMas50()
-{
+void InformesManager::UnidadesMas50() // punto 1
+{/*
+ system("cls");
+	int mes, anio;
+	cout << "unidades con mas de 50 movimientos" << endl;
+	cout << "Ingrese el mes: " << endl;
+	cin >> mes;
+	cout << "Ingrese el anio: " << endl;
+	cin >> anio;
+ */
 	system("cls");
 	/// pedir al usuario ingreso de fecha
 	Fecha fi;
@@ -52,7 +60,7 @@ int InformesManager::ID_Maximo()
 	for (int x = 0;x < CantRegU;x++) {
 		reg = _archivoUnidades.Leer(x);
 		vecID[x] = reg.getId();
-	}
+	}	
 	for (int i = 0;i < CantRegU-1;i++) {
 		if (vecID[i] > ID_Max) {
 			ID_Max = vecID[i];
@@ -61,6 +69,7 @@ int InformesManager::ID_Maximo()
 	delete[]vecID;
 	return ID_Max;
 }
+
 
 void InformesManager::Mostrar50(int* vec, int tam)
 {
@@ -72,7 +81,7 @@ void InformesManager::Mostrar50(int* vec, int tam)
 }
 
 
-void InformesManager::InformeProveedores()
+void InformesManager::InformeProveedores() // punto 2
 {	system("cls");
 	std::cout << "Informe de Proveedores " << std::endl;
 	// pedir al usuario fecha inicial y final para buscar en ese rango el ingreso de proveedores
@@ -136,35 +145,92 @@ void InformesManager::MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int 
 		
 }
 
-void InformesManager::HistorialMovimientosxUnidades()
+void InformesManager::HistorialMovimientosxUnidades() // punto 3
 {
 	system("cls");
-	std::cout << "Historial de movimientos por unidades" << std::endl;
+	cout << "Historial de movimientos por unidades" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++" << endl;
+	int* contMovimientos;
+	int* VectordeIndices;
+	int CantUni = _archivoUnidades.ContarRegistros();
+	int cant = _archivoRegistros.ContarRegistros();
+	Unidad* regU;
+	Registro reg;	
+	regU = new Unidad[CantUni];
+	if (regU == nullptr) {
+		cout << "error de asignacion de memoria" << endl;
+		return;
+	}
+	
+	contMovimientos = new int[cant]();
+	if (contMovimientos == nullptr) {
+		cout << "error en la asignacion de memoria" << endl;
+		return;
+	}
+	VectordeIndices = new int[cant]();
+	if (VectordeIndices == nullptr) {
+		cout << "error en la asignacion de memoria" << endl;
+		return;
+	}
+	CargarVectorIndices(VectordeIndices, cant);
+	CargarvectorUnidades(regU, CantUni);
+		for (int i = 0;i < cant;i++) {
+		reg = _archivoRegistros.Leer(i);		 
+			contMovimientos[reg.getIdUnidad() - 1]++;
+	}	
+
+		int aux = 0;
+		int aux2 = 0;
+		for (int i = 0;i < cant;i++) {
+			for (int x = 0;x < cant - i - 1;x++) {
+				if (contMovimientos[x] > contMovimientos[x + 1]) {
+					aux = contMovimientos[x];
+					aux2 = VectordeIndices[x];
+					contMovimientos[x] = contMovimientos[x + 1];
+					VectordeIndices[x] = VectordeIndices[x + 1];
+					contMovimientos[x + 1] = aux;
+					VectordeIndices[x + 1] = aux2;
+					
+				}
+			}
+		}	
+		Unidad uMayor, uMenor;
+
+		for (int x = 0;x < CantUni;x++) {
+			if (regU[x].getId() == VectordeIndices[0]) {
+				uMayor = regU[x];
+			}
+			if (regU[x].getId() == VectordeIndices[cant - 1]) {
+				uMenor = regU[x];
+			}
+		}
+		cout << "Unidad con mayor Movimientos: " << endl;
+		uMayor.mostrar();
+		cout << "Cantidad de Movimientos: " << contMovimientos[0] << endl;
+		cout << "Unidad con menor Movimientos: " << endl;
+		uMenor.mostrar();
+		cout << "Cantidad de movimientos" << contMovimientos[cant-1] << endl;
+	delete[]VectordeIndices;
+	delete[] contMovimientos;
+	delete[] regU;
 	system("pause");
+}
+
+void InformesManager::CargarVectorIndices(int* vecIndices, int tam)
+{
+	for (int x = 0;x < tam;x++) {
+		vecIndices[x] = x + 1;
+	}
+}
+void InformesManager::CargarvectorUnidades(Unidad* u, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		u[x] = _archivoUnidades.Leer(x);
+	}
 }
 
 void InformesManager::HistorialMovimientos()
 {	system("cls");
 	std::cout << "Historial de movimientos " << std::endl;
 	system("pause");
-}
-#include "InformesManager.h"
-using namespace std;
-void UnidadesMas50() {
-	system("cls");
-	int mes, anio;
-	cout << "unidades con mas de 50 movimientos" << endl;
-	cout << "Ingrese el mes: " << endl;
-	cin >> mes;
-	cout << "Ingrese el anio: " << endl;
-	cin >> anio;
-
-
-
-
-
-
-
-
-
 }

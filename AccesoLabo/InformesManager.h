@@ -22,8 +22,11 @@ class InformesManager
 		void CargarVectorRegistros(Registro *reg, int cant);
 		void CargarVectorProveedores(Proveedor *reg, int cant);
 		void MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int cant);
-		void HistorialMovimientosxUnidades(); 
-		void HistorialMovimientos();
+		void HistorialMovimientosxUnidades(); // punto 3
+		void CargarVectorIndices(int* vecIndices, int tam);
+		void OrdenarVectorEnterosxNumero(int* reg, int tam);
+		void CargarvectorUnidades(Unidad* u, int cant);
+		void HistorialMovimientos(); // punto 4
 
 	private:
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
