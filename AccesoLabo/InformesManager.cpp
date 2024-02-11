@@ -4,7 +4,8 @@ using namespace std;
 void InformesManager::UnidadesMas50()
 {
 	system("cls");
-
+	/// pedir al usuario ingreso de fecha
+	Fecha fi;
 	fi.ingresarFecha();
 	Unidad u;
 	Registro reg;
@@ -23,7 +24,7 @@ void InformesManager::UnidadesMas50()
 	int cantRegistros = _archivoRegistros.ContarRegistros(); // contador de registros de archivoregistros
 	for (int i = 0;i < cantRegistros;i++) {
 		reg = _archivoRegistros.Leer(i);
-		if (reg.getFechaIngreso() == fi) {
+		if (reg.getFechaIngreso().getFecha() == fi) {
 			contMovimientos[reg.getId() - 1]++;
 		}
 	}
@@ -65,7 +66,7 @@ void InformesManager::Mostrar50(int* vec, int tam)
 {
 	for (int x = 0;x < tam;x++) {
 		if (vec[x] > 50) {
-			cout << "La Unidad Funcional: " << x + 1 << " tiene mas de 50 movimientos " << endl;
+			cout << "La Unidad Funcional: " << x + 1 << " tiene " << vec[x] << " movimientos " << endl;
 		}
 	}
 }
@@ -74,7 +75,65 @@ void InformesManager::Mostrar50(int* vec, int tam)
 void InformesManager::InformeProveedores()
 {	system("cls");
 	std::cout << "Informe de Proveedores " << std::endl;
+	// pedir al usuario fecha inicial y final para buscar en ese rango el ingreso de proveedores
+	Fecha FechaInicial, FechaFinal;
+	FechaFinal.ingresarFecha();
+	FechaInicial.ingresarFecha();
+	Registro *reg;
+	int cantReg = _archivoRegistros.ContarRegistros();
+	reg = new Registro[cantReg];
+	if (reg == nullptr) {
+		cout << "error en la asignacion de memoria" << endl;
+		return;
+	}
+	CargarVectorRegistros(reg, cantReg);
+	
+
 	system("pause");
+}
+
+void InformesManager::CargarVectorRegistros(Registro *reg, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		reg[x] = _archivoRegistros.Leer(x);
+	}
+}
+
+void InformesManager::CargarVectorProveedores(Proveedor* reg, int cant)
+{
+	for (int x = 0;x < cant;x++) {
+		reg[x] = _archivoProveedores.Leer(x);
+	}
+}
+
+void InformesManager::MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int cant)
+{
+	Fecha fechamov;
+	FechaHorario FechaHoraMostrar;
+	int cantRegp = _archivoProveedores.ContarRegistros();
+	Proveedor* RegProv;
+	RegProv = new Proveedor[cantRegp];
+	if (RegProv == nullptr) {
+		cout << "error de asignacion de memoria" << endl;
+		return;
+	}
+	CargarVectorProveedores(RegProv, cantRegp);
+	for (int i = 0;i < cant;i++) {
+		fechamov = reg[i].getFechaIngreso().getFecha();
+		FechaHoraMostrar = reg[i].getFechaIngreso();
+		if (fechamov>=fi && fechamov<=ff) {
+			for (int j = 0;j < cantRegp;j++) {
+				if (reg[i].getIdPersona()==RegProv[j].getId()) {
+					cout << "Fecha y Horario del movimiento: " << FechaHoraMostrar.toString() << endl;
+					cout << "Datos del proveedor: " << endl;
+					RegProv[j].mostrar();
+				}
+			}
+		}
+
+	}
+		 
+		
 }
 
 void InformesManager::HistorialMovimientosxUnidades()

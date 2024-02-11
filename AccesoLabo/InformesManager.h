@@ -19,6 +19,9 @@ class InformesManager
 		int ID_Maximo();
 		void Mostrar50(int *vec, int tam);
 		void InformeProveedores(); // Punto 2
+		void CargarVectorRegistros(Registro *reg, int cant);
+		void CargarVectorProveedores(Proveedor *reg, int cant);
+		void MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int cant);
 		void HistorialMovimientosxUnidades(); 
 		void HistorialMovimientos();
 

@@ -168,7 +168,21 @@ bool Fecha::ingresarFecha() {
 
 bool Fecha::operator>(Fecha& fechaActual)
 {
+    // MODIFICACION PARA QUE DUEVUELVA TRUE SOLO SI ES MAYOR (DEVOLVIA TRUE SI ERA MAYORT O IGUAL)   
     if (this->getAnio() > fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() > fechaActual.getMes()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() > fechaActual.getDia()) {
+        return true;
+    }
+
+    return false;   
+   
+    /*
+ if (this->getAnio() > fechaActual.getAnio()) {
         return true;
     }
     else if (this->getAnio() == fechaActual.getAnio()) {
@@ -190,10 +204,42 @@ bool Fecha::operator>(Fecha& fechaActual)
     else {
         return false;
     }
+ */
+    
+}
+
+bool Fecha::operator>=(Fecha& fechaActual)
+{
+    if (this->getAnio() > fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() > fechaActual.getMes()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() >= fechaActual.getDia()) {
+        return true;
+    }
+
+    return false;
 }
 
 bool Fecha::operator<(Fecha& fechaActual)
 {
+    // MODIFICACION PARA QUE DUEVUELVA TRUE SOLO SI ES MENOR (DEVOLVIA TRUE SI ERA MENOR O IGUAL)   
+    if (this->getAnio() < fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() < fechaActual.getMes()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() < fechaActual.getDia()) {
+        return true;
+    }
+
+    return false;
+    
+    /*
+ 
     return false;
     if (this->getAnio() > fechaActual.getAnio()) {
         return true;
@@ -217,6 +263,22 @@ bool Fecha::operator<(Fecha& fechaActual)
     else {
         return false;
     }
+ */
+}
+
+bool Fecha::operator<=(Fecha& fechaActual)
+{
+    if (this->getAnio() < fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() < fechaActual.getMes()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() <= fechaActual.getDia()) {
+        return true;
+    }
+
+    return false;
 }
 
 bool Fecha::operator==(Fecha& fechaActual)
