@@ -13,9 +13,6 @@ void MenuInformes::Mostrar() {
         cout << "2 - Informe Proveedores Ingresados" << endl;
         cout << "3 - Historial de Movimientos de Unidades" << endl;
         cout << "4 - Historial de Movimientos Mensuales" << endl;
-        cout << "5 -" << endl;
-        cout << "6 - " << endl;
-        cout << "7 - " << endl;
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
@@ -23,26 +20,17 @@ void MenuInformes::Mostrar() {
         cin >> opcion;
         switch (opcion) {
         case 1:
-
+            _manager.UnidadesMas50();
             break;
         case 2:
-
+            _manager.InformeProveedores();
             break;
         case 3:
-
+            _manager.HistorialMovimientosxUnidades();
             break;
         case 4:
-
-            break;
-        case 5:
-
-            break;
-        case 6:
-
-            break;
-        case 7:
-
-            break;
+            _manager.HistorialMovimientos();
+            break;       
         case 0:
             return;
             break;

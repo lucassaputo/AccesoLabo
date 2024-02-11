@@ -73,3 +73,45 @@ int ArchivoProveedores::Buscar(int dni) {
     fclose(p);
     return -1;
 }
+
+Proveedor ArchivoProveedores::BuscarObj(int dni) {
+    Proveedor prov;
+    prov.setDni(-1);
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return prov;
+    }
+    int i = 0;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Proveedor), 1, p)) {
+        if (reg.getDni() == dni) {
+            fclose(p);
+            return reg;
+        }
+        i++;
+    }
+    fclose(p);
+    return prov;
+}
+
+
+bool ArchivoProveedores::Modificar(Proveedor reg) {
+    bool pudoEscribir;
+    int nroRegistro;
+    Proveedor aux;
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) {
+        return false;
+    }
+    int cant = ContarRegistros();
+    for (nroRegistro = 0;nroRegistro < cant;nroRegistro++) {
+        aux = Leer(nroRegistro);
+        if (aux.getId() == reg.getId()) {
+            break;
+        }
+    }
+    fseek(p, nroRegistro * sizeof(Proveedor), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Proveedor), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}

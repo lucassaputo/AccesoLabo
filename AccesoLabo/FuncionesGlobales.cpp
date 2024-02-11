@@ -1,6 +1,8 @@
 #include "FuncionesGlobales.h"
 #include "Fecha.h"
 #include<iostream>
+#include "Unidad.h"
+#include "ArchivoUnidad.h"
 using namespace std;
 
 void cargarCadena(char* pal, int tam) {
@@ -15,6 +17,59 @@ void cargarCadena(char* pal, int tam) {
 	fflush(stdin);
 }
 
+string cargarNombre() {
+	string nombre = "";
+	cout << "Nombre/s: ";
+	cin.ignore();
+	getline(cin, nombre);
+	//strcpy(_nombres, nombres.c_str());
+	while (!(soloLetras(nombre))) {
+		cout << "El Nombre no puede contener números//   Nombre / s: ";
+		cin.ignore();
+		getline(cin, nombre);
+	}
+	return nombre;
+}
+
+string cargarString(string campo) {
+	string cadena = "";
+	cout << campo + ": ";
+	//cin.ignore();
+	getline(cin, cadena);
+	//strcpy(_nombres, nombres.c_str());
+	while (!(soloLetras(cadena))) {
+		cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
+		cin.ignore();
+		getline(cin, cadena);
+	}
+	return cadena;
+}
+
+int cargarTelefono() {
+	string aux = "";
+	cout << "Ingrese telefono: ";
+	cin >> aux;
+	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+		cout << "Telefono invalido, Ingrese telefono: ";
+		//cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
+}
+
+int cargarDni() {
+	string aux = "";
+	cout << "Ingrese DNI: ";
+	//cin.ignore();
+	cin >> aux;
+	while (soloNumeros(aux) == false || !(aux.size() < 10 && aux.size() > 6)) {
+		cout << "DNI invalido, Ingrese DNI: ";
+		cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
+}
+
 bool soloNumeros(string x) {
 	bool esNumero = true;
 	for (char c : x) {
@@ -26,6 +81,110 @@ bool soloNumeros(string x) {
 	return esNumero;
 }
 
+bool soloLetras(string x) {
+	bool esLetra = true;
+	for (char c : x) {
+		if (isdigit(c)) {
+			esLetra = false;
+			break;
+		}
+	}
+	return esLetra;
+}
+
+string ingresarLegajo() {
+	string legajo;
+	cout << "Ingrese legajo: " << endl;
+	//cin.ignore();
+	cin >> legajo;
+	while (!(soloNumeros(legajo))) {
+		cout << "Solo puede contener numeros, ingrese legajo: ";
+		cin.ignore();
+		cin >> legajo;
+	}
+	return legajo;
+}
+
+string ingresarIdUnidad() {
+	string id;
+	cout << "Ingrese numero de unidad: " << endl;
+	cin.ignore();
+	cin >> id;
+	while (soloNumeros(id) == false) {
+		cout << "Solo puede contener numeros, Ingrese unidad: ";
+		cin.ignore();
+		cin >> id;
+	}
+	return id;
+}
+
+Unidad buscarUnidad(int u) {
+	//cout << "FX u: " << u << endl;
+	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
+	int cant = _archivoUnidades.ContarRegistros();
+	Unidad uni;
+	Unidad aux;
+	uni.setId(-1);
+	for (int i = 0;i < cant;i++) {
+		aux = _archivoUnidades.Leer(i);
+		if (aux.getId() == u) {
+			return aux;
+		}
+	}
+	return uni;
+}
+
+int ingresarMotivo() {
+	string motivoAux;
+	cout << "(1: Visita | 2 : Proveedor)" << endl;
+	cout << "Ingrese motivo de autorizacion: ";
+	cin.ignore();
+	cin >> motivoAux;
+	while (soloNumeros(motivoAux) == false || !(motivoAux == "1" || motivoAux == "2")) {
+		cout << "Motivo invalido." << endl;
+		cout << "Ingrese motivo de autorizacion:   (1: Visita | 2: Proveedor) ";
+		cin >> motivoAux;
+	}
+	return std::stoi(motivoAux);
+}
+
+Unidad ingresarUnidad() {
+	string unidadAux;
+	Unidad uni;
+	uni.setId(-1);
+	while (true) {
+		cout << "Ingrese unidad destino: ";
+		cin.ignore();
+		cin >> unidadAux;
+		while (soloNumeros(unidadAux) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad destino: ";
+			cin.ignore();
+			cin >> unidadAux;
+		}
+		uni = buscarUnidad(std::stoi(unidadAux));
+		if (uni.getId() >= 0) {
+			return uni;
+		}
+		else {
+			cout << "La unidad ingresada no existe." << endl;
+		}
+	}
+	return uni;
+}
+
+Fecha ingresarFechaAutorizacion() {
+	Fecha hasta;
+	cout << "Ingrese fecha desde (DD/MM/AA): ";
+	while (true) {
+		while (hasta.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		break;
+	}
+	return hasta;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
@@ -33,3 +192,4 @@ void Creditos() {
 	cout << "Saputo, Lucas" << endl;
 	system("pause");
 }
+

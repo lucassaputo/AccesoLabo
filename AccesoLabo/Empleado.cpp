@@ -40,20 +40,15 @@ int Empleado::getLegajo() const {
 string Empleado::getDescripcion() const {
 	string retornar = _descripcion;
 	return retornar;
-
-
 }
 
 void Empleado::CargarEmpleado() {
-
 	int legajo;
 	char tipo;
 	char categoria;
 	string descripcion;
 
-
 	cargarPersona(); // ACA CARGA LO CORRESPONDIENTE A PERSONA .
-
 
 	cout << "Ingrese el legajo: ";
 	cin >> legajo;

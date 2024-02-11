@@ -16,8 +16,6 @@ public:
 	void mostrar();
 	int getId();
 
-
-
 private:
 	int _cuit;
 	char _razonSocial[50];

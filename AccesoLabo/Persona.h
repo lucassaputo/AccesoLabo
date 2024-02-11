@@ -16,7 +16,7 @@ class Persona {
 		void setApellidos(std::string apellidos);
 		void setNombres(std::string nombres);
 		void setDni(int dni);
-		void setNacimiento(int dia, int mes, int anio);
+		void setNacimiento(Fecha f);
 		void setEstado(bool estado);
 		void setId(int id);
 		//gets
@@ -29,8 +29,7 @@ class Persona {
 		bool getEstado();
 		//acciones
 		void cargarPersona();
-		void cargarPersona(int dni);
-		void mostrarPersona();
+		void  editarPersona();
 		void mostrar();
 		void mostrarX();
 };

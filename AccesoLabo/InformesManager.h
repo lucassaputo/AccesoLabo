@@ -2,7 +2,8 @@
 #include "ArchivoRegistro.h"
 #include "ArchivoUnidad.h"
 #include "ArchivoProveedores.h"
-#include "Registro.h"
+#include "ArchivoRegistro.h"
+
 /*
 		cout << "**************     INFORMES     **************" << endl;
 		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -16,7 +17,7 @@ class InformesManager
 	public:
 		void UnidadesMas50();
 		void InformeProveedores();
-		void HistorialMovimientosxUnidades(); // cambiamos nombre por Historial Registros?
+		void HistorialMovimientosxUnidades(); 
 		void HistorialMovimientos();
 
 	private:

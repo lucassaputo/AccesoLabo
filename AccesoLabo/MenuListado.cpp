@@ -10,13 +10,11 @@ void MenuListado::Mostrar() {
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
         cout << "**************     LISTADOS     **************" << endl;
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-        cout << "1 - Prueba: listar registros" << endl;
-        //cout << "1 - Listado de autorizados, ordenados por apellido" << endl;
-
+        cout << "1 - Listado de autorizados, ordenados por apellido" << endl;
         cout << "2 - Listado de autorizados, ordenados por unidad" << endl;
         cout << "3 - Listado de residentes, ordenados por unidad" << endl;
         cout << "4 - Listado de proveedores, ordenados por razon social" << endl;
-        cout << "5 - Listado de empleados, ordenados por DNI" << endl;
+        cout << "5 - Listado de proveedores, ordenados por DNI" << endl;
         cout << "6 - Listado de unidades, ordenados por numero" << endl;
         cout << "7 - Listado de unidades, ordenados por apellido familia" << endl;
         cout << "*******************************" << endl;
@@ -38,7 +36,7 @@ void MenuListado::Mostrar() {
             _manager.ProveedoresPorRazon();
             break;
         case 5:
-            _manager.EmpleadosPorDNI();
+            _manager.ProveedoresPorDNI();
             break;
         case 6:
             _manager.UnidadesPorNumero();

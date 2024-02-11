@@ -22,26 +22,64 @@ std::string Proveedor::getEmpresa() const { return _empresa; }
 
 void Proveedor::cargarProveedor(int dni) {
 	Fecha aux;
+	Fecha hoy;
 	string empresa;
 	cargarPersona();
 	setDni(dni);
 	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
-	while (aux.ingresarFecha()==false) {
-		cout << "Formato invalido, ingrese DD/MM/AA";
-		cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
 	}
+	setArt(aux);
 	cin.ignore();
 	cout << "Ingrese Empresa perteneciente " << endl;
 	std::getline(cin, empresa);
 	setEmpresa(empresa);
 }
 
+void Proveedor::editarProveedor() {
+	Fecha aux;
+	Fecha hoy;
+	string empresa;
+	Persona::editarPersona();	
+	cout << "Fecha de vencimiento actual: " << _art.toString() << endl;
+	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	while (true) {
+		while (aux.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		if (!(aux > hoy)) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: ";
+		}
+		else {
+			cout << "OKFecha" << endl;
+			break;
+		}
+	}
+	setArt(aux);
+	cin.ignore();
+	cout << "Empresa perteneciente actual: " << _empresa << endl;
+	cout << "Ingrese Empresa perteneciente " << endl;
+	std::getline(cin, empresa);
+	setEmpresa(empresa);
+}
 
 void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
-	//cout << " Empresa perteneciente : " << getEmpresa() << endl;
-	//cout << "Fecha de su Art : " << getArt() << endl;
+	cout << " Empresa perteneciente : " << getEmpresa() << endl;
+	cout << "Fecha de su Art : " << getArt() << endl;
 }
 
 bool Proveedor::operator>(Fecha &fechaActual)
@@ -72,10 +110,7 @@ bool Proveedor::operator>(Fecha &fechaActual)
 bool Proveedor::vencido() {
 	Fecha fechaActual;
 	if (_art > fechaActual) {
-		return true;
-	}
-	else
-	{
 		return false;
-	}
+	}	
+	return true;	
 }

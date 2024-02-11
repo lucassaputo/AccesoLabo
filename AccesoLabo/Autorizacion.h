@@ -9,21 +9,26 @@ private:
 	int _id;
 	int _idPersona;
 	int _idUnidad;
-	FechaHorario _hasta;
+	int _tipo; // 1 - Visitas || 2 - Proveedor
+	Fecha _hasta;
 	bool _estado;
 public:
 	//sets
 	void setId(int id);
 	void  setIdPersona(int id); 
 	void  setIdUnidad(int u);
-	void  setHasta(FechaHorario f);
+	void  setTipo(int t);
+	void  setDNI(int dni);
+	void  setHasta(Fecha f);
 	void setEstado(bool e);
 	
 	//gets
 	int getId();
 	int getIdPersona();
 	int getIdUnidad();
-	FechaHorario getHasta();
+	int getTipo();
+	int getDNI();
+	Fecha getHasta();
 	bool getEstado();
 	
 	//acciones

@@ -21,97 +21,102 @@ int Fecha::getAnio() { return _anio; }
 void Fecha::setDia(int dia) { _dia = dia; }
 void Fecha::setMes(int mes) { _mes = mes; }
 void Fecha::setAnio(int anio) { _anio = anio; }
-void Fecha::cargar(int dia, int mes, int anio) {
+bool Fecha::cargar(int dia, int mes, int anio) {
     if (dia > 0 && dia < 32 && mes>0 && mes < 13 && anio >0) {
         switch (mes) {
         case 1:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
         case 2:
             if (dia <= 28 && anio % 4 != 0) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
             if (anio % 4 == 0 && dia <= 29) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
-            break;
+            return false;
         case 3:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
         case 4:
             if (dia <= 30) {
-
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
-            break;
+            return false;
         case 5:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
         case 6:
             if (dia <= 30) {
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
-            break;
+            return false;
         case 7:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
         case 8:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
         case 9:
             if (dia <= 30) {
 
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
-            break;
+            return false;
         case 10:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
 
         case 11:
             if (dia <= 30) {
-
                 _dia = dia;
                 _mes = mes;
                 _anio = anio;
+                return true;
             }
-            break;
+            return false;
 
         case 12:
             _dia = dia;
             _mes = mes;
             _anio = anio;
-            break;
+            return true;
 
         default:            
             _dia = 01;
             _mes = 01;
             _anio = 2023;
-            break;
+            return true;
         }
     }
+    return false;
 }
 
 std::string Fecha::toString() {
@@ -149,14 +154,14 @@ bool Fecha::ingresarFecha() {
         return false; // Salir con código de error
     }
     else {
-        cargar(dia, mes, anio);
+        if (!(cargar(dia, mes, anio))) {
+            return false;
+        }
     }
-
     // Imprimir los valores por separado (puedes hacer lo que necesites con ellos)
    /* std::cout << "Día: " << dia << std::endl;
     std::cout << "Mes: " << mes << std::endl;
-    std::cout << "Año: " << ano << std::endl;*/
-    
+    std::cout << "Año: " << ano << std::endl;*/    
 
     return true; // Salir sin errores
 }
@@ -171,7 +176,34 @@ bool Fecha::operator>(Fecha& fechaActual)
             return true;
         }
         else if (this->getMes() == fechaActual.getMes()) {
-            if (this->getDia() > fechaActual.getDia()) {
+            if (this->getDia() >= fechaActual.getDia()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
+
+bool Fecha::operator<(Fecha& fechaActual)
+{
+    return false;
+    if (this->getAnio() > fechaActual.getAnio()) {
+        return true;
+    }
+    else if (this->getAnio() == fechaActual.getAnio()) {
+        if (this->getMes() > fechaActual.getMes()) {
+            return true;
+        }
+        else if (this->getMes() == fechaActual.getMes()) {
+            if (this->getDia() >= fechaActual.getDia()) {
                 return true;
             }
             else {

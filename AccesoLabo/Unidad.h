@@ -26,6 +26,7 @@ public:
 
 	//acciones
 	void cargar();
+	void editar();
 	void mostrar();
 };
 
