@@ -75,12 +75,10 @@ std::string ListadoManager::BuscarenVisita(int dni)
 }
 std::string ListadoManager::BuscarenProveedor(int dni)
 {
-	
 	std::string Apellido;
 	Proveedor reg;
-	ArchivoProveedores archProveedor("Proveedores.dat");
-	int pos = archProveedor.Buscar(dni);
-	reg = archProveedor.Leer(pos);
+	int pos = _archivoProveedores.Buscar(dni);
+	reg = _archivoProveedores.Leer(pos);
 	Apellido = reg.getApellidos();
 
 	return Apellido;
