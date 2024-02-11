@@ -2,6 +2,7 @@
 #include <cstring>
 #include "Unidad.h"
 #include "FuncionesGlobales.h"
+#include "ArchivoUnidad.h"
 
 using namespace std;
 

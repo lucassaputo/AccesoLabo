@@ -87,9 +87,6 @@
     <ClCompile Include="ArchivoUnidad.cpp">
       <Filter>Source Files\Archivos</Filter>
     </ClCompile>
-    <ClCompile Include="ArchivoVisita.cpp">
-      <Filter>Source Files\Archivos</Filter>
-    </ClCompile>
     <ClCompile Include="MenuAbmPersonas.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
@@ -243,9 +240,6 @@
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoUnidad.h">
-      <Filter>Header Files\Archivo</Filter>
-    </ClInclude>
-    <ClInclude Include="ArchivoVisita.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ConfiguracionesManager.h">

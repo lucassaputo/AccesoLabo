@@ -1,5 +1,6 @@
 #pragma once
 #include "Fecha.h"
+#include "Unidad.h"
 
 void cargarCadena(char* pal, int tam);
 std::string cargarNombre();
@@ -11,3 +12,7 @@ std::string ingresarLegajo();
 std::string ingresarIdUnidad();
 int cargarTelefono();
 void Creditos();
+Unidad buscarUnidad(int u);
+int ingresarMotivo();
+Unidad ingresarUnidad();
+Fecha ingresarFechaAutorizacion();

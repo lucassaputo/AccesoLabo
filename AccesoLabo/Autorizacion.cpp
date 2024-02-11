@@ -5,7 +5,6 @@ void Autorizacion::setId(int id) { _id = id; }
 void Autorizacion::setIdPersona(int id) {_idPersona = id; }
 void Autorizacion::setIdUnidad(int u) { _idUnidad = u; }
 void Autorizacion::setTipo(int t) { _tipo = t; }
-void Autorizacion::setDNI(int dni) { _dni = dni; }
 void Autorizacion::setHasta(Fecha f) { _hasta = f; }
 void Autorizacion::setEstado(bool e) { _estado = e; }
 //gets
@@ -13,7 +12,6 @@ int Autorizacion::getId() { return _id; }
 int Autorizacion::getIdPersona() { return _idPersona; }
 int Autorizacion::getIdUnidad() { return _idUnidad; }
 int Autorizacion::getTipo() { return _tipo; }
-int Autorizacion::getDNI() { return _dni; }
 Fecha Autorizacion::getHasta() { return _hasta; }
 bool Autorizacion::getEstado() { return _estado; }
 
@@ -31,6 +29,9 @@ void Autorizacion::cargar(){
 void Autorizacion::mostrar()
 {
     cout << "ID: " << _id << endl;
-    cout << "Autorizado hasta: " << endl;
-    _hasta.toString();
+    cout << "idPersona: " << _idPersona << endl;
+    cout << "idUnidad: " << _idUnidad << endl;
+    cout << "idTipo: " << _tipo << endl;
+    cout << "Autorizado hasta: " << _hasta.toString() << endl;
+    cout << "Estado: " << _estado << endl;
 }

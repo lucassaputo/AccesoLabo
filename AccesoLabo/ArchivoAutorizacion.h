@@ -10,6 +10,8 @@ public:
     int ContarRegistros();
     Autorizacion Leer(int nroRegistro);
     int Buscar(int dni);
+    Autorizacion BuscarObj(int idPersona, int motivo, int unidad);
+    bool Modificar(Autorizacion reg);
 
 private:
     std::string _nombreArchivo;

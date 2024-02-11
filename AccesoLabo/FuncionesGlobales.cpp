@@ -1,6 +1,8 @@
 #include "FuncionesGlobales.h"
 #include "Fecha.h"
 #include<iostream>
+#include "Unidad.h"
+#include "ArchivoUnidad.h"
 using namespace std;
 
 void cargarCadena(char* pal, int tam) {
@@ -114,6 +116,73 @@ string ingresarIdUnidad() {
 		cin >> id;
 	}
 	return id;
+}
+
+Unidad buscarUnidad(int u) {
+	//cout << "FX u: " << u << endl;
+	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
+	int cant = _archivoUnidades.ContarRegistros();
+	Unidad uni;
+	Unidad aux;
+	uni.setId(-1);
+	for (int i = 0;i < cant;i++) {
+		aux = _archivoUnidades.Leer(i);
+		if (aux.getId() == u) {
+			return aux;
+		}
+	}
+	return uni;
+}
+
+int ingresarMotivo() {
+	string motivoAux;
+	cout << "(1: Visita | 2 : Proveedor)" << endl;
+	cout << "Ingrese motivo de autorizacion: ";
+	cin.ignore();
+	cin >> motivoAux;
+	while (soloNumeros(motivoAux) == false || !(motivoAux == "1" || motivoAux == "2")) {
+		cout << "Motivo invalido." << endl;
+		cout << "Ingrese motivo de autorizacion:   (1: Visita | 2: Proveedor) ";
+		cin >> motivoAux;
+	}
+	return std::stoi(motivoAux);
+}
+
+Unidad ingresarUnidad() {
+	string unidadAux;
+	Unidad uni;
+	uni.setId(-1);
+	while (true) {
+		cout << "Ingrese unidad destino: ";
+		cin.ignore();
+		cin >> unidadAux;
+		while (soloNumeros(unidadAux) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad destino: ";
+			cin.ignore();
+			cin >> unidadAux;
+		}
+		uni = buscarUnidad(std::stoi(unidadAux));
+		if (uni.getId() >= 0) {
+			return uni;
+		}
+		else {
+			cout << "La unidad ingresada no existe." << endl;
+		}
+	}
+	return uni;
+}
+
+Fecha ingresarFechaAutorizacion() {
+	Fecha hasta;
+	cout << "Ingrese fecha desde (DD/MM/AA): ";
+	while (true) {
+		while (hasta.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+		}
+		break;
+	}
+	return hasta;
 }
 
 void Creditos() {

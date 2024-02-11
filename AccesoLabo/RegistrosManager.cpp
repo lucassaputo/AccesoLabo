@@ -222,7 +222,7 @@ void RegistrosManager::Eliminar() {
 	cout << "Eliminar" << endl;
 	system("pause");
 }
-
+/*
 Unidad RegistrosManager::buscarUnidad(int u) {
 	//cout << "FX u: " << u << endl;
 	int cant = _archivoUnidades.ContarRegistros();
@@ -238,6 +238,7 @@ Unidad RegistrosManager::buscarUnidad(int u) {
 	}
 	return uni;
 }
+*/
 Autorizacion RegistrosManager::getAutorizacion(Proveedor &p) {
 	Autorizacion a;
 	a.setIdUnidad(-1);
