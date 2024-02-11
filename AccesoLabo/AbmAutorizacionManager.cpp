@@ -19,7 +19,8 @@ void AbmAutorizacionManager::Alta()
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObj(dni);
-		if (vis.getDni() != -1) {
+		vis.mostrar();
+		if (vis.getDni() > 5000000) {
 			if (vis.getEstado()) {
 				altaAutorizacion(vis.getId(), 1, uni.getId());
 			}
@@ -34,7 +35,7 @@ void AbmAutorizacionManager::Alta()
 	else // proveedor
 	{
 		Proveedor prov = _archivoProveedores.BuscarObj(dni);
-		if (prov.getDni() != -1) {
+		if (prov.getDni() > 5000000) {
 			if (prov.getEstado()) {
 				altaAutorizacion(prov.getId(), 2, uni.getId());
 			}
@@ -65,7 +66,7 @@ void AbmAutorizacionManager::Editar()
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObj(dni);
-		if (vis.getDni() != -1) {
+		if (vis.getDni() > 5000000) {
 			if (vis.getEstado()) {
 				editarAutorizacion(vis.getId(), 1, uni.getId());
 				system("pause");
@@ -76,9 +77,11 @@ void AbmAutorizacionManager::Editar()
 	else // proveedor
 	{
 		Proveedor prov = _archivoProveedores.BuscarObj(dni);
-		if (prov.getDni() != -1) {
+		if (prov.getDni() > 5000000) {
 			if (prov.getEstado()) {
 				editarAutorizacion(prov.getId(), 2, uni.getId());
+				system("pause");
+				return;
 			}
 		}
 	}
@@ -189,7 +192,7 @@ void AbmAutorizacionManager::editarAutorizacion(int idPersona, int motivo, int u
 			return;
 		}
 	}
-	cout << "La autorizacion ya existe, la puede modificar desde edicion." << endl;
+	cout << "La 111autorizacion ya existe, la puede modificar desde edicion." << endl;
 	return;
 }
 
