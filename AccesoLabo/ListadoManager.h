@@ -38,4 +38,3 @@ class ListadoManager
 		ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
 };
 
-
