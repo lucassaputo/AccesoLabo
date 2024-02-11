@@ -3,7 +3,7 @@
 #include "ArchivoRegistro.h"
 #include "ArchivoUnidad.h"
 #include "ArchivoProveedores.h"
-#include "ArchivoVisita.h"
+#include "ArchivoPersona.h"
 #include "ArchivoResidente.h"
 #include "Registro.h"
 class ListadoManager
@@ -32,7 +32,8 @@ class ListadoManager
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
 		ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 		ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
-
+		ArchivoPersona _archivoPersona = ArchivoPersona("Personas.dat");
+		ArchivoResidente _archivoResidente = ArchivoResidente("Residentes.dat");
 };
 
 

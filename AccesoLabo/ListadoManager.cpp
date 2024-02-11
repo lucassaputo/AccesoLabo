@@ -2,7 +2,7 @@
 #include "Registro.h"
 #include <iostream>
 using namespace std;
-
+/*
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
 	cout << "AutorizadosPorApellido" << endl;
@@ -10,7 +10,8 @@ void ListadoManager::AutorizadosPorApellido() {
 	//ListarTodos();	
 	ListarRegistros();
 	system("pause");
-}
+	}
+ */
 void ListadoManager::ListarRegistros() {
 	int cant = _archivoRegistros.ContarRegistros();
 	Registro reg;
@@ -19,14 +20,13 @@ void ListadoManager::ListarRegistros() {
 		reg.mostrar();
 	}
 }
-/*
+
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
     cout << "AutorizadosPorApellido" << endl;
 	Autorizacion* regAut;
-	ArchivoAutorizacion archAut("Autorizaciones.dat");
 	std::string* ApellidoAutorizados;
-	int cantReg = archAut.ContarRegistros();
+	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
 	}
@@ -41,7 +41,7 @@ void ListadoManager::AutorizadosPorApellido() {
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regAut[x] = archAut.Leer(x);
+		regAut[x] = _archivoAutorizacion.Leer(x);
 		if (regAut[x].getTipo() == 1) {
 			ApellidoAutorizados[x] = BuscarenVisita(regAut[x].getDNI());
 		}
@@ -61,14 +61,13 @@ void ListadoManager::AutorizadosPorApellido() {
 	delete [] regAut;
 
 	system("pause");
-}*/
+}
 std::string ListadoManager::BuscarenVisita(int dni)
 {
 	std::string Apellido;
-	Visita reg;
-	ArchivoVisita archVisita("Visitas.dat");
-	int pos=archVisita.Buscar(dni);
-	reg = archVisita.Leer(pos);
+	Persona reg;
+	int pos = _archivoPersona.Buscar(dni);
+	reg = _archivoPersona.Leer(pos);
 	Apellido = reg.getApellidos();
 	
 	return Apellido;
@@ -104,8 +103,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 
 	cout << "AutorizadosPorUnidad" << endl;
 	Autorizacion *regAut;
-	ArchivoAutorizacion archAut("Autorizaciones.dat");
-	int cantReg = archAut.ContarRegistros();
+	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
 	}
@@ -115,7 +113,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regAut[x] = archAut.Leer(x);
+		regAut[x] = _archivoAutorizacion.Leer(x);
 	}
 	OrdenarVectorAutorizadosxNumero(regAut, cantReg);
 	for (int i = 0;i < cantReg;i++) {
@@ -127,8 +125,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 
 void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 {
-	 Autorizacion aux;
-	 
+	 Autorizacion aux;	 
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
 			if (reg[x].getId() > reg[x + 1].getId()) {
@@ -145,15 +142,14 @@ void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
 	cout << "ResidentesPorUnidad" << endl;
 	Residente *reg;
-	ArchivoResidente archResidente("Residentes.dat");
-	int cantReg = archResidente.ContarRegistros();
+	int cantReg = _archivoResidente.ContarRegistros();;
 	reg = new Residente[cantReg];
 	if (reg == nullptr) {
 		cout << "error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		reg[x] = archResidente.Leer(x);
+		reg[x] = _archivoResidente.Leer(x);
 	}
 	OrdenarResidentesxUnidad(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
@@ -169,15 +165,14 @@ void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
 	cout << "ProveedoresPorRazon" << endl;
 	Proveedor* regProv;
-	ArchivoProveedores archProv("Proveedores.dat");
-	int cantReg = archProv.ContarRegistros();
+	int cantReg = _archivoProveedores.ContarRegistros();
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regProv[x] = archProv.Leer(x);
+		regProv[x] = _archivoProveedores.Leer(x);
 	}
 	OrdenarVectorProveedoresxRazon(regProv, cantReg);
 	for (int i = 0;i < cantReg;i++) {
@@ -206,15 +201,14 @@ void ListadoManager::ProveedoresPorDNI() {
 	system("cls");
 	cout << "Proveedores Por DNI" << endl;
 	Proveedor *regProv;
-	ArchivoProveedores archProv("Proveedores.dat");
-	int cantReg = archProv.ContarRegistros();
+	int cantReg = _archivoProveedores.ContarRegistros();
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regProv[x] = archProv.Leer(x);
+		regProv[x] = _archivoProveedores.Leer(x) ;
 	}
 	OrdenarVectorProveedoresxDNI(regProv, cantReg);
 
@@ -243,15 +237,14 @@ void ListadoManager::UnidadesPorNumero() {
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
 	Unidad* reg;
-	ArchivoUnidad archU("Unidades.dat");
-	int cantReg = archU.ContarRegistros();
+	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int i = 0;i < cantReg;i++) {
-		reg[i] = archU.Leer(i);
+		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxNumero(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
@@ -278,15 +271,14 @@ void ListadoManager::UnidadesPorFamilia(){
 	system("cls");
 	cout << "UnidadesPorFamilia" << endl;
 	Unidad* reg;
-	ArchivoUnidad archU("Unidades.dat");
-	int cantReg = archU.ContarRegistros();
+	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int i = 0;i < cantReg;i++) {
-		reg[i] = archU.Leer(i);
+		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxApellido(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
