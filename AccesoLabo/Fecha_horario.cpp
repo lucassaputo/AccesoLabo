@@ -40,13 +40,7 @@ Horario FechaHorario::getHorario() { return _horario; }
 
 //acciones
 std::string FechaHorario::toString() {
-    string fecha, horario, devolver;
-
-    fecha = _fecha.toString();
-    horario = _horario.toString();
-    devolver = "LA FECHA ES " + fecha + "  Y LA HORA ES : " + horario;
-    return devolver;
-
+    return _fecha.toString() + _horario.toString();
 }
 
 void FechaHorario::setFecha(int dia, int mes, int anio) {

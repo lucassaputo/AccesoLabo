@@ -74,6 +74,24 @@ int ArchivoPersona::Buscar(int dni) {
     return -1;
 }
 
+int ArchivoPersona::BuscarId(int id) {
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Persona reg;
+    while (fread(&reg, sizeof(Persona), 1, p)) {
+        if (reg.getId() == id) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
 Persona ArchivoPersona::BuscarObj(int dni) {
     Persona aux;
     aux.setDni(-1);
@@ -93,7 +111,6 @@ Persona ArchivoPersona::BuscarObj(int dni) {
     fclose(p);
     return aux;
 }
-
 
 bool ArchivoPersona::Modificar(Persona reg) {
     bool pudoEscribir;

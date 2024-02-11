@@ -1,8 +1,10 @@
 #include "ListadoManager.h"
 #include "Registro.h"
 #include <iostream>
+#include "ReporteAutorizaciones.h"
 using namespace std;
 
+/*
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
 	cout << "AutorizadosPorApellido" << endl;
@@ -10,8 +12,9 @@ void ListadoManager::AutorizadosPorApellido() {
 	//ListarTodos();	
 	ListarRegistros();
 	system("pause");
-}
-void ListadoManager::ListarRegistros() {
+}*/
+
+void ListadoManager::ListarRegistros() {//testeo
 	int cant = _archivoRegistros.ContarRegistros();
 	Registro reg;
 	for (int i = 0;i < cant;i++) {
@@ -19,71 +22,84 @@ void ListadoManager::ListarRegistros() {
 		reg.mostrar();
 	}
 }
-/*
+
 void ListadoManager::AutorizadosPorApellido() {
 	system("cls");
-    cout << "AutorizadosPorApellido" << endl;
-	Autorizacion* regAut;
-	ArchivoAutorizacion archAut("Autorizaciones.dat");
-	std::string* ApellidoAutorizados;
-	int cantReg = archAut.ContarRegistros();
+    cout << "Autorizados ordenados por apellido" << endl;
+	Autorizacion aux;
+	ReporteAutorizaciones* vectorAut;
+	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
 	}
-	regAut = new Autorizacion[cantReg];
-	if (regAut == nullptr) {
+	vectorAut = new ReporteAutorizaciones[cantReg];
+	if (vectorAut == nullptr) {
 		cout << "Error de asignacion de memoria " << endl;
 		return;
 	}
-	ApellidoAutorizados = new std::string[cantReg];
-	if (ApellidoAutorizados == nullptr) {
-		cout << "Error de asignacion de memoria " << endl;
-		return;
+
+	for (int i = 0;i < cantReg;i++) {
+		aux = _archivoAutorizacion.Leer(i);
+		cout << "*********************" << endl;
+		aux.mostrar();
+		cout << "*********************" << endl;
+		if (aux.getEstado()) {
+			vectorAut[i].setId(aux.getId());
+			vectorAut[i].setIdPersona(aux.getIdPersona());
+			vectorAut[i].setIdUnidad(aux.getIdUnidad());
+			vectorAut[i].setTipo(aux.getTipo());
+			vectorAut[i].setHasta(aux.getHasta());
+			if (aux.getTipo() == 1) { //visita
+				vectorAut[i].setApellido(BuscarenVisita(aux.getIdPersona()));
+				vectorAut[i].setNombreTipo("Visita");
+			}
+			else { // proveedor
+				vectorAut[i].setApellido(BuscarenProveedor(aux.getIdPersona()));
+				vectorAut[i].setNombreTipo("Proveedor");
+			}		
+		}		
 	}
-	for (int x = 0;x < cantReg;x++) {
-		regAut[x] = archAut.Leer(x);
-		if (regAut[x].getTipo() == 1) {
-			ApellidoAutorizados[x] = BuscarenVisita(regAut[x].getDNI());
-		}
-		else if (regAut[x].getTipo() == 2) {
-			ApellidoAutorizados[x] = BuscarenProveedor(regAut[x].getDNI());
-		}
-		else {
-			cout << "Error de tipo de autorizado" << endl;
-			return;
-		}
-	}
-	OrdenarVectorAutorizadosxApellido(ApellidoAutorizados, cantReg);
+
+	OrdenarAutorizadosxApellido(vectorAut, cantReg);
 	for (int j = 0;j < cantReg;j++) {
-		cout << ApellidoAutorizados[j] << endl;
+		vectorAut[j].mostrar(); //ver que pasa con los estado false
+
 	}
-	delete [] ApellidoAutorizados;
-	delete [] regAut;
-
+	delete [] vectorAut;
 	system("pause");
-}*/
-std::string ListadoManager::BuscarenVisita(int dni)
+}
+
+std::string ListadoManager::BuscarenVisita(int id)
 {
-	std::string Apellido;
 	Persona reg;
-
-	int pos=_archivoVisitas.Buscar(dni);
-	reg = _archivoVisitas.Leer(pos);
-	Apellido = reg.getApellidos();
-	
-	return Apellido;
+	int pos=_archivoVisitas.BuscarId(id);
+	reg = _archivoVisitas.Leer(pos);	
+	return reg.getApellidos();
 }
-std::string ListadoManager::BuscarenProveedor(int dni)
+
+std::string ListadoManager::BuscarenProveedor(int id)
 {
-	std::string Apellido;
 	Proveedor reg;
-	int pos = _archivoProveedores.Buscar(dni);
+	int pos = _archivoProveedores.Buscar(id);
 	reg = _archivoProveedores.Leer(pos);
-	Apellido = reg.getApellidos();
-
-	return Apellido;
-
+	return reg.getApellidos();
 }
+
+void ListadoManager::OrdenarAutorizadosxApellido(ReporteAutorizaciones* vec, int tam)
+{
+	ReporteAutorizaciones aux;
+
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(vec[x].getApellido().c_str(), vec[x + 1].getApellido().c_str()) > 0) {
+				aux = vec[x];
+				vec[x] = vec[x + 1];
+				vec[x + 1] = aux;
+			}
+		}
+	}
+}
+
 void ListadoManager::OrdenarVectorAutorizadosxApellido(std::string *reg, int tam)
 {
 	std::string aux;

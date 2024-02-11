@@ -148,12 +148,12 @@ int ingresarMotivo() {
 	return std::stoi(motivoAux);
 }
 
-Unidad ingresarUnidad() {
+Unidad ingresarUnidad(string mensaje) {
 	string unidadAux;
 	Unidad uni;
 	uni.setId(-1);
 	while (true) {
-		cout << "Ingrese unidad destino: ";
+		cout << "Ingrese unidad " << mensaje << ": ";
 		cin.ignore();
 		cin >> unidadAux;
 		while (soloNumeros(unidadAux) == false) {

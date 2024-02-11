@@ -20,7 +20,9 @@ int main() {
 // user leg 8 pass 12 ADMIN
 // user 10 pass 1234 VIGILADOR
 
-
+//validar si esta adentro del mismo lote antes de dar salida
+// agregar estado a la validacion de las personas en registroManager, en los tres tipos
+// chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
 //2024
 /*
 * mostrar lo existente en el mensaje y cin de ingresar
