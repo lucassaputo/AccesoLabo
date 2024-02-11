@@ -10,7 +10,7 @@ void AbmAutorizacionManager::Alta()
 	Unidad uni;
 	Autorizacion au;
 
-	cout << "***********  Alta autorizacion  ***********" << endl;
+	cout << "***********  Alta autorizacion  ***********" << endl;//
 
 	motivo = ingresarMotivo();
 	uni = ingresarUnidad();//valida que exista;
