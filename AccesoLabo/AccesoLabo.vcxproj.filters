@@ -120,9 +120,6 @@
     <ClCompile Include="Autorizacion.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
-    <ClCompile Include="Empleado.cpp">
-      <Filter>Source Files\Gestion</Filter>
-    </ClCompile>
     <ClCompile Include="Empresa.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
@@ -204,8 +201,8 @@
     <ClCompile Include="ArchivoResidente.cpp">
       <Filter>Source Files\Archivos</Filter>
     </ClCompile>
-    <ClCompile Include="AbmProveedores.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ArchivoPersona.cpp">
+      <Filter>Source Files\Archivos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,9 +296,6 @@
     <ClInclude Include="Empresa.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
-    <ClInclude Include="Empleado.h">
-      <Filter>Header Files\Gestion</Filter>
-    </ClInclude>
     <ClInclude Include="Usuario.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
@@ -362,8 +356,8 @@
     <ClInclude Include="ArchivoResidente.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
-    <ClInclude Include="AbmProveedores.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ArchivoPersona.h">
+      <Filter>Header Files\Archivo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -58,6 +58,9 @@ int main() {
 * poner en rojo algunos textos? o negritas?
 * chequear defaults en switch que tengan todos
 * discriminar errores en buscarObj por ejemplo da igual sino abrio el archivo o si no encontro  registro
+* tipo proveedor, lo sacamos?
+* como reconoce proveedor si no esta incluido en abmPersonasManager
+* pasar a texto en edicion la condicion se es inquilino o propietario
 */
 
 /*

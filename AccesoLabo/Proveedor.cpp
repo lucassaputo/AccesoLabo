@@ -60,7 +60,7 @@ void Proveedor::editarProveedor() {
 			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
 		}
 		if (!(aux > hoy)) {
-			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: ";
 		}
 		else {
 			cout << "OKFecha" << endl;

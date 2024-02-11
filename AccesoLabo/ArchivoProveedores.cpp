@@ -82,7 +82,6 @@ Proveedor ArchivoProveedores::BuscarObj(int dni) {
         return prov;
     }
     int i = 0;
-    int comparacion;
     Proveedor reg;
     while (fread(&reg, sizeof(Proveedor), 1, p)) {
         if (reg.getDni() == dni) {

@@ -141,11 +141,11 @@
   <ItemGroup>
     <ClCompile Include="AbmAutorizacionManager.cpp" />
     <ClCompile Include="AbmPersonasManager.cpp" />
-    <ClCompile Include="AbmProveedores.cpp" />
     <ClCompile Include="AbmUnidadesManager.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="ArchivoAutorizacion.cpp" />
     <ClCompile Include="ArchivoConfiguraciones.cpp" />
+    <ClCompile Include="ArchivoPersona.cpp" />
     <ClCompile Include="ArchivoProveedores.cpp" />
     <ClCompile Include="ArchivoRegistro.cpp" />
     <ClCompile Include="ArchivoResidente.cpp" />
@@ -158,7 +158,6 @@
     <ClCompile Include="Configuracion.cpp" />
     <ClCompile Include="ConfiguracionesManager.cpp" />
     <ClCompile Include="ConsultasManager.cpp" />
-    <ClCompile Include="Empleado.cpp" />
     <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="ExportacionManager.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -195,11 +194,11 @@
   <ItemGroup>
     <ClInclude Include="AbmAutorizacionManager.h" />
     <ClInclude Include="AbmPersonasManager.h" />
-    <ClInclude Include="AbmProveedores.h" />
     <ClInclude Include="AbmUnidadesManager.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="ArchivoAutorizacion.h" />
     <ClInclude Include="ArchivoConfiguraciones.h" />
+    <ClInclude Include="ArchivoPersona.h" />
     <ClInclude Include="ArchivoProveedores.h" />
     <ClInclude Include="ArchivoRegistro.h" />
     <ClInclude Include="ArchivoResidente.h" />
@@ -212,7 +211,6 @@
     <ClInclude Include="Configuracion.h" />
     <ClInclude Include="ConfiguracionesManager.h" />
     <ClInclude Include="ConsultasManager.h" />
-    <ClInclude Include="Empleado.h" />
     <ClInclude Include="Empresa.h" />
     <ClInclude Include="ExportacionManager.h" />
     <ClInclude Include="Fecha.h" />

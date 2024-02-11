@@ -29,9 +29,7 @@ class Persona {
 		bool getEstado();
 		//acciones
 		void cargarPersona();
-		void cargarPersona(int dni);
 		void  editarPersona();
-		void mostrarPersona();
 		void mostrar();
 		void mostrarX();
 };
