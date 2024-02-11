@@ -15,8 +15,10 @@
 class InformesManager
 {	
 	public:
-		void UnidadesMas50();
-		void InformeProveedores();
+		void UnidadesMas50();// punto 1
+		int ID_Maximo();
+		void Mostrar50(int *vec, int tam);
+		void InformeProveedores(); // Punto 2
 		void HistorialMovimientosxUnidades(); 
 		void HistorialMovimientos();
 

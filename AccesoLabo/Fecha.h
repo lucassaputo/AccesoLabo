@@ -27,4 +27,5 @@ public:
     std::string toString();
     bool operator>(Fecha& fechaActual);
     bool operator<(Fecha& fechaActual);
+    bool operator==(Fecha& fechaActual);
 };

@@ -218,3 +218,13 @@ bool Fecha::operator<(Fecha& fechaActual)
         return false;
     }
 }
+
+bool Fecha::operator==(Fecha& fechaActual)
+{
+    if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() == fechaActual.getDia()) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    }
