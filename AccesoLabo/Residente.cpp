@@ -3,92 +3,93 @@
 #include "Fecha.h"
 #include "Residente.h"
 #include <iostream>
+#include "FuncionesGlobales.h"
 using namespace std;
 
+void Residente::setUnidad(int unidad) { _unidad = unidad; }
+void Residente::setFechaIngreso(Fecha f) { _fechaIngreso = f; }
+void Residente::setPropietarioInquilino(bool es) { _propietario_inquilino = es; }
 
-int Residente::getUnidad() const {
-    return _unidad;
-}
-
-string Residente::getFechaIngreso() {
-    string retornar = _fechaIngreso.toString();
-    return retornar;
-}
-
-bool Residente::getPropietarioInquilino() const {
-    return _propietario_inquilino;
-}
-
-
-void Residente::setUnidad(int unidad) {
-    _unidad = unidad;
-}
-
-void Residente::setFechaIngreso(int dia, int mes, int anio) {
-    _fechaIngreso.cargar(dia, mes, anio);
-}
-
-void Residente::setPropietarioInquilino(bool es) {
-    _propietario_inquilino = es;
-}
+int Residente::getUnidad() const { return _unidad;}
+Fecha Residente::getFechaIngreso() { return _fechaIngreso;}
+bool Residente::getPropietarioInquilino() const { return _propietario_inquilino;}
 
 void Residente::cargarResidente() {
     cargarPersona();
-    int unidad;
-    int dia, mes, anio;
+    setUnidad(stoi(ingresarIdUnidad()));
     bool propie;
-    cout << "Ingrese Unidad correspondiente : " << endl;
-    cin >> unidad;
-    setUnidad(unidad);
-    cout << "Ingrese dia de Ingreso : " << endl;
-    cin >> dia;
-    cout << "Ingrese mes de Ingreso : " << endl;
-    cin >> mes;
-    cout << "Ingrese anio de Ingreso  : " << endl;
-    cin >> anio;
+    Fecha aux;
+    Fecha hoy;
+    cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+    while (true) {
+        while (aux.ingresarFecha() == false) {
+            cout << "Formato invalido, ingrese DD/MM/AA";
+            cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+        }
+        if (aux > hoy) {
+            cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+        }
+        else {
+            cout << "OKFecha" << endl;
+            break;
+        }
+    }
+    setFechaIngreso(aux);
 
-    setFechaIngreso(dia, mes, anio);
-
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino " << endl;
+    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
     cin >> propie;
-
     setPropietarioInquilino(propie);
-
-
 }
+
+void Residente::editarResidente() {
+    bool propie;
+    Fecha aux;
+    Fecha hoy;
+    editarPersona();
+    cout << "Unidad actual: " << _unidad << endl;
+    setUnidad(stoi(ingresarIdUnidad()));
+    cout << "Fecha de ingreso actual: " << _fechaIngreso.toString() << endl;
+    cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+    while (true) {
+        while (aux.ingresarFecha() == false) {
+            cout << "Formato invalido, ingrese DD/MM/AA";
+            cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+        }
+        if (aux > hoy) {
+            cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: ";
+        }
+        else {
+            cout << "OKFecha" << endl;
+            break;
+        }
+    }
+    setFechaIngreso(aux);
+    cout << "Condicion actual: " << _propietario_inquilino << endl;
+    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
+    cin >> propie;
+    setPropietarioInquilino(propie);
+}
+void Residente::mostrar() {     
+    Persona::mostrar();
+    cout << "Unidad: " << _unidad << endl;
+    cout << "Desde: " << _fechaIngreso.toString() << endl;
+    cout << "Propietario/Inquilino: " << _propietario_inquilino << endl;
+}
+
 string Residente::mostrarResidentestring() {
     //string retornar = mostrarPersonastring();
-    string retornar = "dasdas";
+   /*  string retornar = "dasdas";
 
-    if (getPropietarioInquilino()) {
+     if (getPropietarioInquilino()) {
 
-        retornar += "Unidad del Residente : " + to_string(getUnidad()) + "\n"
-            + " Fecha de Ingreso del Residente : " + getFechaIngreso();
-    }
-    else {
-        retornar += "Unidad del Inquilino : " + to_string(getUnidad()) + "\n"
-            + " Fecha de Ingreso del Inquilino : " + getFechaIngreso();
-
-
-    }
-    return retornar;
-
-}
-void Residente::mostrar() {
-     
-   // mostrarPersona();
-
-    if (getPropietarioInquilino()) {
-
-        cout << "Unidad del Residente : " << to_string(getUnidad()) << endl;
-        cout <<  " Fecha de Ingreso del Residente : " << getFechaIngreso() << endl;
-    }
-    else {
-        cout << "Unidad del Inquilino : " << to_string(getUnidad()) << endl;
-        cout << "Fecha de Ingreso del Inquilino : " << getFechaIngreso() << endl;
-
-
-    }
-
-    
+         retornar += "Unidad del Residente : " + to_string(getUnidad()) + "\n"
+             + " Fecha de Ingreso del Residente : " + getFechaIngreso();
+     }
+     else {
+         retornar += "Unidad del Inquilino : " + to_string(getUnidad()) + "\n"
+             + " Fecha de Ingreso del Inquilino : " + getFechaIngreso();
+     }
+     return retornar;
+     */
+    return "";
 }

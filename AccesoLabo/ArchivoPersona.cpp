@@ -1,34 +1,34 @@
-#include "ArchivoResidente.h"
+#include "ArchivoPersona.h"
 #include <cstdio>
 
-ArchivoResidente::ArchivoResidente(std::string nombreArchivo = "Residentes.dat") {
+ArchivoPersona::ArchivoPersona(std::string nombreArchivo = "Visitas.dat") {
     _nombreArchivo = nombreArchivo;
 }
 
-bool ArchivoResidente::Guardar(Residente reg) {
+bool ArchivoPersona::Guardar(Persona reg) {
     bool pudoEscribir;
     FILE* p = fopen(_nombreArchivo.c_str(), "ab");
     if (p == nullptr) {
         return false;
     }
-    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
+    pudoEscribir = fwrite(&reg, sizeof(Persona), 1, p);
     fclose(p);
     return pudoEscribir;
 }
 
-bool ArchivoResidente::Guardar(Residente reg, int nroRegistro) {
+bool ArchivoPersona::Guardar(Persona reg, int nroRegistro) {
     bool pudoEscribir;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
     if (p == nullptr) {
         return false;
     }
-    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
-    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
+    fseek(p, nroRegistro * sizeof(Persona), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Persona), 1, p);
     fclose(p);
     return pudoEscribir;
 }
 
-int ArchivoResidente::ContarRegistros() {
+int ArchivoPersona::ContarRegistros() {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return 0;
@@ -36,29 +36,34 @@ int ArchivoResidente::ContarRegistros() {
     fseek(p, 0, SEEK_END);
     int bytes = ftell(p);
     fclose(p);
-    return bytes / sizeof(Residente);
+    return bytes / sizeof(Persona);
 }
 
-Residente ArchivoResidente::Leer(int nroRegistro) {
-    Residente reg;
+Persona ArchivoPersona::Leer(int nroRegistro) {
+    Persona reg;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return reg;//agregar como informar este error.
     }
-    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
-    fread(&reg, sizeof(Residente), 1, p);
+    fseek(p, nroRegistro * sizeof(Persona), SEEK_SET);
+    fread(&reg, sizeof(Persona), 1, p);
     fclose(p);
     return reg;
 }
 
-int ArchivoResidente::Buscar(int dni) {
+/**
+ * Busca el IDMovimiento en el archivo de Movimientos.
+ * Si lo encuentra devuelve la posición del archivo del registro.
+ * Si no lo encuentra devuelve -1
+*/
+int ArchivoPersona::Buscar(int dni) {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return -1;
     }
     int i = 0;
-    Residente reg;
-    while (fread(&reg, sizeof(Residente), 1, p)) {
+    Persona reg;
+    while (fread(&reg, sizeof(Persona), 1, p)) {
         if (reg.getDni() == dni) {
             fclose(p);
             return i;
@@ -68,16 +73,17 @@ int ArchivoResidente::Buscar(int dni) {
     fclose(p);
     return -1;
 }
-Residente ArchivoResidente::BuscarObj(int dni) {
-    Residente aux;
+
+Persona ArchivoPersona::BuscarObj(int dni) {
+    Persona aux;
     aux.setDni(-1);
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return aux;
     }
     int i = 0;
-    Residente reg;
-    while (fread(&reg, sizeof(Residente), 1, p)) {
+    Persona reg;
+    while (fread(&reg, sizeof(Persona), 1, p)) {
         if (reg.getDni() == dni) {
             fclose(p);
             return reg;
@@ -89,10 +95,10 @@ Residente ArchivoResidente::BuscarObj(int dni) {
 }
 
 
-bool ArchivoResidente::Modificar(Residente reg) {
+bool ArchivoPersona::Modificar(Persona reg) {
     bool pudoEscribir;
     int nroRegistro;
-    Residente aux;
+    Persona aux;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
     if (p == nullptr) {
         return false;
@@ -104,8 +110,8 @@ bool ArchivoResidente::Modificar(Residente reg) {
             break;
         }
     }
-    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
-    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
+    fseek(p, nroRegistro * sizeof(Persona), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Persona), 1, p);
     fclose(p);
     return pudoEscribir;
 }

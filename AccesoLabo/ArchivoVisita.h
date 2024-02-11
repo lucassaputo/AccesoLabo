@@ -9,6 +9,8 @@ public:
     int ContarRegistros();
     Visita Leer(int nroRegistro);
     int Buscar(int dni);
+    Visita BuscarObj(int dni);
+    bool Modificar(Visita reg);
 
 private:
 	std::string _nombreArchivo;

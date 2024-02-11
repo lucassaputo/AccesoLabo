@@ -18,5 +18,4 @@ public:
 private:
 	int _unidad;
 	bool _familiar;
-
 };

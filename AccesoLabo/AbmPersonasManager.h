@@ -1,6 +1,8 @@
 #pragma once
 #include "ArchivoAutorizacion.h"
 #include "ArchivoProveedores.h"
+#include "ArchivoPersona.h"
+#include "ArchivoResidente.h"
 
 class AbmPersonasManager {
 public:
@@ -17,4 +19,6 @@ public:
 private:
 	ArchivoAutorizacion _archivo = ArchivoAutorizacion("Autorizados.dat");
 	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
+	ArchivoResidente _archivoResidentes = ArchivoResidente("Residentes");
 };

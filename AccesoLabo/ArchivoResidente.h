@@ -9,6 +9,8 @@ class ArchivoResidente
         int ContarRegistros();
         Residente Leer(int nroRegistro);
         int Buscar(int dni);
+        Residente BuscarObj(int dni);
+        bool Modificar(Residente reg);
 
     private:
         std::string _nombreArchivo;
