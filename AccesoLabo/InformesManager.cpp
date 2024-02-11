@@ -96,7 +96,7 @@ void InformesManager::InformeProveedores() // punto 2
 		return;
 	}
 	CargarVectorRegistros(reg, cantReg);
-	
+	MostrarMovimientos(FechaInicial, FechaFinal, reg, cantReg);
 
 	system("pause");
 }
@@ -229,8 +229,47 @@ void InformesManager::CargarvectorUnidades(Unidad* u, int cant)
 	}
 }
 
-void InformesManager::HistorialMovimientos()
+void InformesManager::MovimientosMensuales()
 {	system("cls");
-	std::cout << "Historial de movimientos " << std::endl;
+	cout << "Movimientos Mensuales" << endl;
+	cout << "+++++++++++++++++++++++++++++++" << endl;
+	/*
+	int dia,mes, anio;
+	cout << "ingrese fecha inicial" << endl;
+	cout << "Ingrese el dia: " << endl;
+	cin >> dia;
+	cout << "Ingrese el mes: " << endl;
+	cin >> mes;
+	cout << "Ingrese el anio: " << endl;
+	cin >> anio;
+	int diaf,
+	mesf, aniof;
+		cout << "ingrese fecha final" << endl;
+	cout << "Ingrese el dia: " << endl;
+	cin >> diaf;
+	cout << "Ingrese el mes: " << endl;
+	cin >> mesf;
+	cout << "Ingrese el anio: " << endl;
+	cin >> aniof;
+
+ */
+	Registro reg;
+	Fecha fechaInicial, fechaFinal;
+	fechaInicial.ingresarFecha();
+	fechaFinal.ingresarFecha();
+	int cant = _archivoRegistros.ContarRegistros();
+	for (int x = 0;x < cant;x++) {
+		Fecha fechaRegistro;
+		fechaRegistro = reg.getFechaIngreso().getFecha();
+		if (fechaRegistro >= fechaInicial && fechaRegistro <= fechaFinal) {
+			cout << "fecha movimiento: " << fechaRegistro.toString();
+			reg.mostrar();
+		}
+
+	}
+
+
+
+
 	system("pause");
 }
