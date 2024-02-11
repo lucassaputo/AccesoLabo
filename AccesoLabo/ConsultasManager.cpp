@@ -2,28 +2,47 @@
 #include <iostream>
 using namespace std;
 
-void ConsultasManager::ConsultaAutorizados() {
+void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 	system("cls");
-	cout << "ConsultaAutorizados" << endl;
+	cout << "Consulta Autorizados por Unidad" << endl;
 	system("pause");
 }
-void ConsultasManager::ConsultaResidentes() {
+void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 	system("cls");
-	cout << "ConsultaResidentes" << endl;
+	cout << "Consulta Autorizados por Apellido" << endl;
 	system("pause");
 }
-void ConsultasManager::ConsultaProveedores() {
+
+void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	system("cls");
-	cout << "ConsultaProveedores" << endl;
+	cout << "Consulta Residentes por Unidad" << endl;
 	system("pause");
 }
-void ConsultasManager::ConsultaEmpleados() {
+void ConsultasManager::ConsultaResidentesxApellido() {// punto 3
 	system("cls");
-	cout << "ConsultaEmpleados" << endl;
+	cout << "Consulta Residentes por Apellido" << endl;
 	system("pause");
 }
-void ConsultasManager::ConsultaUnidades() {
+void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
 	system("cls");
-	cout << "ConsultaUnidades" << endl;
+	cout << "Consulta Residentes por Unidad" << endl;
 	system("pause");
 }
+
+void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
+	system("cls");
+	cout << "Consulta Proveedores por Razon Social" << endl;
+	system("pause");
+}
+void ConsultasManager::ConsultaProveedoresxCUIT() {
+	system("cls");
+	cout << "Consulta Proveedores por CUIT" << endl;
+	system("pause");
+}
+void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
+	system("cls");
+	cout << "Consulta Unidades por Nombre" << endl;
+	system("pause");
+}
+
+
