@@ -14,5 +14,5 @@ int cargarTelefono();
 void Creditos();
 Unidad buscarUnidad(int u);
 int ingresarMotivo();
-Unidad ingresarUnidad();
+Unidad ingresarUnidad(std::string mensaje);
 Fecha ingresarFechaAutorizacion();

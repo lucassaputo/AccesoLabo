@@ -10,10 +10,10 @@ void AbmAutorizacionManager::Alta()
 	Unidad uni;
 	Autorizacion au;
 
-	cout << "***********  Alta autorizacion  ***********" << endl;//
+	cout << "***********  Alta autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();//valida que exista;
+	uni = ingresarUnidad("a autorizar");//valida que exista;
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
@@ -60,7 +60,7 @@ void AbmAutorizacionManager::Editar()
 	cout << "***********  Edicion autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();	
+	uni = ingresarUnidad("a editar");
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
@@ -99,7 +99,7 @@ void AbmAutorizacionManager::Baja()
 	cout << "***********  Baja autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();//valida que exista;
+	uni = ingresarUnidad("a eliminar");//valida que exista;
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
