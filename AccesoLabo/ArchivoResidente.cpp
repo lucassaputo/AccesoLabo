@@ -1,34 +1,34 @@
-#include "ArchivoAutorizacion.h"
+#include "ArchivoResidente.h"
 #include <cstdio>
 
-ArchivoAutorizacion::ArchivoAutorizacion(std::string nombreArchivo = "Autorizaciones.dat") {
+ArchivoResidente::ArchivoResidente(std::string nombreArchivo = "Residentes.dat") {
     _nombreArchivo = nombreArchivo;
 }
 
-bool ArchivoAutorizacion::Guardar(Autorizacion reg) {
+bool ArchivoResidente::Guardar(Residente reg) {
     bool pudoEscribir;
     FILE* p = fopen(_nombreArchivo.c_str(), "ab");
     if (p == nullptr) {
         return false;
     }
-    pudoEscribir = fwrite(&reg, sizeof(Autorizacion), 1, p);
+    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
     fclose(p);
     return pudoEscribir;
 }
 
-bool ArchivoAutorizacion::Guardar(Autorizacion reg, int nroRegistro) {
+bool ArchivoResidente::Guardar(Residente reg, int nroRegistro) {
     bool pudoEscribir;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
     if (p == nullptr) {
         return false;
     }
-    fseek(p, nroRegistro * sizeof(Autorizacion), SEEK_SET);
-    pudoEscribir = fwrite(&reg, sizeof(Autorizacion), 1, p);
+    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
     fclose(p);
     return pudoEscribir;
 }
 
-int ArchivoAutorizacion::ContarRegistros() {
+int ArchivoResidente::ContarRegistros() {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return 0;
@@ -36,30 +36,30 @@ int ArchivoAutorizacion::ContarRegistros() {
     fseek(p, 0, SEEK_END);
     int bytes = ftell(p);
     fclose(p);
-    return bytes / sizeof(Autorizacion);
+    return bytes / sizeof(Residente);
 }
 
-Autorizacion ArchivoAutorizacion::Leer(int nroRegistro) {
-    Autorizacion reg;
+Residente ArchivoResidente::Leer(int nroRegistro) {
+    Residente reg;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return reg;//agregar como informar este error.
     }
-    fseek(p, nroRegistro * sizeof(Autorizacion), SEEK_SET);
-    fread(&reg, sizeof(Autorizacion), 1, p);
+    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
+    fread(&reg, sizeof(Residente), 1, p);
     fclose(p);
     return reg;
 }
 
-int ArchivoAutorizacion::Buscar(int dni) {
+int ArchivoResidente::Buscar(int dni) {
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return -1;
     }
     int i = 0;
-    Autorizacion reg;
-    while (fread(&reg, sizeof(Autorizacion), 1, p)) {
-        if (reg.getIdPersona() == dni) {//cambiar
+    Residente reg;
+    while (fread(&reg, sizeof(Residente), 1, p)) {
+        if (reg.getDni() == dni) {
             fclose(p);
             return i;
         }
@@ -68,18 +68,17 @@ int ArchivoAutorizacion::Buscar(int dni) {
     fclose(p);
     return -1;
 }
-
-Autorizacion ArchivoAutorizacion::BuscarObj(int idPersona, int motivo, int unidad) {
-    Autorizacion aux;
-    aux.setId(-1);
+Residente ArchivoResidente::BuscarObj(int dni) {
+    Residente aux;
+    aux.setDni(-1);
     FILE* p = fopen(_nombreArchivo.c_str(), "rb");
     if (p == nullptr) {
         return aux;
     }
     int i = 0;
-    Autorizacion reg;
-    while (fread(&reg, sizeof(Autorizacion), 1, p)) {
-        if (reg.getIdPersona() == idPersona && reg.getIdUnidad() == unidad && reg.getTipo() == motivo && reg.getEstado() == true) {
+    Residente reg;
+    while (fread(&reg, sizeof(Residente), 1, p)) {
+        if (reg.getDni() == dni) {
             fclose(p);
             return reg;
         }
@@ -90,10 +89,10 @@ Autorizacion ArchivoAutorizacion::BuscarObj(int idPersona, int motivo, int unida
 }
 
 
-bool ArchivoAutorizacion::Modificar(Autorizacion reg) {
+bool ArchivoResidente::Modificar(Residente reg) {
     bool pudoEscribir;
     int nroRegistro;
-    Autorizacion aux;
+    Residente aux;
     FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
     if (p == nullptr) {
         return false;
@@ -105,8 +104,8 @@ bool ArchivoAutorizacion::Modificar(Autorizacion reg) {
             break;
         }
     }
-    fseek(p, nroRegistro * sizeof(Autorizacion), SEEK_SET);
-    pudoEscribir = fwrite(&reg, sizeof(Autorizacion), 1, p);
+    fseek(p, nroRegistro * sizeof(Residente), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Residente), 1, p);
     fclose(p);
     return pudoEscribir;
 }

@@ -9,6 +9,7 @@ private:
 	int _id;
 	int _idPersona;
 	int _idUnidad;
+	int _tipo; // 1 - Visitas || 2 - Proveedor
 	Fecha _hasta;
 	bool _estado;
 public:
@@ -16,6 +17,8 @@ public:
 	void setId(int id);
 	void  setIdPersona(int id); 
 	void  setIdUnidad(int u);
+	void  setTipo(int t);
+	void  setDNI(int dni);
 	void  setHasta(Fecha f);
 	void setEstado(bool e);
 	
@@ -23,6 +26,8 @@ public:
 	int getId();
 	int getIdPersona();
 	int getIdUnidad();
+	int getTipo();
+	int getDNI();
 	Fecha getHasta();
 	bool getEstado();
 	

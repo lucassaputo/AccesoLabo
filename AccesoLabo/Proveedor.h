@@ -22,7 +22,8 @@ class Proveedor : public Persona {
 		std::string getEmpresa() const;
 
 		//acciones
-		void cargarProveedor(int dni);		
+		void cargarProveedor(int dni);
+		void editarProveedor();
 		void mostrar();
 		bool operator>(Fecha &fechaActual);
 		bool vencido();	

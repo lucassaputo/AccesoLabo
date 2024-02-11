@@ -3,14 +3,16 @@
 class ArchivoVisita
 {
 public:
-	ArchivoVisita();
+    ArchivoVisita(std::string nombreArchivo);
     bool Guardar(Visita reg);
     bool Guardar(Visita reg, int nroRegistro);
     int ContarRegistros();
     Visita Leer(int nroRegistro);
     int Buscar(int dni);
+    Visita BuscarObj(int dni);
+    bool Modificar(Visita reg);
 
 private:
-	char _nombre[30];
+	std::string _nombreArchivo;
 };
 

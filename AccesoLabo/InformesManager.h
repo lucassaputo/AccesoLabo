@@ -2,7 +2,8 @@
 #include "ArchivoRegistro.h"
 #include "ArchivoUnidad.h"
 #include "ArchivoProveedores.h"
-#include "Registro.h"
+#include "ArchivoRegistro.h"
+
 /*
 		cout << "**************     INFORMES     **************" << endl;
 		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;

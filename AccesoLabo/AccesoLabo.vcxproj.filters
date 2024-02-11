@@ -87,9 +87,6 @@
     <ClCompile Include="ArchivoUnidad.cpp">
       <Filter>Source Files\Archivos</Filter>
     </ClCompile>
-    <ClCompile Include="ArchivoVisita.cpp">
-      <Filter>Source Files\Archivos</Filter>
-    </ClCompile>
     <ClCompile Include="MenuAbmPersonas.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
@@ -118,9 +115,6 @@
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Autorizacion.cpp">
-      <Filter>Source Files\Gestion</Filter>
-    </ClCompile>
-    <ClCompile Include="Empleado.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
     <ClCompile Include="Empresa.cpp">
@@ -201,6 +195,12 @@
     <ClCompile Include="ConfigSingleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ArchivoResidente.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchivoPersona.cpp">
+      <Filter>Source Files\Archivos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuAbmPersonas.h">
@@ -240,9 +240,6 @@
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ArchivoUnidad.h">
-      <Filter>Header Files\Archivo</Filter>
-    </ClInclude>
-    <ClInclude Include="ArchivoVisita.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
     <ClInclude Include="ConfiguracionesManager.h">
@@ -291,9 +288,6 @@
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
     <ClInclude Include="Empresa.h">
-      <Filter>Header Files\Gestion</Filter>
-    </ClInclude>
-    <ClInclude Include="Empleado.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
     <ClInclude Include="Usuario.h">
@@ -352,6 +346,12 @@
     </ClInclude>
     <ClInclude Include="ConfigSingleton.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoResidente.h">
+      <Filter>Header Files\Archivo</Filter>
+    </ClInclude>
+    <ClInclude Include="ArchivoPersona.h">
+      <Filter>Header Files\Archivo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

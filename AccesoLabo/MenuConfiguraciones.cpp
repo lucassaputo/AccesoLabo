@@ -15,12 +15,8 @@ void MenuConfiguraciones::Mostrar()
         cin >> opcion;
         switch (opcion) {
         case 1:
-        {           
-            system("cls");
             _manager.ConfiguracionHorarios();
-            system("pause");
-        }
-        break;
+            break;
         case 0:        
             return;        
             break;

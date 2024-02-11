@@ -7,8 +7,11 @@ private:
 	std::string _nombreArchivo;
 public:
 	ArchivoUnidad(std::string nombreArchivo);
-	int Buscar(int id);
+	int BuscarPos(int id);
+	Unidad BuscarObj(int id);
 	Unidad Leer(int nroRegistro);
 	int ContarRegistros();
 	bool Guardar(Unidad reg);
+	bool Guardar(Unidad reg, int pos);
+	bool Modificar(Unidad reg);
 };

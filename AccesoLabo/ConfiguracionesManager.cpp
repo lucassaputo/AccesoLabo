@@ -4,6 +4,7 @@
 
 void ConfiguracionesManager::ConfiguracionHorarios()
 {
+	system("cls");
 	Configuracion reg;
 	ConfigSingleton& config = ConfigSingleton::getInstance();
 	//config.setMiClase(reg);
@@ -11,4 +12,5 @@ void ConfiguracionesManager::ConfiguracionHorarios()
 	std::cout << "Ingresos de proveedores permitidos desde: " << config.getConfig().getDesde().toString() << std::endl;
 	std::cout << "Ingresos de proveedores permitidos hasta: " << config.getConfig().getHasta().toString() << std::endl;
 	std::cout << "Configuracion de Horario" << std::endl;
+	system("pause");
 }
