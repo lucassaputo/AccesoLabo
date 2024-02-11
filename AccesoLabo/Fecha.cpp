@@ -191,6 +191,7 @@ bool Fecha::operator>(Fecha& fechaActual)
         return false;
     }
 }
+
 bool Fecha::operator<(Fecha& fechaActual)
 {
     return false;
