@@ -7,10 +7,9 @@ class Autorizacion
 {
 private:
 	int _id;
-	int _idPersona; // ver si lo sacamos y dejamos solo DNI
+	int _idPersona;
 	int _idUnidad;
 	int _tipo; // 1 - Visitas || 2 - Proveedor
-	int _dni;
 	Fecha _hasta;
 	bool _estado;
 public:

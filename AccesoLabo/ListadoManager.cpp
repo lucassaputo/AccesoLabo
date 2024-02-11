@@ -65,10 +65,10 @@ void ListadoManager::AutorizadosPorApellido() {
 std::string ListadoManager::BuscarenVisita(int dni)
 {
 	std::string Apellido;
-	Visita reg;
-	ArchivoVisita archVisita("Visitas.dat");
-	int pos=archVisita.Buscar(dni);
-	reg = archVisita.Leer(pos);
+	Persona reg;
+
+	int pos=_archivoVisitas.Buscar(dni);
+	reg = _archivoVisitas.Leer(pos);
 	Apellido = reg.getApellidos();
 	
 	return Apellido;

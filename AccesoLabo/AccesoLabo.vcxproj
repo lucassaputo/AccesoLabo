@@ -151,7 +151,6 @@
     <ClCompile Include="ArchivoResidente.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
     <ClCompile Include="ArchivoUsuario.cpp" />
-    <ClCompile Include="ArchivoVisita.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
     <ClCompile Include="Cadena.cpp" />
     <ClCompile Include="ConfigSingleton.cpp" />
@@ -204,7 +203,6 @@
     <ClInclude Include="ArchivoResidente.h" />
     <ClInclude Include="ArchivoUnidad.h" />
     <ClInclude Include="ArchivoUsuario.h" />
-    <ClInclude Include="ArchivoVisita.h" />
     <ClInclude Include="Autorizacion.h" />
     <ClInclude Include="Cadena.h" />
     <ClInclude Include="ConfigSingleton.h" />

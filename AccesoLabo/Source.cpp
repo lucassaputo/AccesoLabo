@@ -61,6 +61,8 @@ int main() {
 * tipo proveedor, lo sacamos?
 * como reconoce proveedor si no esta incluido en abmPersonasManager
 * pasar a texto en edicion la condicion se es inquilino o propietario
+* agregar usuario a los registros
+* corregir o ver que autorizacion queda vigente si la persona se da de baja o no?
 */
 
 /*

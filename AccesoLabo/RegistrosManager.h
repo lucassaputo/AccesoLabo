@@ -17,7 +17,7 @@ class RegistrosManager
 		void Cargar();
 		void Editar();
 		void Eliminar();
-		Unidad buscarUnidad(int u);
+		//Unidad buscarUnidad(int u);
 		void registroProveedores(Unidad uni, int dni,int motivo);
 		void registroVisitas(Unidad uni, int dni);
 		void registroResidentes(Unidad uni, int dni);
