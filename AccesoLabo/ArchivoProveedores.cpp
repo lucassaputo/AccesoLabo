@@ -74,6 +74,24 @@ int ArchivoProveedores::Buscar(int dni) {
     return -1;
 }
 
+int ArchivoProveedores::BuscarId(int id) {
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return -1;
+    }
+    int i = 0;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Proveedor), 1, p)) {
+        if (reg.getId() == id) {
+            fclose(p);
+            return i;
+        }
+        i++;
+    }
+    fclose(p);
+    return -1;
+}
+
 Proveedor ArchivoProveedores::BuscarObj(int dni) {
     Proveedor prov;
     prov.setDni(-1);

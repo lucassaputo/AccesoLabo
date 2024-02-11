@@ -16,7 +16,7 @@ bool Residente::getPropietarioInquilino() const { return _propietario_inquilino;
 
 void Residente::cargarResidente() {
     cargarPersona();
-    setUnidad(stoi(ingresarIdUnidad()));
+    setUnidad(ingresarUnidad("de residencia").getId());
     bool propie;
     Fecha aux;
     Fecha hoy;

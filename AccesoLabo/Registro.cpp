@@ -40,6 +40,7 @@ void Registro::mostrar()
 {
     cout << "Persona: " << _idPersona << endl;
     cout << "Unidad: " << _idUnidad << endl;
+    cout << "Tipo persona: " << _tipoPersona << endl;
     cout << _fechaIngreso.toString() << endl;
     cout << "Adentro: " << _adentro << endl;
     cout << "Observaciones: " << _observaciones << endl;
@@ -51,3 +52,9 @@ void Registro::operator =(Proveedor p) {
     _idPersona = p.getId();    
     _fechaIngreso = aux;
 }
+void Registro::operator =(Persona p) {
+    FechaHorario aux;
+    _idPersona = p.getId();
+    _fechaIngreso = aux;
+}
+

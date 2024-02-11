@@ -151,7 +151,6 @@
     <ClCompile Include="ArchivoResidente.cpp" />
     <ClCompile Include="ArchivoUnidad.cpp" />
     <ClCompile Include="ArchivoUsuario.cpp" />
-    <ClCompile Include="ArchivoVisita.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
     <ClCompile Include="Cadena.cpp" />
     <ClCompile Include="ConfigSingleton.cpp" />
@@ -183,6 +182,7 @@
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Registro.cpp" />
     <ClCompile Include="RegistrosManager.cpp" />
+    <ClCompile Include="ReporteAutorizaciones.cpp" />
     <ClCompile Include="Residente.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Unidad.cpp" />
@@ -204,7 +204,6 @@
     <ClInclude Include="ArchivoResidente.h" />
     <ClInclude Include="ArchivoUnidad.h" />
     <ClInclude Include="ArchivoUsuario.h" />
-    <ClInclude Include="ArchivoVisita.h" />
     <ClInclude Include="Autorizacion.h" />
     <ClInclude Include="Cadena.h" />
     <ClInclude Include="ConfigSingleton.h" />
@@ -236,13 +235,18 @@
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="Registro.h" />
     <ClInclude Include="RegistrosManager.h" />
+    <ClInclude Include="ReporteAutorizaciones.h" />
     <ClInclude Include="Residente.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="UserSingleton.h" />
     <ClInclude Include="Unidad.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioManager.h" />
     <ClInclude Include="Vehiculo.h" />
     <ClInclude Include="Visita.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AccesoLabo.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
