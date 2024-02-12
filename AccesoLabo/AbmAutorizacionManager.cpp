@@ -1,6 +1,7 @@
 #include "AbmAutorizacionManager.h"
 #include <iostream>
 #include "FuncionesGlobales.h"
+#include "AbmPersonasManager.h" // revisar con lucas
 using namespace std;
 
 void AbmAutorizacionManager::Alta()
@@ -26,6 +27,10 @@ void AbmAutorizacionManager::Alta()
 			}
 			else {
 				cout << "La persona ingresada no existe, proceda a dar el alta y regrese aqui." << endl;
+				/*
+				podriamos preguntar si la quiere dar de alta mediante un if
+				AbmPersonasManager m;
+				m.AltaVisita();*/
 			}
 		}
 		else {

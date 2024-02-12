@@ -9,32 +9,44 @@ void MenuConsultas::Mostrar() {
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
         cout << "**************     CONSULTAS     *************" << endl;
         cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-        cout << "1 - Consulta de autorizados" << endl;
-        cout << "2 - Consulta de residentes" << endl;
-        cout << "3 - Consulta de proveedores" << endl;
-        cout << "4 - Consulta de empleados" << endl;
-        cout << "5 - Consulta de unidades" << endl;
+        cout << "1 - Consulta de autorizados por Unidad" << endl;
+        cout << "2 - Consulta de autorizados por Apellido" << endl;
+        cout << "3 - Consulta de residentes por Unidad" << endl;
+        cout << "4 - Consulta de residentes por Apellido" << endl;
+        cout << "5 - Consulta de proveedores por Razon Social" << endl;
+        cout << "6 - Consulta de Proveedores por CUIT" << endl;
+        cout << "7 - Consulta de unidades por Nombre" << endl;
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
+      
 
         int opcion;
         cin >> opcion;
         switch (opcion) {
         case 1:
-            _manager.ConsultaAutorizados();
+            _manager.ConsultaAutorizadosxUnidad();
             break;
         case 2:
-            _manager.ConsultaResidentes();
+            _manager.ConsultaAutorizadosxApellido();
             break;
         case 3:
-            _manager.ConsultaProveedores();
+            _manager.ConsultaResidentesxUnidad();
             break;
         case 4:
-            _manager.ConsultaEmpleados();
+            _manager.ConsultaResidentesxApellido();
             break;
         case 5:
-            _manager.ConsultaUnidades();
+            _manager.ConsultaProveedoresxRazonSocial();
             break;
+       
+        case 6:
+            _manager.ConsultaProveedoresxCUIT();
+            break;
+        case 7:
+            
+            _manager.ConsultaUnidadesxNombre();
+            break;         
+                
         case 0:
             return;
             break;
