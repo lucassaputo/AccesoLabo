@@ -23,11 +23,12 @@ void ConsultasManager::ConsultaResidentesxApellido() {// punto 3
 	cout << "Consulta Residentes por Apellido" << endl;
 	system("pause");
 }
+/*
 void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
 	system("cls");
 	cout << "Consulta Residentes por Unidad" << endl;
 	system("pause");
-}
+}*/
 
 void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 	system("cls");
