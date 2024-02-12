@@ -19,7 +19,7 @@ void MenuConsultas::Mostrar() {
 
         int opcion;
         cin >> opcion;/*
-        switch (opcion) {
+        switch (opcion) {//
         case 1:
             _manager.ConsultaAutorizados();
             break;

@@ -5,6 +5,17 @@ ArchivoUnidad::ArchivoUnidad(std::string nombreArchivo = "Unidades.dat") {
     _nombreArchivo = nombreArchivo;
 }
 
+bool ArchivoUnidad::CrearArchivo(Unidad reg) {
+    bool pudoEscribir;
+    FILE* p = fopen(_nombreArchivo.c_str(), "wb");
+    if (p == nullptr) {
+        return false;
+    }
+    pudoEscribir = fwrite(&reg, sizeof(Unidad), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}
+
 bool ArchivoUnidad::Guardar(Unidad reg) {
     bool pudoEscribir;
     FILE* p = fopen(_nombreArchivo.c_str(), "ab");

@@ -1,17 +1,15 @@
 #pragma once
-#include "RegistrosManager.h"
+#include "ArchivoUnidad.h"
+
 class ExportacionManager
 {
-	/*
-		std::cout << "1 - Copia de Seguridad" << std::endl;
-	std::cout << "2 - Exportar listado" << std::endl;
-	std::cout << "3 - Exportar Consulta" << std::endl;
-	*/
+private:
+	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
+	ArchivoUnidad _archivoUnidadesBackup = ArchivoUnidad("UnidadesBackup.dat");
+
 public:
 	void CopiadeSeguridad();
-	void ExportarListado();
-	void ExportarConsulta();
-private:
-	RegistrosManager _manager;
+	void RestaurarCopia();
+
 };
 
