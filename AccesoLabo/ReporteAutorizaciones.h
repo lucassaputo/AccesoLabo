@@ -36,4 +36,5 @@ public:
 
 	//acciones
 	void mostrar();
+	void mostrar2();
 };
