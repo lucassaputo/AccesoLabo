@@ -11,6 +11,7 @@ public:
 	Unidad BuscarObj(int id);
 	Unidad Leer(int nroRegistro);
 	int ContarRegistros();
+	bool CrearArchivo(Unidad reg);
 	bool Guardar(Unidad reg);
 	bool Guardar(Unidad reg, int pos);
 	bool Modificar(Unidad reg);

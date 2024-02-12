@@ -8,4 +8,5 @@ public:
 	void Alta();
 	void Baja();
 	void Editar();
+	void Listar();
 };

@@ -5,14 +5,41 @@ using namespace std;
 #include "App.h"
 #include "UserSingleton.h"
 #include "ConfigSingleton.h"
+#include <fstream> // Incluir la biblioteca para manejar archivos
 
 // Inicialización estática de la instancia como nullptr
 UserSingleton* UserSingleton::instance = nullptr;
 ConfigSingleton* ConfigSingleton::instance = nullptr;
 
-int main() {			
+int main() {	
+    /*
+    // Abrir un archivo para escribir
+    std::ofstream archivo("datos.txt");
+
+    // Verificar si el archivo se abrió correctamente
+    if (archivo.is_open()) {
+        // Escribir datos en el archivo
+        archivo << "Hola, este es un ejemplo de exportación a un archivo de texto en C++.\n";
+        archivo << "Puedes escribir cualquier dato que desees aquí.\n";
+        archivo << "¡Buena suerte con tu programa!\n";
+
+        // Cerrar el archivo
+        archivo.close();
+
+        std::cout << "Los datos se han exportado correctamente al archivo 'datos.txt'.\n";
+    }
+    else {
+        // Mostrar un mensaje de error si no se pudo abrir el archivo
+        std::cerr << "Error al abrir el archivo 'datos.txt'.\n";
+    }
+
+    return 0;
+	
+	
+	*/
+	
 	App app;
-	app.Ejecutar();//
+	app.Ejecutar();
 
 	return 0;
 }
@@ -23,6 +50,9 @@ int main() {
 //validar si esta adentro del mismo lote antes de dar salida
 // agregar estado a la validacion de las personas en registroManager, en los tres tipos
 // chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
+// ver libreria para pdf
+// ver libreria para seleccionar archivos
+// ver como usar librerias en general
 //2024
 /*
 * mostrar lo existente en el mensaje y cin de ingresar

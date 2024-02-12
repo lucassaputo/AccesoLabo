@@ -110,3 +110,16 @@ void AbmUnidadesManager::Baja() {
 	}
 	system("pause");
 }
+
+void AbmUnidadesManager::Listar() {
+	system("cls");
+	Unidad u;
+	cout << "LISTADO UNIDADES" << endl;
+	cout << "++++++++++++++++++++++++++++++++" << endl;
+	int cant = _archivoUnidades.ContarRegistros();
+	for (int i = 0;i < cant;i++) {
+		u = _archivoUnidades.Leer(i);
+		u.mostrar();
+	}
+	system("pause");
+}
