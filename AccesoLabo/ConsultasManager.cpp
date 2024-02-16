@@ -56,7 +56,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 			for (int i = 0;i < cantregPersonas;i++) {
 				per = _archivoPersona.Leer(i);
 				if (idAutorizado==per.getId()) {
-					per.mostrar()
+					per.mostrar();
 					ContMuestras++;
 					system("pause");
 				}
