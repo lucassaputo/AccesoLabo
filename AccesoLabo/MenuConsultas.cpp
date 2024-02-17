@@ -14,15 +14,15 @@ void MenuConsultas::Mostrar() {
         cout << "3 - Consulta de residentes por Unidad" << endl;
         cout << "4 - Consulta de residentes por Apellido" << endl;
         cout << "5 - Consulta de proveedores por Razon Social" << endl;
-        cout << "6 - Consulta de Proveedores por CUIT" << endl;
+        cout << "6 - Consulta de Proveedores por DNI" << endl;
         cout << "7 - Consulta de unidades por Nombre" << endl;
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
       
 
         int opcion;
-        cin >> opcion;/*
-        switch (opcion) {//
+        cin >> opcion;
+        switch (opcion) {
         case 1:
             _manager.ConsultaAutorizadosxUnidad();
             break;
@@ -50,6 +50,6 @@ void MenuConsultas::Mostrar() {
         case 0:
             return;
             break;
-        }*/
+        }
     }
 }

@@ -2,22 +2,16 @@
 #include <iostream>
 using namespace std;
 void InformesManager::UnidadesMas50() // punto 1
-{/*
- system("cls");
-	int mes, anio;
-	cout << "unidades con mas de 50 movimientos" << endl;
-	cout << "Ingrese el mes: " << endl;
-	cin >> mes;
-	cout << "Ingrese el anio: " << endl;
-	cin >> anio;
- */
-	system("cls");
-	/// pedir al usuario ingreso de fecha
+{	system("cls"); cout << "||| Unidades con más de 50 movimientos||| "<< endl;
+//int mes, anio;
+ cout << " en este reporte se informará según el mes y año que ingrese el usuario las unidades con más de 50 movimientos. ";
 	Fecha fi;
-	fi.ingresarFecha();
+	fi.ingresarMes_Anio();	
+
+
 	Unidad u;
 	Registro reg;
-	int maximo = ID_Maximo();
+	// int maximo = ID_Maximo(); 
 	int* contMovimientos;
 	int cant = _archivoUnidades.ContarRegistros(); // contador registros de unidades
 	if (cant == 0) {
@@ -32,7 +26,7 @@ void InformesManager::UnidadesMas50() // punto 1
 	int cantRegistros = _archivoRegistros.ContarRegistros(); // contador de registros de archivoregistros
 	for (int i = 0;i < cantRegistros;i++) {
 		reg = _archivoRegistros.Leer(i);
-		if (reg.getFechaIngreso().getFecha() == fi) {
+		if (reg.getFechaIngreso().getFecha().getMes() == fi.getMes() && reg.getFechaIngreso().getFecha().getAnio()==fi.getAnio()) {
 			contMovimientos[reg.getId() - 1]++;
 		}
 	}
@@ -72,11 +66,16 @@ int InformesManager::ID_Maximo()
 
 
 void InformesManager::Mostrar50(int* vec, int tam)
-{
+{	
+	int cont = 0;
 	for (int x = 0;x < tam;x++) {
 		if (vec[x] > 50) {
 			cout << "La Unidad Funcional: " << x + 1 << " tiene " << vec[x] << " movimientos " << endl;
+			cont++;
 		}
+	}
+	if (cont == 0) {
+		cout << "Ninguna unidad registrro mas de 50 movimientos en la fecha seleccionada" << endl;
 	}
 }
 

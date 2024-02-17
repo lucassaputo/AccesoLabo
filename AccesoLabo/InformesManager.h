@@ -3,6 +3,8 @@
 #include "ArchivoUnidad.h"
 #include "ArchivoProveedores.h"
 #include "ArchivoRegistro.h"
+#include "FuncionesGlobales.h"
+
 
 /*
 		cout << "**************     INFORMES     **************" << endl;
