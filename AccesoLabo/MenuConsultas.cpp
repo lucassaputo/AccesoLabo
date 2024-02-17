@@ -21,8 +21,8 @@ void MenuConsultas::Mostrar() {
       
 
         int opcion;
-        cin >> opcion;
-        switch (opcion) {
+        cin >> opcion;/*
+        switch (opcion) {//
         case 1:
             _manager.ConsultaAutorizadosxUnidad();
             break;
@@ -50,6 +50,6 @@ void MenuConsultas::Mostrar() {
         case 0:
             return;
             break;
-        }
+        }*/
     }
 }

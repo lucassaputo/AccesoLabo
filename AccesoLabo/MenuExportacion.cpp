@@ -11,10 +11,17 @@ void MenuExportacion::Mostrar()
 	{
 
 	system("cls");
-		std::cout << "----- EXPORTACIONES -----" << std::endl;
-		std::cout << "1 - Copia de Seguridad" << std::endl;
-		std::cout << "2 - Exportar listado" << std::endl;
-		std::cout << "3 - Exportar Consulta" << std::endl;
+		std::cout << "----- BACKUPS -----" << std::endl;
+		std::cout << "* - Copia de Seguridad" << std::endl;
+		std::cout << "	1 - Copia de Unidades" << std::endl;
+		std::cout << "	2 - Copia de Residentes" << std::endl;
+		std::cout << "	3 - Copia de Visitas" << std::endl;
+		std::cout << "	4 - Copia de Proveedores" << std::endl;
+		std::cout << "* - Restaurar copia de Seguridad" << std::endl;
+		std::cout << "	5 - Restaurar Unidades" << std::endl;
+		std::cout << "	6 - Restaurar Residentes" << std::endl;
+		std::cout << "	7 - Restaurar Visitas" << std::endl;
+		std::cout << "	8 - Restaurar Proveedores" << std::endl;
 		std::cout << "0 - Volver" << std::endl;
 
 		int opc;
@@ -26,18 +33,10 @@ void MenuExportacion::Mostrar()
 			_manager.CopiadeSeguridad();
 			//system("pause");
 			break;
-		case 2:
+		case 5:
 			system("cls");
-			_manager.ExportarListado();
-		//	system("pause");
+			_manager.RestaurarCopia();
 			break;
-		case 3:
-			system("cls");
-			_manager.ExportarConsulta();
-			//system("pause");
-			break;
-
-
 		case 0:
 			return;
 			break;

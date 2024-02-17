@@ -11,6 +11,7 @@ void MenuAbmUnidades::Mostrar() {
         cout << "1 - Alta" << endl;
         cout << "2 - Edicion" << endl;
         cout << "3 - Baja" << endl;
+        cout << "4 - Listar" << endl;
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
@@ -25,6 +26,9 @@ void MenuAbmUnidades::Mostrar() {
             break;
         case 3:
             _manager.Baja();
+            break;
+        case 4:
+            _manager.Listar();
             break;
         case 0:
             return;

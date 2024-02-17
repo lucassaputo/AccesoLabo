@@ -75,6 +75,7 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	std::string unidad;
 	Residente res;
 	cout << "Consulta Residentes por Unidad" << endl;
+
 	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Ingrese el numero de Unidad: " << endl;
 	unidad = ingresarIdUnidad();
@@ -96,8 +97,21 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			cout << "No hay Residentes dados de alta en esa Unidad Funcional" << endl;
 		}
 	}
+
 	system("pause");
 }
+void ConsultasManager::ConsultaResidentesxApellido() {// punto 3
+	system("cls");
+	cout << "Consulta Residentes por Apellido" << endl;
+	system("pause");
+}
+/*
+void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
+	system("cls");
+	cout << "Consulta Residentes por Unidad" << endl;
+
+	system("pause");
+}*/
 
 	void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
 		system("cls");

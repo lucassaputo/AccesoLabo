@@ -30,3 +30,12 @@ void ReporteAutorizaciones::mostrar()
     cout << "NombreTipo: " << _nombreTipo << endl;
     cout << "Autorizado hasta: " << _hasta.toString() << endl;
 }
+
+void ReporteAutorizaciones::mostrar2()
+{
+    cout << "-----------------------------" << endl;
+    cout << "ID: " << _id << " || idPersona: " << _idPersona << " || idUnidad: " << _idUnidad;
+    cout << " || idTipo: " << _tipo << " || Apellido: " << _apellido;
+    cout << " || NombreTipo: " << _nombreTipo << " || Autorizado hasta: " << _hasta.toString() << endl;
+    cout << "-----------------------------" << endl;
+}

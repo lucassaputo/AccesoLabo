@@ -10,45 +10,22 @@ using namespace std;
 UserSingleton* UserSingleton::instance = nullptr;
 ConfigSingleton* ConfigSingleton::instance = nullptr;
 
-int main() {			
+int main() {	
 	App app;
-	app.Ejecutar();//
+	app.Ejecutar();
 
 	return 0;
 }
 
-// user leg 8 pass 12 ADMIN
-// user 10 pass 1234 VIGILADOR
 
-//validar si esta adentro del mismo lote antes de dar salida
-// agregar estado a la validacion de las personas en registroManager, en los tres tipos
-// chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
-//2024
 /*
-* mostrar lo existente en el mensaje y cin de ingresar
-*/
-// 
-//HACER
-/*
-* hacer algun tipo de escape en medio del registro
-* login
-* validaciones
-*	DNI
-*	nombre
-*	apellido
-*	fecha
-* ingreso fecha mejorarlo
+* validar si esta adentro del mismo lote antes de dar salida
+* agregar estado a la validacion de las personas en registroManager, en los tres tipos
+* chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
+* usar <vector> en vez de dinamica
 * ABML vehiculos
-* esta adentro?
-* menues
-* ingreso de fechas mas simple
-* tipo de proveedor queda?
-* mantener la indentacion
 * ver cuando pasar por referencia objetos o solo pasar el atributo que utilice la funcion
-* hacer sobrevarga de fecha de <
 * validar el ingrese de opciones del menu que sean solo numeros
-* dniString en persona se rompio
-* ingresar fecha nacimiento en usuario y persona
 * validar password usuario
 * maximo de caracteres en legajo
 * estado activo o no es de usuario o persona? o de ambos?
@@ -63,7 +40,6 @@ int main() {
 * tipo proveedor, lo sacamos?
 * como reconoce proveedor si no esta incluido en abmPersonasManager
 * pasar a texto en edicion la condicion se es inquilino o propietario
-* agregar usuario a los registros
 * corregir o ver que autorizacion queda vigente si la persona se da de baja o no?
 */
 
@@ -80,4 +56,9 @@ int main() {
 * tipos de personas;:
 * --------------------
 * 1: Visita | 2: Proveedor | 3: Residente
+*
+* usuarios
+* --------------
+* user leg 8 pass 12 ADMIN
+* user 10 pass 1234 VIGILADOR
 */
