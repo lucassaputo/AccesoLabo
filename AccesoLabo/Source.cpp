@@ -12,7 +12,7 @@ ConfigSingleton* ConfigSingleton::instance = nullptr;
 
 int main() {	
 	App app;
-	app.Ejecutar();
+	app.Ejecutar();//
 
 	return 0;
 }
