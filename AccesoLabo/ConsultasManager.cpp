@@ -100,11 +100,12 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 
 	system("pause");
 }
+/*
 void ConsultasManager::ConsultaResidentesxApellido() {// punto 3
 	system("cls");
 	cout << "Consulta Residentes por Apellido" << endl;
 	system("pause");
-}
+}*/
 /*
 void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
 	system("cls");
