@@ -140,7 +140,6 @@ void ListadoManager::OrdenarAutorizadosxApellido(ReporteAutorizaciones* vec, int
 void ListadoManager::OrdenarVectorAutorizadosxApellido(std::string *reg, int tam)
 {
 	std::string aux;
-
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
 			if (strcmp(reg[x].c_str(), reg[x + 1].c_str()) > 0) {
@@ -152,6 +151,7 @@ void ListadoManager::OrdenarVectorAutorizadosxApellido(std::string *reg, int tam
 		}
 	}
 }
+
 void ListadoManager::AutorizadosPorUnidad() {
 	system("cls");
 
@@ -192,7 +192,6 @@ void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 		}
 	}
 }
-
 
 void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
@@ -279,6 +278,7 @@ void ListadoManager::ProveedoresPorDNI() {
 
 	system("pause");
 }
+
 void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 {
 	Proveedor aux;
@@ -292,6 +292,7 @@ void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 		}
 	}
 }
+
 void ListadoManager::UnidadesPorNumero() {
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
