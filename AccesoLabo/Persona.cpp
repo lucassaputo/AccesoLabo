@@ -104,3 +104,4 @@ void Persona::mostrarX()
 {
 	cout << "Nombre: " <<  endl;
 }
+

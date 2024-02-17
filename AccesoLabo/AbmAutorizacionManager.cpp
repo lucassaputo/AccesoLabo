@@ -1,6 +1,7 @@
 #include "AbmAutorizacionManager.h"
 #include <iostream>
 #include "FuncionesGlobales.h"
+#include "AbmPersonasManager.h" // revisar con lucas
 using namespace std;
 
 void AbmAutorizacionManager::Alta()
@@ -13,18 +14,23 @@ void AbmAutorizacionManager::Alta()
 	cout << "***********  Alta autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();//valida que exista;
+	uni = ingresarUnidad("a autorizar");//valida que exista;
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObj(dni);
-		if (vis.getDni() != -1) {
+		vis.mostrar();
+		if (vis.getDni() > 5000000) {
 			if (vis.getEstado()) {
 				altaAutorizacion(vis.getId(), 1, uni.getId());
 			}
 			else {
 				cout << "La persona ingresada no existe, proceda a dar el alta y regrese aqui." << endl;
+				/*
+				podriamos preguntar si la quiere dar de alta mediante un if
+				AbmPersonasManager m;
+				m.AltaVisita();*/
 			}
 		}
 		else {
@@ -34,7 +40,7 @@ void AbmAutorizacionManager::Alta()
 	else // proveedor
 	{
 		Proveedor prov = _archivoProveedores.BuscarObj(dni);
-		if (prov.getDni() != -1) {
+		if (prov.getDni() > 5000000) {
 			if (prov.getEstado()) {
 				altaAutorizacion(prov.getId(), 2, uni.getId());
 			}
@@ -59,13 +65,13 @@ void AbmAutorizacionManager::Editar()
 	cout << "***********  Edicion autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();	
+	uni = ingresarUnidad("a editar");
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObj(dni);
-		if (vis.getDni() != -1) {
+		if (vis.getDni() > 5000000) {
 			if (vis.getEstado()) {
 				editarAutorizacion(vis.getId(), 1, uni.getId());
 				system("pause");
@@ -76,9 +82,11 @@ void AbmAutorizacionManager::Editar()
 	else // proveedor
 	{
 		Proveedor prov = _archivoProveedores.BuscarObj(dni);
-		if (prov.getDni() != -1) {
+		if (prov.getDni() > 5000000) {
 			if (prov.getEstado()) {
 				editarAutorizacion(prov.getId(), 2, uni.getId());
+				system("pause");
+				return;
 			}
 		}
 	}
@@ -96,7 +104,7 @@ void AbmAutorizacionManager::Baja()
 	cout << "***********  Baja autorizacion  ***********" << endl;
 
 	motivo = ingresarMotivo();
-	uni = ingresarUnidad();//valida que exista;
+	uni = ingresarUnidad("a eliminar");//valida que exista;
 	dni = cargarDni();
 
 	if (motivo == 1) //visita
@@ -189,7 +197,7 @@ void AbmAutorizacionManager::editarAutorizacion(int idPersona, int motivo, int u
 			return;
 		}
 	}
-	cout << "La autorizacion ya existe, la puede modificar desde edicion." << endl;
+	cout << "La 111autorizacion ya existe, la puede modificar desde edicion." << endl;
 	return;
 }
 

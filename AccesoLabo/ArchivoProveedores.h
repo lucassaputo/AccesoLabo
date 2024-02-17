@@ -10,6 +10,7 @@ public:
     int ContarRegistros();
     Proveedor Leer(int nroRegistro);
     int Buscar(int dni);
+    int BuscarId(int id);
     Proveedor BuscarObj(int dni);
     bool Modificar(Proveedor reg);
 

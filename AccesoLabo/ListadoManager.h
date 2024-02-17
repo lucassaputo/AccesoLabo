@@ -5,7 +5,9 @@
 #include "ArchivoProveedores.h"
 #include "ArchivoPersona.h"
 #include "ArchivoResidente.h"
+#include "ReporteAutorizaciones.h"
 #include "Registro.h"
+
 class ListadoManager
 {
 	public:
@@ -13,10 +15,11 @@ class ListadoManager
 		std::string BuscarenVisita(int dni);
 		std::string BuscarenProveedor(int dni);
 		void OrdenarVectorAutorizadosxApellido(std::string* reg, int tam);
+		void OrdenarAutorizadosxApellido(ReporteAutorizaciones* reg, int tam);
 		void AutorizadosPorUnidad(); // punto 2
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
 		void ResidentesPorUnidad();//punto 3
-		void OrdenarResidentesxUnidad(Residente* vec, int ram);
+		void OrdenarResidentesxUnidad(Residente* reg, int tam);
 		void ProveedoresPorRazon();//punto4
 		void OrdenarVectorProveedoresxRazon(Proveedor* reg, int tam);
 		void ProveedoresPorDNI();//punto5
@@ -34,5 +37,4 @@ class ListadoManager
 		ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
 		ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
 };
-
 

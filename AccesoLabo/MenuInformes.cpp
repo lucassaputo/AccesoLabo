@@ -29,7 +29,7 @@ void MenuInformes::Mostrar() {
             _manager.HistorialMovimientosxUnidades();
             break;
         case 4:
-            _manager.HistorialMovimientos();
+            _manager.MovimientosMensuales();
             break;       
         case 0:
             return;

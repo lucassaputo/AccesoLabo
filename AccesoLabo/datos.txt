@@ -1,0 +1,3 @@
+Hola, este es un ejemplo de exportación a un archivo de texto en C++.
+Puedes escribir cualquier dato que desees aquí.
+¡Buena suerte con tu programa!

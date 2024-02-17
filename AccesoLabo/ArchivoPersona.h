@@ -10,6 +10,7 @@ public:
     int ContarRegistros();
     Persona Leer(int nroRegistro);
     int Buscar(int dni);
+    int BuscarId(int id);
     Persona BuscarObj(int dni);
     bool Modificar(Persona reg);
 

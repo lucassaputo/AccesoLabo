@@ -31,6 +31,20 @@ string cargarNombre() {
 	return nombre;
 }
 
+string cargarApellido() {
+	string apellido = "";
+	cout << "Apellidos: ";
+	cin.ignore();
+	getline(cin, apellido);
+	while (!(soloLetras(apellido))) {
+		cout << "El Apellido no puede contener números//   apellido: ";
+		cin.ignore();
+		getline(cin, apellido);
+	}
+	return apellido;
+}
+
+
 string cargarString(string campo) {
 	string cadena = "";
 	cout << campo + ": ";
@@ -148,12 +162,12 @@ int ingresarMotivo() {
 	return std::stoi(motivoAux);
 }
 
-Unidad ingresarUnidad() {
+Unidad ingresarUnidad(string mensaje) {
 	string unidadAux;
 	Unidad uni;
 	uni.setId(-1);
 	while (true) {
-		cout << "Ingrese unidad destino: ";
+		cout << "Ingrese unidad " << mensaje << ": ";
 		cin.ignore();
 		cin >> unidadAux;
 		while (soloNumeros(unidadAux) == false) {
