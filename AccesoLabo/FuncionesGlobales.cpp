@@ -31,6 +31,20 @@ string cargarNombre() {
 	return nombre;
 }
 
+string cargarApellido() {
+	string apellido = "";
+	cout << "Apellidos: ";
+	cin.ignore();
+	getline(cin, apellido);
+	while (!(soloLetras(apellido))) {
+		cout << "El Apellido no puede contener números//   apellido: ";
+		cin.ignore();
+		getline(cin, apellido);
+	}
+	return apellido;
+}
+
+
 string cargarString(string campo) {
 	string cadena = "";
 	cout << campo + ": ";

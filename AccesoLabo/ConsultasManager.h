@@ -1,9 +1,11 @@
 #pragma once
 #include "ArchivoAutorizacion.h"
 #include "ArchivoProveedores.h"
+#include "ArchivoPersona.h"
 #include "ArchivoResidente.h"
 #include "ArchivoUnidad.h"
 #include "ArchivoRegistro.h"
+#include "FuncionesGlobales.h"
 
 class ConsultasManager{
 public:
@@ -20,7 +22,8 @@ private:
 	ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
 	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
-
+	ArchivoPersona _archivoPersona = ArchivoPersona("Personas.dat");
+	ArchivoResidente _archivoResidente = ArchivoResidente("Residentes.dat");
 
 
 

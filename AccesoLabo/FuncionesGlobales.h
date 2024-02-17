@@ -4,6 +4,7 @@
 
 void cargarCadena(char* pal, int tam);
 std::string cargarNombre();
+std::string cargarApellido();
 std::string cargarString(std::string campo);
 int cargarDni();
 bool soloNumeros(std::string aux);

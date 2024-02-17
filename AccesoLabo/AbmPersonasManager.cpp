@@ -8,7 +8,7 @@ using namespace std;
 
 void AbmPersonasManager::AltaProveedor() {
 	system("cls");
-	Proveedor p;//como reconoce proveedor si no esta incluido
+	Proveedor p;
 	cout << "***********  Alta Proveedor  ***********" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	int dni = cargarDni();
@@ -117,6 +117,7 @@ void AbmPersonasManager::AltaVisita() {
 	if (per.getDni() > 5000000) {
 		if (per.getEstado()) {
 			cout << "La visita ya se encuentra creada, si desea modificarla ingrese en EDITAR" << endl;
+			
 		}
 		else {
 			per.cargarPersona();

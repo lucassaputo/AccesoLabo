@@ -158,7 +158,9 @@ void ListadoManager::AutorizadosPorUnidad() {
 	cout << "AutorizadosPorUnidad" << endl;
 	Autorizacion *regAut;
 	ArchivoAutorizacion archAut("Autorizaciones.dat");
-	int cantReg = archAut.ContarRegistros();
+	int cantReg = archAut.ContarRegistros(), cantRegPersonas= _archivoVisitas.ContarRegistros(), cantRegProveedores = _archivoProveedores.ContarRegistros() ;
+	Persona per;
+	Proveedor prov;
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
 	}
@@ -172,7 +174,22 @@ void ListadoManager::AutorizadosPorUnidad() {
 	}
 	OrdenarVectorAutorizadosxNumero(regAut, cantReg);
 	for (int i = 0;i < cantReg;i++) {
-		regAut[i].mostrar();
+		if (regAut[i].getTipo() == 1) {
+			for (int j = 0;j < cantRegPersonas;j++) {
+				per = _archivoVisitas.Leer(j);
+				if (regAut[i].getIdPersona() == per.getId()) { //  get id persona o get dni??
+					per.mostrar();
+				}
+			}
+		}
+		else if (regAut[i].getTipo() == 2) {
+			for (int j = 0;j < cantRegProveedores;j++) {
+				prov = _archivoProveedores.Leer(j);
+				if (regAut[i].getIdPersona() == prov.getId()) { //  get id persona o get dni??
+					prov.mostrar();
+				}
+			}
+		}
 	}
 	delete[] regAut;
 	system("pause");
@@ -184,7 +201,7 @@ void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 	 
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
-			if (reg[x].getId() > reg[x + 1].getId()) {
+			if (reg[x].getIdUnidad() > reg[x + 1].getIdUnidad()) {
 				aux = reg[x];
 				reg[x] = reg[x + 1];
 				reg[x + 1] = aux;
@@ -214,22 +231,33 @@ void ListadoManager::ResidentesPorUnidad() {
 	delete[] reg;
 	system("pause");
 }
-void ListadoManager::OrdenarResidentesxUnidad(Residente* vec, int ram)
+void ListadoManager::OrdenarResidentesxUnidad(Residente* reg, int tam)
 {
+	Residente aux;
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (reg[x].getUnidad() > reg[x + 1].getUnidad()) {
+				aux = reg[x];
+				reg[x] = reg[x + 1];
+				reg[x + 1] = aux;
+			}
+		}
+	}
+
 }
 void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
 	cout << "ProveedoresPorRazon" << endl;
 	Proveedor* regProv;
-	ArchivoProveedores archProv("Proveedores.dat");
-	int cantReg = archProv.ContarRegistros();
+
+	int cantReg = _archivoProveedores.ContarRegistros();
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regProv[x] = archProv.Leer(x);
+		regProv[x] = _archivoProveedores.Leer(x);
 	}
 	OrdenarVectorProveedoresxRazon(regProv, cantReg);
 	for (int i = 0;i < cantReg;i++) {
