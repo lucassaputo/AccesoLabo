@@ -82,11 +82,13 @@ void InformesManager::Mostrar50(int* vec, int tam)
 
 void InformesManager::InformeProveedores() // punto 2
 {	system("cls");
+	Fecha FechaInicial, FechaFinal;
 	std::cout << "Informe de Proveedores " << std::endl;
 	// pedir al usuario fecha inicial y final para buscar en ese rango el ingreso de proveedores
-	Fecha FechaInicial, FechaFinal;
-	FechaFinal.ingresarFecha();
+	cout << "Fecha inicial: " << endl;
 	FechaInicial.ingresarFecha();
+	cout << "Fecha final: " << endl;
+	FechaFinal.ingresarFecha();
 	Registro *reg;
 	int cantReg = _archivoRegistros.ContarRegistros();
 	reg = new Registro[cantReg];
@@ -161,12 +163,12 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 		return;
 	}
 	
-	contMovimientos = new int[cant]();
+	contMovimientos = new int[CantUni]();
 	if (contMovimientos == nullptr) {
 		cout << "error en la asignacion de memoria" << endl;
 		return;
 	}
-	VectordeIndices = new int[cant]();
+	VectordeIndices = new int[CantUni]();
 	if (VectordeIndices == nullptr) {
 		cout << "error en la asignacion de memoria" << endl;
 		return;
@@ -228,7 +230,7 @@ void InformesManager::CargarvectorUnidades(Unidad* u, int cant)
 	}
 }
 
-void InformesManager::MovimientosMensuales()
+void InformesManager::MovimientosMensuales() // punto 4
 {	system("cls");
 	cout << "Movimientos Mensuales" << endl;
 	cout << "+++++++++++++++++++++++++++++++" << endl;
@@ -254,21 +256,21 @@ void InformesManager::MovimientosMensuales()
  */
 	Registro reg;
 	Fecha fechaInicial, fechaFinal;
+	cout << "Ingrese la fecha inicial: " << endl;
 	fechaInicial.ingresarFecha();
+	cout << "Ingrese la fecha final: " << endl;
 	fechaFinal.ingresarFecha();
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int x = 0;x < cant;x++) {
 		Fecha fechaRegistro;
+		reg = _archivoRegistros.Leer(x);
 		fechaRegistro = reg.getFechaIngreso().getFecha();
 		if (fechaRegistro >= fechaInicial && fechaRegistro <= fechaFinal) {
 			cout << "fecha movimiento: " << fechaRegistro.toString();
-			reg.mostrar();
+			reg.mostrar(); // hacemos lo de la distincion de entrada y salida? 
 		}
 
 	}
-
-
-
 
 	system("pause");
 }
