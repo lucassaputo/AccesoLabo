@@ -10,10 +10,13 @@ void AbmUnidadesManager::Alta() {
 	cout << "ALTA UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Unidad u, Uaux;
-	string id = ingresarIdUnidad();
+	//string id = ingresarIdUnidad();
 	//u.setId(std::stoi(id));	
+	int id = _archivoUnidades.ContarRegistros() + 1;
+	u.setId(id);	
 	int pos;
-	pos = _archivoUnidades.BuscarPos(std::stoi(id));
+	//pos = _archivoUnidades.BuscarPos(std::stoi(id));
+	pos = _archivoUnidades.BuscarPos(id);
 	if (pos >= 0) {
 		u = _archivoUnidades.Leer(pos);
 		if (u.getEstado()) {
@@ -30,7 +33,7 @@ void AbmUnidadesManager::Alta() {
 		}
 	}
 	else {
-		u.setId(std::stoi(id));
+		//u.setId(std::stoi(id));
 		u.cargar();
 		if (_archivoUnidades.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;

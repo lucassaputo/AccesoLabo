@@ -23,7 +23,9 @@ public:
     std::string getNombreDia();
     //acciones
     bool ingresarFecha();
+    bool ingresarMes_Anio();
     bool cargar(int dia, int mes, int  anio);
+    void cargar(int mes, int  anio);
     std::string toString();
     bool operator>(Fecha& fechaActual);
     bool operator>=(Fecha& fechaActual);

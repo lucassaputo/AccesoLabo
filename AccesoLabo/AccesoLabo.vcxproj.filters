@@ -293,9 +293,6 @@
     <ClInclude Include="Proveedor.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
-    <ClInclude Include="Persona.h">
-      <Filter>Header Files\Gestion</Filter>
-    </ClInclude>
     <ClInclude Include="Empresa.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
@@ -367,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Persona.h">
+      <Filter>Header Files\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

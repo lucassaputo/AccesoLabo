@@ -119,6 +119,13 @@ bool Fecha::cargar(int dia, int mes, int anio) {
     return false;
 }
 
+void Fecha::cargar(int mes, int anio)
+{
+    _mes = mes;
+    _anio = anio;
+    
+}
+
 std::string Fecha::toString() {
     std::string valorADevolver;
     valorADevolver = std::to_string(_dia) + "/" + std::to_string(_mes) + "/" + std::to_string(_anio);
@@ -135,7 +142,7 @@ std::string Fecha::getNombreDia() {
 bool Fecha::ingresarFecha() {
     std::string fechaStr;
     // Pedir al usuario que ingrese la fecha
-    //std::cout << "Ingrese la fecha (DD/MM/AA): ";
+    std::cout << "Ingrese la fecha (DD/MM/AA): ";
     std::cin >> fechaStr;
 
     // Crear un objeto stringstream para analizar la cadena
@@ -150,7 +157,7 @@ bool Fecha::ingresarFecha() {
 
     // Verificar si el formato es correcto y no hay errores de extracción
     if (fechaStream.fail() || delim1 != '/' || delim2 != '/' || fechaStream.rdbuf()->in_avail() != 0) {
-        //std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato DD/MM/AA." << std::endl;
+        std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato DD/MM/AA." << std::endl;
         return false; // Salir con código de error
     }
     else {
@@ -165,6 +172,33 @@ bool Fecha::ingresarFecha() {
 
     return true; // Salir sin errores
 }
+
+bool Fecha::ingresarMes_Anio() {
+    std::string fechaStr;
+    std::cout << "Ingrese la fecha (MM/AA): ";
+    std::cin >> fechaStr;
+
+    // Crear un objeto stringstream para analizar la cadena
+    std::istringstream fechaStream(fechaStr);
+
+    // Variables para almacenar el día, mes y año
+    int mes, anio;
+
+    // Extraer los valores mes y año de la cadena
+    char delim1;
+    fechaStream >>  mes >> delim1 >> anio;
+
+    // Verificar si el formato es correcto y no hay errores de extracción
+    if (fechaStream.fail() ||  delim1 != '/' || fechaStream.rdbuf()->in_avail() != 0) {
+        std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato MM/AA." << std::endl;
+        return false; // Salir con código de error
+    }
+    cargar(mes, anio);
+
+    return true; // Salir sin errores
+}
+
+
 
 bool Fecha::operator>(Fecha& fechaActual)
 {
@@ -181,30 +215,7 @@ bool Fecha::operator>(Fecha& fechaActual)
 
     return false;   
    
-    /*
- if (this->getAnio() > fechaActual.getAnio()) {
-        return true;
-    }
-    else if (this->getAnio() == fechaActual.getAnio()) {
-        if (this->getMes() > fechaActual.getMes()) {
-            return true;
-        }
-        else if (this->getMes() == fechaActual.getMes()) {
-            if (this->getDia() >= fechaActual.getDia()) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    }
-    else {
-        return false;
-    }
- */
+   
     
 }
 
@@ -238,32 +249,7 @@ bool Fecha::operator<(Fecha& fechaActual)
 
     return false;
     
-    /*
- 
-    return false;
-    if (this->getAnio() > fechaActual.getAnio()) {
-        return true;
-    }
-    else if (this->getAnio() == fechaActual.getAnio()) {
-        if (this->getMes() > fechaActual.getMes()) {
-            return true;
-        }
-        else if (this->getMes() == fechaActual.getMes()) {
-            if (this->getDia() >= fechaActual.getDia()) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    }
-    else {
-        return false;
-    }
- */
+
 }
 
 bool Fecha::operator<=(Fecha& fechaActual)
