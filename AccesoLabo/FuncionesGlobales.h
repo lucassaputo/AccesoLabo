@@ -17,3 +17,4 @@ Unidad buscarUnidad(int u);
 int ingresarMotivo();
 Unidad ingresarUnidad(std::string mensaje);
 Fecha ingresarFechaAutorizacion();
+int ingresarOpcionMenu(int opciones);

@@ -106,6 +106,22 @@ bool soloLetras(string x) {
 	return esLetra;
 }
 
+int ingresarOpcionMenu(int opciones) {
+	string opcion;
+	cin.ignore();
+	cin >> opcion;
+	while (true) {
+		if (soloNumeros(opcion)) {
+			if (stoi(opcion) <= opciones) {
+				return stoi(opcion);
+			}		
+		}
+		cout << "Opcion invalida." << endl;
+		cin >> opcion;
+	}	
+	return -1;	
+}
+
 string ingresarLegajo() {
 	string legajo;
 	cout << "Ingrese legajo: " << endl;

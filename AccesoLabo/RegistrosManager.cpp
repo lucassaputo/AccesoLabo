@@ -111,16 +111,15 @@ void RegistrosManager::registroProveedores(Unidad uni, int dni,  int motivo) {
 
 void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 	Persona p;
-	int pos;
-	pos = _archivoVisitas.Buscar(dni);
-	if (pos >= 0) {
-		p = _archivoVisitas.Leer(pos);
-		p.mostrar();
-		if (adentro(p.getId(), 1)) {
-			egreso(uni, p, 1);
-		}
-		else {
-			ingresoVisita(uni, p, 1);
+	p = _archivoVisitas.BuscarObj(dni);
+	if (p.getDni() > 1000000) {
+		if (p.getEstado()) {
+			if (adentro(p.getId(), 1)) {
+				egreso(uni, p, 1);
+			}
+			else {
+				ingresoVisita(uni, p, 1);
+			}
 		}
 	}
 	else {
@@ -140,16 +139,15 @@ void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 
 void RegistrosManager::registroResidentes(Unidad uni, int dni) {
 	Residente p;
-	int pos;
-	pos = _archivoResidentes.Buscar(dni);
-	if (pos >= 0) {
-		p = _archivoResidentes.Leer(pos);
-		p.mostrar();
-		if (adentro(p.getId(), 3)) {
-			egreso(uni, p, 3);
-		}
-		else {
-			guardar(uni, p, 3);
+	p = _archivoResidentes.BuscarObj(dni);
+	if (p.getDni() > 1000000) {
+		if (p.getEstado()) {
+			if (adentro(p.getId(), 3)) {
+				egreso(uni, p, 3);
+			}
+			else {
+				guardar(uni, p, 3);
+			}
 		}
 	}
 	else {
@@ -199,7 +197,9 @@ void RegistrosManager::egreso(Unidad& uni, Persona& p, int motivo) {
 		}
 	}	
 	if (banderaEncontrado) {
-
+		if (!(uni.getId() == reg.getIdUnidad())) {
+			cout << "La persona se encuentra dentro del barrio pero en una unidad distinta a la ingresada, se procedera con la salida del lote al que ingreso." << endl;
+		}
 		char r;
 		cout << "Desea guardar la salida de " << p.getNombres() << " " << p.getApellidos() << " del lote " << uni.getId() << "? S / N";
 		std::cin >> r;
