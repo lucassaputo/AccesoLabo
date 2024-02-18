@@ -33,6 +33,8 @@ void MenuAbmAutorizacion::Mostrar()
         case 0:
             return;
             break;
+        default:
+            break;
         }
     }
 }

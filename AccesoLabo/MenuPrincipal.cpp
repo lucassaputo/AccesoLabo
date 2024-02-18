@@ -172,6 +172,8 @@ void MenuPrincipal::Mostrar() {
                 return;
                 break;
             }
+            default:
+                break;
             }
         }
     }

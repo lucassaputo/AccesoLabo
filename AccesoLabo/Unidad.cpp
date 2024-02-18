@@ -27,8 +27,8 @@ void Unidad::cargar() {
 //	_id = _archivoUnidad.ContarRegistros() + 1;
 	setTelefono(cargarTelefono());
 	cin.ignore();
-	setFamilia(cargarString("Familia"));
-	setObservaciones(cargarString("Observaciones"));
+	setFamilia(upper(cargarString("Familia")));
+	setObservaciones(upper(cargarString("Observaciones")));
 	_estado = true;
 }
 
@@ -37,9 +37,9 @@ void Unidad::editar() {
 	setTelefono(cargarTelefono());
 	cout << "Familia actual: " << getFamilia() << endl;
 	cin.ignore();
-	setFamilia(cargarString("Familia"));
+	setFamilia(upper(cargarString("Familia")));
 	cout << "Observaciones actuales: " << getObservaciones() << endl;
-	setObservaciones(cargarString("Observaciones"));
+	setObservaciones(upper(cargarString("Observaciones")));
 	_estado = true;
 }
 
