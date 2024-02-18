@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 #include "MenuConfiguraciones.h"
+#include "FuncionesGlobales.h"
 
 
 void MenuConfiguraciones::Mostrar()
@@ -11,8 +12,11 @@ void MenuConfiguraciones::Mostrar()
         cout << "1 - Configuracion de Horarios" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(1);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(1);
+        }
+
         switch (opcion) {
         case 1:
             _manager.ConfiguracionHorarios();

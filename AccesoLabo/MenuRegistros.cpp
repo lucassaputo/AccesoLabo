@@ -1,6 +1,7 @@
 #include "MenuRegistros.h"
 #include <iostream>
 #include "UserSingleton.h"
+#include "FuncionesGlobales.h"
 using namespace std;
 
 void MenuRegistros::Mostrar() {
@@ -13,8 +14,11 @@ void MenuRegistros::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(1);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(1);
+        }
+
         switch (opcion) {
         case 1:
             _manager.Cargar();
