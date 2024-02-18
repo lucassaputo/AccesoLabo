@@ -152,12 +152,9 @@
     <ClCompile Include="ArchivoUnidad.cpp" />
     <ClCompile Include="ArchivoUsuario.cpp" />
     <ClCompile Include="Autorizacion.cpp" />
-    <ClCompile Include="Cadena.cpp" />
-    <ClCompile Include="ConfigSingleton.cpp" />
     <ClCompile Include="Configuracion.cpp" />
     <ClCompile Include="ConfiguracionesManager.cpp" />
     <ClCompile Include="ConsultasManager.cpp" />
-    <ClCompile Include="Empresa.cpp" />
     <ClCompile Include="ExportacionManager.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Fecha_horario.cpp" />
@@ -178,7 +175,6 @@
     <ClCompile Include="MenuRegistros.cpp" />
     <ClCompile Include="MenuUsuarios.cpp" />
     <ClCompile Include="Persona.cpp" />
-    <ClCompile Include="PrincipalManager.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Registro.cpp" />
     <ClCompile Include="RegistrosManager.cpp" />
@@ -188,8 +184,6 @@
     <ClCompile Include="Unidad.cpp" />
     <ClCompile Include="Usuario.cpp" />
     <ClCompile Include="UsuarioManager.cpp" />
-    <ClCompile Include="Vehiculo.cpp" />
-    <ClCompile Include="Visita.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbmAutorizacionManager.h" />
@@ -205,12 +199,10 @@
     <ClInclude Include="ArchivoUnidad.h" />
     <ClInclude Include="ArchivoUsuario.h" />
     <ClInclude Include="Autorizacion.h" />
-    <ClInclude Include="Cadena.h" />
     <ClInclude Include="ConfigSingleton.h" />
     <ClInclude Include="Configuracion.h" />
     <ClInclude Include="ConfiguracionesManager.h" />
     <ClInclude Include="ConsultasManager.h" />
-    <ClInclude Include="Empresa.h" />
     <ClInclude Include="ExportacionManager.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Fecha_horario.h" />
@@ -231,7 +223,6 @@
     <ClInclude Include="MenuRegistros.h" />
     <ClInclude Include="MenuUsuarios.h" />
     <ClInclude Include="Persona.h" />
-    <ClInclude Include="PrincipalManager.h" />
     <ClInclude Include="Proveedor.h" />
     <ClInclude Include="Registro.h" />
     <ClInclude Include="RegistrosManager.h" />
@@ -242,8 +233,6 @@
     <ClInclude Include="Unidad.h" />
     <ClInclude Include="Usuario.h" />
     <ClInclude Include="UsuarioManager.h" />
-    <ClInclude Include="Vehiculo.h" />
-    <ClInclude Include="Visita.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AccesoLabo.rc" />
