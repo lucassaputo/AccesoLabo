@@ -15,11 +15,9 @@ using namespace std;
 #include "LogIn.h"
 #include "UserSingleton.h"
 
-
-
 void MenuPrincipal::Mostrar() {
     UserSingleton& s = UserSingleton::getInstance();
-    if (s.getUsuario().getNivel() == 1) {
+    if (s.getUsuario().getNivel() == 1) { //nivel Admin
         while (true) {
             system("cls");//limpia cuando vuelve de un submenu
             cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -35,8 +33,7 @@ void MenuPrincipal::Mostrar() {
             cout << "8 - Configuraciones" << endl;
             cout << "9 - Backups" << endl;
             cout << "10 - Usuarios" << endl;
-            cout << "11 - Cerrar sesion" << endl;
-            cout << "12 - Creditos" << endl;
+            cout << "11 - Creditos" << endl;
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
             cin.ignore();
@@ -47,7 +44,6 @@ void MenuPrincipal::Mostrar() {
             {
                 MenuRegistros menu;
                 menu.Mostrar();
-                //test
             }
             break;
             case 2:
@@ -103,9 +99,6 @@ void MenuPrincipal::Mostrar() {
             {
                 MenuUsuarios menu;
                 menu.Mostrar();
-                /*
-                LogIn log;
-                log.Mostrar();*/
             }
             break;
             case 11:
@@ -120,7 +113,7 @@ void MenuPrincipal::Mostrar() {
             }
         }
     }
-    else if (s.getUsuario().getNivel() == 2) {
+    else if (s.getUsuario().getNivel() == 2) { //nivel vigilador
         while (true) {
             system("cls");//limpia cuando vuelve de un submenu
             cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -130,8 +123,7 @@ void MenuPrincipal::Mostrar() {
             cout << "2 - ABM Personas" << endl;
             cout << "3 - Listados" << endl;
             cout << "4 - Consultas" << endl;
-            cout << "5 - Cerrar sesion" << endl;
-            cout << "6 - Creditos" << endl;
+            cout << "5 - Creditos" << endl;
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
 
@@ -165,12 +157,6 @@ void MenuPrincipal::Mostrar() {
             break;
             case 5:
             {
-                LogIn log;
-                log.Mostrar();
-            }
-            break;
-            case 6:
-            {
                 Creditos();
             }
             break;
@@ -183,6 +169,8 @@ void MenuPrincipal::Mostrar() {
     }
     else {
         cout << "Error con usuario.";
+        system("pause");
+        return;
     }
 }
     

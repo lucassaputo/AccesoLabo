@@ -111,8 +111,8 @@ string ingresarLegajo() {
 	cout << "Ingrese legajo: " << endl;
 	//cin.ignore();
 	cin >> legajo;
-	while (!(soloNumeros(legajo))) {
-		cout << "Solo puede contener numeros, ingrese legajo: ";
+	while (!(soloNumeros(legajo)) || !(legajo.length()<6)) {
+		cout << "Solo puede contener numeros, maximo 5 numeros, ingrese legajo: ";
 		cin.ignore();
 		cin >> legajo;
 	}

@@ -14,6 +14,7 @@ void App::Ejecutar() {
 	c.setDesde(auxDesde);
 	c.setHasta(auxHasta);
 	config.setMiClase(c);
+
 	LogIn log;
 	log.Mostrar();
 }

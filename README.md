@@ -1,4 +1,5 @@
 /*
+* limitar legajo a 5 cifras nada mas
 * validar si esta adentro del mismo lote antes de dar salida
 * agregar estado a la validacion de las personas en registroManager, en los tres tipos
 * chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar

@@ -15,12 +15,9 @@ void LogIn::Mostrar() {
 	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);
-	//std::cout << "eeee:     " << u.getLegajo();
-	//u.mostrar();	
 	while (true) {
 		if (u.getLegajo() != "-1") {
 			if (u.getEstado()) {
-				//u.mostrar();
 				std::cout << "Ingrese password" << std::endl;
 				std::cin >> pasword;
 				if (strcmp(pasword.c_str(), u.getPassword().c_str()) == 0) {
@@ -29,9 +26,7 @@ void LogIn::Mostrar() {
 					menu.Mostrar();
 				}
 				else {
-					std::cout << "Password incorrecto" << std::endl;
-					//user.ReiniciarClase();
-					
+					std::cout << "Password incorrecto" << std::endl;					
 				}
 			}
 			else {
@@ -47,10 +42,7 @@ void LogIn::Mostrar() {
 		std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 		legajo = ingresarLegajo();
 		u = _archivoUsuario.BuscarObj(legajo);
-		std::cout << "eeee:     " << u.getLegajo();
-	//	u.mostrar();
 	}
-	//system("pause");
 }
 	
 
