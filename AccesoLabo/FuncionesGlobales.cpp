@@ -111,8 +111,8 @@ string ingresarLegajo() {
 	cout << "Ingrese legajo: " << endl;
 	//cin.ignore();
 	cin >> legajo;
-	while (!(soloNumeros(legajo))) {
-		cout << "Solo puede contener numeros, ingrese legajo: ";
+	while (!(soloNumeros(legajo)) || !(legajo.length()<6)) {
+		cout << "Solo puede contener numeros, maximo 5 numeros, ingrese legajo: ";
 		cin.ignore();
 		cin >> legajo;
 	}
@@ -141,7 +141,7 @@ Unidad buscarUnidad(int u) {
 	uni.setId(-1);
 	for (int i = 0;i < cant;i++) {
 		aux = _archivoUnidades.Leer(i);
-		if (aux.getId() == u) {
+		if (aux.getId() == u && aux.getEstado()) {
 			return aux;
 		}
 	}

@@ -21,6 +21,5 @@ private:
 	char _razonSocial[50];
 	char _descripcion[50];
 	bool _estado;
-
 };
 

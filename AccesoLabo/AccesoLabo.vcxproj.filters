@@ -78,9 +78,6 @@
     <ClCompile Include="InformesManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="PrincipalManager.cpp">
-      <Filter>Source Files\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="ArchivoAutorizacion.cpp">
       <Filter>Source Files\Archivos</Filter>
     </ClCompile>
@@ -123,9 +120,6 @@
     <ClCompile Include="Autorizacion.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
-    <ClCompile Include="Empresa.cpp">
-      <Filter>Source Files\Gestion</Filter>
-    </ClCompile>
     <ClCompile Include="Persona.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
@@ -142,12 +136,6 @@
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
     <ClCompile Include="Usuario.cpp">
-      <Filter>Source Files\Gestion</Filter>
-    </ClCompile>
-    <ClCompile Include="Vehiculo.cpp">
-      <Filter>Source Files\Gestion</Filter>
-    </ClCompile>
-    <ClCompile Include="Visita.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
     <ClCompile Include="Fecha.cpp">
@@ -186,9 +174,6 @@
     <ClCompile Include="Configuracion.cpp">
       <Filter>Source Files\Gestion</Filter>
     </ClCompile>
-    <ClCompile Include="Cadena.cpp">
-      <Filter>Source Files\Generales</Filter>
-    </ClCompile>
     <ClCompile Include="FuncionesGlobales.cpp">
       <Filter>Source Files\Generales</Filter>
     </ClCompile>
@@ -197,9 +182,6 @@
     </ClCompile>
     <ClCompile Include="UsuarioManager.cpp">
       <Filter>Source Files\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="ConfigSingleton.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArchivoResidente.cpp">
       <Filter>Source Files\Archivos</Filter>
@@ -266,9 +248,6 @@
     <ClInclude Include="ListadoManager.h">
       <Filter>Header Files\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="PrincipalManager.h">
-      <Filter>Header Files\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="RegistrosManager.h">
       <Filter>Header Files\Manager</Filter>
     </ClInclude>
@@ -293,19 +272,13 @@
     <ClInclude Include="Proveedor.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
-    <ClInclude Include="Empresa.h">
+    <ClInclude Include="Persona.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
     <ClInclude Include="Usuario.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
     <ClInclude Include="Unidad.h">
-      <Filter>Header Files\Gestion</Filter>
-    </ClInclude>
-    <ClInclude Include="Vehiculo.h">
-      <Filter>Header Files\Gestion</Filter>
-    </ClInclude>
-    <ClInclude Include="Visita.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
     <ClInclude Include="Horario.h">
@@ -329,9 +302,6 @@
     <ClInclude Include="ArchivoConfiguraciones.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
-    <ClInclude Include="Cadena.h">
-      <Filter>Header Files\Generales</Filter>
-    </ClInclude>
     <ClInclude Include="Configuracion.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
@@ -350,9 +320,6 @@
     <ClInclude Include="Autorizacion.h">
       <Filter>Header Files\Gestion</Filter>
     </ClInclude>
-    <ClInclude Include="ConfigSingleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ArchivoResidente.h">
       <Filter>Header Files\Archivo</Filter>
     </ClInclude>
@@ -365,8 +332,8 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Persona.h">
-      <Filter>Header Files\Manager</Filter>
+    <ClInclude Include="ConfigSingleton.h">
+      <Filter>Header Files\Generales</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
