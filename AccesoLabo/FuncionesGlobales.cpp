@@ -141,7 +141,7 @@ Unidad buscarUnidad(int u) {
 	uni.setId(-1);
 	for (int i = 0;i < cant;i++) {
 		aux = _archivoUnidades.Leer(i);
-		if (aux.getId() == u) {
+		if (aux.getId() == u && aux.getEstado()) {
 			return aux;
 		}
 	}

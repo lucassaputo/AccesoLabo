@@ -1,5 +1,6 @@
 /*
 * limitar legajo a 5 cifras nada mas
+* trabajar con todo en mayusculas en todos lados
 * validar si esta adentro del mismo lote antes de dar salida
 * agregar estado a la validacion de las personas en registroManager, en los tres tipos
 * chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
@@ -23,6 +24,7 @@
 * pasar a texto en edicion la condicion se es inquilino o propietario
 * corregir o ver que autorizacion queda vigente si la persona se da de baja o no?
 */
+
 
 /*
 * tipos de unidades:

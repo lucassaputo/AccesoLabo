@@ -45,9 +45,6 @@ void  Persona::cargarPersona() {
 		}
 		break;
 	}
-	cout << "dia: " << aux.getDia() << endl;
-	cout << "mes: " << aux.getMes() << endl;
-	cout << "anio: " << aux.getAnio() << endl;
 	setNacimiento(aux);
 
 	_estado = true;
