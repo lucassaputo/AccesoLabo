@@ -24,6 +24,7 @@ std::string Unidad::getObservaciones(){return _observaciones;}
 bool Unidad::getEstado(){return _estado;}
 
 void Unidad::cargar() {
+//	_id = _archivoUnidad.ContarRegistros() + 1;
 	setTelefono(cargarTelefono());
 	cin.ignore();
 	setFamilia(cargarString("Familia"));
@@ -43,7 +44,7 @@ void Unidad::editar() {
 }
 
 void Unidad::mostrar() {
-	cout << "Numero: " << _id << endl;
+	//cout << "Numero ID: " << _id << endl;
 	cout << "Telefono: " << _telefono << endl;
 	cout << "Familia: " << _familia << endl;
 	cout << "Observaciones: " << _observaciones << endl;

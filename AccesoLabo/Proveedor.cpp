@@ -26,7 +26,7 @@ void Proveedor::cargarProveedor(int dni) {
 	string empresa;
 	cargarPersona();
 	setDni(dni);
-	cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+	cout << "Ingrese fecha vencimiento (DD/MM/AA). ";
 	while (true) {
 		while (aux.ingresarFecha() == false) {
 			cout << "Formato invalido, ingrese DD/MM/AA";
@@ -36,13 +36,12 @@ void Proveedor::cargarProveedor(int dni) {
 			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
 		}
 		else {
-			cout << "OKFecha" << endl;
 			break;
 		}
 	}
 	setArt(aux);
 	cin.ignore();
-	cout << "Ingrese Empresa perteneciente " << endl;
+	cout << "Ingrese la empresa a la que pertenece: ";
 	std::getline(cin, empresa);
 	setEmpresa(empresa);
 }

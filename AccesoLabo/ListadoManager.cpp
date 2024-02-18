@@ -186,6 +186,8 @@ void ListadoManager::AutorizadosPorUnidad() {
 			for (int j = 0;j < cantRegProveedores;j++) {
 				prov = _archivoProveedores.Leer(j);
 				if (regAut[i].getIdPersona() == prov.getId()) { //  get id persona o get dni??
+					int id = regAut[i].getIdUnidad();
+					cout << "ID :" << id << " ";
 					prov.mostrar();
 				}
 			}
@@ -273,7 +275,7 @@ void ListadoManager::OrdenarVectorProveedoresxRazon(Proveedor* reg, int tam)
 	Proveedor aux;
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
-			if (strcmp(reg[x].getApellidos().c_str(), reg[x + 1].getApellidos().c_str())>0) {
+			if (strcmp(reg[x].getEmpresa().c_str(), reg[x + 1].getEmpresa().c_str())>0) {
 				aux = reg[x];
 				reg[x] = reg[x + 1];
 				reg[x + 1] = aux;
