@@ -7,12 +7,9 @@
 #include "FuncionesGlobales.h"
 #include "Residente.h"
 
-
 using namespace std;
 
 UserSingleton& s = UserSingleton::getInstance();
-// Obtener el objeto desde el Singleton y llamar a su funcion
-//s.getUsuario().mostrar();
 
 void RegistrosManager::Cargar() {
 	system("cls");
