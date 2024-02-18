@@ -84,6 +84,18 @@ int cargarDni() {
 	return std::stoi(aux);
 }
 
+string ingresarPassword() {
+	string password = "nada";
+	cout << "Ingrese password" << std::endl;
+	cin >> password;
+	cout << "password: " << password << "--" << password.length() << endl;
+	while (password.length()<6 || password.length() > 12) {
+		cout << "La contraseña debe ser de entre 6 y 12 caracteres. Ingresela nuevamente: ";
+		cin >> password;
+	}
+	return password;
+}
+
 bool soloNumeros(string x) {
 	bool esNumero = true;
 	for (char c : x) {

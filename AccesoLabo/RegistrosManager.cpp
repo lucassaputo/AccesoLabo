@@ -146,6 +146,7 @@ void RegistrosManager::registroResidentes(Unidad uni, int dni) {
 				egreso(uni, p, 3);
 			}
 			else {
+				//chequear si es inquilino la fecha de vencimiento
 				guardar(uni, p, 3);
 			}
 		}

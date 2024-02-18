@@ -9,8 +9,7 @@ using namespace std;
 //sets
 void Usuario::setNick(std::string n) { strcpy(_nick, n.c_str()); }
 void Usuario::setPassword(std::string pass) { strcpy(_password, pass.c_str()); }
-void Usuario::setLegajo(std::string l) { strcpy(_legajo, l.c_str());
-	;}
+void Usuario::setLegajo(std::string l) { strcpy(_legajo, l.c_str()); }
 void Usuario::setNivel(int n) { _nivel = n; }
 void Usuario::setEstado(bool b) { _estado = b; }
 
@@ -30,9 +29,9 @@ void Usuario::cargar()
 	setNivel(ingresarNivel());
 	setNick(upper(cargarString("Nick")));	
 	std::cout << "Pasword: " << std::endl;
-	std::cin >> password;
+	password = ingresarPassword();
 	strcpy(_password, password.c_str());
-	_estado = true;
+	_estado = true;	
 }
 
 void Usuario::editar()
@@ -46,8 +45,8 @@ void Usuario::editar()
 	setNivel(ingresarNivel());
 	cout << "Nick actual: " << _nick << endl;
 	setNick(upper(cargarString("Nick")));
-	std::cout << "Pasword: " << std::endl;
-	std::cin >> password;
+
+	password = ingresarPassword();
 	strcpy(_password, password.c_str());
 }
 
