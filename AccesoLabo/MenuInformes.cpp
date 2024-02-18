@@ -16,8 +16,11 @@ void MenuInformes::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(4);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(4);
+        }
+
         switch (opcion) {
         case 1:
             _manager.UnidadesMas50();

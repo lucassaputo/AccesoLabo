@@ -36,11 +36,12 @@ void MenuPrincipal::Mostrar() {
             cout << "11 - Creditos" << endl;
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
-            //cin.ignore();
+
             int opcion = ingresarOpcionMenu(11);
             while (opcion == -1) {
                 opcion == ingresarOpcionMenu(11);
             }
+
             switch (opcion) {
                 case 1:
                 {
@@ -131,8 +132,10 @@ void MenuPrincipal::Mostrar() {
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
 
-            int opcion;
-            cin >> opcion;
+            int opcion = ingresarOpcionMenu(11);
+            while (opcion == -1) {
+                opcion == ingresarOpcionMenu(11);
+            }
 
             switch (opcion) {
             case 1:
