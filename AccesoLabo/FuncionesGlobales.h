@@ -18,3 +18,4 @@ int ingresarMotivo();
 Unidad ingresarUnidad(std::string mensaje);
 Fecha ingresarFechaAutorizacion();
 int ingresarOpcionMenu(int opciones);
+std::string upper(std::string cadena);

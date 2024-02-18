@@ -3,6 +3,7 @@
 #include "Fecha.h"
 #include "Proveedor.h"
 #include<iostream>
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -43,7 +44,7 @@ void Proveedor::cargarProveedor(int dni) {
 	cin.ignore();
 	cout << "Ingrese la empresa a la que pertenece: ";
 	std::getline(cin, empresa);
-	setEmpresa(empresa);
+	setEmpresa(upper(empresa));
 }
 
 void Proveedor::editarProveedor() {
@@ -68,10 +69,10 @@ void Proveedor::editarProveedor() {
 	}
 	setArt(aux);
 	cin.ignore();
-	cout << "Empresa perteneciente actual: " << _empresa << endl;
+	cout << "Empresa perteneciente actual: " << _empresa;
 	cout << "Ingrese Empresa perteneciente " << endl;
 	std::getline(cin, empresa);
-	setEmpresa(empresa);
+	setEmpresa(upper(empresa));
 }
 
 void Proveedor::mostrar() {

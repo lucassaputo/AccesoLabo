@@ -28,7 +28,7 @@ void Usuario::cargar()
 	Persona::cargarPersona();	
 	Persona::setDni(cargarDni());
 	setNivel(ingresarNivel());
-	setNick(cargarString("Nick"));	
+	setNick(upper(cargarString("Nick")));	
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
 	strcpy(_password, password.c_str());
@@ -45,7 +45,7 @@ void Usuario::editar()
 	cout << "Nivel actual: " << _nivel << endl;
 	setNivel(ingresarNivel());
 	cout << "Nick actual: " << _nick << endl;
-	setNick(cargarString("Nick"));
+	setNick(upper(cargarString("Nick")));
 	std::cout << "Pasword: " << std::endl;
 	std::cin >> password;
 	strcpy(_password, password.c_str());

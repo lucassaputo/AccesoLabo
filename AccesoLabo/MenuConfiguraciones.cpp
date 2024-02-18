@@ -24,6 +24,8 @@ void MenuConfiguraciones::Mostrar()
         case 0:        
             return;        
             break;
+        default:
+            break;
         }
     }
 }

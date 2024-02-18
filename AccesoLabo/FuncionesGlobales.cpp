@@ -215,6 +215,14 @@ Fecha ingresarFechaAutorizacion() {
 	return hasta;
 }
 
+string upper(string cadena) {
+	// Convertir la cadena a mayúsculas
+	for (char& c : cadena) {
+		c = toupper(static_cast<unsigned char>(c));
+	}
+	return cadena;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
