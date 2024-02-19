@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MenuUsuarios.h"
+#include "FuncionesGlobales.h"
 using namespace std;
 
 void MenuUsuarios::Mostrar() {
@@ -14,8 +15,11 @@ void MenuUsuarios::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(3);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(3);
+        }
+
         switch (opcion) {
         case 1:
             _manager.Cargar();
@@ -29,6 +33,8 @@ void MenuUsuarios::Mostrar() {
         case 0:
              return;
              break;
+        default:
+            break;
         }
     }
 }

@@ -1,5 +1,6 @@
 #include "MenuAbmAutorizacion.h"
 #include <iostream>
+#include "FuncionesGlobales.h"
 using namespace std;
 void MenuAbmAutorizacion::Mostrar()
 {
@@ -14,8 +15,11 @@ void MenuAbmAutorizacion::Mostrar()
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(3);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(3);
+        }
+
         switch (opcion) {
         case 1:
             _manager.Alta();
@@ -28,6 +32,8 @@ void MenuAbmAutorizacion::Mostrar()
             break;
         case 0:
             return;
+            break;
+        default:
             break;
         }
     }

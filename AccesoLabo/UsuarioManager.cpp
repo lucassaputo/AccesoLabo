@@ -15,7 +15,7 @@ void UsuarioManager::Cargar() {
 	cout << "DDDDDDDDDDDDDD2222222222222222222222" << endl;
 	if (u.getLegajo() != "-1") {
 		//cout << "DDDDDDDDDDDDDD" << endl;
-		if (u.getEstado()) {
+		if (u.getActivo()) {
 			//u.mostrar();
 			cout << "El usuario ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
@@ -53,7 +53,7 @@ void UsuarioManager::Editar() {
 	string legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);
 	if (u.getLegajo() != "-1") {
-		if (!u.getEstado()) {
+		if (!u.getActivo()) {
 			cout << "El usuario no existe, realice el alta." << endl;
 		}
 		else {
@@ -80,7 +80,7 @@ void UsuarioManager::Eliminar() {
 	string legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);
 	if (u.getLegajo() != "-1") {
-		if (!u.getEstado()) {
+		if (!u.getActivo()) {
 			cout << "El usuario no existe.";
 		}
 		else {
@@ -93,7 +93,7 @@ void UsuarioManager::Eliminar() {
 				cin >> decision;
 			}
 			if (decision == "S" || decision == "s") {
-				u.setEstado(false);
+				u.setActivo(false);
 				if (_archivoUsuario.Modificar(u)) {
 					cout << "Registro eliminado correctamente." << endl;
 				}

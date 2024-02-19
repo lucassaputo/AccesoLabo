@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include <cctype> // Necesario para toupper()
 #include <cstring>
 #include "Persona.h"
 #include "FuncionesGlobales.h"
@@ -34,8 +35,8 @@ void  Persona::cargarPersona() {
 	Fecha aux;
 	Fecha hoy;
 	cin.ignore();
-	setNombres(cargarString("Nombre"));
-	setApellidos(cargarString("Apellido"));
+	setNombres(upper(cargarString("Nombre")));
+	setApellidos(upper(cargarString("Apellido")));
 	//setNacimiento(02, 11, 2000);
 	cout << "Ingrese fecha de nacimiento: " << endl;
 	while (true) {
@@ -46,32 +47,16 @@ void  Persona::cargarPersona() {
 		break;
 	}
 	setNacimiento(aux);
-
 	_estado = true;
-
-	//string nombres, apellidos;
-	/*cout << "Nombre/s: ";
-	cin.ignore();
-	getline(cin, nombres);
-	//strcpy(_nombres, nombres.c_str());
-	while (!(soloLetras(nombres))) {
-		cout << "Nombre/s: ";
-		cin.ignore();
-		getline(cin, nombres);
-	}*/	
-	/*cout << "Apellido/s: ";
-	cin.ignore();
-	getline(cin, apellidos);*/
-	//strcpy(_apellidos, apellidos.c_str());
 }
 
 void  Persona::editarPersona() {
 	Fecha aux;
 	cin.ignore();
 	cout << "Nombre/s actuales: " << _nombres << endl;
-	setNombres(cargarString("Nombre"));
+	setNombres(upper(cargarString("Nombre")));	
 	cout << "Apellido/s actuales: " << _apellidos << endl;
-	setApellidos(cargarString("Apellido"));	
+	setApellidos(upper(cargarString("Apellido")));
 	//setNacimiento(02, 11, 2000);
 	cout << "Fecha de nacimiento actual: " << _nacimiento.toString() << endl;
 	cout << "Ingrese fecha de nacimiento: " << endl;
@@ -82,9 +67,6 @@ void  Persona::editarPersona() {
 		}
 		break;
 	}
-	cout << "dia: " << aux.getDia() << endl;
-	cout << "mes: " << aux.getMes() << endl;
-	cout << "anio: " << aux.getAnio() << endl;
 	setNacimiento(aux);
 	_estado = true;
 }

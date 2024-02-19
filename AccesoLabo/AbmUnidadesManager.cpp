@@ -10,13 +10,10 @@ void AbmUnidadesManager::Alta() {
 	cout << "ALTA UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	Unidad u, Uaux;
-	//string id = ingresarIdUnidad();
+	string id = ingresarIdUnidad();
 	//u.setId(std::stoi(id));	
-	int id = _archivoUnidades.ContarRegistros() + 1;
-	u.setId(id);	
 	int pos;
-	//pos = _archivoUnidades.BuscarPos(std::stoi(id));
-	pos = _archivoUnidades.BuscarPos(id);
+	pos = _archivoUnidades.BuscarPos(std::stoi(id));
 	if (pos >= 0) {
 		u = _archivoUnidades.Leer(pos);
 		if (u.getEstado()) {
@@ -33,7 +30,7 @@ void AbmUnidadesManager::Alta() {
 		}
 	}
 	else {
-		//u.setId(std::stoi(id));
+		u.setId(std::stoi(id));
 		u.cargar();
 		if (_archivoUnidades.Guardar(u)) {
 			cout << "Registro guardado correctamente." << endl;
@@ -52,11 +49,12 @@ void AbmUnidadesManager::Editar() {
 	cout << "EDICION UNIDAD" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	id = ingresarIdUnidad();
-	u= _archivoUnidades.BuscarObj(std::stoi(id));
-	if (u.getId()>=0) {
+	u = _archivoUnidades.BuscarObj(std::stoi(id));
+	if (u.getId() >= 0) {
 		if (!u.getEstado()) {
-			cout << "La unidad no existe, realice el alta." << endl;		
-		}else {
+			cout << "La unidad no existe, realice el alta." << endl;
+		}
+		else {
 			u.editar();
 			if (_archivoUnidades.Modificar(u)) {
 				cout << "Registro editado correctamente." << endl;
@@ -68,7 +66,7 @@ void AbmUnidadesManager::Editar() {
 	}
 	else {
 		cout << "La unidad no existe, realice el alta." << endl;
-	}			
+	}
 	system("pause");
 }
 
@@ -82,10 +80,10 @@ void AbmUnidadesManager::Baja() {
 	u = _archivoUnidades.BuscarObj(std::stoi(id));
 	if (u.getId() >= 0) {
 		if (!u.getEstado()) {
-			cout << "La unidad no existe.";			
+			cout << "La unidad no existe.";
 		}
 		else {
-			cout << "Desea darle la baja la unidad " << id <<"? S/N : ";
+			cout << "Desea darle la baja la unidad " << id << "? S/N : ";
 			cin.ignore();
 			cin >> decision;
 			while (soloNumeros(decision) || !(decision == "S" || decision == "s" || decision == "N" || decision == "n")) {

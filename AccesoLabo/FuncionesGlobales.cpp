@@ -84,6 +84,18 @@ int cargarDni() {
 	return std::stoi(aux);
 }
 
+string ingresarPassword() {
+	string password = "nada";
+	cout << "Ingrese password" << std::endl;
+	cin >> password;
+	cout << "password: " << password << "--" << password.length() << endl;
+	while (password.length()<6 || password.length() > 12) {
+		cout << "La contraseña debe ser de entre 6 y 12 caracteres. Ingresela nuevamente: ";
+		cin >> password;
+	}
+	return password;
+}
+
 bool soloNumeros(string x) {
 	bool esNumero = true;
 	for (char c : x) {
@@ -104,6 +116,22 @@ bool soloLetras(string x) {
 		}
 	}
 	return esLetra;
+}
+
+int ingresarOpcionMenu(int opciones) {
+	string opcion;
+	cin.ignore();
+	cin >> opcion;
+	while (true) {
+		if (soloNumeros(opcion)) {
+			if (stoi(opcion) <= opciones) {
+				return stoi(opcion);
+			}		
+		}
+		cout << "Opcion invalida." << endl;
+		cin >> opcion;
+	}	
+	return -1;	
 }
 
 string ingresarLegajo() {
@@ -197,6 +225,52 @@ Fecha ingresarFechaAutorizacion() {
 		break;
 	}
 	return hasta;
+}
+
+Fecha ingresarFechaIngreso() {
+	Fecha hoy;
+	Fecha auxIngreso;
+	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+	while (true) {
+		while (auxIngreso.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+		}
+		if (auxIngreso > hoy) {
+			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxIngreso;
+}
+
+Fecha ingresarFechaHasta() {
+	Fecha hoy;
+	Fecha auxHasta;
+	cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
+	while (true) {
+		while (auxHasta.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
+		}
+		if (auxHasta < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxHasta;
+}
+
+string upper(string cadena) {
+	// Convertir la cadena a mayúsculas
+	for (char& c : cadena) {
+		c = toupper(static_cast<unsigned char>(c));
+	}
+	return cadena;
 }
 
 void Creditos() {

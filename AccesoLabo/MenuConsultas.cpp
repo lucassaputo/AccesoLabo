@@ -19,9 +19,11 @@ void MenuConsultas::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
       
+        int opcion = ingresarOpcionMenu(7);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(7);
+        }
 
-        int opcion;
-        cin >> opcion;
         switch (opcion) {
         case 1:
             _manager.ConsultaAutorizadosxUnidad();
@@ -49,6 +51,8 @@ void MenuConsultas::Mostrar() {
                 
         case 0:
             return;
+            break;
+        default:
             break;
         }
     }

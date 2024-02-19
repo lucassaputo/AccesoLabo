@@ -7,7 +7,7 @@ private:
 	char _password[20];
 	char _legajo[5];
 	int _nivel;
-	bool _estado;
+	bool _activo;
 
 public:
 	Usuario(std::string legajo = "-1") { strcpy(_legajo, legajo.c_str());
@@ -18,14 +18,14 @@ public:
 	void setPassword(std::string pass);;
 	void setLegajo(std::string l);
 	void setNivel(int n);
-	void setEstado(bool b);
+	void setActivo(bool b);
 	
 	//gets
 	std::string getNick();
 	std::string getPassword();
 	std::string getLegajo() const;
 	int getNivel() const;
-	bool getEstado();
+	bool getActivo();
 
 	//acciones
 	void cargar();

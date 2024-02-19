@@ -2,6 +2,7 @@
 using namespace std;
 #include "MenuListado.h"
 #include "ListadoManager.h"
+#include "FuncionesGlobales.h"
 
 
 void MenuListado::Mostrar() {
@@ -20,8 +21,11 @@ void MenuListado::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(7);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(7);
+        }
+
         switch (opcion) {
         case 1:
             _manager.AutorizadosPorApellido();
@@ -46,6 +50,8 @@ void MenuListado::Mostrar() {
             break;        
         case 0:
             return;
+            break;
+        default:
             break;
         }
     }

@@ -36,80 +36,85 @@ void MenuPrincipal::Mostrar() {
             cout << "11 - Creditos" << endl;
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
-            cin.ignore();
-            int opcion;
-            cin >> opcion;
-            switch (opcion) {
-            case 1:
-            {
-                MenuRegistros menu;
-                menu.Mostrar();
-            }
-            break;
-            case 2:
-            {
-                MenuAbmPersonas menu;
-                menu.Mostrar();
-            }
-            break;
-            case 3:
-            {
-                MenuAbmAutorizacion menu;
-                menu.Mostrar();
-            }
-            break;
 
-            case 4:
-            {
-                MenuAbmUnidades menu;
-                menu.Mostrar();
+            int opcion = ingresarOpcionMenu(11);
+            while (opcion == -1) {
+                opcion == ingresarOpcionMenu(11);
             }
-            break;
-            case 5:
-            {
-                MenuListado menu;
-                menu.Mostrar();
-            }
-            break;
-            case 6:
-            {
-                MenuConsultas menu;
-                menu.Mostrar();
-            }
-            break;
-            case 7:
-            {
-                MenuInformes menu;
-                menu.Mostrar();
-            }
-            break;
-            case 8:
-            {
-                MenuConfiguraciones menu;
-                menu.Mostrar();
-            }
-            break;
-            case 9:
-            {
-                MenuExportacion menu;
-                menu.Mostrar();
-            }
-            break;
-            case 10:
-            {
-                MenuUsuarios menu;
-                menu.Mostrar();
-            }
-            break;
-            case 11:
-            {
-                Creditos();
-            }
-            break;
-            case 0: {
-                return;
+
+            switch (opcion) {
+                case 1:
+                {
+                    MenuRegistros menu;
+                    menu.Mostrar();
+                }
                 break;
-            }
+                case 2:
+                {
+                    MenuAbmPersonas menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 3:
+                {
+                    MenuAbmAutorizacion menu;
+                    menu.Mostrar();
+                }
+                break;
+
+                case 4:
+                {
+                    MenuAbmUnidades menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 5:
+                {
+                    MenuListado menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 6:
+                {
+                    MenuConsultas menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 7:
+                {
+                    MenuInformes menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 8:
+                {
+                    MenuConfiguraciones menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 9:
+                {
+                    MenuExportacion menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 10:
+                {
+                    MenuUsuarios menu;
+                    menu.Mostrar();
+                }
+                break;
+                case 11:
+                {
+                    Creditos();
+                }
+                break;
+                case 0: {
+                    return;
+                    break;
+                }
+                default:
+                    break;
             }
         }
     }
@@ -127,8 +132,11 @@ void MenuPrincipal::Mostrar() {
             cout << "*******************************" << endl;
             cout << "0 - Salir del programa" << endl;
 
-            int opcion;
-            cin >> opcion;
+            int opcion = ingresarOpcionMenu(11);
+            while (opcion == -1) {
+                opcion == ingresarOpcionMenu(11);
+            }
+
             switch (opcion) {
             case 1:
             {
@@ -164,6 +172,8 @@ void MenuPrincipal::Mostrar() {
                 return;
                 break;
             }
+            default:
+                break;
             }
         }
     }

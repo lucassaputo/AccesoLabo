@@ -1,5 +1,6 @@
 #include "MenuAbmPersonas.h"
 #include <iostream>
+#include "FuncionesGlobales.h"
 using namespace std;
 
 void MenuAbmPersonas::Mostrar() {
@@ -23,8 +24,11 @@ void MenuAbmPersonas::Mostrar() {
         cout << "*******************************" << endl;
         cout << "0 - Volver" << endl;
 
-        int opcion;
-        cin >> opcion;
+        int opcion = ingresarOpcionMenu(9);
+        while (opcion == -1) {
+            opcion == ingresarOpcionMenu(9);
+        }
+
         switch (opcion) {
         case 1:
             _manager.AltaProveedor();
@@ -55,6 +59,8 @@ void MenuAbmPersonas::Mostrar() {
             break;
         case 0:
             return;
+            break;
+        default:
             break;
         }
     }
