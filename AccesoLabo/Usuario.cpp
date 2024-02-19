@@ -11,7 +11,7 @@ void Usuario::setNick(std::string n) { strcpy(_nick, n.c_str()); }
 void Usuario::setPassword(std::string pass) { strcpy(_password, pass.c_str()); }
 void Usuario::setLegajo(std::string l) { strcpy(_legajo, l.c_str()); }
 void Usuario::setNivel(int n) { _nivel = n; }
-void Usuario::setEstado(bool b) { _estado = b; }
+void Usuario::setActivo(bool b) { _activo = b; }
 
 
 //gets
@@ -19,7 +19,7 @@ std::string Usuario::getNick() { return _nick; }
 std::string Usuario::getPassword() { return _password; }
 std::string Usuario::getLegajo() const { return _legajo; };
 int Usuario::getNivel() const { return _nivel; };
-bool Usuario::getEstado() { return _estado; };
+bool Usuario::getActivo() { return _activo; };
 //acciones
 void Usuario::cargar()
 {
@@ -31,7 +31,7 @@ void Usuario::cargar()
 	std::cout << "Pasword: " << std::endl;
 	password = ingresarPassword();
 	strcpy(_password, password.c_str());
-	_estado = true;	
+	_activo = true;	
 }
 
 void Usuario::editar()
@@ -48,6 +48,7 @@ void Usuario::editar()
 
 	password = ingresarPassword();
 	strcpy(_password, password.c_str());
+	_activo = true;
 }
 
 void Usuario::mostrar() {
@@ -56,8 +57,7 @@ void Usuario::mostrar() {
 	std::cout << "Pass : " << _password << std::endl;
 	std::cout << "Legajo: " << _legajo << std::endl;
 	std::cout << "Nivel: " << _nivel << std::endl;	
-	std::cout << "estado: " <<  _estado 
-		<< std::endl;
+	std::cout << "activo: " <<  _activo << std::endl;
 }
 
 int Usuario::ingresarNivel() {

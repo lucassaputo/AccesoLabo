@@ -1,14 +1,11 @@
 /*
-* pasar a texto en edicion la condicion se es inquilino o propietario
-* chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
-* estado activo o no es de usuario o persona? o de ambos? arreglar eso pq esta duplicado el atributo _estado
 * tocas y chequear tamaño de los atributos char[xxxxx]
 * ver la cantidad de lotes disponibles
 * validar el ingreso de si es propietario o inquilino tiene que ser solo 1 o 0
 * clase fecha rever
 * que nose pueda modificar el dni
-* unificar en metodos los ignresos de las fechas en residentes.cpp
-
+* ver ingresarFechaAutorizacion
+* chequear implementacion activo en usuario
 
 poco importante:
 ----------------

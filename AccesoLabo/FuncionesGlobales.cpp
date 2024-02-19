@@ -227,6 +227,44 @@ Fecha ingresarFechaAutorizacion() {
 	return hasta;
 }
 
+Fecha ingresarFechaIngreso() {
+	Fecha hoy;
+	Fecha auxIngreso;
+	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+	while (true) {
+		while (auxIngreso.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+		}
+		if (auxIngreso > hoy) {
+			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxIngreso;
+}
+
+Fecha ingresarFechaHasta() {
+	Fecha hoy;
+	Fecha auxHasta;
+	cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
+	while (true) {
+		while (auxHasta.ingresarFecha() == false) {
+			cout << "Formato invalido, ingrese DD/MM/AA";
+			cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
+		}
+		if (auxHasta < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxHasta;
+}
+
 string upper(string cadena) {
 	// Convertir la cadena a mayúsculas
 	for (char& c : cadena) {

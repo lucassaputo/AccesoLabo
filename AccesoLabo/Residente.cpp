@@ -22,99 +22,49 @@ void Residente::cargarResidente() {
     bool propie;
     cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
     cin >> propie;
-    setPropietarioInquilino(propie);
-
-    Fecha auxIngreso;
-    Fecha auxHasta;
-    Fecha hoy;
-    cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
-    while (true) {
-        while (auxIngreso.ingresarFecha() == false) {
-            cout << "Formato invalido, ingrese DD/MM/AA";
-            cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
-        }
-        if (auxIngreso > hoy) {
-            cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
-        }
-        else {
-            break;
-        }
-    }
-    setFechaIngreso(auxIngreso);
+    setPropietarioInquilino(propie);  
+    setFechaIngreso(ingresarFechaIngreso());
     if (!propie) {
-        cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
-        while (true) {
-            while (auxHasta.ingresarFecha() == false) {
-                cout << "Formato invalido, ingrese DD/MM/AA";
-                cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
-            }
-            if (auxHasta > hoy) {
-                cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
-            }
-            else {
-                break;
-            }
-        }
+        setFechaHasta(ingresarFechaHasta());
     }
     else {
+        Fecha auxHasta;
         auxHasta.setAnio(2000);
         auxHasta.setMes(1);
         auxHasta.setDia(1);
+        setFechaHasta(auxHasta);
     }
-    setFechaHasta(auxHasta);  
 }
 
 void Residente::editarResidente() {
     bool propie;
-    Fecha auxIngreso;
-    Fecha auxHasta;
-    Fecha hoy;
+    string prop = "";
     editarPersona();
     cout << "Unidad actual: " << _unidad << endl;
     setUnidad(stoi(ingresarIdUnidad()));
-
-    cout << "Condicion actual: " << _propietario_inquilino << endl;
+    if (_propietario_inquilino) {
+        prop = "Propietario";
+    }
+    else {
+        prop = "Inquilino";
+    }
+    cout << "Condicion actual: " << prop << endl;
     cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
     cin >> propie;
     setPropietarioInquilino(propie);
 
-    cout << "Fecha de ingreso actual: " << _fechaIngreso.toString() << endl;
-    cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
-    while (true) {
-        while (auxIngreso.ingresarFecha() == false) {
-            cout << "Formato invalido, ingrese DD/MM/AA";
-            cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
-        }
-        if (auxIngreso > hoy) {
-            cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: ";
-        }
-        else {
-            cout << "OKFecha" << endl;
-            break;
-        }
-    }
-    setFechaIngreso(auxIngreso);
+    cout << "Fecha de ingreso actual: " << _fechaIngreso.toString() << endl;    
+    setFechaIngreso(ingresarFechaIngreso());
     if (!propie) {
-        cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
-        while (true) {
-            while (auxHasta.ingresarFecha() == false) {
-                cout << "Formato invalido, ingrese DD/MM/AA";
-                cout << "Ingrese fecha de finalizacion del contrato (DD/MM/AA): ";
-            }
-            if (auxHasta > hoy) {
-                cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
-            }
-            else {
-                break;
-            }
-        }
+        setFechaHasta(ingresarFechaHasta());
     }
     else {
+        Fecha auxHasta;
         auxHasta.setAnio(2000);
         auxHasta.setMes(1);
         auxHasta.setDia(1);
+        setFechaHasta(auxHasta);
     }
-    setFechaHasta(auxHasta);
 }
 
 void Residente::mostrar() {     

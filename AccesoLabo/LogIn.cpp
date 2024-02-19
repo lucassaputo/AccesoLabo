@@ -18,7 +18,7 @@ void LogIn::Mostrar() {
 	u = _archivoUsuario.BuscarObj(legajo);	
 	while (true) {
 		if (u.getLegajo() != "-1") {
-			if (u.getEstado()) {
+			if (u.getActivo()) {
 				password = ingresarPassword();
 				if (strcmp(password.c_str(), u.getPassword().c_str()) == 0) {
 					user.setMiClase(u);
