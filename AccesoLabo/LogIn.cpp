@@ -8,6 +8,7 @@
 #include <cstring>
 
 void LogIn::Mostrar() {
+
 	UserSingleton& user = UserSingleton::getInstance();
 	std::string password, legajo;
 	Usuario u;

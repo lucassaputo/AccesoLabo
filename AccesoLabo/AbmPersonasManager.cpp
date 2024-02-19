@@ -221,7 +221,6 @@ void AbmPersonasManager::AltaResidente() {
 			cout << "El residente ya se encuentra creado, si desea modificarlo ingrese en EDITAR" << endl;
 		}
 		else {
-			p.setDni(dni);
 			p.cargarResidente();
 			if (_archivoResidentes.Modificar(p)) {
 				cout << "Registro guardado correctamente." << endl;
