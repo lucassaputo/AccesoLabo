@@ -59,6 +59,23 @@ string cargarString(string campo) {
 	return cadena;
 }
 
+string cargarStringTam(string campo, int tam) {
+	string cadena = "";
+	cout << campo + ": ";
+	getline(cin, cadena);
+	while(true){
+		if (!(soloLetras(cadena))) {
+			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
+		}
+		else if(cadena.length() > tam) {
+			cout << campo + " tiene un maximo de 50 caracteres. " + "Ingrese " + campo + ": ";
+		}
+		cin.ignore();
+		getline(cin, cadena);
+	}
+	return cadena;
+}
+
 int cargarTelefono() {
 	string aux = "";
 	cout << "Ingrese telefono: ";
@@ -120,8 +137,9 @@ bool soloLetras(string x) {
 
 int ingresarOpcionMenu(int opciones) {
 	string opcion;
-	cin.ignore();
+	//cin.ignore();
 	cin >> opcion;
+	cout << opcion << "----------" << endl;
 	while (true) {
 		if (soloNumeros(opcion)) {
 			if (stoi(opcion) <= opciones) {
@@ -213,7 +231,21 @@ Unidad ingresarUnidad(string mensaje) {
 	}
 	return uni;
 }
-
+bool ingresarPropInq() {
+	bool aux;
+	cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
+	cin >> aux;
+	while (true) {
+		if (aux == 1 || aux == 0) {
+			return aux;
+		}
+		else {
+			cout << "Opcion ingresada no valida." << endl;
+			cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
+		}
+	}
+	return false;
+}
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
 	cout << "Ingrese fecha desde (DD/MM/AA): ";

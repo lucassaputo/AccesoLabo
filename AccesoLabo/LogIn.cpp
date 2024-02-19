@@ -12,6 +12,18 @@ void LogIn::Mostrar() {
 	UserSingleton& user = UserSingleton::getInstance();
 	std::string password, legajo;
 	Usuario u;
+
+
+	//--------------------
+	u = _archivoUsuario.BuscarObj(legajo);
+	u.setNivel(1);
+	user.setMiClase(u);
+	MenuPrincipal menu;
+	menu.Mostrar();
+
+	//--------------------------
+
+/*
 	std::cout << "BIENVENIDO" << std::endl;
 	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	legajo = ingresarLegajo();
@@ -42,7 +54,7 @@ void LogIn::Mostrar() {
 		std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 		legajo = ingresarLegajo();
 		u = _archivoUsuario.BuscarObj(legajo);
-	}
+	}*/
 }
 	
 

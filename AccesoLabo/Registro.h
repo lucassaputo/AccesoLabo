@@ -13,14 +13,13 @@ private:
 	FechaHorario _fechaIngreso;
 	FechaHorario _fechaEgreso;
 	bool _adentro;
-	char _observaciones[50];
 	int _tipoAutorizacion;
 	int _idUser;
 	bool _estado;
 
 public:
 	Registro();
-	Registro(int idPersona, int idUnidad, Fecha fecha, int sentido, std::string observacion, int tipoAutorizacion);
+	Registro(int idPersona, int idUnidad, Fecha fecha, int sentido, int tipoAutorizacion);
 	
 	//sets
 	void setId(int u);
@@ -30,7 +29,6 @@ public:
 	void setFechaIngreso(FechaHorario f);
 	void setFechaEgreso(FechaHorario f);
 	void setAdentro(bool a);
-	void setObservaciones(std::string obs);
 	void setTipoAutorizacion(int aut);
 	void setIdUser(int id);
 	void setEstado(bool e);
@@ -43,7 +41,6 @@ public:
 	FechaHorario getFechaIngreso();
 	FechaHorario getFechaEgreso();
 	bool getAdentro();
-	std::string getObservaciones();
 	int getTipoAutorizacion();
 	int getIdUser();
 	bool getEstado();

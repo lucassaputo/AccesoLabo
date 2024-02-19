@@ -5,8 +5,8 @@
 class Unidad {
 private:
 	int _id, _telefono;
-	char _familia[50];
-	char _observaciones[50];
+	char _familia[51];
+	char _observaciones[151];
 	bool _estado;
 
 public:

@@ -42,9 +42,7 @@ void Proveedor::cargarProveedor(int dni) {
 	}
 	setArt(aux);
 	cin.ignore();
-	cout << "Ingrese la empresa a la que pertenece: ";
-	std::getline(cin, empresa);
-	setEmpresa(upper(empresa));
+	setEmpresa(upper(cargarStringTam("Empresa",50)));
 }
 
 void Proveedor::editarProveedor() {
@@ -70,9 +68,7 @@ void Proveedor::editarProveedor() {
 	setArt(aux);
 	cin.ignore();
 	cout << "Empresa perteneciente actual: " << _empresa;
-	cout << "Ingrese Empresa perteneciente " << endl;
-	std::getline(cin, empresa);
-	setEmpresa(upper(empresa));
+	setEmpresa(upper(cargarStringTam("Empresa",50)));
 }
 
 void Proveedor::mostrar() {

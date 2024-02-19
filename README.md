@@ -6,6 +6,9 @@
 * que nose pueda modificar el dni
 * ver ingresarFechaAutorizacion
 * chequear implementacion activo en usuario
+* observaciones en registros queda?
+* obs en unidad tamaño
+* chequear constructores
 
 poco importante:
 ----------------
