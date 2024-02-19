@@ -1,18 +1,19 @@
 /*
+* tocas y chequear tamaño de los atributos char[xxxxx]
+* ver la cantidad de lotes disponibles
+* validar el ingreso de si es propietario o inquilino tiene que ser solo 1 o 0
+* clase fecha rever
+* que nose pueda modificar el dni
+* ver ingresarFechaAutorizacion
+* chequear implementacion activo en usuario
+
+poco importante:
+----------------
 * numeros en nombre empresa
-* trabajar con todo en mayusculas en todos lados
-* chequear si es inquilino una fecha que sea hasta hay que agregar y dsp validar
+* permirtir numeros en observaciones unidad
 * usar <vector> en vez de dinamica
 * ABML vehiculos
 * ver cuando pasar por referencia objetos o solo pasar el atributo que utilice la funcion
-* validar el ingrese de opciones del menu que sean solo numeros
-* validar password usuario
-* maximo de caracteres en legajo
-* estado activo o no es de usuario o persona? o de ambos?
 * como se hace referencia a un atributo de la clase padre en el cpp de la hija? quiero acceder a _dni pero no pude, sera pq el encapsulamiento? this no funciono
-* metodo para ingresar pass y limitar cant de caracteres
-* permirtir numeros en observaciones unidad
-* tocas y chequear tamaño de los atributos char[xxxxx]
-* pasar a texto en edicion la condicion se es inquilino o propietario
-* corregir o ver que autorizacion queda vigente si la persona se da de baja o no?
+* corregir o ver que autorizacion queda vigente si la persona se da de baja o no? rta: quedan vigentes en caso que la persona se vuelva a dar de alta con el mismo dni entonces quedaria con el mismo id que tenia la autorizacion anterior
 */

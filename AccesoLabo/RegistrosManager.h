@@ -26,14 +26,12 @@ class RegistrosManager
 		void registroResidentes(Unidad uni, int dni);
 		void ingresoProveedor(Unidad& uni, Proveedor& p);
 		void ingresoVisita(Unidad& uni, Persona& p, int motivo);
-		void egresoProveedor(Unidad& uni, Proveedor& p, int posActivo);
+		void ingresoResidente(Unidad& uni, Residente& p, int motivo);
 		void egreso(Unidad& uni, Persona& p, int motivo);
 		bool adentro(int dni, int motivo);
 		bool autorizado(Unidad uni, int idPersona,int motivo);
 		bool vencido(Proveedor p);
-		bool checkAutorizacion(Unidad u, int idPersona, int motivo);
-		void guardarRegistro(Unidad u, Proveedor p);
-		void guardar(Unidad u, Persona p, int motivo);
-
+		int checkAutorizacion(Unidad u, int idPersona, int motivo);
+		void guardar(Unidad u, Persona p, int motivo, int autorizacion);
 };
 

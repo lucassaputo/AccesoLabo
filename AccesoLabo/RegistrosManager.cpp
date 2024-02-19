@@ -7,12 +7,9 @@
 #include "FuncionesGlobales.h"
 #include "Residente.h"
 
-
 using namespace std;
 
 UserSingleton& s = UserSingleton::getInstance();
-// Obtener el objeto desde el Singleton y llamar a su funcion
-//s.getUsuario().mostrar();
 
 void RegistrosManager::Cargar() {
 	system("cls");
@@ -85,26 +82,36 @@ void RegistrosManager::Cargar() {
 void RegistrosManager::registroProveedores(Unidad uni, int dni,  int motivo) {
 	Proveedor p;
 	p = _archivoProveedores.BuscarObj(dni);
-	if (p.getDni() > 1000000) {
+	if (p.getDni() > -1) {
 		if (p.getEstado()) {
 			if (adentro(p.getId(), motivo)) {
 				egreso(uni, p, 2);
-				return;
 			}
 			else {
 				ingresoProveedor(uni, p);
-				return;
 			}
-		}		
-	}
-	p.cargarProveedor(dni);
-	p.setId(_archivoProveedores.ContarRegistros() + 1);
-	if (_archivoProveedores.Guardar(p)) {
-		cout << "Proveedor guardado correctamente." << endl;
-		ingresoProveedor(uni, p);
+		}
+		else {
+			p.cargarProveedor(dni);
+			if (_archivoProveedores.Modificar(p)) {
+				cout << "Proveedor guardado correctamente." << endl;
+				ingresoProveedor(uni, p);
+			}
+			else {
+				cout << "Error al guardar proveedor." << endl;
+			}
+		}
 	}
 	else {
-		cout << "Error al guardar proveedor." << endl;
+		p.cargarProveedor(dni);
+		p.setId(_archivoProveedores.ContarRegistros() + 1);
+		if (_archivoProveedores.Guardar(p)) {
+			cout << "Proveedor guardado correctamente." << endl;
+			ingresoProveedor(uni, p);
+		}
+		else {
+			cout << "Error al guardar proveedor." << endl;
+		}
 	}
 	return;
 }
@@ -112,13 +119,23 @@ void RegistrosManager::registroProveedores(Unidad uni, int dni,  int motivo) {
 void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 	Persona p;
 	p = _archivoVisitas.BuscarObj(dni);
-	if (p.getDni() > 1000000) {
+	if (p.getDni() > -1) {
 		if (p.getEstado()) {
 			if (adentro(p.getId(), 1)) {
 				egreso(uni, p, 1);
 			}
 			else {
 				ingresoVisita(uni, p, 1);
+			}
+		}
+		else {
+			p.cargarPersona();
+			if (_archivoVisitas.Modificar(p)) {
+				cout << "Visita guardado correctamente." << endl;
+				ingresoVisita(uni, p, 1);
+			}
+			else {
+				cout << "Error al guardar visita." << endl;
 			}
 		}
 	}
@@ -140,13 +157,23 @@ void RegistrosManager::registroVisitas(Unidad uni, int dni) {
 void RegistrosManager::registroResidentes(Unidad uni, int dni) {
 	Residente p;
 	p = _archivoResidentes.BuscarObj(dni);
-	if (p.getDni() > 1000000) {
+	if (p.getDni() > -1) {
 		if (p.getEstado()) {
 			if (adentro(p.getId(), 3)) {
 				egreso(uni, p, 3);
 			}
 			else {
-				guardar(uni, p, 3);
+				ingresoResidente(uni,p,3);
+			}
+		}
+		else {
+			p.cargarResidente();
+			if (_archivoResidentes.Modificar(p)) {
+				cout << "Residente guardado correctamente." << endl;
+				ingresoResidente(uni, p, 3);
+			}
+			else {
+				cout << "Error al guardar residente." << endl;
 			}
 		}
 	}
@@ -156,7 +183,7 @@ void RegistrosManager::registroResidentes(Unidad uni, int dni) {
 		p.setId(_archivoResidentes.ContarRegistros() + 1);
 		if (_archivoResidentes.Guardar(p)) {
 			cout << "Residente guardado correctamente." << endl;
-			guardar(uni, p, 3);
+			ingresoResidente(uni, p, 3);
 		}
 		else {
 			cout << "Error al guardar residente." << endl;
@@ -166,18 +193,35 @@ void RegistrosManager::registroResidentes(Unidad uni, int dni) {
 }
 
 void RegistrosManager::ingresoVisita(Unidad& uni, Persona& p, int motivo) {
-	if (checkAutorizacion(uni, p.getId(), 1)) {
-		guardar(uni, p,1);
+	int permitido = checkAutorizacion(uni, p.getId(), 1);
+	if (permitido<3) {
+		guardar(uni, p,1,permitido);
+	}
+}
+
+void RegistrosManager::ingresoResidente(Unidad& uni, Residente& p, int motivo) {
+	Fecha hoy;
+	if (!p.getPropietarioInquilino()) {//es inquilino
+		if (p.getFechaHasta() >= hoy) {
+			guardar(uni, p, 3, 0);
+		}
+		else {
+			cout << "La persona tiene el contrato vencido." << endl;
+		}
+	}
+	else {
+		guardar(uni, p, 3, 0);
 	}
 }
 
 void RegistrosManager::ingresoProveedor(Unidad& uni, Proveedor& p) {
-	bool vigente = false, permitido = false;
+	bool vigente = false;
+	int permitido = 3;
 	vigente = !vencido(p);
 	permitido = checkAutorizacion(uni, p.getId(), 2);
 
-	if (vigente && permitido) {
-		guardar(uni, p,2);
+	if (vigente && permitido<3) {
+		guardar(uni, p,2,permitido);
 	}
 }
 
@@ -189,7 +233,7 @@ void RegistrosManager::egreso(Unidad& uni, Persona& p, int motivo) {
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int i = cant;i > -1;i--) {
 		reg = _archivoRegistros.Leer(i);
-		if (reg.getTipoPersona() == motivo && reg.getIdPersona() == p.getId() && reg.getEstado() == true) {
+		if (reg.getIdPersona() == p.getId() && reg.getEstado() == true) {
 			if (reg.getAdentro()) {
 				banderaEncontrado = true;
 				break;
@@ -199,6 +243,9 @@ void RegistrosManager::egreso(Unidad& uni, Persona& p, int motivo) {
 	if (banderaEncontrado) {
 		if (!(uni.getId() == reg.getIdUnidad())) {
 			cout << "La persona se encuentra dentro del barrio pero en una unidad distinta a la ingresada, se procedera con la salida del lote al que ingreso." << endl;
+		}
+		if (!(motivo == reg.getTipoAutorizacion())) {
+			cout << "La persona se encuentra dentro del barrio pero con otro motivo, se procedera con la salida con el motivo que ingreso." << endl;
 		}
 		char r;
 		cout << "Desea guardar la salida de " << p.getNombres() << " " << p.getApellidos() << " del lote " << uni.getId() << "? S / N";
@@ -232,23 +279,9 @@ bool RegistrosManager::adentro(int idPersona, int motivo) {
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int i = cant;i >-1;i--) {
 		r = _archivoRegistros.Leer(i);		
-		if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getEstado() == true) {
+		//if (r.getTipoPersona() == motivo && r.getIdPersona() == idPersona && r.getEstado() == true) {
+		if (r.getIdPersona() == idPersona && r.getEstado() == true) {
 			if (r.getAdentro()) {
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-bool RegistrosManager::autorizado(Unidad uni, int idPersona,int motivo) {
-	Autorizacion a;
-	Fecha hoy;
-	int cant = _archivoAutorizaciones.ContarRegistros();
-	for (int i = 0;i < cant;i++) {
-		a = _archivoAutorizaciones.Leer(i);
-		if (a.getIdPersona() == idPersona && a.getIdUnidad() == uni.getId() && a.getTipo()==motivo && a.getEstado()) {
-			if (!(a.getHasta() < hoy)) {
 				return true;
 			}
 		}
@@ -301,31 +334,46 @@ bool RegistrosManager::vencido(Proveedor p) {
 	}
 }
 
-bool RegistrosManager::checkAutorizacion(Unidad u, int idPersona, int motivo) {
+int RegistrosManager::checkAutorizacion(Unidad u, int idPersona, int motivo) {
 	if (autorizado(u, idPersona,motivo)) {
-		return true;
+		return 1;//autorizacion cargada previamente
 	}
 	else {
 		char r;
 		cout << "No se encuentra autorizado." << endl;
 		cout << "Llame al: " << u.getTelefono() << endl;
-		cout << "Fue autorizado el ingreso? S/N";
+		cout << "Fue autorizado el ingreso? S/N: ";
 		cin >> r;
 		while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
-			cout << "Fue autorizado el ingreso? S/N";
+			cout << "Fue autorizado el ingreso? S/N: ";
 			cin >> r;
 		}
 		if (r == 'S' || r == 's') {
-			return true;
+			return 2;//autorizacion telefonica
 		}
 		else {
 			cout << "Fin del acceso." << endl;			
 		}
 	}
+	return 3;//no autorizado
+}
+
+bool RegistrosManager::autorizado(Unidad uni, int idPersona,int motivo) {
+	Autorizacion a;
+	Fecha hoy;
+	int cant = _archivoAutorizaciones.ContarRegistros();
+	for (int i = cant;i >= -1 ;i--) {
+		a = _archivoAutorizaciones.Leer(i);
+		if (a.getIdPersona() == idPersona && a.getIdUnidad() == uni.getId() && a.getTipo()==motivo && a.getEstado()) {
+			if (!(a.getHasta() < hoy)) {
+				return true;
+			}
+		}
+	}
 	return false;
 }
 
-void RegistrosManager::guardar(Unidad uni,Persona p, int motivo) {
+void RegistrosManager::guardar(Unidad uni,Persona p, int motivo,int autorizacion) {
 	Registro reg;
 	char r;
 	reg.setId(_archivoRegistros.ContarRegistros() + 1);
@@ -334,7 +382,7 @@ void RegistrosManager::guardar(Unidad uni,Persona p, int motivo) {
 	reg.setAdentro(true);
 	reg.setTipoPersona(motivo);
 	reg.setObservaciones("");
-	reg.setTipoAutorizacion(1);
+	reg.setTipoAutorizacion(autorizacion);
 	reg.setIdUser(s.getUsuario().getId());
 	reg.setEstado(true);
 	//reg.mostrar();
@@ -347,82 +395,6 @@ void RegistrosManager::guardar(Unidad uni,Persona p, int motivo) {
 	if (r == 'S' || r == 's') {
 		if (_archivoRegistros.Guardar(reg)) {
 			cout << "Registro guardado correctamente." << endl;
-		}
-		else {
-			cout << "ERROR al guardar." << endl;
-		}
-	}
-	else {
-		cout << "Registro cancelado.";
-	}
-}
-
-void RegistrosManager::egresoProveedor(Unidad& uni, Proveedor& p, int posActivo) {
-	cout << "EGRESO";
-	Registro reg;
-	bool banderaEncontrado = false;
-	int cant = _archivoRegistros.ContarRegistros();
-	for (int i = cant;i > -1;i--) {
-		reg = _archivoRegistros.Leer(i);
-		if (reg.getTipoPersona() == 2 && reg.getIdPersona() == p.getId() && reg.getEstado() == true) {
-			if (reg.getAdentro()) {
-				banderaEncontrado = true;
-				break;
-			}
-		}
-	}
-	if (banderaEncontrado) {
-		FechaHorario aux;
-		reg.setAdentro(false);
-		reg.setFechaEgreso(aux);
-		char r;
-		cout << "Desea guardar la salida? S/N";
-		std::cin >> r;
-		while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
-			cout << "Desea guardar la salida? S/N";
-			cin >> r;
-		}
-		if (r == 'S' || r == 's') {
-			if (_archivoRegistros.Modificar(reg)) {
-				cout << "Salida guardada correctamente." << endl;
-			}
-			else {
-				cout << "ERROR al guardar." << endl;
-			}
-		}
-		else {
-			cout << "Registro cancelado.";
-		}
-	}
-	else {
-		cout << "ERROR al guardar." << endl;
-	}
-}
-
-void RegistrosManager::guardarRegistro(Unidad uni, Proveedor p) {
-	Registro reg;
-	char r;
-	int id = _archivoRegistros.ContarRegistros() + 1;
-	reg.setId(id);
-	reg.setIdUnidad(uni.getId());
-	reg = p;//sobrecarga asigna ipProveedor y fecha
-	reg.setAdentro(true);
-	reg.setTipoPersona(2);
-	reg.setObservaciones("");
-	reg.setTipoAutorizacion(1);
-	reg.setIdUser(s.getUsuario().getId());
-	reg.setEstado(true);
-	reg.mostrar();
-	cout << "Desea dar el siguiente ingreso?S/N";
-	cin >> r;
-	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
-		cout << "Desea dar el siguiente ingreso?S/N";
-		cin >> r;
-	}
-	if (r == 'S' || r == 's') {
-		if (_archivoRegistros.Guardar(reg)) {
-			cout << "Registro guardado correctamente." << endl;
-			//reg.mostrar();
 		}
 		else {
 			cout << "ERROR al guardar." << endl;
