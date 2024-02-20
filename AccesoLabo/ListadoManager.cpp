@@ -219,7 +219,7 @@ void ListadoManager::ResidentesPorUnidad() {
 	
 	int cantReg = _archivoResidente.ContarRegistros();
 	cout << "Cantidad registros residentes " << cantReg << endl;
-	_ar
+	
 	reg = new Residente[cantReg];
 	if (reg == nullptr) {
 		cout << "error de asignacion de memoria" << endl;
