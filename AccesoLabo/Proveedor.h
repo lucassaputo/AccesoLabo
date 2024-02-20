@@ -7,7 +7,7 @@ class Proveedor : public Persona {
 	private:
 		char _tipo;
 		Fecha _art;
-		char _empresa[50];
+		char _empresa[51];
 	public:
 		//sets
 		void setTipo(char tipo);

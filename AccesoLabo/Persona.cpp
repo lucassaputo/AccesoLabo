@@ -35,8 +35,8 @@ void  Persona::cargarPersona() {
 	Fecha aux;
 	Fecha hoy;
 	cin.ignore();
-	setNombres(upper(cargarString("Nombre")));
-	setApellidos(upper(cargarString("Apellido")));
+	setNombres(upper(cargarStringTam("Nombre",50)));
+	setApellidos(upper(cargarStringTam("Apellido",50)));
 	//setNacimiento(02, 11, 2000);
 	cout << "Ingrese fecha de nacimiento: " << endl;
 	while (true) {
@@ -54,9 +54,9 @@ void  Persona::editarPersona() {
 	Fecha aux;
 	cin.ignore();
 	cout << "Nombre/s actuales: " << _nombres << endl;
-	setNombres(upper(cargarString("Nombre")));	
+	setNombres(upper(cargarStringTam("Nombre",50)));	
 	cout << "Apellido/s actuales: " << _apellidos << endl;
-	setApellidos(upper(cargarString("Apellido")));
+	setApellidos(upper(cargarStringTam("Apellido",50)));
 	//setNacimiento(02, 11, 2000);
 	cout << "Fecha de nacimiento actual: " << _nacimiento.toString() << endl;
 	cout << "Ingrese fecha de nacimiento: " << endl;

@@ -381,7 +381,6 @@ void RegistrosManager::guardar(Unidad uni,Persona p, int motivo,int autorizacion
 	reg = p;//sobrecarga asigna idPersona y fecha
 	reg.setAdentro(true);
 	reg.setTipoPersona(motivo);
-	reg.setObservaciones("");
 	reg.setTipoAutorizacion(autorizacion);
 	reg.setIdUser(s.getUsuario().getId());
 	reg.setEstado(true);

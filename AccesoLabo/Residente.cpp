@@ -20,8 +20,8 @@ void Residente::cargarResidente() {
     cargarPersona();
     setUnidad(ingresarUnidad("de residencia").getId());
     bool propie;
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
-    cin >> propie;
+    
+    propie = ingresarPropInq();
     setPropietarioInquilino(propie);  
     setFechaIngreso(ingresarFechaIngreso());
     if (!propie) {
@@ -49,8 +49,8 @@ void Residente::editarResidente() {
         prop = "Inquilino";
     }
     cout << "Condicion actual: " << prop << endl;
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
-    cin >> propie;
+    
+    propie = ingresarPropInq();
     setPropietarioInquilino(propie);
 
     cout << "Fecha de ingreso actual: " << _fechaIngreso.toString() << endl;    
