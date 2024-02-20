@@ -15,6 +15,7 @@ void LogIn::Mostrar() {
 
 
 	//--------------------
+	// sin login
 	u = _archivoUsuario.BuscarObj(legajo);
 	u.setNivel(1);
 	user.setMiClase(u);
@@ -23,8 +24,7 @@ void LogIn::Mostrar() {
 
 	//--------------------------
 
-/*
-	std::cout << "BIENVENIDO" << std::endl;
+	/*std::cout << "BIENVENIDO" << std::endl;
 	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	legajo = ingresarLegajo();
 	u = _archivoUsuario.BuscarObj(legajo);	

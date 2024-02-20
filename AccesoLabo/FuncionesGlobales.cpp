@@ -61,17 +61,22 @@ string cargarString(string campo) {
 
 string cargarStringTam(string campo, int tam) {
 	string cadena = "";
-	cout << campo + ": ";
-	getline(cin, cadena);
 	while(true){
+		cout << campo + "----------: ";
+		getline(cin, cadena);
 		if (!(soloLetras(cadena))) {
 			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
 		}
 		else if(cadena.length() > tam) {
 			cout << campo + " tiene un maximo de 50 caracteres. " + "Ingrese " + campo + ": ";
 		}
-		cin.ignore();
-		getline(cin, cadena);
+		else {
+			return cadena;
+		}
+
+
+		//cin.ignore();
+		//getline(cin, cadena);
 	}
 	return cadena;
 }
@@ -233,15 +238,14 @@ Unidad ingresarUnidad(string mensaje) {
 }
 bool ingresarPropInq() {
 	bool aux;
-	cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
-	cin >> aux;
 	while (true) {
+		cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
+		cin >> aux;
 		if (aux == 1 || aux == 0) {
 			return aux;
 		}
 		else {
 			cout << "Opcion ingresada no valida." << endl;
-			cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
 		}
 	}
 	return false;
