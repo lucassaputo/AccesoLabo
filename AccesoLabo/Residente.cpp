@@ -36,7 +36,7 @@ void Residente::cargarResidente() {
     }
     setFechaIngreso(aux);
 
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
+    cout << "Ingrese 1 si es Propietario , Ingrese 0 si es Inquilino: ";
     cin >> propie;
     setPropietarioInquilino(propie);
 }

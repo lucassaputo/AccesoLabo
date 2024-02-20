@@ -94,8 +94,8 @@ void Persona::mostrar()
 	cout << "id: " << _id << endl;
 	cout << "Nombre: " << _nombres << endl;
 	cout << "Apellido: " << _apellidos << endl;
-	cout << "Documento" << _dni << endl;
-	cout << "Estado" << _estado << endl;
+	cout << "Documento: " << _dni << endl;
+	cout << "Estado: " << _estado << endl;
 }
 void Persona::mostrarX()
 {

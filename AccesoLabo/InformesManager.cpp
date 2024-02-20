@@ -84,11 +84,19 @@ void InformesManager::InformeProveedores() // punto 2
 {	system("cls");
 	Fecha FechaInicial, FechaFinal;
 	std::cout << "Informe de Proveedores " << std::endl;
-	// pedir al usuario fecha inicial y final para buscar en ese rango el ingreso de proveedores
+	std::cout <<"************************ " << std::endl;
+	std::cout << "Ingrese el periodo que desea visualizar los proveedores que ingresaron " << std::endl;
 	cout << "Fecha inicial: " << endl;
 	FechaInicial.ingresarFecha();
 	cout << "Fecha final: " << endl;
 	FechaFinal.ingresarFecha();
+	while (FechaInicial > FechaFinal) {
+		cout << "La fecha inicial no puede ser mayor a la fecha final " << endl;
+		cout << "Fecha inicial: " << endl;
+		FechaInicial.ingresarFecha();
+		cout << "Fecha final: " << endl;
+		FechaFinal.ingresarFecha();
+	}
 	Registro *reg;
 	int cantReg = _archivoRegistros.ContarRegistros();
 	reg = new Registro[cantReg];

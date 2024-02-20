@@ -216,15 +216,17 @@ void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
 	cout << "ResidentesPorUnidad" << endl;
 	Residente *reg;
-	ArchivoResidente archResidente("Residentes.dat");
-	int cantReg = archResidente.ContarRegistros();
+	
+	int cantReg = _archivoResidente.ContarRegistros();
+	cout << "Cantidad registros residentes " << cantReg << endl;
+	_ar
 	reg = new Residente[cantReg];
 	if (reg == nullptr) {
 		cout << "error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		reg[x] = archResidente.Leer(x);
+		reg[x] = _archivoResidente.Leer(x);
 	}
 	OrdenarResidentesxUnidad(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
