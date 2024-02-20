@@ -76,7 +76,7 @@ void Proveedor::editarProveedor() {
 
 void Proveedor::mostrar() {
 	Persona::mostrar();
-	cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
+	//cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
 	cout << " Empresa perteneciente : " << getEmpresa() << endl;
 	cout << "Fecha de su Art : " << getArt() << endl;
 }

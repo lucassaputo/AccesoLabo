@@ -341,7 +341,8 @@ void ListadoManager::UnidadesPorNumero() {
 	}
 	OrdenarVectorUnidadxNumero(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
-		cout << "j=" << j << endl;
+		//cout << "j=" << j << endl;
+		//cout << "Unidad numero: " << reg[j].getId();
 		reg[j].mostrar();
 	}
 	delete[] reg;

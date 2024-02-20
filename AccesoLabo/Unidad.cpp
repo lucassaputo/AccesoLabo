@@ -42,14 +42,27 @@ void Unidad::editar() {
 	setObservaciones(cargarString("Observaciones"));
 	_estado = true;
 }
-
+/*
 void Unidad::mostrar() {
-	//cout << "Numero ID: " << _id << endl;
-	cout << "Telefono: " << _telefono << endl;
-	cout << "Familia: " << _familia << endl;
-	cout << "Observaciones: " << _observaciones << endl;
+	cout << "|*| Numero ID: " << _id << endl;
+	cout << "|*| - Telefono: " << _telefono << endl;
+	cout << "|*| - Familia: " << _familia << endl;
+	cout << "|*| - Observaciones: " << _observaciones << endl;
+	cout << "          *   *   *           " << endl;
 }
 
+*/
 
 
+
+
+/*
+
+*/
+void Unidad::mostrar() {
+	
+	//cout << "----------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+	cout << "Numero ID: " << _id << " | Telefono: " << _telefono << " | Familia: " << _familia << " | Observaciones: " << _observaciones << " | " << endl;
+	cout << "----------------------------------------------------------------------------------------------------------------------------------------------" << endl;
+}
 
