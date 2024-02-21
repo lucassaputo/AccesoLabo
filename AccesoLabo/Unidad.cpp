@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 #include "Unidad.h"
 #include "FuncionesGlobales.h"
 #include "ArchivoUnidad.h"
@@ -45,12 +46,31 @@ void Unidad::editar() {
 
 
 void Unidad::mostrar() {
+
 	cout << right;
 	cout << setw(3) <<"" << _id;
 	cout << setw(3)  <<"" << _telefono;
 	cout << setw(3)  << "" << _familia;
 	cout << setw(6)  << "" << _observaciones << endl;
+
+
+
+
+
+	cout << left;
+	cout << setw(3) << " | " << _id ;
+	cout << setw(8) << " |  " << _telefono;
+	cout << setw(10) << " |  " << _familia;
+	cout << setw(10) << " | " << _observaciones << endl;
 }
 
 
-
+/*
+void Unidad::mostrar() {
+	cout << left;
+	cout << setw(3) << "Numero ID: " << _id ;
+	cout << setw(8) << " | Telefono: " << _telefono;
+	cout << setw(1) << " | Familia: " << _familia;
+	cout << setw(1) << " |Observaciones: " << _observaciones << endl;
+}
+*/

@@ -1,4 +1,5 @@
 #pragma once
+#include <iomanip>
 #include "ArchivoAutorizacion.h"
 #include "ArchivoRegistro.h"
 #include "ArchivoUnidad.h"
@@ -33,6 +34,7 @@ class ListadoManager
 	private:
 		ArchivoAutorizacion _archivoAutorizacion = ArchivoAutorizacion("Autorizaciones.dat");
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
+		ArchivoResidente _archivoResisente = ArchivoResidente("Residentes.dat");
 		ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 		ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
 		ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");

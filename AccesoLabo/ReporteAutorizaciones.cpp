@@ -33,9 +33,24 @@ void ReporteAutorizaciones::mostrar()
 
 void ReporteAutorizaciones::mostrar2()
 {
+    cout << left;
+    cout << setw(3) << _id;
+    cout << setw(3) << _idPersona;
+    cout << setw(3) << _idUnidad;
+    cout << setw(1) << _tipo;
+    cout << setw(10) << _apellido;
+    cout << setw(6) << _nombreTipo;
+    cout << setw(8) << _hasta.toString() << endl;
+
+}
+
+/*
+void ReporteAutorizaciones::mostrar2()
+{
     cout << "-----------------------------" << endl;
     cout << "ID: " << _id << " || idPersona: " << _idPersona << " || idUnidad: " << _idUnidad;
     cout << " || idTipo: " << _tipo << " || Apellido: " << _apellido;
     cout << " || NombreTipo: " << _nombreTipo << " || Autorizado hasta: " << _hasta.toString() << endl;
     cout << "-----------------------------" << endl;
-}
+} 
+ */

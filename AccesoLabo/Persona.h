@@ -1,5 +1,6 @@
 #pragma once
 #include <cstring>
+#include <iomanip>
 #include "Fecha.h"
 class Persona {
 	private:
