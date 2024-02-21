@@ -12,7 +12,7 @@ bool soloNumeros(std::string aux);
 bool soloLetras(std::string x);
 std::string ingresarLegajo();
 std::string ingresarIdUnidad();
-int cargarTelefono();
+std::string cargarTelefono();
 void Creditos();
 Unidad buscarUnidad(int u);
 int ingresarMotivo();

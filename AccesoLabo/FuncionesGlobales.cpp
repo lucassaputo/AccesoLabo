@@ -81,16 +81,27 @@ string cargarStringTam(string campo, int tam) {
 	return cadena;
 }
 
-int cargarTelefono() {
+//int cargarTelefono() {
+//	string aux = "";
+//	cout << "Ingrese telefono: ";
+//	cin >> aux;
+//	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+//		cout << "Telefono invalido, Ingrese telefono: ";
+//		cin.ignore();
+//		cin >> aux;
+//	}
+//	return std::stoi(aux);
+//}
+string cargarTelefono() {
 	string aux = "";
 	cout << "Ingrese telefono: ";
 	cin >> aux;
-	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+	while (soloNumeros(aux) == false || !(aux.size() < 11 && aux.size() > 6)) {
 		cout << "Telefono invalido, Ingrese telefono: ";
 		//cin.ignore();
 		cin >> aux;
 	}
-	return std::stoi(aux);
+	return aux;
 }
 
 int cargarDni() {
@@ -237,12 +248,15 @@ Unidad ingresarUnidad(string mensaje) {
 	return uni;
 }
 bool ingresarPropInq() {
-	bool aux;
+	string aux;
 	while (true) {
 		cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
 		cin >> aux;
-		if (aux == 1 || aux == 0) {
-			return aux;
+		if (aux == "1"){
+			return true;
+		}
+		else if (aux == "0") {
+			return false;
 		}
 		else {
 			cout << "Opcion ingresada no valida." << endl;
@@ -250,13 +264,14 @@ bool ingresarPropInq() {
 	}
 	return false;
 }
+
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
-	cout << "Ingrese fecha desde (DD/MM/AA): ";
+	cout << "Ingrese fecha autorizacion hasta DD/MM/AAAA): ";
 	while (true) {
 		while (hasta.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
-			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+			cout << "Formato invalido, ingrese DD/MM/AAAA";
+			cout << "Ingrese fecha autorizacion hasta (DD/MM/AAAA): ";
 		}
 		break;
 	}
@@ -269,7 +284,6 @@ Fecha ingresarFechaIngreso() {
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 	while (true) {
 		while (auxIngreso.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
 			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 		}
 		if (auxIngreso > hoy) {

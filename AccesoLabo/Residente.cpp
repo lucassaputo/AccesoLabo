@@ -23,6 +23,7 @@ void Residente::cargarResidente() {
     
     propie = ingresarPropInq();
     setPropietarioInquilino(propie);  
+    //system("pause");
     setFechaIngreso(ingresarFechaIngreso());
     if (!propie) {
         setFechaHasta(ingresarFechaHasta());
