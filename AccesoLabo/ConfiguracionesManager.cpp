@@ -7,7 +7,6 @@
 void ConfiguracionesManager::ConsultaHorarios()
 {
 	system("cls");
-	Configuracion reg;
 	ConfigSingleton& config = ConfigSingleton::getInstance();
 	system("cls");
 	std::cout << "CONSULTA DE HORARIOS PROVEEDORES" << std::endl;
@@ -19,10 +18,7 @@ void ConfiguracionesManager::ConsultaHorarios()
 
 void ConfiguracionesManager::ConfiguracionHorarios()
 {
-	Horario desde;
-	Horario hasta;
 	system("cls");
-	Configuracion reg;
 	ConfigSingleton& config = ConfigSingleton::getInstance();
 	
 	system("cls");
@@ -40,5 +36,16 @@ void ConfiguracionesManager::ConfiguracionHorarios()
 	}
 
 
+	system("pause");
+}
+
+void ConfiguracionesManager::CantidadUnidades() {
+	ConfigSingleton& config = ConfigSingleton::getInstance();
+	Configuracion c = config.getConfig();
+	int x = c.getCantUnidades();
+	system("cls");
+	std::cout << "CANTIDAD DE UNIDADES" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
+	std::cout << "Cantidad maxima de unidades/lotes: " << x << std::endl;
 	system("pause");
 }

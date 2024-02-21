@@ -7,5 +7,6 @@ class ConfiguracionesManager
 	public:
 		void ConsultaHorarios();
 		void ConfiguracionHorarios();
+		void CantidadUnidades();
 };
 
