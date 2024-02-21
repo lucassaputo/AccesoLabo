@@ -157,8 +157,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 
 	cout << "AutorizadosPorUnidad" << endl;
 	Autorizacion *regAut;
-	ArchivoAutorizacion archAut("Autorizaciones.dat");
-	int cantReg = archAut.ContarRegistros(), cantRegPersonas= _archivoVisitas.ContarRegistros(), cantRegProveedores = _archivoProveedores.ContarRegistros() ;
+	int cantReg =  _archivoAutorizacion.ContarRegistros(), cantRegPersonas= _archivoVisitas.ContarRegistros(), cantRegProveedores = _archivoProveedores.ContarRegistros() ;
 	Persona per;
 	Proveedor prov;
 	if (cantReg == 0) {
@@ -170,7 +169,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regAut[x] = archAut.Leer(x);
+		regAut[x] = _archivoAutorizacion.Leer(x);
 	}
 	OrdenarVectorAutorizadosxNumero(regAut, cantReg);
 	for (int i = 0;i < cantReg;i++) {
@@ -217,14 +216,14 @@ void ListadoManager::ResidentesPorUnidad() {
 	cout << "ResidentesPorUnidad" << endl;
 	Residente *reg;
 	ArchivoResidente archResidente("Residentes.dat");
-	int cantReg = archResidente.ContarRegistros();
+	int cantReg = _archivoResisente.ContarRegistros();
 	reg = new Residente[cantReg];
 	if (reg == nullptr) {
 		cout << "error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		reg[x] = archResidente.Leer(x);
+		reg[x] = _archivoResisente.Leer(x);
 	}
 	OrdenarResidentesxUnidad(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
@@ -288,15 +287,14 @@ void ListadoManager::ProveedoresPorDNI() {
 	system("cls");
 	cout << "Proveedores Por DNI" << endl;
 	Proveedor *regProv;
-	ArchivoProveedores archProv("Proveedores.dat");
-	int cantReg = archProv.ContarRegistros();
+	int cantReg = _archivoProveedores.ContarRegistros();
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		regProv[x] = archProv.Leer(x);
+		regProv[x] = _archivoProveedores.Leer(x);
 	}
 	OrdenarVectorProveedoresxDNI(regProv, cantReg);
 
@@ -327,15 +325,14 @@ void ListadoManager::UnidadesPorNumero() {
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
 	Unidad* reg;
-	ArchivoUnidad archU("Unidades.dat");
-	int cantReg = archU.ContarRegistros();
+	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int i = 0;i < cantReg;i++) {
-		reg[i] = archU.Leer(i);
+		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxNumero(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
@@ -362,15 +359,14 @@ void ListadoManager::UnidadesPorFamilia(){
 	system("cls");
 	cout << "UnidadesPorFamilia" << endl;
 	Unidad* reg;
-	ArchivoUnidad archU("Unidades.dat");
-	int cantReg = archU.ContarRegistros();
+	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
 		return;
 	}
 	for (int i = 0;i < cantReg;i++) {
-		reg[i] = archU.Leer(i);
+		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxApellido(reg, cantReg);
 	for (int j = 0;j < cantReg;j++) {
