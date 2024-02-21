@@ -2,6 +2,7 @@
 #include <ctime>
 #include <sstream>
 #include <iostream>
+#include "FuncionesGlobales.h"
 
 //constructores
 Horario::Horario() {
@@ -29,7 +30,8 @@ int Horario::getHora() { return _hora; }
 //acciones
 std::string Horario::toString() {
     std::string valorADevolver;
-    valorADevolver = std::to_string(_hora) + ":" + std::to_string(_minuto) + ":" + std::to_string(_segundo);
+    //valorADevolver = std::to_string(_hora) + ":" + std::to_string(_minuto) + ":" + std::to_string(_segundo);
+    valorADevolver = dosDigitos(_hora) + ":" + dosDigitos(_minuto) + ":" + dosDigitos(_segundo);
     return valorADevolver;
 }
 //void Horario::cargar(int seg, int minuto, int hora) {

@@ -32,7 +32,7 @@ void ConfiguracionesManager::ConfiguracionHorarios()
 	config.getConfig().setDesde(ingresarHorario("desde"));
 	config.getConfig().setHasta(ingresarHorario("hasta"));
 
-	if (_archivoConfiguraciones.Guardar(config.getConfig())) {
+	if (_archivoConfiguraciones.Modificar(config.getConfig())) {
 		std::cout << "Registro editado correctamente." << std::endl;
 	}
 	else {
