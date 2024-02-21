@@ -11,6 +11,13 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 	cout << "+++++++++++++++++++++++++++++++" << endl;
 	cout << "Ingrese el numero de Unidad: " << endl;
     unidad = ingresarIdUnidad();
+	Unidad u;
+	u = buscarUnidad(stoi(unidad));
+	if (u.getId() == -1) {
+		cout << "no existe una unidad con ese ID" << endl;
+		system("pause");
+		return;
+	}
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizaciones cargados" << endl;
@@ -21,11 +28,11 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 		for (int x = 0;x < cantReg;x++) {
 			aut = _archivoAutorizacion.Leer(x);
 			if (aut.getIdUnidad() == stoi(unidad)) {
-				int posper = _archivoPersona.BuscarId(aut.getIdUnidad());
+				int posper = _archivoPersona.BuscarId(aut.getIdPersona());
 				per = _archivoPersona.Leer(posper);
 				per.mostrar();
 				ContMuestras++;
-				system("pause");
+				break;				
 			}
 		}
 		if (ContMuestras == 0) {
@@ -58,7 +65,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 				if (idAutorizado==per.getId()) {
 					per.mostrar();
 					ContMuestras++;
-					system("pause");
+					break;
 				}
 			}			
 			
@@ -75,10 +82,16 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	std::string unidad;
 	Residente res;
 	cout << "Consulta Residentes por Unidad" << endl;
-
 	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Ingrese el numero de Unidad: " << endl;
 	unidad = ingresarIdUnidad();
+	Unidad u;
+	u = buscarUnidad(stoi(unidad));
+	if (u.getId() == -1) {
+		cout << "no existe una unidad con ese ID" << endl;
+		system("pause");
+		return;
+	}
 	int cantReg = _archivoResidente.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de Residentes cargados" << endl;
@@ -91,6 +104,7 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			if (res.getUnidad() == stoi(unidad)) {
 				res.mostrar();
 				ContMuestras++;
+				break;
 			}
 		}
 		if (ContMuestras == 0) {
@@ -100,28 +114,15 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 
 	system("pause");
 }
-/*
-void ConsultasManager::ConsultaResidentesxApellido() {// punto 3
-	system("cls");
-	cout << "Consulta Residentes por Apellido" << endl;
-	system("pause");
-}*/
-/*
-void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
-	system("cls");
-	cout << "Consulta Residentes por Unidad" << endl;
-
-	system("pause");
-}*/
 
 	void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
 		system("cls");
-		std::string unidad;
 		Residente res;
 		cout << "Consulta Residentes por Apellido" << endl;
 		cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 		cout << "Ingrese el Apellido: " << endl;
-		unidad = ingresarIdUnidad();
+		std::string Apellido = cargarApellido();
+	
 		int cantReg = _archivoResidente.ContarRegistros();
 		if (cantReg == 0) {
 			cout << "No hay registros de Residentes cargados" << endl;
@@ -131,7 +132,7 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 4
 			for (int x = 0;x < cantReg;x++) {
 				res = _archivoResidente.Leer(x);
 
-				if (res.getUnidad() == stoi(unidad)) {
+				if (strcmp(res.getApellidos().c_str(), Apellido.c_str()) == 0) {
 					res.mostrar();
 					ContMuestras++;
 				}
@@ -160,6 +161,8 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 			prov = _archivoProveedores.Leer(x);
 			if (strcmp(prov.getEmpresa().c_str(), RazonSocial.c_str()) == 0) {
 				prov.mostrar();
+				ContMuestras++;
+				break;
 			}
 		}
 		if (ContMuestras == 0) {
@@ -184,17 +187,20 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 		int ContMuestras = 0;
 		for (int x = 0;x < cantReg;x++) {
 			prov = _archivoProveedores.Leer(x);
-			if (stoi(DNI)==prov.getDni()) {
+			if (stoi(DNI) == prov.getDni()) {
 				prov.mostrar();
+				ContMuestras++;
+				break;
+			}
 		}
-	}
 		if (ContMuestras == 0) {
 			cout << "No hay proveedores dados de alta con ese DNI" << endl;
 		}
 	}
-	
 	system("pause");
-}
+	}
+	
+
 
 void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 	system("cls");
@@ -213,6 +219,8 @@ void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 			uni = _archivoUnidades.Leer(x);
 			if (strcmp(uni.getFamilia().c_str(), Apellido.c_str()) == 0) {
 				uni.mostrar();
+				ContMuestras++;
+				break;
 			}
 		}
 		if (ContMuestras == 0) {
