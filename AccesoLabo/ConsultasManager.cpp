@@ -1,5 +1,6 @@
 #include "ConsultasManager.h"
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
@@ -211,6 +212,12 @@ void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 		int ContMuestras = 0;
 		for (int x = 0;x < cantReg;x++) {
 			uni = _archivoUnidades.Leer(x);
+			cout << left;
+			cout << setw(3) << "ID: ";
+			cout << setw(3) << "Telefono: ";
+			cout << setw(3) << "Familia: ";			
+			cout << setw(3) << "Observaciones: " << endl;			
+
 			if (strcmp(uni.getFamilia().c_str(), Apellido.c_str()) == 0) {
 				uni.mostrar();
 			}
