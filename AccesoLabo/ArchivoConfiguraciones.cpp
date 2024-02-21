@@ -51,3 +51,24 @@ Configuracion ArchivoConfiguraciones::Leer(int nroRegistro) {
     fclose(p);
     return reg;
 }
+
+bool ArchivoConfiguraciones::Modificar(Configuracion reg) {
+    bool pudoEscribir;
+    int nroRegistro;
+    Configuracion aux;
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb+");
+    if (p == nullptr) {
+        return false;
+    }
+    int cant = ContarRegistros();
+    for (nroRegistro = 0;nroRegistro < cant;nroRegistro++) {
+        aux = Leer(nroRegistro);
+        if (aux.getId() == reg.getId()) {
+            break;
+        }
+    }
+    fseek(p, nroRegistro * sizeof(Configuracion), SEEK_SET);
+    pudoEscribir = fwrite(&reg, sizeof(Configuracion), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}

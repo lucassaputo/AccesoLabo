@@ -119,11 +119,11 @@ bool Fecha::cargar(int dia, int mes, int anio) {
     return false;
 }
 
-void Fecha::cargar(int mes, int anio)
-{
-    _mes = mes;
-    _anio = anio;    
-}
+//void Fecha::cargar(int mes, int anio)
+//{
+//    _mes = mes;
+//    _anio = anio;    
+//}
 
 std::string Fecha::toString() {
     std::string valorADevolver;
