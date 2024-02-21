@@ -237,12 +237,15 @@ Unidad ingresarUnidad(string mensaje) {
 	return uni;
 }
 bool ingresarPropInq() {
-	bool aux;
+	string aux;
 	while (true) {
 		cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
 		cin >> aux;
-		if (aux == 1 || aux == 0) {
-			return aux;
+		if (aux == "1"){
+			return true;
+		}
+		else if (aux == "0") {
+			return false;
 		}
 		else {
 			cout << "Opcion ingresada no valida." << endl;
@@ -250,6 +253,7 @@ bool ingresarPropInq() {
 	}
 	return false;
 }
+
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
 	cout << "Ingrese fecha desde (DD/MM/AA): ";
@@ -269,7 +273,6 @@ Fecha ingresarFechaIngreso() {
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 	while (true) {
 		while (auxIngreso.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
 			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 		}
 		if (auxIngreso > hoy) {

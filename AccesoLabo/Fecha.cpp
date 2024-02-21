@@ -122,8 +122,7 @@ bool Fecha::cargar(int dia, int mes, int anio) {
 void Fecha::cargar(int mes, int anio)
 {
     _mes = mes;
-    _anio = anio;
-    
+    _anio = anio;    
 }
 
 std::string Fecha::toString() {
@@ -164,12 +163,7 @@ bool Fecha::ingresarFecha() {
         if (!(cargar(dia, mes, anio))) {
             return false;
         }
-    }
-    // Imprimir los valores por separado (puedes hacer lo que necesites con ellos)
-   /* std::cout << "Día: " << dia << std::endl;
-    std::cout << "Mes: " << mes << std::endl;
-    std::cout << "Año: " << ano << std::endl;*/    
-
+    }  
     return true; // Salir sin errores
 }
 
@@ -193,12 +187,13 @@ bool Fecha::ingresarMes_Anio() {
         std::cerr << "Formato de fecha incorrecto. Asegúrese de que la fecha tenga el formato MM/AA." << std::endl;
         return false; // Salir con código de error
     }
-    cargar(mes, anio);
-
+    else {
+        if (!(cargar(1,mes, anio))) {
+            return false;
+        }
+    }
     return true; // Salir sin errores
 }
-
-
 
 bool Fecha::operator>(Fecha& fechaActual)
 {
@@ -212,11 +207,7 @@ bool Fecha::operator>(Fecha& fechaActual)
     else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() > fechaActual.getDia()) {
         return true;
     }
-
     return false;   
-   
-   
-    
 }
 
 bool Fecha::operator>=(Fecha& fechaActual)
@@ -246,10 +237,7 @@ bool Fecha::operator<(Fecha& fechaActual)
     else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() < fechaActual.getDia()) {
         return true;
     }
-
-    return false;
-    
-
+    return false;  
 }
 
 bool Fecha::operator<=(Fecha& fechaActual)
@@ -263,7 +251,6 @@ bool Fecha::operator<=(Fecha& fechaActual)
     else if (this->getAnio() == fechaActual.getAnio() && this->getMes() == fechaActual.getMes() && this->getDia() <= fechaActual.getDia()) {
         return true;
     }
-
     return false;
 }
 
