@@ -42,13 +42,15 @@ void Unidad::editar() {
 	_estado = true;
 }
 
-void Unidad::mostrar() {
-	//cout << "Numero ID: " << _id << endl;
-	cout << "Telefono: " << _telefono << endl;
-	cout << "Familia: " << _familia << endl;
-	cout << "Observaciones: " << _observaciones << endl;
-}
 
+
+void Unidad::mostrar() {
+	cout << right;
+	cout << setw(3) <<"" << _id;
+	cout << setw(3)  <<"" << _telefono;
+	cout << setw(3)  << "" << _familia;
+	cout << setw(6)  << "" << _observaciones << endl;
+}
 
 
 

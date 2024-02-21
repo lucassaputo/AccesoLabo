@@ -3,6 +3,7 @@
 #include <iostream>
 #include "ReporteAutorizaciones.h"
 #include <fstream> // Incluir la biblioteca para manejar archivos
+#include <iomanip>
 using namespace std;
 
 /*
@@ -323,7 +324,7 @@ void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 	}
 }
 
-void ListadoManager::UnidadesPorNumero() {
+void ListadoManager::UnidadesPorNumero() { // punto 6
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
 	Unidad* reg;
@@ -338,8 +339,14 @@ void ListadoManager::UnidadesPorNumero() {
 		reg[i] = archU.Leer(i);
 	}
 	OrdenarVectorUnidadxNumero(reg, cantReg);
+	cout << left;
+	cout << setw(2) << "ID ";
+	cout << setw(8) << " | telefono ";
+	cout << setw(8) << " | Familia ";
+	cout << setw(15) << "| Observaciones" << endl;
+
 	for (int j = 0;j < cantReg;j++) {
-		cout << "j=" << j << endl;
+		//cout << "j=" << j << endl;
 		reg[j].mostrar();
 	}
 	delete[] reg;
@@ -358,7 +365,7 @@ void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
 		}
 	}
 }
-void ListadoManager::UnidadesPorFamilia(){
+void ListadoManager::UnidadesPorFamilia(){ // punto 7
 	system("cls");
 	cout << "UnidadesPorFamilia" << endl;
 	Unidad* reg;
@@ -373,6 +380,13 @@ void ListadoManager::UnidadesPorFamilia(){
 		reg[i] = archU.Leer(i);
 	}
 	OrdenarVectorUnidadxApellido(reg, cantReg);
+
+	cout << right;
+	cout << setw(2) << "ID ";
+	cout << setw(8) << " | telefono ";
+	cout << setw(8) << " | Familia ";
+	cout << setw(15) << "| Observaciones" << endl;
+
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
