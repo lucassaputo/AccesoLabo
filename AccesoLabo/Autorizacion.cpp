@@ -30,6 +30,14 @@ void Autorizacion::cargar(){
 void Autorizacion::mostrar()
 {
     cout << left;
+
+    cout << setw(2) << _id ;
+    cout << setw(2) << _idPersona ;
+    cout << setw(2) << _idUnidad ;
+    cout << setw(2) << _tipo ;
+    cout << setw(2) << _hasta.toString() ;
+    cout << setw(2) << _estado << endl;
+
     cout << setw(3) << _id << endl;
     cout << setw(3)  << _idPersona << endl;
     cout << setw(3) << _idUnidad << endl;

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "ReporteAutorizaciones.h"
 #include <fstream> // Incluir la biblioteca para manejar archivos
+#include <iomanip>
 using namespace std;
 
 /*
@@ -89,7 +90,7 @@ void ListadoManager::AutorizadosPorApellido() {
 		// Abrir un archivo para escribir
 		std::ofstream archivo("listadoAutorizadosPorApellido.txt");
 
-		// Verificar si el archivo se abrió correctamente
+		// Verificar si el archivo se abriÃ³ correctamente
 		if (archivo.is_open()) {
 			archivo << "Apellido, fechaHasta, idUnidad\n";
 			// Escribir datos en el archivo
@@ -367,7 +368,11 @@ void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 	}
 }
 
+
+void ListadoManager::UnidadesPorNumero() { // punto 6
+
 void ListadoManager::UnidadesPorNumero() {// punto 6
+
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
 	Unidad* reg;
@@ -381,6 +386,16 @@ void ListadoManager::UnidadesPorNumero() {// punto 6
 		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxNumero(reg, cantReg);
+
+	cout << left;
+	cout << setw(2) << "ID ";
+	cout << setw(8) << " | telefono ";
+	cout << setw(8) << " | Familia ";
+	cout << setw(15) << "| Observaciones" << endl;
+
+	for (int j = 0;j < cantReg;j++) {
+		//cout << "j=" << j << endl;
+
 			cout << left;
 			cout << setw(3) << "Numero ID: "  ;
 			cout << setw(8) << "   | Telefono: " ;
@@ -388,7 +403,7 @@ void ListadoManager::UnidadesPorNumero() {// punto 6
 			cout << setw(8) << "     |Observaciones: "  << endl;	
 	for (int j = 0;j < cantReg;j++) {
 		//cout << "j=" << j << endl;	
-		
+
 		reg[j].mostrar();
 	}
 	delete[] reg;
@@ -421,11 +436,20 @@ void ListadoManager::UnidadesPorFamilia(){ // punto 7
 		reg[i] = _archivoUnidades.Leer(i);
 	}
 	OrdenarVectorUnidadxApellido(reg, cantReg);
+
+
+	cout << right;
+	cout << setw(2) << "ID ";
+	cout << setw(8) << " | telefono ";
+	cout << setw(8) << " | Familia ";
+	cout << setw(15) << "| Observaciones" << endl;
+
 	cout << left;
 	cout << setw(3) << "Numero ID: ";
 	cout << setw(8) << "   | Telefono: ";
 	cout << setw(8) << "     | Familia: ";
 	cout << setw(8) << "     |Observaciones: " << endl;
+
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
