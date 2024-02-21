@@ -3,6 +3,7 @@
 #include<iostream>
 #include "Unidad.h"
 #include "ArchivoUnidad.h"
+#include "Horario.h"
 using namespace std;
 
 void cargarCadena(char* pal, int tam) {
@@ -321,6 +322,19 @@ string upper(string cadena) {
 		c = toupper(static_cast<unsigned char>(c));
 	}
 	return cadena;
+}
+
+Horario ingresarHorario(std::string campo) {
+	Horario aux;
+	cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH : mm: ";
+	while (true) {
+		while (aux.ingresarHorario() == false) {
+			cout << "Formato invalido, ingrese HH:mm" << endl;
+			cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH : mm: ";
+		}
+		return aux;
+	}
+	return aux;
 }
 
 void Creditos() {

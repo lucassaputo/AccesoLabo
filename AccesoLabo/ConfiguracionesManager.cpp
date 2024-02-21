@@ -1,16 +1,44 @@
 #include <iostream>
 #include "ConfiguracionesManager.h"
 #include "ConfigSingleton.h"
+#include "FuncionesGlobales.h"
 
-void ConfiguracionesManager::ConfiguracionHorarios()
+
+void ConfiguracionesManager::ConsultaHorarios()
 {
 	system("cls");
 	Configuracion reg;
 	ConfigSingleton& config = ConfigSingleton::getInstance();
-	//config.setMiClase(reg);
-	std::cout << "Configuracion de Horario" << std::endl;
+	system("cls");
+	std::cout << "CONSULTA DE HORARIOS PROVEEDORES" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
 	std::cout << "Ingresos de proveedores permitidos desde: " << config.getConfig().getDesde().toString() << std::endl;
 	std::cout << "Ingresos de proveedores permitidos hasta: " << config.getConfig().getHasta().toString() << std::endl;
-	std::cout << "Configuracion de Horario" << std::endl;
+	system("pause");
+}
+
+void ConfiguracionesManager::ConfiguracionHorarios()
+{
+	Horario desde;
+	Horario hasta;
+	system("cls");
+	Configuracion reg;
+	ConfigSingleton& config = ConfigSingleton::getInstance();
+	
+	system("cls");
+	std::cout << "MODIFICACION DE HORARIOS PROVEEDORES" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
+
+	config.getConfig().setDesde(ingresarHorario("desde"));
+	config.getConfig().setHasta(ingresarHorario("hasta"));
+
+	if (_archivoConfiguraciones.Guardar(config.getConfig())) {
+		std::cout << "Registro editado correctamente." << std::endl;
+	}
+	else {
+		std::cout << "Error al guardar." << std::endl;
+	}
+
+
 	system("pause");
 }

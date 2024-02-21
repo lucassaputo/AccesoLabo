@@ -1,6 +1,7 @@
 #pragma once
 #include "Fecha.h"
 #include "Unidad.h"
+#include "Horario.h"
 
 void cargarCadena(char* pal, int tam);
 std::string cargarNombre();
@@ -24,3 +25,4 @@ Fecha ingresarFechaHasta();
 int ingresarOpcionMenu(int opciones);
 std::string upper(std::string cadena);
 std::string ingresarPassword();
+Horario ingresarHorario(std::string campo);
