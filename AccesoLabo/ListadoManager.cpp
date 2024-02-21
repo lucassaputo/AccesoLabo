@@ -371,7 +371,7 @@ void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 
 void ListadoManager::UnidadesPorNumero() { // punto 6
 
-void ListadoManager::UnidadesPorNumero() {// punto 6
+
 
 	system("cls");
 	cout << "UnidadesPorNumero" << endl;
@@ -396,18 +396,19 @@ void ListadoManager::UnidadesPorNumero() {// punto 6
 	for (int j = 0;j < cantReg;j++) {
 		//cout << "j=" << j << endl;
 
-			cout << left;
-			cout << setw(3) << "Numero ID: "  ;
-			cout << setw(8) << "   | Telefono: " ;
-			cout << setw(8) << "     | Familia: " ;
-			cout << setw(8) << "     |Observaciones: "  << endl;	
-	for (int j = 0;j < cantReg;j++) {
-		//cout << "j=" << j << endl;	
+		cout << left;
+		cout << setw(3) << "Numero ID: ";
+		cout << setw(8) << "   | Telefono: ";
+		cout << setw(8) << "     | Familia: ";
+		cout << setw(8) << "     |Observaciones: " << endl;
+		for (int j = 0;j < cantReg;j++) {
+			//cout << "j=" << j << endl;	
 
-		reg[j].mostrar();
+			reg[j].mostrar();
+		}
+		delete[] reg;
+		system("pause");
 	}
-	delete[] reg;
-	system("pause");
 }
 void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
 {
