@@ -1,4 +1,5 @@
 #include "Autorizacion.h"
+#include <iomanip>
 using namespace std;
 //sets
 void Autorizacion::setId(int id) { _id = id; }
@@ -28,6 +29,17 @@ void Autorizacion::cargar(){
 
 void Autorizacion::mostrar()
 {
+    cout << left;
+    cout << setw(3) << _id << endl;
+    cout << setw(3)  << _idPersona << endl;
+    cout << setw(3) << _idUnidad << endl;
+    cout << setw(1) << _tipo << endl;
+    cout << setw(10) << _hasta.toString() << endl;
+    cout << setw(1) << _estado << endl;
+}
+/*
+void Autorizacion::mostrar()
+{
     cout << "ID: " << _id << endl;
     cout << "idPersona: " << _idPersona << endl;
     cout << "idUnidad: " << _idUnidad << endl;
@@ -35,3 +47,4 @@ void Autorizacion::mostrar()
     cout << "Autorizado hasta: " << _hasta.toString() << endl;
     cout << "Estado: " << _estado << endl;
 }
+*/

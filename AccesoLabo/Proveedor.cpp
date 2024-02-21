@@ -71,12 +71,22 @@ void Proveedor::editarProveedor() {
 	setEmpresa(upper(cargarStringTam("Empresa",50)));
 }
 
-void Proveedor::mostrar() {
+
+/*void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
 	cout << " Empresa perteneciente : " << getEmpresa() << endl;
 	cout << "Fecha de su Art : " << getArt() << endl;
+}*/
+
+void Proveedor::mostrar() {
+	Persona::mostrar();
+	cout << left;
+	cout << setw(1) << to_string(getTipo()) ;
+	cout << setw(10) << getEmpresa();
+	cout << setw(8) << getArt() << endl;
 }
+
 
 bool Proveedor::operator>(Fecha &fechaActual)
 {
