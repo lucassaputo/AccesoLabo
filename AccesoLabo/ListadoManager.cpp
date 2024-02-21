@@ -6,16 +6,6 @@
 #include <iomanip>
 using namespace std;
 
-/*
-void ListadoManager::AutorizadosPorApellido() {
-	system("cls");
-	cout << "AutorizadosPorApellido" << endl;
-	//MostrarCantidadRegistros();
-	//ListarTodos();	
-	ListarRegistros();
-	system("pause");
-}*/
-
 void ListadoManager::ListarRegistros() {//testeo
 	int cant = _archivoRegistros.ContarRegistros();
 	Registro reg;
@@ -69,12 +59,14 @@ void ListadoManager::AutorizadosPorApellido() {
 	cout << setw(10) << " || Apellido: ";
 	cout << setw(10) << " || NombreTipo: ";
 	cout << setw(15) << " || Autorizado hasta: " << endl;
-
-
-	cout << left;
+	int cont = 0;
 	for (int j = 0;j < cantReg;j++) {
 		vectorAut[j].mostrar2(); //ver que pasa con los estado false
-
+		cont++;
+	}
+	if (cont == 0) {
+		cout << endl;
+		cout << "no hay registros de autorizaciones para mostrar" << endl;
 	}
 
 	//exportar
@@ -164,12 +156,7 @@ void ListadoManager::OrdenarVectorAutorizadosxApellido(std::string *reg, int tam
 		}
 	}
 }
-
-void ListadoManager::AutorizadosPorUnidad() {
-	system("cls");
-
-	cout << "AutorizadosPorUnidad" << endl;
-	Autorizacion *regAut;
+/*Autorizacion *regAut;
 	int cantReg =  _archivoAutorizacion.ContarRegistros(), cantRegPersonas= _archivoVisitas.ContarRegistros(), cantRegProveedores = _archivoProveedores.ContarRegistros() ;
 	Persona per;
 	Proveedor prov;
@@ -212,9 +199,117 @@ void ListadoManager::AutorizadosPorUnidad() {
 			}
 		}
 	}
-	delete[] regAut;
+	delete[] regAut;*/
+void ListadoManager::AutorizadosPorUnidad() {
+	system("cls");
+	cout << "AutorizadosPorUnidad" << endl;
+	Autorizacion aux;
+	ReporteAutorizaciones* vectorAut;
+	int cantReg = _archivoAutorizacion.ContarRegistros();
+	if (cantReg == 0) {
+		cout << "No hay registros de autorizados cargados" << endl;
+	}
+	vectorAut = new ReporteAutorizaciones[cantReg];
+	if (vectorAut == nullptr) {
+		cout << "Error de asignacion de memoria " << endl;
+		return;
+	}
+
+	for (int i = 0;i < cantReg;i++) {
+		aux = _archivoAutorizacion.Leer(i);
+		if (aux.getEstado()) {
+			vectorAut[i].setId(aux.getId());
+			vectorAut[i].setIdPersona(aux.getIdPersona());
+			vectorAut[i].setIdUnidad(aux.getIdUnidad());
+			vectorAut[i].setTipo(aux.getTipo());
+			vectorAut[i].setHasta(aux.getHasta());
+			if (aux.getTipo() == 1) { //visita
+				vectorAut[i].setApellido(BuscarenVisita(aux.getIdPersona()));
+				vectorAut[i].setNombreTipo("Visita");
+			}
+			else { // proveedor
+				vectorAut[i].setApellido(BuscarenProveedor(aux.getIdPersona()));
+				vectorAut[i].setNombreTipo("Proveedor");
+			}
+		}
+	}
+// orenar por numero
+
+	cout << left;
+	cout << setw(2) << " || ID: ";
+	cout << setw(10) << " || idPersona: ";
+	cout << setw(10) << " || idUnidad: ";
+	cout << setw(10) << " || idTipo: ";
+	cout << setw(10) << " || Apellido: ";
+	cout << setw(10) << " || NombreTipo: ";
+	cout << setw(15) << " || Autorizado hasta: " << endl;
+	int cont = 0;
+	for (int j = 0;j < cantReg;j++) {
+		vectorAut[j].mostrar2(); //ver que pasa con los estado false
+		cont++;
+	}
+	if (cont == 0) {
+		cout << endl;
+		cout << "no hay registros de autorizaciones para mostrar" << endl;
+	}
+
+	//exportar
+	char r;
+	ReporteAutorizaciones ra;
+	cout << "Desea exportar los datos? S/N";
+	cin >> r;
+	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+		cout << "Desea exportar los datos? S/N";
+		cin >> r;
+	}
+	if (r == 'S' || r == 's') {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listadoAutorizadosPorUnidad.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Apellido, fechaHasta, idUnidad\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vectorAut[i];
+				archivo << ra.getApellido() << "," << ra.getHasta().toString() << "," << ra.getIdUnidad() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+
+
+
+	delete[] vectorAut;
+	
 	system("pause");
 }
+void ListadoManager::OrdenarAutorizadosxNumero(ReporteAutorizaciones* vec, int tam)
+{
+	ReporteAutorizaciones aux;
+
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (vec[x].getIdUnidad(), vec[x + 1].getIdUnidad()) {
+				aux = vec[x];
+				vec[x] = vec[x + 1];
+				vec[x + 1] = aux;
+			}
+		}
+	}
+}
+
 
 void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 {
@@ -370,12 +465,10 @@ void ListadoManager::OrdenarVectorProveedoresxDNI(Proveedor* reg, int tam)
 
 
 void ListadoManager::UnidadesPorNumero() { // punto 6
-
-
-
-	system("cls");
 	cout << "UnidadesPorNumero" << endl;
-	Unidad* reg;
+	system("cls");
+	
+	 	Unidad* reg;
 	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
@@ -393,23 +486,19 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	cout << setw(8) << " | Familia ";
 	cout << setw(15) << "| Observaciones" << endl;
 
-	for (int j = 0;j < cantReg;j++) {
-		//cout << "j=" << j << endl;
-
-		cout << left;
-		cout << setw(3) << "Numero ID: ";
-		cout << setw(8) << "   | Telefono: ";
-		cout << setw(8) << "     | Familia: ";
-		cout << setw(8) << "     |Observaciones: " << endl;
 		for (int j = 0;j < cantReg;j++) {
 			//cout << "j=" << j << endl;	
 
 			reg[j].mostrar();
 		}
+
 		delete[] reg;
 		system("pause");
-	}
+	
 }
+	
+
+
 void ListadoManager::OrdenarVectorUnidadxNumero(Unidad* reg, int tam)
 {
 	Unidad aux;
@@ -444,12 +533,6 @@ void ListadoManager::UnidadesPorFamilia(){ // punto 7
 	cout << setw(8) << " | telefono ";
 	cout << setw(8) << " | Familia ";
 	cout << setw(15) << "| Observaciones" << endl;
-
-	cout << left;
-	cout << setw(3) << "Numero ID: ";
-	cout << setw(8) << "   | Telefono: ";
-	cout << setw(8) << "     | Familia: ";
-	cout << setw(8) << "     |Observaciones: " << endl;
 
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();

@@ -240,6 +240,7 @@ void InformesManager::MovimientosMensuales() // punto 4
 	fechaInicial.ingresarFecha();
 	cout << "Ingrese la fecha final: " << endl;
 	fechaFinal.ingresarFecha();
+	
 	while (fechaInicial > fechaFinal) {
 		cout << "La fecha inicial no puede ser mayor a la fecha final" << endl;
 		cout << "Ingrese la fecha inicial: " << endl;
@@ -247,6 +248,7 @@ void InformesManager::MovimientosMensuales() // punto 4
 		cout << "Ingrese la fecha final: " << endl;
 		fechaFinal.ingresarFecha();
 	}
+	int contmov = 0;
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int x = 0;x < cant;x++) {
 		Fecha fechaRegistro;
@@ -255,8 +257,12 @@ void InformesManager::MovimientosMensuales() // punto 4
 		if (fechaRegistro >= fechaInicial && fechaRegistro <= fechaFinal) {
 			cout << "fecha movimiento: " << fechaRegistro.toString();
 			reg.mostrar(); 
+			contmov++;
 		}
 
+	}
+	if (contmov == 0) {
+		cout << "No hay movimientos en el rango seleccionado" << endl;
 	}
 
 	system("pause");
