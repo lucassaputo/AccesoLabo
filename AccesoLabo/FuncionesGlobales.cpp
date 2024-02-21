@@ -82,24 +82,12 @@ string cargarStringTam(string campo, int tam) {
 	return cadena;
 }
 
-//int cargarTelefono() {
-//	string aux = "";
-//	cout << "Ingrese telefono: ";
-//	cin >> aux;
-//	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
-//		cout << "Telefono invalido, Ingrese telefono: ";
-//		cin.ignore();
-//		cin >> aux;
-//	}
-//	return std::stoi(aux);
-//}
 string cargarTelefono() {
 	string aux = "";
 	cout << "Ingrese telefono: ";
 	cin >> aux;
 	while (soloNumeros(aux) == false || !(aux.size() < 11 && aux.size() > 6)) {
 		cout << "Telefono invalido, Ingrese telefono: ";
-		//cin.ignore();
 		cin >> aux;
 	}
 	return aux;
@@ -108,7 +96,6 @@ string cargarTelefono() {
 int cargarDni() {
 	string aux = "";
 	cout << "Ingrese DNI: ";
-	//cin.ignore();
 	cin >> aux;
 	while (soloNumeros(aux) == false || !(aux.size() < 10 && aux.size() > 6)) {
 		cout << "DNI invalido, Ingrese DNI: ";
@@ -326,17 +313,25 @@ string upper(string cadena) {
 
 Horario ingresarHorario(std::string campo) {
 	Horario aux;
-	cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH : mm: ";
+	cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH:mm 24hs: ";
 	while (true) {
 		while (aux.ingresarHorario() == false) {
-			cout << "Formato invalido, ingrese HH:mm" << endl;
-			cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH : mm: ";
+			cout << "Formato invalido o fuera de rango ingrese HH:mm" << endl;
+			cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH:mm 24hs: ";
 		}
 		return aux;
 	}
 	return aux;
 }
-
+string dosDigitos(int n) {
+	cout << "----" << n << "-------" << endl;
+	string aux = to_string(n);
+	if (n < 10) {
+		cout << "entra" << endl;
+		aux = "0" + to_string(n);		
+	}
+	return aux;
+}
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
