@@ -73,12 +73,23 @@ void  Persona::editarPersona() {
 
 void Persona::mostrar()
 {
+	cout << left;
+	cout << setw(3) << _id ;
+	cout << setw(10) << _nombres ;
+	cout << setw(10) << _apellidos ;
+	cout << setw(8) << _dni ;
+	cout << setw(1) << _estado ;
+}
+/*
+}void Persona::mostrar()
+{
 	cout << "id: " << _id << endl;
 	cout << "Nombre: " << _nombres << endl;
 	cout << "Apellido: " << _apellidos << endl;
 	cout << "Documento" << _dni << endl;
 	cout << "Estado" << _estado << endl;
 }
+*/
 void Persona::mostrarX()
 {
 	cout << "Nombre: " <<  endl;
