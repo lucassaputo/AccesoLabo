@@ -81,16 +81,27 @@ string cargarStringTam(string campo, int tam) {
 	return cadena;
 }
 
-int cargarTelefono() {
+//int cargarTelefono() {
+//	string aux = "";
+//	cout << "Ingrese telefono: ";
+//	cin >> aux;
+//	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+//		cout << "Telefono invalido, Ingrese telefono: ";
+//		cin.ignore();
+//		cin >> aux;
+//	}
+//	return std::stoi(aux);
+//}
+string cargarTelefono() {
 	string aux = "";
 	cout << "Ingrese telefono: ";
 	cin >> aux;
-	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+	while (soloNumeros(aux) == false || !(aux.size() < 11 && aux.size() > 6)) {
 		cout << "Telefono invalido, Ingrese telefono: ";
 		//cin.ignore();
 		cin >> aux;
 	}
-	return std::stoi(aux);
+	return aux;
 }
 
 int cargarDni() {
@@ -256,11 +267,11 @@ bool ingresarPropInq() {
 
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
-	cout << "Ingrese fecha desde (DD/MM/AA): ";
+	cout << "Ingrese fecha autorizacion hasta DD/MM/AAAA): ";
 	while (true) {
 		while (hasta.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
-			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+			cout << "Formato invalido, ingrese DD/MM/AAAA";
+			cout << "Ingrese fecha autorizacion hasta (DD/MM/AAAA): ";
 		}
 		break;
 	}

@@ -173,7 +173,7 @@
     <ClCompile Include="MenuListado.cpp" />
     <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="MenuRegistros.cpp" />
-    <ClCompile Include="MenuUsuarios.cpp" />
+    <ClCompile Include="MenuAbmUsuarios.cpp" />
     <ClCompile Include="Persona.cpp" />
     <ClCompile Include="Proveedor.cpp" />
     <ClCompile Include="Registro.cpp" />
@@ -183,7 +183,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Unidad.cpp" />
     <ClCompile Include="Usuario.cpp" />
-    <ClCompile Include="UsuarioManager.cpp" />
+    <ClCompile Include="AbmUsuarioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbmAutorizacionManager.h" />

@@ -1,13 +1,11 @@
 /*
 * ver la cantidad de lotes disponibles
-* clase fecha rever
-* que nose pueda modificar el dni
-* ver ingresarFechaAutorizacion
-* chequear implementacion activo en usuario
-* chequear constructores
+* hacer configuraciones
 
 poco importante:
 ----------------
+* chequear constructores
+* ver ingresarFechaAutorizacion
 * numeros en nombre empresa
 * permirtir numeros en observaciones unidad
 * usar <vector> en vez de dinamica

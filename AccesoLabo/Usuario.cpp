@@ -38,9 +38,8 @@ void Usuario::editar()
 {
 	string password;
 	Persona::editarPersona();
-	//Persona::cargarPersona();
-	cout << "DNI actual: " << getDni() << endl;
-	Persona::setDni(cargarDni());
+	//cout << "DNI actual: " << getDni() << endl;
+	//Persona::setDni(cargarDni());
 	cout << "Nivel actual: " << _nivel << endl;
 	setNivel(ingresarNivel());
 	cout << "Nick actual: " << _nick << endl;

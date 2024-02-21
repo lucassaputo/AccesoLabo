@@ -11,14 +11,14 @@ Unidad::Unidad() {
 }
 //sets
 void Unidad::setId(int id){_id = id;}
-void Unidad::setTelefono(int tel){_telefono = tel;}
+void Unidad::setTelefono(std::string tel){strcpy(_telefono,tel.c_str());}
 void Unidad::setFamilia(std::string fam){strcpy(_familia,fam.c_str());}
 void Unidad::setObservaciones(std::string obs) { strcpy(_observaciones, obs.c_str()); }
 void Unidad::setEstado(bool estado){_estado = estado;}
 
 //gets
 int Unidad::getId(){return _id;}
-int Unidad::getTelefono(){return _telefono;}
+std::string Unidad::getTelefono(){return _telefono;}
 std::string Unidad::getFamilia(){return _familia;}
 std::string Unidad::getObservaciones(){return _observaciones;}
 bool Unidad::getEstado(){return _estado;}
