@@ -308,31 +308,36 @@ void ConsultasManager::ConsultaProveedoresxCUIT() {
 }
 
 //"7 - Consulta de unidades por Nombre"
-void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
+void ConsultasManager::ConsultaUnidadesxNombre() {
 	system("cls");
-	cout << "++++++ Consulta unidades por nombre ++++++" << endl;
-	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
-	cout << "Inhgrese el Apellido de la familia: " << endl;
+	string familia;
 	Unidad uni;
-	std::string Apellido = cargarNombre();
+	cout << "++++++ Consulta unidades por familia ++++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
+	cin.ignore();
+	familia = upper(cargarStringTam("familia", 50));
 	int cantReg = _archivoUnidades.ContarRegistros();
 	if (cantReg == 0) {
-		cout << "No hay registros de Unidades cargados" << endl;
+		cout << "No hay registros de unidades cargados" << endl;
+		system("pause");
+		return;
 	}
-	else {
-		int ContMuestras = 0;
-		for (int x = 0;x < cantReg;x++) {
-			uni = _archivoUnidades.Leer(x);
-			if (strcmp(uni.getFamilia().c_str(), Apellido.c_str()) == 0) {
-				uni.mostrar();
-				ContMuestras++;
-				//break;
-			}
-		}
-		if (ContMuestras == 0) {
-			cout << "No hay unidades dadas de alta con ese apellido" << endl;
+	int cont = 0;
+	for (int x = 0;x < cantReg;x++) {
+		uni = _archivoUnidades.Leer(x);
+		if (uni.getEstado() && uni.getFamilia()==familia) {
+			uni.mostrar();
+			cont++;
 		}
 	}
+	if (cont == 0) {
+		cout << "No hay unidades dadas de alta para la familia ingresada" << endl;
+		system("pause");
+		return;
+	}
+	//ordenar
+	//exportar
+
 	system("pause");
 }
 
