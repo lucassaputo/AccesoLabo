@@ -184,7 +184,6 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 	}	
 
 		int aux = 0;
-		int aux2 = 0;
 		for (int i = 0;i < cant;i++) {
 			for (int x = 0;x < cant - i - 1;x++) {
 				if (contMovimientos[x] > contMovimientos[x + 1]) {
@@ -195,22 +194,30 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 			}
 		}	
 		Unidad uMayor, uMenor;
-
-		for (int x = 0;x < CantUni;x++) {
-			if (regU[x].getId() == contMovimientos[0]) {
-				uMayor = regU[x];
-			}
-			if (regU[x].getId() == contMovimientos[cant - 1]) {
+		int contMenor = 0,cantmenor=0;
+		for (int x = 0;x < CantUni-1;x++) { // en CantUni -1 xq en la ultima posicion esta el mayor
+			if (contMovimientos[x]>0) {
 				uMenor = regU[x];
+				contMenor++;
+				cantmenor = contMovimientos[x];
+				break;
 			}
 		}
+				uMayor = regU[CantUni-1];
+			
 		cout << "Unidad con mayor Movimientos: " << endl;
 		uMayor.mostrar();
-		cout << "Cantidad de Movimientos: " << contMovimientos[0] << endl;
-		cout << "Unidad con menor Movimientos: " << endl;
-		uMenor.mostrar();
-		cout << "Cantidad de movimientos" << contMovimientos[cant-1] << endl;
-
+		cout << "Cantidad de Movimientos: " << contMovimientos[cant - 1] << endl;
+		cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*" << endl;
+		if (contMenor > 0) {
+			cout << "Unidad con menor Movimientos: " << endl;
+			uMenor.mostrar();
+			cout << "Cantidad de movimientos" << cantmenor << endl;
+		}
+		else {
+			cout << "solo una unidad registro movimientos" << endl;
+		}
+	
 	delete[] contMovimientos;
 	delete[] regU;
 	system("pause");
