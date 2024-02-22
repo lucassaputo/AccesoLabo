@@ -23,7 +23,7 @@ void MenuListado::Mostrar() {
 
         int opcion = ingresarOpcionMenu(7);
         while (opcion == -1) {
-            opcion == ingresarOpcionMenu(7);
+            opcion = ingresarOpcionMenu(7);
         }
 
         switch (opcion) {

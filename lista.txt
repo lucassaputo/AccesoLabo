@@ -1,5 +1,5 @@
 /*
-* chequear horario en ingreso proveedores
+* pq muestra dos digitos en el año listado1? cambie validacion en cargar a >1900
 
 
 poco importante:

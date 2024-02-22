@@ -13,9 +13,8 @@ class ListadoManager
 {
 	public:
 		void AutorizadosPorApellido(); // punto 1
-		std::string BuscarenVisita(int dni);
-		std::string BuscarenProveedor(int dni);
-		void OrdenarVectorAutorizadosxApellido(std::string* reg, int tam);
+		Persona BuscarenVisita(int dni);
+		Proveedor BuscarenProveedor(int dni);
 		void OrdenarAutorizadosxApellido(ReporteAutorizaciones* reg, int tam);
 		void AutorizadosPorUnidad(); // punto 2
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
@@ -30,8 +29,7 @@ class ListadoManager
 		void OrdenarVectorUnidadxNumero(Unidad *reg, int tam);	
 		void UnidadesPorFamilia();//punto 7
 		void OrdenarVectorUnidadxApellido(Unidad* reg, int tam);
-		void ListarRegistros()
-			;
+		void ListarRegistros();
 	private:
 		ArchivoAutorizacion _archivoAutorizacion = ArchivoAutorizacion("Autorizaciones.dat");
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");

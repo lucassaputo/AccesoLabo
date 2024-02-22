@@ -3,6 +3,7 @@
 #include "Unidad.h"
 #include "Horario.h"
 
+bool decisionExportar();
 void cargarCadena(char* pal, int tam);
 std::string cargarNombre();
 std::string cargarApellido();

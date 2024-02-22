@@ -11,6 +11,7 @@ private:
 	int _idUnidad;
 	int _tipo; // 1 - Visitas || 2 - Proveedor
 	Fecha _hasta;
+	std::string _nombre;
 	std::string _apellido;
 	std::string _nombreTipo;
 
@@ -22,6 +23,7 @@ public:
 	void  setIdUnidad(int u);
 	void  setTipo(int t);
 	void  setHasta(Fecha f);
+	void setNombre(std::string a);
 	void setApellido(std::string a);
 	void setNombreTipo(std::string n);
 
@@ -31,10 +33,11 @@ public:
 	int getIdUnidad();
 	int getTipo();
 	Fecha getHasta();
+	std::string getNombre();
 	std::string getApellido();
 	std::string getNombreTipo();
 
 	//acciones
 	void mostrar();
-	void mostrar2();
+	void mostrarReporte();
 };

@@ -8,6 +8,23 @@
 
 using namespace std;
 
+bool decisionExportar() {
+	char r;
+	cout << "Desea exportar los datos? S/N";
+	cin >> r;
+	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+		cout << "Desea exportar los datos? S/N";
+		cin >> r;
+	}
+	if (r == 'S' || r == 's') {
+		return true;
+	}
+	else {
+		return false;
+	}
+	return false;
+}
+
 void cargarCadena(char* pal, int tam) {
 	int i;
 	fflush(stdin);

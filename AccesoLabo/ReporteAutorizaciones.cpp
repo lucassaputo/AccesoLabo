@@ -7,6 +7,7 @@ void ReporteAutorizaciones::setIdPersona(int id) { _idPersona = id; }
 void ReporteAutorizaciones::setIdUnidad(int u) { _idUnidad = u; }
 void ReporteAutorizaciones::setTipo(int t) { _tipo = t; }
 void ReporteAutorizaciones::setHasta(Fecha f) { _hasta = f; }
+void ReporteAutorizaciones::setNombre(std::string a) { _nombre = a; }
 void ReporteAutorizaciones::setApellido(std::string a) { _apellido = a; }
 void ReporteAutorizaciones::setNombreTipo(std::string n) { _nombreTipo = n; }
 //gets
@@ -15,6 +16,7 @@ int ReporteAutorizaciones::getIdPersona() { return _idPersona; }
 int ReporteAutorizaciones::getIdUnidad() { return _idUnidad; }
 int ReporteAutorizaciones::getTipo() { return _tipo; }
 Fecha ReporteAutorizaciones::getHasta() { return _hasta; }
+std::string ReporteAutorizaciones::getNombre() { return _nombre; }
 std::string ReporteAutorizaciones::getApellido() { return _apellido; }
 std::string ReporteAutorizaciones::getNombreTipo() { return _nombreTipo; }
 
@@ -31,17 +33,16 @@ void ReporteAutorizaciones::mostrar()
     cout << "Autorizado hasta: " << _hasta.toString() << endl;
 }
 
-void ReporteAutorizaciones::mostrar2()
+void ReporteAutorizaciones::mostrarReporte()
 {
     cout << left;
-    cout << setw(4) << _id;
-    cout << setw(10) << _idPersona;
+    //cout << setw(4) << _id;
+    //cout << setw(10) << _idPersona;
+    cout << setw(20) << _nombre;
+    cout << setw(20) << _apellido;
+    cout << setw(16) << _nombreTipo;
     cout << setw(9) << _idUnidad;
-    //cout << setw(1) << _tipo;
-    cout << setw(12) << _apellido;
-    cout << setw(12) << _nombreTipo;
     cout << setw(15) << _hasta.toString() << endl;
-
 }
 
 /*
