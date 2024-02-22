@@ -51,7 +51,10 @@ void ListadoManager::AutorizadosPorApellido() {
 				vectorAut[i].setApellido(pro.getApellidos());
 				vectorAut[i].setNombreTipo("Proveedor");
 			}		
-		}		
+		}
+		else {
+			vectorAut[i].setIdUnidad(-1);
+		}
 	}
 
 	if (cont == 0) {
@@ -64,7 +67,9 @@ void ListadoManager::AutorizadosPorApellido() {
 	cabeceraAutorizados();
 
 	for (int j = 0;j < cantReg;j++) {
-		vectorAut[j].mostrarReporte();
+		if (vectorAut[j].getIdUnidad() != -1) {
+			vectorAut[j].mostrarReporte();
+		}
 	}
 
 	ExportarAutorizaciones(vectorAut, cont, "listado1");
@@ -114,6 +119,9 @@ void ListadoManager::AutorizadosPorUnidad() {
 				vectorAut[i].setNombreTipo("Proveedor");
 			}
 		}
+		else {
+			vectorAut[i].setIdUnidad(-1);
+		}
 	}
 	if (cont == 0) {
 		cout << "No hay autorizaciones cargadas" << endl;
@@ -125,7 +133,9 @@ void ListadoManager::AutorizadosPorUnidad() {
 	cabeceraAutorizados();
 
 	for (int j = 0;j < cantReg;j++) {
-		vectorAut[j].mostrarReporte();
+		if (vectorAut[j].getIdUnidad() != -1) {
+			vectorAut[j].mostrarReporte();
+		}
 	}
 
 	ExportarAutorizaciones(vectorAut, cont, "listado2");
@@ -158,6 +168,9 @@ void ListadoManager::ResidentesPorUnidad() {
 		if (res.getEstado()) {
 			reg[x] = res;
 		}
+		else {
+			reg[x].setId(-1);
+		}
 	}
 
 	OrdenarResidentesxUnidad(reg, cantReg);
@@ -165,12 +178,12 @@ void ListadoManager::ResidentesPorUnidad() {
 	caberaResidentes();
 
 	for (int j = 0;j < cantReg;j++) {
-		reg[j].mostrar();
+		if (reg[j].getId() != -1) {
+			reg[j].mostrar();
+		}
 	}
 
-
 	//exportar	
-
 	Residente ra;
 	if (decisionExportar()) {
 		// Abrir un archivo para escribir
@@ -228,6 +241,9 @@ void ListadoManager::ProveedoresPorRazon() {
 			regProv[x] = p;
 			cont++;
 		}
+		else {
+			regProv[x].setId(-1);
+		}
 	}
 
 	if (cont == 0) {
@@ -241,7 +257,9 @@ void ListadoManager::ProveedoresPorRazon() {
 	cabeceraProveedores();
 
 	for (int i = 0;i < cantReg;i++) {
-		regProv[i].mostrar();
+		if (regProv[i].getId() != -1) {
+			regProv[i].mostrar();
+		}
 	}
 
 	ExportarProveedores(regProv, cantReg, "listado4");
@@ -277,6 +295,9 @@ void ListadoManager::ProveedoresPorDNI() {
 			regProv[x] = p;
 			cont++;
 		}
+		else {
+			regProv[x].setId(-1);
+		}
 	}
 
 	if (cont == 0) {
@@ -288,7 +309,9 @@ void ListadoManager::ProveedoresPorDNI() {
 	OrdenarVectorProveedoresxDNI(regProv, cantReg);
 	cabeceraProveedores();
 	for (int j = 0;j < cantReg;j++) {
-		regProv[j].mostrar();
+		if (regProv[j].getId() != -1) {
+			regProv[j].mostrar();
+		}
 	}
 
 	ExportarProveedores(regProv, cantReg, "listado5");
@@ -324,6 +347,9 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 			vector[x] = u;
 			cont++;
 		}
+		else {
+			vector[x].setId(-1);
+		}
 	}
 
 	if (cont == 0) {
@@ -337,7 +363,9 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	caberaUnidades();
 
 	for (int j = 0;j < cantReg;j++) {
-		vector[j].mostrar();
+		if (vector[j].getId() != -1) {
+			vector[j].mostrar();
+		}
 	}
 
 	ExportarUnidades(vector,cantReg,"listado6");
@@ -373,6 +401,10 @@ void ListadoManager::UnidadesPorFamilia(){
 			vector[x] = u;
 			cont++;
 		}
+		else {
+			vector[x].setId(-1);
+		}
+
 	}
 
 	if (cont == 0) {
@@ -385,7 +417,9 @@ void ListadoManager::UnidadesPorFamilia(){
 	caberaUnidades();
 
 	for (int j = 0;j < cantReg;j++) {
-		vector[j].mostrar();
+		if (vector[j].getId()) {
+			vector[j].mostrar();
+		}
 	}
 
 	ExportarUnidades(vector, cantReg, "listado7");

@@ -22,6 +22,6 @@ public:
     
     void cargarResidente();
     void editarResidente();
-    std::string mostrarResidentestring();
+    //std::string mostrarResidentestring();
     void mostrar();
 };
