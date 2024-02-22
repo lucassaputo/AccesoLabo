@@ -8,6 +8,23 @@
 
 using namespace std;
 
+bool decisionExportar() {
+	char r;
+	cout << "Desea exportar los datos? S/N";
+	cin >> r;
+	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+		cout << "Desea exportar los datos? S/N";
+		cin >> r;
+	}
+	if (r == 'S' || r == 's') {
+		return true;
+	}
+	else {
+		return false;
+	}
+	return false;
+}
+
 void cargarCadena(char* pal, int tam) {
 	int i;
 	fflush(stdin);
@@ -361,6 +378,33 @@ string dosDigitos(int n) {
 	}
 	return aux;
 }
+
+void cabeceraAutorizados() {
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(16) << "|Motivo";
+	cout << setw(9) << "|Unidad";
+	cout << setw(15) << "|Autorizado hasta" << endl;
+}
+
+void cabeceraProveedores() {
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(20) << "|Empresa";
+	cout << setw(15) << "|ART" << endl;
+}
+
+void caberaUnidades() {
+	cout << left;
+	cout << setw(9) << "|Unidad";
+	cout << setw(20) << "|Telefono";
+	cout << setw(20) << "|Familia";
+	cout << setw(30) << "|Observaciones" << endl;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

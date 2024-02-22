@@ -3,6 +3,7 @@
 #include "Unidad.h"
 #include "Horario.h"
 
+bool decisionExportar();
 void cargarCadena(char* pal, int tam);
 std::string cargarNombre();
 std::string cargarApellido();
@@ -28,3 +29,6 @@ std::string upper(std::string cadena);
 std::string ingresarPassword();
 Horario ingresarHorario(std::string campo);
 std::string dosDigitos(int n);
+void cabeceraAutorizados();
+void cabeceraProveedores();
+void caberaUnidades();

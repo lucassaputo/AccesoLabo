@@ -1,6 +1,8 @@
 /*
-* chequear horario en ingreso proveedores
-
+* ResidentesPorUnidad el 3 en listados no esta hecho
+* OrdenarAutorizadosxNumero no funciona
+* pq muestra dos digitos en el año listado1? cambie validacion en cargar a >1900
+* ver mensajes y validar las fechas segun se necesita myor o menor
 
 poco importante:
 ----------------
