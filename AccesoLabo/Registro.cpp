@@ -36,18 +36,14 @@ bool Registro::getEstado() { return _estado; }
 
 void Registro::mostrar()
 {
-    cout << "Persona: " << _idPersona << endl;
-    cout << "Unidad: " << _idUnidad << endl;
-    cout << "Tipo persona: " << _tipoPersona << endl;
-    cout << _fechaIngreso.toString() << endl;
-    cout << "Adentro: " << _adentro << endl;
-    cout << "Tipo Autorizacion: " << _tipoAutorizacion << endl;
-    cout << "Estado: " << _estado << endl;
+    cout << "Persona: " << _idPersona;
+    cout << "- Unidad: " << _idUnidad;
+    cout << "- Tipo persona: " << _tipoPersona;
+    cout << "- Ingreso: " << _fechaIngreso.toString();
+    cout << "- Egreso: " << _fechaEgreso.toString();
+    cout << "- Tipo Autorizacion: " << _tipoAutorizacion << endl;
 }
-void Registro::mostrarReporte()
-{
 
-}
 void Registro::operator =(Proveedor p) {
     FechaHorario aux;
     _idPersona = p.getId();    
