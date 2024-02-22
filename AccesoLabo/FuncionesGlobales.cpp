@@ -397,6 +397,14 @@ void cabeceraProveedores() {
 	cout << setw(15) << "|ART" << endl;
 }
 
+void caberaUnidades() {
+	cout << left;
+	cout << setw(9) << "|Unidad";
+	cout << setw(20) << "|Telefono";
+	cout << setw(20) << "|Familia";
+	cout << setw(30) << "|Observaciones" << endl;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

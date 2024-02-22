@@ -297,7 +297,7 @@ void ListadoManager::ProveedoresPorDNI() { // punto 5
 	Proveedor ra;
 	if (decisionExportar()) {
 		// Abrir un archivo para escribir
-		std::ofstream archivo("listado4.txt");
+		std::ofstream archivo("listado5.txt");
 
 		// Verificar si el archivo se abrió correctamente
 		if (archivo.is_open()) {
@@ -330,10 +330,13 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	cout << "++++++ Unidades ordenadas por numero +++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
 	system("cls");
-	
-	 	Unidad* reg;
+	Unidad* reg;
 	int cantReg = _archivoUnidades.ContarRegistros();
 	reg = new Unidad[cantReg];
+	if (cantReg == 0) {
+		cout << "No hay registros cargados" << endl;
+		return;
+	}
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
 		return;
@@ -341,22 +344,44 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	for (int i = 0;i < cantReg;i++) {
 		reg[i] = _archivoUnidades.Leer(i);
 	}
+
 	OrdenarVectorUnidadxNumero(reg, cantReg);
+	caberaUnidades();
 
-	cout << left;
-	cout << setw(2) << "ID ";
-	cout << setw(8) << " | telefono ";
-	cout << setw(8) << " | Familia ";
-	cout << setw(15) << "| Observaciones" << endl;
+	for (int j = 0;j < cantReg;j++) {
+		reg[j].mostrar();
+	}
 
-		for (int j = 0;j < cantReg;j++) {
-			//cout << "j=" << j << endl;	
+	//exportar	
+	Unidad ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado6.txt");
 
-			reg[j].mostrar();
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Numero,Familia,Telefono,Observaciones\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = reg[i];
+				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
 		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
 
-		delete[] reg;
-		system("pause");
+	delete[] reg;
+	system("pause");
 	
 }
 

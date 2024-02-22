@@ -45,17 +45,13 @@ void Unidad::editar() {
 
 
 
-void Unidad::mostrar() {	
-	
+void Unidad::mostrar() {		
 	cout << left;
-	cout << setw(6)  << _id;
-	cout << setw(12) << _telefono;
-	cout << setw(10)  << _familia;
-	cout << setw(10)   << _observaciones << endl;
-	
-
+	cout << setw(9)  << _id;
+	cout << setw(20) << _telefono;
+	cout << setw(20)  << _familia;
+	cout << setw(30)   << _observaciones << endl;
 }
-
 
 /*
 void Unidad::mostrar() {
