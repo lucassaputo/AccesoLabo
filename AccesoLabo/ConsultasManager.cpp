@@ -18,19 +18,19 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	u = ingresarUnidad("a consultar");
 	int cantReg = _archivoAutorizacion.ContarRegistros();
-	if (cantReg == 0) {
-		cout << "No hay registros de autorizaciones cargados" << endl;
-		system("pause");
-		return;
-	}
+
 	vectorAut = new ReporteAutorizaciones[cantReg];
 	if (vectorAut == nullptr) {
 		cout << "Error de asignacion de memoria " << endl;
 		return;
 	}
+	int cont = 0;
 	for (int i = 0;i < cantReg;i++) {
 		aux = _archivoAutorizacion.Leer(i);
-		if (aux.getEstado()) {
+		aux.mostrar();
+		if (aux.getEstado() && aux.getIdUnidad() == u.getId()) {
+			//aux.mostrar();
+			cont++;
 			//chequear que la fecha este vigente
 			vectorAut[i].setId(aux.getId());
 			vectorAut[i].setIdPersona(aux.getIdPersona());
@@ -51,6 +51,11 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 				vectorAut[i].setNombreTipo("Proveedor");
 			}
 		}
+	}
+	if (cont == 0) {
+		cout << "No hay registros cargados" << endl;
+		system("pause");
+		return;
 	}
 
 	//ordenar por algo

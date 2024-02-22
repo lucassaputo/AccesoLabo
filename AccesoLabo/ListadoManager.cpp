@@ -30,6 +30,7 @@ void ListadoManager::AutorizadosPorApellido() {
 	}
 	for (int i = 0;i < cantReg;i++) {
 		aux = _archivoAutorizacion.Leer(i);
+		aux.mostrar();
 		if (aux.getEstado()) {
 			vectorAut[i].setId(aux.getId());			
 			vectorAut[i].setIdPersona(aux.getIdPersona());
