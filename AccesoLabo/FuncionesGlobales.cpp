@@ -199,8 +199,8 @@ string ingresarIdUnidad() {
 		if (soloNumeros(id) == false) {
 			cout << "Solo puede contener numeros, Ingrese unidad: ";
 		}
-		else if (std::stoi(id) > config.getConfig().getCantUnidades()) {
-			cout << "La unidad debe ser menor a " << config.getConfig().getCantUnidades()+1 << ", Ingrese unidad : ";
+		else if (std::stoi(id) > config.getConfig().getCantUnidades() || std::stoi(id)==0) {
+			cout << "La unidad debe ser mayor a 0 y menor a " << config.getConfig().getCantUnidades()+1 << ", Ingrese unidad : ";
 		}
 		else {
 			return id;
@@ -336,6 +336,42 @@ Fecha ingresarFechaAutorizacion() {
 }
 
 Fecha ingresarFechaIngreso() {
+	Fecha hoy;
+	Fecha auxIngreso;
+	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+	while (true) {
+		while (auxIngreso.ingresarFecha() == false) {
+			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+		}
+		if (auxIngreso > hoy) {
+			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxIngreso;
+}
+
+Fecha ingresarFechaDesdeReporte() {
+	Fecha hoy;
+	Fecha auxIngreso;
+	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+	while (true) {
+		while (auxIngreso.ingresarFecha() == false) {
+			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
+		}
+		if (auxIngreso > hoy) {
+			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
+	}
+	return auxIngreso;
+}
+
+Fecha ingresarFechaHastaReporte() {
 	Fecha hoy;
 	Fecha auxIngreso;
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
