@@ -238,31 +238,35 @@ void ConsultasManager::ConsultaResidentesxApellido() {
 	}
 
 //"5 - Consulta de proveedores por Razon Social"
-void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
+void ConsultasManager::ConsultaProveedoresxRazonSocial() {
 	system("cls");
 	Proveedor prov;
+	std::string empresa;
 	cout << "++++++ Consulta proveedores por empresa ++++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	cout << "Inhgrese la razon Social: " << endl;
-	std::string RazonSocial = cargarNombre();
+	empresa = upper(cargarStringTam("Empresa", 50));
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de proveedores cargados" << endl;
+		system("pause");
+		return;
 	}
-	else {
-		int ContMuestras = 0;
-		for (int x = 0;x < cantReg;x++) {
-			prov = _archivoProveedores.Leer(x);
-			if (strcmp(prov.getEmpresa().c_str(), RazonSocial.c_str()) == 0) {
-				prov.mostrar();
-				ContMuestras++;
-				//break;
-			}
-		}
-		if (ContMuestras == 0) {
-			cout << "No hay proveedores dados de alta con esa Razon Social" << endl;
+	int cont = 0;
+	for (int x = 0;x < cantReg;x++) {
+		prov = _archivoProveedores.Leer(x);
+		if (prov.getEstado() && prov.getEmpresa()== empresa) {
+			prov.mostrar();
+			cont++;
 		}
 	}
+	if (cont == 0) {
+		cout << "No hay proveedores dados de alta con esa empresa." << endl;
+		system("pause");
+		return;
+	}
+
+	//ordenar 
+	//reporte
 
 	system("pause");
 }
