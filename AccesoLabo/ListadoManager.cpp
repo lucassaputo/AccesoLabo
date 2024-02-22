@@ -5,6 +5,7 @@
 #include <fstream> // Incluir la biblioteca para manejar archivos
 #include <iomanip>
 #include "FuncionesGlobales.h"
+
 using namespace std;
 
 //"1 - Listado de autorizados, ordenados por apellido"
@@ -139,7 +140,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	ReporteAutorizaciones ra;	
 	if (decisionExportar()) {
 		// Abrir un archivo para escribir
-		std::ofstream archivo("listadoAutorizadosPorUnidad.txt");
+		std::ofstream archivo("listado2.txt");
 
 		// Verificar si el archivo se abrió correctamente
 		if (archivo.is_open()) {
@@ -167,7 +168,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 }
 
 //"3 - Listado de residentes, ordenados por unidad"
-void ListadoManager::ResidentesPorUnidad() { // punto 3
+void ListadoManager::ResidentesPorUnidad() {
 	system("cls");
 	cout << "++++++ Residentes ordenados por unidad ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -206,13 +207,17 @@ void ListadoManager::ResidentesPorUnidad() { // punto 3
 }
 
 //"4 - Listado de proveedores, ordenados por razon social"
-void ListadoManager::ProveedoresPorRazon() { // punto 4
+void ListadoManager::ProveedoresPorRazon() {
 	system("cls");
 	cout << "++++++ Proveedores ordenados por razon social ++++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	Proveedor* regProv;
 
 	int cantReg = _archivoProveedores.ContarRegistros();
+	if (cantReg == 0) {
+		cout << "No hay registros cargados" << endl;
+		return;
+	}
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
@@ -221,21 +226,43 @@ void ListadoManager::ProveedoresPorRazon() { // punto 4
 	for (int x = 0;x < cantReg;x++) {
 		regProv[x] = _archivoProveedores.Leer(x);
 	}
+
 	OrdenarVectorProveedoresxRazon(regProv, cantReg);
-	cout << left;
-	cout << setw(2) << "id";
-	cout << setw(10) << " | nombre";
-	cout << setw(12) << " | apellido";
-	cout << setw(12) << " | dni";
-	//cout << setw(1) << " | estado";
-	//cout << setw(1) << " | tipo";
-	cout << setw(25) << " | Empresa";
-	cout << setw(8) << " | art" << endl;
+
+	cabeceraProveedores();
 	for (int i = 0;i < cantReg;i++) {
 		regProv[i].mostrar();
 	}
-	delete[] regProv;
 
+	//exportar	
+	Proveedor ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado4.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = regProv[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+	delete[] regProv;
 	system("pause");
 }
 

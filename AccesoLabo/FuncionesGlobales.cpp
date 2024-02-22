@@ -388,6 +388,15 @@ void cabeceraAutorizados() {
 	cout << setw(15) << "|Autorizado hasta" << endl;
 }
 
+void cabeceraProveedores() {
+	cout << left;
+	cout << setw(10) << " | nombre";
+	cout << setw(12) << " | apellido";
+	cout << setw(12) << " | dni";
+	cout << setw(25) << " | Empresa";
+	cout << setw(8) << " | art" << endl;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
