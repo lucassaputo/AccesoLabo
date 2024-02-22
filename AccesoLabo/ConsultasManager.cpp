@@ -27,9 +27,7 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	int cont = 0;
 	for (int i = 0;i < cantReg;i++) {
 		aux = _archivoAutorizacion.Leer(i);
-		aux.mostrar();
-		if (aux.getEstado() && aux.getIdUnidad() == u.getId()) {
-			//aux.mostrar();
+		if (aux.getEstado()) {
 			cont++;
 			//chequear que la fecha este vigente
 			vectorAut[i].setId(aux.getId());
@@ -53,12 +51,12 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 		}
 	}
 	if (cont == 0) {
-		cout << "No hay registros cargados" << endl;
+		cout << "No hay autorizaciones cargadas" << endl;
 		system("pause");
 		return;
 	}
 
-	//ordenar por algo
+	OrdenarAutXApellido(vectorAut, cont);
 
 	cabeceraAutorizados();
 

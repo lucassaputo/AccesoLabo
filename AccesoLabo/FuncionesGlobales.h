@@ -4,6 +4,7 @@
 #include "Horario.h"
 #include "Persona.h"
 #include "Proveedor.h"
+#include "ReporteAutorizaciones.h"
 
 bool decisionExportar();
 void cargarCadena(char* pal, int tam);
@@ -36,3 +37,4 @@ void cabeceraProveedores();
 void caberaUnidades();
 Persona BuscarenVisita(int dni);
 Proveedor BuscarenProveedor(int dni);
+void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam);

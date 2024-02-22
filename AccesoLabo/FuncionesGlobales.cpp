@@ -429,6 +429,21 @@ void caberaUnidades() {
 	cout << setw(30) << "|Observaciones" << endl;
 }
 
+void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
+{
+	ReporteAutorizaciones aux;
+
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(vec[x].getApellido().c_str(), vec[x + 1].getApellido().c_str()) > 0) {
+				aux = vec[x];
+				vec[x] = vec[x + 1];
+				vec[x + 1] = aux;
+			}
+		}
+	}
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;
