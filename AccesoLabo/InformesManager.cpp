@@ -67,7 +67,7 @@ void InformesManager::Mostrar50(int* vec, int tam)
 {	
 	int cont = 0;
 	for (int x = 0;x < tam;x++) {
-		if (vec[x] > 50) {
+		if (vec[x] > 5) {
 			cout << "La Unidad Funcional: " << x + 1 << " tiene " << vec[x] << " movimientos " << endl;
 			cont++;
 		}

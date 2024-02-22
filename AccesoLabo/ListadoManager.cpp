@@ -505,7 +505,7 @@ void ListadoManager::OrdenarAutorizadosxNumero(ReporteAutorizaciones* vec, int t
 
 	for (int i = 0;i < tam;i++) {
 		for (int x = 0;x < tam - i - 1;x++) {
-			if (vec[x].getIdUnidad(), vec[x + 1].getIdUnidad()) {
+			if (vec[x].getIdUnidad() > vec[x + 1].getIdUnidad()) {
 				aux = vec[x];
 				vec[x] = vec[x + 1];
 				vec[x + 1] = aux;
