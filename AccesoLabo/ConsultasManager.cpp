@@ -209,7 +209,7 @@ void ConsultasManager::ConsultaResidentesxApellido() {
 		std::string apellido;
 		cout << "++++++ Consulta residentes por apellido ++++++" << endl;
 		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-		
+		cin.ignore();
 		apellido = upper(cargarStringTam("Apellido", 50));
 
 		int cantReg = _archivoResidente.ContarRegistros();
@@ -244,6 +244,7 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() {
 	std::string empresa;
 	cout << "++++++ Consulta proveedores por empresa ++++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	cin.ignore();
 	empresa = upper(cargarStringTam("Empresa", 50));
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
@@ -272,33 +273,39 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() {
 }
 
 //"6 - Consulta de Proveedores por DNI"
-void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
+void ConsultasManager::ConsultaProveedoresxCUIT() {
 	system("cls");
 	Proveedor prov;
 	cout << "++++++ Consulta proveedores por DNI ++++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
-	//cout << "Inhgrese el DNI: " << endl;
-	std::string DNI = std::to_string(cargarDni());
+	cin.ignore();
+	int dni = cargarDni();
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
-		cout << "No hay registros de proveedores cargados" << endl;
+		cout << "No hay registros de proveedores cargados con ese DNI." << endl;
+		system("pause");
+		return;
 	}
-	else {
-		int ContMuestras = 0;
-		for (int x = 0;x < cantReg;x++) {
-			prov = _archivoProveedores.Leer(x);
-			if (stoi(DNI) == prov.getDni()) {
-				prov.mostrar();
-				ContMuestras++;
-				//break;
-			}
-		}
-		if (ContMuestras == 0) {
-			cout << "No hay proveedores dados de alta con ese DNI" << endl;
+	int cont = 0;
+	for (int x = 0;x < cantReg;x++) {
+		prov = _archivoProveedores.Leer(x);
+		if (dni == prov.getDni()) {
+			prov.mostrar();
+			cont++;
 		}
 	}
+	if (cont == 0) {
+		cout << "No hay proveedores dados de alta con ese DNI" << endl;
+		system("pause");
+		return;
+
+	}
+
+	//ordenar
+	//exportar
+
 	system("pause");
-	}
+}
 
 //"7 - Consulta de unidades por Nombre"
 void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
