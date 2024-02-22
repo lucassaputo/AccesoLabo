@@ -69,11 +69,6 @@ void Residente::editarResidente() {
 }
 
 void Residente::mostrar() {    
-    cout << setw(9) << "|UF";
-    cout << setw(15) << "|Desde";
-    cout << setw(15) << "|prop/inqu" << endl;
-
-
     Persona::mostrar();
     cout << left;
     cout << setw(9) << _unidad << endl;
@@ -86,20 +81,20 @@ void Residente::mostrar() {
     }
 }
 
-string Residente::mostrarResidentestring() {
-    //string retornar = mostrarPersonastring();
-   /*  string retornar = "dasdas";
-
-     if (getPropietarioInquilino()) {
-
-         retornar += "Unidad del Residente : " + to_string(getUnidad()) + "\n"
-             + " Fecha de Ingreso del Residente : " + getFechaIngreso();
-     }
-     else {
-         retornar += "Unidad del Inquilino : " + to_string(getUnidad()) + "\n"
-             + " Fecha de Ingreso del Inquilino : " + getFechaIngreso();
-     }
-     return retornar;
-     */
-    return "";
-}
+//string Residente::mostrarResidentestring() {
+//    //string retornar = mostrarPersonastring();
+//   /*  string retornar = "dasdas";
+//
+//     if (getPropietarioInquilino()) {
+//
+//         retornar += "Unidad del Residente : " + to_string(getUnidad()) + "\n"
+//             + " Fecha de Ingreso del Residente : " + getFechaIngreso();
+//     }
+//     else {
+//         retornar += "Unidad del Inquilino : " + to_string(getUnidad()) + "\n"
+//             + " Fecha de Ingreso del Inquilino : " + getFechaIngreso();
+//     }
+//     return retornar;
+//     */
+//    return "";
+//}

@@ -292,7 +292,6 @@ void ConsultasManager::ConsultaProveedoresxCUIT() {
 		return;
 
 	}
-
 	system("pause");
 }
 
