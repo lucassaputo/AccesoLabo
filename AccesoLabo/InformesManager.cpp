@@ -1,5 +1,6 @@
 #include "InformesManager.h"
 #include <iostream>
+#include "ReporteRegistro.h"
 
 using namespace std;
 
@@ -38,29 +39,60 @@ void InformesManager::UnidadesMas50() {
 void InformesManager::InformeProveedores(){	
 	system("cls");
 	Fecha FechaInicial, FechaFinal;
-	Registro *vector;
+	//Registro *vector;
+	ReporteRegistro* vector;
 	Registro reg;
+	int cont = 0;
 	std::cout << "++++++ Informe de proveedores ++++++" << std::endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio. " << endl;
 	
 	FechaInicial = ingresarFechaDesdeReporte();
-	FechaFinal = ingresarFechaHastaReporte();
+	FechaFinal = ingresarFechaHastaReporte(FechaInicial);
 
 	int cantReg = _archivoRegistros.ContarRegistros();
-	vector = new Registro[cantReg];
+	vector = new ReporteRegistro[cantReg];
+
 	if (vector == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		system("pause");
 		return;
 	}
-	for (int x = 0;x < cantReg;x++) {
-		reg = _archivoRegistros.Leer(x);
-		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal) {
-			reg.mostrar();//faltan apellidos y nombres y tipos
+	for (int i = 0;i < cantReg;i++) {
+		reg = _archivoRegistros.Leer(i);
+		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal && reg.getTipoPersona()== 2) {
+			
+			void setIdUnidad(int u);
+			void setNombre(std::string a);
+			void setApellido(std::string a);
+			void setDni(int d);
+			void setNombreTipo(std::string n);
+			void setFechaIngreso(FechaHorario f);
+			void setFechaEgreso(FechaHorario f);
+			
+			vector[i].setIdUnidad(reg.getIdUnidad());
+			Proveedor pro = BuscarenProveedor(reg.getIdPersona());
+			vector[i].setNombre(pro.getNombres());
+			vector[i].setApellido(pro.getApellidos());
+			vector[i].setDni(pro.getDni());
+			vector[i].setNombreTipo("Proveedor");
+			
+			vector[i].setFechaIngreso(reg.getFechaIngreso());
+			vector[i].setFechaEgreso(reg.getFechaEgreso());
+			cont++;
 		}				
 	}
+	if (cont == 0) {
+		cout << "No hay registros cargados" << endl;
+		system("pause");
+		return;
+	}
 
+	cabeceraRegistros();
+
+	for (int j = 0;j < cantReg;j++) {
+		vector[j].mostrarReporte();
+	}
 	delete[] vector;
 	system("pause");
 }
@@ -77,7 +109,7 @@ void InformesManager::MovimientosPorUnidad(){
 	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio al lote seleccionado." << endl;
 
 	FechaInicial = ingresarFechaDesdeReporte();
-	FechaFinal = ingresarFechaHastaReporte();
+	FechaFinal = ingresarFechaHastaReporte(FechaInicial);
 	u = ingresarUnidad("a consultar");
 
 	int cantReg = _archivoRegistros.ContarRegistros();
@@ -90,7 +122,7 @@ void InformesManager::MovimientosPorUnidad(){
 	for (int x = 0;x < cantReg;x++) {
 		reg = _archivoRegistros.Leer(x);
 		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal && reg.getIdUnidad()==u.getId()) {
-			reg.mostrar();//faltan apellidos y nombres y tipos
+			reg.mostrar();
 		}
 	}
 

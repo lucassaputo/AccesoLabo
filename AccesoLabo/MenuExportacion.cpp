@@ -34,12 +34,36 @@ void MenuExportacion::Mostrar()
 		{
 		case 1:
 			system("cls");
-			_manager.CopiadeSeguridad();
+			_manager.CopiaUnidades();
 			//system("pause");
+			break;
+		case 2:
+			system("cls");
+			_manager.CopiaResidentes();
+			break;
+		case 3:
+			system("cls");
+			_manager.CopiaVisitas();
+			break;
+		case 4:
+			system("cls");
+			_manager.CopiaProveedores();
 			break;
 		case 5:
 			system("cls");
-			_manager.RestaurarCopia();
+			_manager.RestaurarUnidades();
+			break;
+		case 6:
+			system("cls");
+			_manager.RestaurarResidentes();
+			break;
+		case 7:
+			system("cls");
+			_manager.RestaurarVisita();
+			break;
+		case 8:
+			system("cls");
+			_manager.RestaurarProveedoes();
 			break;
 		case 0:
 			return;

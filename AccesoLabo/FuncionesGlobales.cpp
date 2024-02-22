@@ -324,13 +324,19 @@ bool ingresarPropInq() {
 
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
+	Fecha hoy;
 	cout << "Ingrese fecha autorizacion hasta DD/MM/AAAA): ";
 	while (true) {
 		while (hasta.ingresarFecha() == false) {
 			cout << "Formato invalido, ingrese DD/MM/AAAA";
 			cout << "Ingrese fecha autorizacion hasta (DD/MM/AAAA): ";
 		}
-		break;
+		if (hasta < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
 	}
 	return hasta;
 }
@@ -371,7 +377,7 @@ Fecha ingresarFechaDesdeReporte() {
 	return auxIngreso;
 }
 
-Fecha ingresarFechaHastaReporte() {
+Fecha ingresarFechaHastaReporte(Fecha f) {
 	Fecha hoy;
 	Fecha auxIngreso;
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
@@ -379,8 +385,11 @@ Fecha ingresarFechaHastaReporte() {
 		while (auxIngreso.ingresarFecha() == false) {
 			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 		}
-		if (auxIngreso > hoy) {
-			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		if (auxIngreso < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else if (auxIngreso < f) {
+			cout << "La fecha ingresada debe ser mayor a desde. Ingrese fecha: " << endl;
 		}
 		else {
 			break;
@@ -462,6 +471,28 @@ void caberaUnidades() {
 	cout << setw(30) << "|Observaciones" << endl;
 }
 
+void caberaResidentes()
+{
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(9) << "|UF";
+	cout << setw(15) << "|Desde";
+	cout << setw(12) << "|prop/inqu" << endl;
+}
+
+void cabeceraRegistros() {
+	cout << left;
+	cout << setw(9) << "|Unidad";
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(16) << "|Motivo";
+	cout << setw(15) << "|Ingreso" << endl;
+	cout << setw(15) << "|Egreso" << endl;
+}
+
 void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
 {
 	ReporteAutorizaciones aux;
@@ -505,6 +536,63 @@ void ExportarAutorizaciones(ReporteAutorizaciones* vectorAut, int cantReg, strin
 	}
 }
 
+void ExportarProveedores(Proveedor* regProv, int cantReg, std::string nombreArchivo) {
+	Proveedor ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = regProv[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";				
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+}
+void ExportarUnidades(Unidad* vector, int cantReg, std::string nombreArchivo){
+	Unidad ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Numero,Familia,Telefono,Observaciones\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vector[i];
+				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+}
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

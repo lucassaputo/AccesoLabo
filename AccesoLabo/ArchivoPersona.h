@@ -14,6 +14,7 @@ public:
     Persona BuscarObj(int dni);
     Persona BuscarObjApellido(std::string apellido);
     bool Modificar(Persona reg);
+    bool CrearArchivo(Persona reg);
 
 private:
     std::string _nombreArchivo;
