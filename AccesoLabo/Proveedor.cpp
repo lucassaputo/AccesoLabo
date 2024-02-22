@@ -82,7 +82,6 @@ void Proveedor::editarProveedor() {
 void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << left;
-	//cout << setw(1) << to_string(getTipo()) ;
 	cout << setw(20) << getEmpresa();
 	cout << setw(15) << getArt() << endl;
 }

@@ -268,37 +268,6 @@ void ListadoManager::ProveedoresPorRazon() {
 }
 
 //"5 - Listado de proveedores, ordenados por DNI"
-void ListadoManager::UnidadesPorFamilia(){ // punto 7
-	system("cls");
-	cout << "+++++ Unidades ordenados por familia +++++" << endl;
-	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
-	Unidad* reg;
-	int cantReg = _archivoUnidades.ContarRegistros();
-	reg = new Unidad[cantReg];
-	if (reg == nullptr) {
-		cout << "Error de asignacion de memoria" << endl;
-		return;
-	}
-	for (int i = 0;i < cantReg;i++) {
-		reg[i] = _archivoUnidades.Leer(i);
-	}
-	OrdenarVectorUnidadxApellido(reg, cantReg);
-
-
-	cout << left;
-	cout << setw(2) << "ID ";
-	cout << setw(10) << " | telefono ";
-	cout << setw(10) << " | Familia ";
-	cout << setw(10) << "| Observaciones" << endl;
-
-	for (int j = 0;j < cantReg;j++) {
-		reg[j].mostrar();
-	}
-	delete[] reg;
-	system("pause");
-}
-
-//"6 - Listado de unidades, ordenados por numero"
 void ListadoManager::ProveedoresPorDNI() { // punto 5
 	system("cls");
 	cout << "++++++ Proveedores ordenados por DNI ++++++" << endl;
@@ -306,6 +275,10 @@ void ListadoManager::ProveedoresPorDNI() { // punto 5
 	Proveedor *regProv;
 	int cantReg = _archivoProveedores.ContarRegistros();
 	regProv = new Proveedor[cantReg];
+	if (cantReg == 0) {
+		cout << "No hay registros cargados" << endl;
+		return;
+	}
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		return;
@@ -313,25 +286,46 @@ void ListadoManager::ProveedoresPorDNI() { // punto 5
 	for (int x = 0;x < cantReg;x++) {
 		regProv[x] = _archivoProveedores.Leer(x);
 	}
+
 	OrdenarVectorProveedoresxDNI(regProv, cantReg);
-	cout << left;
-	cout << setw(2) << "id";
-	cout << setw(10) << " | nombre";
-	cout << setw(12) << " | apellido";
-	cout << setw(12) << " | dni";
-	//cout << setw(1) << " | estado";
-	//cout << setw(1) << " | tipo";
-	cout << setw(25) << " | Empresa";
-	cout << setw(8) << " | art" << endl;
+	cabeceraProveedores();
 	for (int j = 0;j < cantReg;j++) {
 		regProv[j].mostrar();
 	}
-	delete[] regProv;
 
+	//exportar	
+	Proveedor ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado4.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = regProv[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+	delete[] regProv;
 	system("pause");
 }
 
-//"7 - Listado de unidades, ordenados por apellido familia"
+//"6 - Listado de unidades, ordenados por numero"
 void ListadoManager::UnidadesPorNumero() { // punto 6
 	cout << "++++++ Unidades ordenadas por numero +++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -364,6 +358,37 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 		delete[] reg;
 		system("pause");
 	
+}
+
+//"7 - Listado de unidades, ordenados por apellido familia"
+void ListadoManager::UnidadesPorFamilia(){ // punto 7
+	system("cls");
+	cout << "+++++ Unidades ordenados por familia +++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
+	Unidad* reg;
+	int cantReg = _archivoUnidades.ContarRegistros();
+	reg = new Unidad[cantReg];
+	if (reg == nullptr) {
+		cout << "Error de asignacion de memoria" << endl;
+		return;
+	}
+	for (int i = 0;i < cantReg;i++) {
+		reg[i] = _archivoUnidades.Leer(i);
+	}
+	OrdenarVectorUnidadxApellido(reg, cantReg);
+
+
+	cout << left;
+	cout << setw(2) << "ID ";
+	cout << setw(10) << " | telefono ";
+	cout << setw(10) << " | Familia ";
+	cout << setw(10) << "| Observaciones" << endl;
+
+	for (int j = 0;j < cantReg;j++) {
+		reg[j].mostrar();
+	}
+	delete[] reg;
+	system("pause");
 }
 
 Persona ListadoManager::BuscarenVisita(int id)
