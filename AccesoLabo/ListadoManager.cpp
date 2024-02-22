@@ -143,7 +143,7 @@ void ListadoManager::ResidentesPorUnidad() {
 	Residente res;
 	int cant = _archivoResisente.ContarRegistros();
 	cout << "Cant: " << cant << endl;
-	/*Residente *reg;
+	Residente *reg;
 	int cantReg = _archivoResisente.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
@@ -158,18 +158,18 @@ void ListadoManager::ResidentesPorUnidad() {
 	}
 	OrdenarResidentesxUnidad(reg, cantReg);
 	cout << left;
-	cout << setw(3) << "id";
-	cout << setw(10) << " | nombre";
-	cout << setw(10) << " | apellido";
-	cout << setw(8) << " | dni";
+	//cout << setw(3) << "id";
+	cout << setw(18) << "nombre";
+	cout << setw(18) << " | apellido";
+	cout << setw(12) << " | dni";
 	cout << setw(1) << " | Unidad";
-	cout << setw(1) << " | desde";
+	cout << setw(12) << " | desde";
 	cout << setw(1) << " | propietario/inquilino" << endl;
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
 	delete[] reg;
-	*/
+	
 	
 	system("pause");
 }
