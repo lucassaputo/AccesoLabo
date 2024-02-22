@@ -16,3 +16,6 @@ poco importante:
 * como se hace referencia a un atributo de la clase padre en el cpp de la hija? quiero acceder a _dni pero no pude, sera pq el encapsulamiento? this no funciono
 * corregir o ver que autorizacion queda vigente si la persona se da de baja o no? rta: quedan vigentes en caso que la persona se vuelva a dar de alta con el mismo dni entonces quedaria con el mismo id que tenia la autorizacion anterior
 */
+
+para dsp
+en listados quise hacer el exportar en una clase nueva dalidasGlobales y no me dejaba, probarlo dsp.

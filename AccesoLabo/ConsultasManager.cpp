@@ -2,14 +2,17 @@
 #include <iostream>
 using namespace std;
 
-void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
+
+
+//"1 - Consulta de autorizados por Unidad"
+void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	system("cls");
 	std::string unidad;
 	Autorizacion aut;
 	Persona per;
-	cout << "Consulta Autorizados por Unidad" << endl;
-	cout << "+++++++++++++++++++++++++++++++" << endl;
-	cout << "Ingrese el numero de Unidad: " << endl;
+	cout << "++++++ Consulta Autorizados por Unidad ++++++" << endl;
+	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "Ingrese el numero de Unidad: ";
     unidad = ingresarIdUnidad();
 	Unidad u;
 	u = buscarUnidad(stoi(unidad));
@@ -23,7 +26,6 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 		cout << "No hay registros de autorizaciones cargados" << endl;
 	}
 	else {
-
 		int ContMuestras = 0;
 		for (int x = 0;x < cantReg;x++) {
 			aut = _archivoAutorizacion.Leer(x);
@@ -41,6 +43,8 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 	}
 	system("pause");
 }
+
+//"2 - Consulta de autorizados por Apellido"
 void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 	system("cls");
 	cout << "Consulta Autorizados por Apellido" << endl;
@@ -81,6 +85,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 	system("pause");
 }
 
+//"3 - Consulta de residentes por Unidad"
 void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	system("cls");
 	std::string unidad;
@@ -119,7 +124,8 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	system("pause");
 }
 
-	void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
+//"4 - Consulta de residentes por Apellido"
+void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
 		system("cls");
 		Residente res;
 		cout << "Consulta Residentes por Apellido" << endl;
@@ -147,7 +153,8 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			system("pause");
 		}
 	}
-	
+
+//"5 - Consulta de proveedores por Razon Social"
 void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 	system("cls");
 	Proveedor prov;
@@ -176,6 +183,8 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 
 	system("pause");
 }
+
+//"6 - Consulta de Proveedores por DNI"
 void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 	system("cls");
 	Proveedor prov;
@@ -203,9 +212,8 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 	}
 	system("pause");
 	}
-	
 
-
+//"7 - Consulta de unidades por Nombre"
 void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 	system("cls");
 	cout << "Consulta Unidades por Nombre" << endl;
