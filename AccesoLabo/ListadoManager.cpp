@@ -386,12 +386,16 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 }
 
 //"7 - Listado de unidades, ordenados por apellido familia"
-void ListadoManager::UnidadesPorFamilia(){ // punto 7
+void ListadoManager::UnidadesPorFamilia(){
 	system("cls");
 	cout << "+++++ Unidades ordenados por familia +++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
 	Unidad* reg;
 	int cantReg = _archivoUnidades.ContarRegistros();
+	if (cantReg == 0) {
+		cout << "No hay registros cargados" << endl;
+		return;
+	}
 	reg = new Unidad[cantReg];
 	if (reg == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
@@ -400,18 +404,42 @@ void ListadoManager::UnidadesPorFamilia(){ // punto 7
 	for (int i = 0;i < cantReg;i++) {
 		reg[i] = _archivoUnidades.Leer(i);
 	}
+
 	OrdenarVectorUnidadxApellido(reg, cantReg);
-
-
-	cout << left;
-	cout << setw(2) << "ID ";
-	cout << setw(10) << " | telefono ";
-	cout << setw(10) << " | Familia ";
-	cout << setw(10) << "| Observaciones" << endl;
+	caberaUnidades();
 
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
+
+	//exportar	
+	Unidad ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado7.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Numero,Familia,Telefono,Observaciones\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = reg[i];
+				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
 	delete[] reg;
 	system("pause");
 }

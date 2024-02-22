@@ -43,8 +43,6 @@ void Unidad::editar() {
 	_estado = true;
 }
 
-
-
 void Unidad::mostrar() {		
 	cout << left;
 	cout << setw(9)  << _id;
