@@ -20,7 +20,7 @@ void AbmAutorizacionManager::Alta()
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObj(dni);
-		vis.mostrar();
+		//vis.mostrar();
 		if (vis.getDni() > 5000000) {
 			if (vis.getEstado()) {
 				altaAutorizacion(vis.getId(), 1, uni.getId());

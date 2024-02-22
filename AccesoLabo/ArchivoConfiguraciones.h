@@ -12,5 +12,6 @@ public:
     int ContarRegistros();
     Configuracion Leer(int nroRegistro);
     int Buscar(int dni);
+    bool Modificar(Configuracion reg);
 };
 

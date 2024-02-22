@@ -1,11 +1,12 @@
 #pragma once
 #include <cstring>
+#include <iomanip>
 #include "Fecha.h"
 class Persona {
 	private:
 		int _id;
-		char _nombres[50];
-		char _apellidos[50];		
+		char _nombres[51];
+		char _apellidos[51];		
 		int _dni;
 		Fecha _nacimiento;
 		bool _estado;

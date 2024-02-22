@@ -42,9 +42,7 @@ void Proveedor::cargarProveedor(int dni) {
 	}
 	setArt(aux);
 	cin.ignore();
-	cout << "Ingrese la empresa a la que pertenece: ";
-	std::getline(cin, empresa);
-	setEmpresa(upper(empresa));
+	setEmpresa(upper(cargarStringTam("Empresa",50)));
 }
 
 void Proveedor::editarProveedor() {
@@ -70,17 +68,24 @@ void Proveedor::editarProveedor() {
 	setArt(aux);
 	cin.ignore();
 	cout << "Empresa perteneciente actual: " << _empresa;
-	cout << "Ingrese Empresa perteneciente " << endl;
-	std::getline(cin, empresa);
-	setEmpresa(upper(empresa));
+	setEmpresa(upper(cargarStringTam("Empresa",50)));
 }
 
-void Proveedor::mostrar() {
+
+/*void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << "Tipo Proveedor : " << to_string(getTipo()) << endl;
 	cout << " Empresa perteneciente : " << getEmpresa() << endl;
 	cout << "Fecha de su Art : " << getArt() << endl;
+}*/
+
+void Proveedor::mostrar() {
+	Persona::mostrar();
+	cout << left;
+	cout << setw(20) << getEmpresa();
+	cout << setw(15) << getArt() << endl;
 }
+
 
 bool Proveedor::operator>(Fecha &fechaActual)
 {

@@ -14,8 +14,11 @@ void AbmUnidadesManager::Alta() {
 	//u.setId(std::stoi(id));	
 	int pos;
 	pos = _archivoUnidades.BuscarPos(std::stoi(id));
+	cout << "pos: " << pos << endl;
 	if (pos >= 0) {
 		u = _archivoUnidades.Leer(pos);
+		cout << "leer: " << pos << endl;
+		u.mostrar();
 		if (u.getEstado()) {
 			cout << "La unidad ya se encuentra creada, si desea modificarla ingrese en EDITAR" << endl;
 		}

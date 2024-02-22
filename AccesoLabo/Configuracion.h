@@ -3,20 +3,26 @@
 class Configuracion
 {
 	private:
-		 Horario _desde;
-		 Horario _hasta;
+		int _id;
+		int _cantUnidades;
+		Horario _desde;
+		Horario _hasta;
 		
 	public:
 		//sets
+		void setId(int id);
+		void setCantUnidades(int cant);
 		void setDesde(Horario h);
 		void setHasta(Horario h);
 
 		//gets
+		int getId();
+		int getCantUnidades();
 		Horario getDesde();
 		Horario getHasta();
 		
 		//acciones
-		void cargar(int dni);
+		void cargar();
 		void mostrar();		
 };
 

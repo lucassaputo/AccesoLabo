@@ -6,10 +6,12 @@
 #include "UserSingleton.h"
 #include "FuncionesGlobales.h"
 #include "Residente.h"
+#include "ConfigSingleton.h"
 
 using namespace std;
 
 UserSingleton& s = UserSingleton::getInstance();
+ConfigSingleton& config = ConfigSingleton::getInstance();
 
 void RegistrosManager::Cargar() {
 	system("cls");
@@ -63,12 +65,20 @@ void RegistrosManager::Cargar() {
 	dni = std::stoi(dniAux);
 
 	// LOGICA
+	Horario ahora;
 	switch (motivo) {
 		case 1://VISITA		
 			registroVisitas(uni, dni);		
 			break;
 		case 2://PROVEEDOR
-			registroProveedores(uni, dni,motivo);
+			if (config.getConfig().getDesde() < ahora && config.getConfig().getHasta() > ahora) {
+				registroProveedores(uni, dni,motivo);
+			}
+			else {
+				std::cout << "INGRESO NO PERMITIDO, FUERA DE HORARIO: " << config.getConfig().getDesde().toString() << std::endl;
+				std::cout << "Ingresos de proveedores permitidos desde: " << config.getConfig().getDesde().toString() << std::endl;
+				std::cout << "Ingresos de proveedores permitidos hasta: " << config.getConfig().getHasta().toString() << std::endl;
+			}
 			break;		
 		case 3://RESIDENTE
 			registroResidentes(uni, dni);
@@ -381,7 +391,6 @@ void RegistrosManager::guardar(Unidad uni,Persona p, int motivo,int autorizacion
 	reg = p;//sobrecarga asigna idPersona y fecha
 	reg.setAdentro(true);
 	reg.setTipoPersona(motivo);
-	reg.setObservaciones("");
 	reg.setTipoAutorizacion(autorizacion);
 	reg.setIdUser(s.getUsuario().getId());
 	reg.setEstado(true);

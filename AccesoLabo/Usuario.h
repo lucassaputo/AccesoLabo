@@ -3,9 +3,9 @@
 
 class Usuario: public Persona  {
 private:
-	char _nick[20];
-	char _password[20];
-	char _legajo[5];
+	char _nick[21];
+	char _password[13];
+	char _legajo[6];
 	int _nivel;
 	bool _activo;
 

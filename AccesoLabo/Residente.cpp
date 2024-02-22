@@ -20,9 +20,10 @@ void Residente::cargarResidente() {
     cargarPersona();
     setUnidad(ingresarUnidad("de residencia").getId());
     bool propie;
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
-    cin >> propie;
+    
+    propie = ingresarPropInq();
     setPropietarioInquilino(propie);  
+    //system("pause");
     setFechaIngreso(ingresarFechaIngreso());
     if (!propie) {
         setFechaHasta(ingresarFechaHasta());
@@ -49,8 +50,8 @@ void Residente::editarResidente() {
         prop = "Inquilino";
     }
     cout << "Condicion actual: " << prop << endl;
-    cout << "Ingrese 1 si es Residente , Ingrese 0 si es Inquilino: ";
-    cin >> propie;
+    
+    propie = ingresarPropInq();
     setPropietarioInquilino(propie);
 
     cout << "Fecha de ingreso actual: " << _fechaIngreso.toString() << endl;    
@@ -69,9 +70,15 @@ void Residente::editarResidente() {
 
 void Residente::mostrar() {     
     Persona::mostrar();
-    cout << "Unidad: " << _unidad << endl;
-    cout << "Desde: " << _fechaIngreso.toString() << endl;
-    cout << "Propietario/Inquilino: " << _propietario_inquilino << endl;
+    cout << left;
+    cout << setw(9) << _unidad << endl;
+    cout << setw(15) << _fechaIngreso.toString() << endl;
+    if (_propietario_inquilino) {
+        cout << setw(15) << "Propietario" << endl;
+    }
+    else {
+        cout << setw(15) << "Inquilino" << endl;
+    }
 }
 
 string Residente::mostrarResidentestring() {

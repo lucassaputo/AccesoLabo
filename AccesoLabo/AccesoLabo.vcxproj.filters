@@ -177,10 +177,10 @@
     <ClCompile Include="FuncionesGlobales.cpp">
       <Filter>Source Files\Generales</Filter>
     </ClCompile>
-    <ClCompile Include="MenuUsuarios.cpp">
+    <ClCompile Include="MenuAbmUsuarios.cpp">
       <Filter>Source Files\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="UsuarioManager.cpp">
+    <ClCompile Include="AbmUsuarioManager.cpp">
       <Filter>Source Files\Manager</Filter>
     </ClCompile>
     <ClCompile Include="ArchivoResidente.cpp">

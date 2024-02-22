@@ -112,6 +112,25 @@ Proveedor ArchivoProveedores::BuscarObj(int dni) {
     return prov;
 }
 
+Proveedor ArchivoProveedores::BuscarObjApellido(std::string apellido) {
+    Proveedor aux;
+    aux.setDni(-1);
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return aux;
+    }
+    int i = 0;
+    Proveedor reg;
+    while (fread(&reg, sizeof(Persona), 1, p)) {
+        if (reg.getEstado() && reg.getApellidos() == apellido) {
+            fclose(p);
+            return reg;
+        }
+        i++;
+    }
+    fclose(p);
+    return aux;
+}
 
 bool ArchivoProveedores::Modificar(Proveedor reg) {
     bool pudoEscribir;

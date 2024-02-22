@@ -20,5 +20,5 @@ private:
 	ArchivoAutorizacion _archivo = ArchivoAutorizacion("Autorizados.dat");
 	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
 	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
-	ArchivoResidente _archivoResidentes = ArchivoResidente("Residentes");
+	ArchivoResidente _archivoResidentes = ArchivoResidente("Residentes.dat");
 };

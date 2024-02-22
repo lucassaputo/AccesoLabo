@@ -1,5 +1,8 @@
 #include "horario.h"
 #include <ctime>
+#include <sstream>
+#include <iostream>
+#include "FuncionesGlobales.h"
 
 //constructores
 Horario::Horario() {
@@ -27,11 +30,64 @@ int Horario::getHora() { return _hora; }
 //acciones
 std::string Horario::toString() {
     std::string valorADevolver;
-    valorADevolver = std::to_string(_hora) + ":" + std::to_string(_minuto) + ":" + std::to_string(_segundo);
+    //valorADevolver = std::to_string(_hora) + ":" + std::to_string(_minuto) + ":" + std::to_string(_segundo);
+    valorADevolver = dosDigitos(_hora) + ":" + dosDigitos(_minuto) + ":" + dosDigitos(_segundo);
     return valorADevolver;
 }
-void Horario::cargar(int seg, int minuto, int hora) {
-    setSegundo(seg);
-    setMinuto(minuto);
-    setHora(hora);
+//void Horario::cargar(int seg, int minuto, int hora) {
+//    setSegundo(seg);
+//    setMinuto(minuto);
+//    setHora(hora);
+//}
+bool Horario::cargar(int seg, int minuto, int hora) {
+    if (seg > -1 && seg < 61 && minuto>-1 && minuto < 61 && hora >-1 && hora<25) {
+        _segundo = seg;
+        _minuto = minuto;
+        _hora = hora;
+        return true;
+    }
+    return false;
+}
+bool Horario::ingresarHorario() {
+    std::string horarioStr;
+    std::cout << "Ingrese horario (HH:mm): ";
+    std::cin >> horarioStr;
+    std::istringstream horarioStream(horarioStr);
+    int min, hora;
+    char delim1;
+    horarioStream >> hora >> delim1 >> min;
+
+    // Verificar si el formato es correcto y no hay errores de extracción
+    if (horarioStream.fail() || delim1 != ':' || horarioStream.rdbuf()->in_avail() != 0) {
+        std::cerr << "Formato de horario incorrecto. Asegúrese de que el horario tenga el formato HH:mm." << std::endl;
+        return false;
+    }
+    else {
+        if (!(cargar(0,min,hora))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Horario::operator>(Horario& aux)
+{
+    if (this->getHora() > aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() >= aux.getMinuto()) {
+        return true;
+    }
+    return false;
+}
+
+bool Horario::operator<(Horario& aux)
+{
+    if (this->getHora() < aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() <= aux.getMinuto()) {
+        return true;
+    }
+    return false;
 }

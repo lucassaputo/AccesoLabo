@@ -17,6 +17,9 @@ public:
     int getMinuto();
     int getHora();
     //acciones
-    void cargar(int seg, int minuto, int hora);
+    bool cargar(int seg, int minuto, int hora);
+    bool ingresarHorario();
     std::string toString();
+    bool operator>(Horario& fechaActual);
+    bool operator<(Horario& fechaActual);
 };

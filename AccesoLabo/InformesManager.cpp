@@ -7,18 +7,16 @@ void InformesManager::UnidadesMas50() // punto 1
  cout << " en este reporte se informará según el mes y año que ingrese el usuario las unidades con más de 50 movimientos. ";
 	Fecha fi;
 	fi.ingresarMes_Anio();	
-
-
 	Unidad u;
 	Registro reg;
-	// int maximo = ID_Maximo(); 
+	 int maximo = ID_Maximo(); 
 	int* contMovimientos;
 	int cant = _archivoUnidades.ContarRegistros(); // contador registros de unidades
 	if (cant == 0) {
 		cout << "no hay registros de unidad" << endl;
 		return;
 	}
-	contMovimientos = new int[cant]();
+	contMovimientos = new int[maximo]();
 	if (contMovimientos == nullptr) {
 		cout << "error en la asignacion de memoria" << endl;
 		return;
@@ -27,7 +25,7 @@ void InformesManager::UnidadesMas50() // punto 1
 	for (int i = 0;i < cantRegistros;i++) {
 		reg = _archivoRegistros.Leer(i);
 		if (reg.getFechaIngreso().getFecha().getMes() == fi.getMes() && reg.getFechaIngreso().getFecha().getAnio()==fi.getAnio()) {
-			contMovimientos[reg.getId() - 1]++;
+			contMovimientos[reg.getIdUnidad() - 1]++;
 		}
 	}
 	Mostrar50(contMovimientos, cant);
@@ -55,7 +53,7 @@ int InformesManager::ID_Maximo()
 		reg = _archivoUnidades.Leer(x);
 		vecID[x] = reg.getId();
 	}	
-	for (int i = 0;i < CantRegU-1;i++) {
+	for (int i = 0;i < CantRegU;i++) {
 		if (vecID[i] > ID_Max) {
 			ID_Max = vecID[i];
 		}
@@ -84,6 +82,7 @@ void InformesManager::InformeProveedores() // punto 2
 {	system("cls");
 	Fecha FechaInicial, FechaFinal;
 	std::cout << "Informe de Proveedores " << std::endl;
+	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio. " << endl;
 	// pedir al usuario fecha inicial y final para buscar en ese rango el ingreso de proveedores
 	cout << "Fecha inicial: " << endl;
 	FechaInicial.ingresarFecha();
@@ -120,6 +119,7 @@ void InformesManager::MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int 
 {
 	Fecha fechamov;
 	FechaHorario FechaHoraMostrar;
+	int contMuestras = 0;
 	int cantRegp = _archivoProveedores.ContarRegistros();
 	Proveedor* RegProv;
 	RegProv = new Proveedor[cantRegp];
@@ -137,12 +137,15 @@ void InformesManager::MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int 
 					cout << "Fecha y Horario del movimiento: " << FechaHoraMostrar.toString() << endl;
 					cout << "Datos del proveedor: " << endl;
 					RegProv[j].mostrar();
+					contMuestras++;
 				}
 			}
 		}
 
 	}
-		 
+	if (contMuestras == 0) {
+		cout << "No hubo movimientos de proveedores en la fecha seleccionada" << endl;
+	}
 		
 }
 
@@ -151,8 +154,9 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 	system("cls");
 	cout << "Historial de movimientos por unidades" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++" << endl;
+	cout << " Este informe mostrara las unidades con mas y menos movimientos registrados historicamente. " << endl;
 	int* contMovimientos;
-	int* VectordeIndices;
+	int maxID = ID_Maximo();
 	int CantUni = _archivoUnidades.ContarRegistros();
 	int cant = _archivoRegistros.ContarRegistros();
 	Unidad* regU;
@@ -162,18 +166,17 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 		cout << "error de asignacion de memoria" << endl;
 		return;
 	}
-	
-	contMovimientos = new int[CantUni]();
+	if (cant == 0) {
+		cout << "   ***   No hay registros de movimientos cargados   ***   " << endl;
+		system("pause");
+		return;
+	}
+	contMovimientos = new int[maxID]();
 	if (contMovimientos == nullptr) {
 		cout << "error en la asignacion de memoria" << endl;
 		return;
 	}
-	VectordeIndices = new int[CantUni]();
-	if (VectordeIndices == nullptr) {
-		cout << "error en la asignacion de memoria" << endl;
-		return;
-	}
-	CargarVectorIndices(VectordeIndices, cant);
+	
 	CargarvectorUnidades(regU, CantUni);
 		for (int i = 0;i < cant;i++) {
 		reg = _archivoRegistros.Leer(i);		 
@@ -181,37 +184,40 @@ void InformesManager::HistorialMovimientosxUnidades() // punto 3
 	}	
 
 		int aux = 0;
-		int aux2 = 0;
 		for (int i = 0;i < cant;i++) {
 			for (int x = 0;x < cant - i - 1;x++) {
 				if (contMovimientos[x] > contMovimientos[x + 1]) {
 					aux = contMovimientos[x];
-					aux2 = VectordeIndices[x];
-					contMovimientos[x] = contMovimientos[x + 1];
-					VectordeIndices[x] = VectordeIndices[x + 1];
-					contMovimientos[x + 1] = aux;
-					VectordeIndices[x + 1] = aux2;
-					
+					contMovimientos[x] = contMovimientos[x + 1];					
+					contMovimientos[x + 1] = aux;					
 				}
 			}
 		}	
 		Unidad uMayor, uMenor;
-
-		for (int x = 0;x < CantUni;x++) {
-			if (regU[x].getId() == VectordeIndices[0]) {
-				uMayor = regU[x];
-			}
-			if (regU[x].getId() == VectordeIndices[cant - 1]) {
+		int contMenor = 0,cantmenor=0;
+		for (int x = 0;x < CantUni-1;x++) { // en CantUni -1 xq en la ultima posicion esta el mayor
+			if (contMovimientos[x]>0) {
 				uMenor = regU[x];
+				contMenor++;
+				cantmenor = contMovimientos[x];
+				break;
 			}
 		}
+				uMayor = regU[CantUni-1];
+			
 		cout << "Unidad con mayor Movimientos: " << endl;
 		uMayor.mostrar();
-		cout << "Cantidad de Movimientos: " << contMovimientos[0] << endl;
-		cout << "Unidad con menor Movimientos: " << endl;
-		uMenor.mostrar();
-		cout << "Cantidad de movimientos" << contMovimientos[cant-1] << endl;
-	delete[]VectordeIndices;
+		cout << "Cantidad de Movimientos: " << contMovimientos[cant - 1] << endl;
+		cout << "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*" << endl;
+		if (contMenor > 0) {
+			cout << "Unidad con menor Movimientos: " << endl;
+			uMenor.mostrar();
+			cout << "Cantidad de movimientos" << cantmenor << endl;
+		}
+		else {
+			cout << "solo una unidad registro movimientos" << endl;
+		}
+	
 	delete[] contMovimientos;
 	delete[] regU;
 	system("pause");
@@ -234,32 +240,22 @@ void InformesManager::MovimientosMensuales() // punto 4
 {	system("cls");
 	cout << "Movimientos Mensuales" << endl;
 	cout << "+++++++++++++++++++++++++++++++" << endl;
-	/*
-	int dia,mes, anio;
-	cout << "ingrese fecha inicial" << endl;
-	cout << "Ingrese el dia: " << endl;
-	cin >> dia;
-	cout << "Ingrese el mes: " << endl;
-	cin >> mes;
-	cout << "Ingrese el anio: " << endl;
-	cin >> anio;
-	int diaf,
-	mesf, aniof;
-		cout << "ingrese fecha final" << endl;
-	cout << "Ingrese el dia: " << endl;
-	cin >> diaf;
-	cout << "Ingrese el mes: " << endl;
-	cin >> mesf;
-	cout << "Ingrese el anio: " << endl;
-	cin >> aniof;
-
- */
+	cout << "Este informe  brinda los movimientos entre las fechas que desee." << endl;
 	Registro reg;
 	Fecha fechaInicial, fechaFinal;
 	cout << "Ingrese la fecha inicial: " << endl;
 	fechaInicial.ingresarFecha();
 	cout << "Ingrese la fecha final: " << endl;
 	fechaFinal.ingresarFecha();
+	
+	while (fechaInicial > fechaFinal) {
+		cout << "La fecha inicial no puede ser mayor a la fecha final" << endl;
+		cout << "Ingrese la fecha inicial: " << endl;
+		fechaInicial.ingresarFecha();
+		cout << "Ingrese la fecha final: " << endl;
+		fechaFinal.ingresarFecha();
+	}
+	int contmov = 0;
 	int cant = _archivoRegistros.ContarRegistros();
 	for (int x = 0;x < cant;x++) {
 		Fecha fechaRegistro;
@@ -267,9 +263,13 @@ void InformesManager::MovimientosMensuales() // punto 4
 		fechaRegistro = reg.getFechaIngreso().getFecha();
 		if (fechaRegistro >= fechaInicial && fechaRegistro <= fechaFinal) {
 			cout << "fecha movimiento: " << fechaRegistro.toString();
-			reg.mostrar(); // hacemos lo de la distincion de entrada y salida? 
+			reg.mostrar(); 
+			contmov++;
 		}
 
+	}
+	if (contmov == 0) {
+		cout << "No hay movimientos en el rango seleccionado" << endl;
 	}
 
 	system("pause");

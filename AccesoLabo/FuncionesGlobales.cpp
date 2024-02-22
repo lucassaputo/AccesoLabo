@@ -3,7 +3,32 @@
 #include<iostream>
 #include "Unidad.h"
 #include "ArchivoUnidad.h"
+#include "Horario.h"
+#include "ConfigSingleton.h"
+#include "Persona.h"
+#include "Proveedor.h"
+#include "ArchivoPersona.h"
+#include "ArchivoProveedores.h"
+#include <fstream>
+
 using namespace std;
+
+bool decisionExportar() {
+	char r;
+	cout << "Desea exportar los datos? S/N";
+	cin >> r;
+	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
+		cout << "Desea exportar los datos? S/N";
+		cin >> r;
+	}
+	if (r == 'S' || r == 's') {
+		return true;
+	}
+	else {
+		return false;
+	}
+	return false;
+}
 
 void cargarCadena(char* pal, int tam) {
 	int i;
@@ -59,22 +84,38 @@ string cargarString(string campo) {
 	return cadena;
 }
 
-int cargarTelefono() {
+string cargarStringTam(string campo, int tam) {
+	string cadena = "";
+	while(true){
+		cout << "Ingrese " << campo << ":";
+		getline(cin, cadena);
+		if (!(soloLetras(cadena))) {
+			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
+		}
+		else if(cadena.length() > tam) {
+			cout << campo + " tiene un maximo de " << tam << " caracteres. " << "Ingrese " + campo + ": ";
+		}
+		else {
+			return cadena;
+		}
+	}
+	return cadena;
+}
+
+string cargarTelefono() {
 	string aux = "";
 	cout << "Ingrese telefono: ";
 	cin >> aux;
-	while (soloNumeros(aux) == false || !(aux.size() < 14 && aux.size() > 6)) {
+	while (soloNumeros(aux) == false || !(aux.size() < 11 && aux.size() > 6)) {
 		cout << "Telefono invalido, Ingrese telefono: ";
-		//cin.ignore();
 		cin >> aux;
 	}
-	return std::stoi(aux);
+	return aux;
 }
 
 int cargarDni() {
 	string aux = "";
 	cout << "Ingrese DNI: ";
-	//cin.ignore();
 	cin >> aux;
 	while (soloNumeros(aux) == false || !(aux.size() < 10 && aux.size() > 6)) {
 		cout << "DNI invalido, Ingrese DNI: ";
@@ -120,8 +161,9 @@ bool soloLetras(string x) {
 
 int ingresarOpcionMenu(int opciones) {
 	string opcion;
-	cin.ignore();
+	//cin.ignore();
 	cin >> opcion;
+	//cout << opcion << "----------" << endl;
 	while (true) {
 		if (soloNumeros(opcion)) {
 			if (stoi(opcion) <= opciones) {
@@ -148,16 +190,45 @@ string ingresarLegajo() {
 }
 
 string ingresarIdUnidad() {
+	ConfigSingleton& config = ConfigSingleton::getInstance();
 	string id;
 	cout << "Ingrese numero de unidad: " << endl;
 	cin.ignore();
 	cin >> id;
-	while (soloNumeros(id) == false) {
-		cout << "Solo puede contener numeros, Ingrese unidad: ";
+	while (true) {
+		if (soloNumeros(id) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad: ";
+		}
+		else if (std::stoi(id) > config.getConfig().getCantUnidades()) {
+			cout << "La unidad debe ser menor a " << config.getConfig().getCantUnidades()+1 << ", Ingrese unidad : ";
+		}
+		else {
+			return id;
+		}
 		cin.ignore();
 		cin >> id;
 	}
 	return id;
+}
+
+int ingresarCantUnidades() {
+	string aux;
+	std::cout << "Ingrese cantidad maxima de unidades/lotes: ";
+	cin.ignore();
+	cin >> aux;
+	while (true) {
+		if (soloNumeros(aux) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad: ";
+		}else if (std::stoi(aux) > 1000) {
+			cout << "Cantidad maxima permitida 1000, Ingrese unidad: ";
+		}
+		else {
+			return std::stoi(aux);
+		}
+		cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
 }
 
 Unidad buscarUnidad(int u) {
@@ -214,13 +285,50 @@ Unidad ingresarUnidad(string mensaje) {
 	return uni;
 }
 
+Persona BuscarenVisita(int id)
+{
+	
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
+	Persona reg;
+	int pos = _archivoVisitas.BuscarId(id);
+	reg = _archivoVisitas.Leer(pos);
+	return reg;
+}
+
+Proveedor BuscarenProveedor(int id)
+{
+	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
+	Proveedor reg;
+	int pos = _archivoProveedores.Buscar(id);
+	reg = _archivoProveedores.Leer(pos);
+	return reg;
+}
+
+bool ingresarPropInq() {
+	string aux;
+	while (true) {
+		cout << "Ingrese 1 si es Residente 0 si es Inquilino: ";
+		cin >> aux;
+		if (aux == "1"){
+			return true;
+		}
+		else if (aux == "0") {
+			return false;
+		}
+		else {
+			cout << "Opcion ingresada no valida." << endl;
+		}
+	}
+	return false;
+}
+
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
-	cout << "Ingrese fecha desde (DD/MM/AA): ";
+	cout << "Ingrese fecha autorizacion hasta DD/MM/AAAA): ";
 	while (true) {
 		while (hasta.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
-			cout << "Ingrese fecha vencimiento (DD/MM/AA): ";
+			cout << "Formato invalido, ingrese DD/MM/AAAA";
+			cout << "Ingrese fecha autorizacion hasta (DD/MM/AAAA): ";
 		}
 		break;
 	}
@@ -233,7 +341,6 @@ Fecha ingresarFechaIngreso() {
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 	while (true) {
 		while (auxIngreso.ingresarFecha() == false) {
-			cout << "Formato invalido, ingrese DD/MM/AA";
 			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 		}
 		if (auxIngreso > hoy) {
@@ -271,6 +378,95 @@ string upper(string cadena) {
 		c = toupper(static_cast<unsigned char>(c));
 	}
 	return cadena;
+}
+
+Horario ingresarHorario(std::string campo) {
+	Horario aux;
+	cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH:mm 24hs: ";
+	while (true) {
+		while (aux.ingresarHorario() == false) {
+			cout << "Formato invalido o fuera de rango ingrese HH:mm" << endl;
+			cout << "Ingrese el horario " << campo << " el que se encuentran habilitados los ingresos de proveedores HH:mm 24hs: ";
+		}
+		return aux;
+	}
+	return aux;
+}
+string dosDigitos(int n) {
+	string aux = to_string(n);
+	if (n < 10) {
+		aux = "0" + to_string(n);		
+	}
+	return aux;
+}
+
+void cabeceraAutorizados() {
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(16) << "|Motivo";
+	cout << setw(9) << "|Unidad";
+	cout << setw(15) << "|Autorizado hasta" << endl;
+}
+
+void cabeceraProveedores() {
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(20) << "|Empresa";
+	cout << setw(15) << "|ART" << endl;
+}
+
+void caberaUnidades() {
+	cout << left;
+	cout << setw(9) << "|Unidad";
+	cout << setw(20) << "|Telefono";
+	cout << setw(20) << "|Familia";
+	cout << setw(30) << "|Observaciones" << endl;
+}
+
+void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
+{
+	ReporteAutorizaciones aux;
+
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(vec[x].getApellido().c_str(), vec[x + 1].getApellido().c_str()) > 0) {
+				aux = vec[x];
+				vec[x] = vec[x + 1];
+				vec[x + 1] = aux;
+			}
+		}
+	}
+}
+
+void ExportarAutorizaciones(ReporteAutorizaciones* vectorAut, int cantReg, string nombreArchivo){
+	if (decisionExportar()) {
+		ReporteAutorizaciones ra;
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vectorAut[i];
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";				
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo." << endl;
+		}
+		else {
+			std::cout << "Error al abrir el archivo." << endl;
+		}
+	}
+	else {
+		cout << "Accion cancelado." << endl;
+	}
 }
 
 void Creditos() {

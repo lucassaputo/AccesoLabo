@@ -16,7 +16,6 @@ void Registro::setTipoPersona(int t) { _tipoPersona = t; }
 void Registro::setFechaIngreso(FechaHorario f){_fechaIngreso = f;}
 void Registro::setFechaEgreso(FechaHorario f) { _fechaEgreso = f; }
 void Registro::setAdentro(bool a){_adentro = a;}
-void Registro::setObservaciones(std::string obs){strcpy(_observaciones,obs.c_str()); }
 void Registro::setTipoAutorizacion(int aut) { _tipoAutorizacion=aut; }
 void Registro::setIdUser(int id) { _idUser = id; }
 void Registro::setEstado(bool e){_estado = e;}
@@ -29,7 +28,6 @@ int Registro::getTipoPersona() { return _tipoPersona; }
 FechaHorario Registro::getFechaIngreso() { return _fechaIngreso; }
 FechaHorario Registro::getFechaEgreso() { return _fechaEgreso; }
 bool Registro::getAdentro() { return _adentro; }
-std::string Registro::getObservaciones() { return _observaciones; }
 int Registro::getTipoAutorizacion() { return _tipoAutorizacion; }
 int Registro::getIdUser() { return _idUser; }
 bool Registro::getEstado() { return _estado; }
@@ -43,7 +41,6 @@ void Registro::mostrar()
     cout << "Tipo persona: " << _tipoPersona << endl;
     cout << _fechaIngreso.toString() << endl;
     cout << "Adentro: " << _adentro << endl;
-    cout << "Observaciones: " << _observaciones << endl;
     cout << "Tipo Autorizacion: " << _tipoAutorizacion << endl;
     cout << "Estado: " << _estado << endl;
 }

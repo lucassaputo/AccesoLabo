@@ -211,7 +211,7 @@ void AbmPersonasManager::BajaVisita() {
 }
 void AbmPersonasManager::AltaResidente() {
 	system("cls");
-	Residente p;//como reconoce proveedor si no esta incluido
+	Residente p;
 	cout << "***********  Alta Residente  ***********" << endl;
 	cout << "++++++++++++++++++++++++++++++++" << endl;
 	int dni = cargarDni();
