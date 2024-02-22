@@ -1,4 +1,5 @@
 /*
+* falta ordenar y exportar en consultas
 * agregar estado en buscarObj?  pq lo chequea dsp en el cpp tb, ver si dejar asi o unificar
 * separar por seccion fx globales
 * sino encuentra la persona en los reportes que pasa? lo valido?
@@ -31,3 +32,5 @@ en listados quise hacer el exportar en una clase nueva dalidasGlobales y no me d
 no se valida estado en listados
 consulta por apellido, cuando compara con apellido?
 no se chequeaba que este vigente
+se muestran sin cabecera las consultas
+

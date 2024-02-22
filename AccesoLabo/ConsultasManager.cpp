@@ -196,38 +196,45 @@ void ConsultasManager::ConsultaResidentesxUnidad() {
 		system("pause");
 		return;
 	}
-
+	//ordenar
+		//exportar
 	system("pause");
 }
 
 //"4 - Consulta de residentes por Apellido"
-void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
+void ConsultasManager::ConsultaResidentesxApellido() {
 		system("cls");
-		Residente res;
+		Residente p;
+		int cont = 0;
+		std::string apellido;
 		cout << "++++++ Consulta residentes por apellido ++++++" << endl;
 		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-		cout << "Ingrese el Apellido: " << endl;
-		std::string Apellido = cargarApellido();
-	
+		
+		apellido = upper(cargarStringTam("Apellido", 50));
+
 		int cantReg = _archivoResidente.ContarRegistros();
 		if (cantReg == 0) {
-			cout << "No hay registros de Residentes cargados" << endl;
-		}
-		else {
-			int ContMuestras = 0;
-			for (int x = 0;x < cantReg;x++) {
-				res = _archivoResidente.Leer(x);
-
-				if (strcmp(res.getApellidos().c_str(), Apellido.c_str()) == 0) {
-					res.mostrar();
-					ContMuestras++;
-				}
-			}
-			if (ContMuestras == 0) {
-				cout << "No hay Residentes dados de alta eb esa Unidad Funcional" << endl;
-			}
+			cout << "No hay registros de residentes cargados" << endl;
 			system("pause");
+			return;
 		}
+		for (int x = 0;x < cantReg;x++) {
+			p = _archivoResidente.Leer(x);
+			if (p.getEstado() && p.getApellidos() == apellido) {
+				p.mostrar();
+				cont++;
+			}
+		}
+		if (cont == 0) {
+			cout << "No hay residentes dados de alta en esa unidad funcional con el apellido proporcionado." << endl;
+			system("pause");
+			return;
+		}
+
+		//ordenar
+		//exportar
+
+		system("pause");
 	}
 
 //"5 - Consulta de proveedores por Razon Social"
