@@ -99,10 +99,30 @@ Persona ArchivoPersona::BuscarObj(int dni) {
     if (p == nullptr) {
         return aux;
     }
-    int i = 0;
+    //int i = 0;
     Persona reg;
     while (fread(&reg, sizeof(Persona), 1, p)) {
         if (reg.getDni() == dni) {
+            fclose(p);
+            return reg;
+        }
+        //i++;
+    }
+    fclose(p);
+    return aux;
+}
+
+Persona ArchivoPersona::BuscarObjApellido(std::string apellido) {
+    Persona aux;
+    aux.setDni(-1);
+    FILE* p = fopen(_nombreArchivo.c_str(), "rb");
+    if (p == nullptr) {
+        return aux;
+    }
+    int i = 0;
+    Persona reg;
+    while (fread(&reg, sizeof(Persona), 1, p)) {
+        if (reg.getEstado() && reg.getApellidos() == apellido) {
             fclose(p);
             return reg;
         }

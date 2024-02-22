@@ -22,8 +22,8 @@ private:
 	ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
 	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
-	ArchivoPersona _archivoPersona = ArchivoPersona("Personas.dat");
 	ArchivoResidente _archivoResidente = ArchivoResidente("Residentes.dat");
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
 
 
 

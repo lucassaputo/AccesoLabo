@@ -26,6 +26,7 @@ void ListadoManager::AutorizadosPorApellido() {
 	vectorAut = new ReporteAutorizaciones[cantReg];
 	if (vectorAut == nullptr) {
 		cout << "Error de asignacion de memoria " << endl;
+		system("pause");
 		return;
 	}
 	int cont = 0;
@@ -89,6 +90,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	vectorAut = new ReporteAutorizaciones[cantReg];
 	if (vectorAut == nullptr) {
 		cout << "Error de asignacion de memoria " << endl;
+		system("pause");
 		return;
 	}
 	int cont = 0;
@@ -189,6 +191,7 @@ void ListadoManager::ProveedoresPorRazon() {
 	regProv = new Proveedor[cantReg];
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
+		system("pause");
 		return;
 	}
 	int cont = 0;
@@ -262,6 +265,7 @@ void ListadoManager::ProveedoresPorDNI() {
 	}
 	if (regProv == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
+		system("pause");
 		return;
 	}
 	
@@ -334,6 +338,7 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	}
 	if (vector == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
+		system("pause");
 		return;
 	}
 
@@ -409,6 +414,7 @@ void ListadoManager::UnidadesPorFamilia(){
 	vector = new Unidad[cantReg];
 	if (vector == nullptr) {
 		cout << "Error de asignacion de memoria" << endl;
+		system("pause");
 		return;
 	}
 	int cont = 0;

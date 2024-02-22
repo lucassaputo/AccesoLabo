@@ -8,7 +8,6 @@ using namespace std;
 //"1 - Consulta de autorizados por Unidad"
 void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	system("cls");
-	std::string unidad;
 	Autorizacion aux;
 	Unidad u;
 	Persona per;
@@ -22,6 +21,7 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	vectorAut = new ReporteAutorizaciones[cantReg];
 	if (vectorAut == nullptr) {
 		cout << "Error de asignacion de memoria " << endl;
+		system("pause");
 		return;
 	}
 	int cont = 0;
@@ -71,42 +71,94 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 //"2 - Consulta de autorizados por Apellido"
 void ConsultasManager::ConsultaAutorizadosxApellido() {
 	system("cls");
+	Autorizacion aux;
+	Fecha hoy;
+	Unidad u;
+	Persona per;
+	int motivo;
+	int id;
+	int cont = 0;
+	ReporteAutorizaciones ra;
+	ReporteAutorizaciones* vectorAut;
 	cout << "++++++ Consulta autorizados por apellido ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	Autorizacion aut;
-	Persona per;
-	cout << "+++++++++++++++++++++++++++++++" << endl;
-	cout << "Ingrese el apellido: " << endl;
-	std::string Apellido = cargarApellido();
-	for (char& c : Apellido) {
-		c = std::toupper(c);
-	}
-	cout << "Apellido " << Apellido << endl;
-	int cantregPersonas = _archivoPersona.ContarRegistros();
+
+	motivo = ingresarMotivo();
+	string apellido = upper(cargarStringTam("Apellido", 50));
+
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
-		cout << "No hay registros de autorizaciones cargados" << endl;
+		cout << "No hay autorizaciones cargadas" << endl;
+		system("pause");
+		return;
 	}
-	else {
-		int ContMuestras = 0;
-		int idAutorizado = 0;
-		for (int x = 0;x < cantReg;x++) {
-			aut = _archivoAutorizacion.Leer(x);
-			idAutorizado = aut.getIdPersona();
-			for (int i = 0;i < cantregPersonas;i++) {
-				per = _archivoPersona.Leer(i);
-				if (idAutorizado==per.getId()) {
-					per.mostrar();
-					ContMuestras++;
-					//break;
-				}
-			}			
+	vectorAut = new ReporteAutorizaciones[cantReg];
+	if (vectorAut == nullptr) {
+		cout << "Error de asignacion de memoria " << endl;
+		system("pause");
+		return;
+	}
+
+	if (motivo == 1) //visita
+	{
+		Persona vis = _archivoVisitas.BuscarObjApellido(apellido);
+		vis.mostrar();
+		if (vis.getDni() > -1) {
 			
+			for (int i = 0;i < cantReg;i++) {
+				aux = _archivoAutorizacion.Leer(i);
+				if (aux.getEstado() && aux.getIdPersona() >= vis.getId() && aux.getHasta() >= hoy) {
+					cont++;
+					vectorAut[i].setIdUnidad(aux.getIdUnidad());
+					vectorAut[i].setNombre(vis.getNombres());
+					vectorAut[i].setApellido(vis.getApellidos());
+					vectorAut[i].setNombreTipo("Visita");
+					vectorAut[i].setHasta(aux.getHasta());
+				}	
+			}
 		}
-		if (ContMuestras == 0) {
-			cout << "No hay autorizaciones asignadas con ese apellido" << endl;
+		else {
+			cout << "La persona ingresada no existe." << endl;
 		}
 	}
+	else // proveedor
+	{
+		Proveedor prov = _archivoProveedores.BuscarObjApellido(apellido);
+		if (prov.getDni() > -1) {
+			for (int i = 0;i < cantReg;i++) {
+				aux = _archivoAutorizacion.Leer(i);
+				if (aux.getEstado() && aux.getIdPersona() >= prov.getId() && aux.getHasta() >= hoy) {
+					cont++;
+					vectorAut[i].setIdUnidad(aux.getIdUnidad());
+					vectorAut[i].setNombre(prov.getNombres());
+					vectorAut[i].setApellido(prov.getApellidos());
+					vectorAut[i].setNombreTipo("Proveedor");
+					vectorAut[i].setHasta(aux.getHasta());
+				}
+			}
+		}
+		else {
+			cout << "La persona ingresada no existe." << endl;
+		}
+	}
+
+	if (cont == 0) {
+		cout << "No hay autorizaciones cargadas" << endl;
+		system("pause");
+		return;
+	}
+
+	OrdenarAutXApellido(vectorAut, cont);
+
+	cabeceraAutorizados();
+
+	for (int j = 0;j < cantReg;j++) {
+		vectorAut[j].mostrarReporte();
+	}
+
+	ExportarAutorizaciones(vectorAut, cont, "consulta2");
+
+	delete[] vectorAut;
 	system("pause");
 }
 
