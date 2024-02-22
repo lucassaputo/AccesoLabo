@@ -35,8 +35,8 @@ void InformesManager::UnidadesMas50() {
 }
 
 // punto 2
-void InformesManager::InformeProveedores() 
-{	system("cls");
+void InformesManager::InformeProveedores(){	
+	system("cls");
 	Fecha FechaInicial, FechaFinal;
 	Registro *vector;
 	Registro reg;
@@ -66,42 +66,35 @@ void InformesManager::InformeProveedores()
 }
 
 //punto 3
-void InformesManager::MovimientosMensuales()
-{	system("cls");
-	cout << "Movimientos Mensuales" << endl;
-	cout << "+++++++++++++++++++++++++++++++" << endl;
-	cout << "Este informe  brinda los movimientos entre las fechas que desee." << endl;
+void InformesManager::MovimientosPorUnidad(){
+	system("cls");
+	Fecha FechaInicial, FechaFinal;
+	Registro* vector;
 	Registro reg;
-	Fecha fechaInicial, fechaFinal;
-	cout << "Ingrese la fecha inicial: " << endl;
-	fechaInicial.ingresarFecha();
-	cout << "Ingrese la fecha final: " << endl;
-	fechaFinal.ingresarFecha();
-	
-	while (fechaInicial > fechaFinal) {
-		cout << "La fecha inicial no puede ser mayor a la fecha final" << endl;
-		cout << "Ingrese la fecha inicial: " << endl;
-		fechaInicial.ingresarFecha();
-		cout << "Ingrese la fecha final: " << endl;
-		fechaFinal.ingresarFecha();
+	Unidad u;
+	std::cout << "++++++ Informe de proveedores ++++++" << std::endl;
+	cout << "+++++++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio al lote seleccionado." << endl;
+
+	FechaInicial = ingresarFechaDesdeReporte();
+	FechaFinal = ingresarFechaHastaReporte();
+	u = ingresarUnidad("a consultar");
+
+	int cantReg = _archivoRegistros.ContarRegistros();
+	vector = new Registro[cantReg];
+	if (vector == nullptr) {
+		cout << "Error en la asignacion de memoria" << endl;
+		system("pause");
+		return;
 	}
-	int contmov = 0;
-	int cant = _archivoRegistros.ContarRegistros();
-	for (int x = 0;x < cant;x++) {
-		Fecha fechaRegistro;
+	for (int x = 0;x < cantReg;x++) {
 		reg = _archivoRegistros.Leer(x);
-		fechaRegistro = reg.getFechaIngreso().getFecha();
-		if (fechaRegistro >= fechaInicial && fechaRegistro <= fechaFinal) {
-			cout << "fecha movimiento: " << fechaRegistro.toString();
-			reg.mostrar(); 
-			contmov++;
+		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal && reg.getIdUnidad()==u.getId()) {
+			reg.mostrar();//faltan apellidos y nombres y tipos
 		}
-
-	}
-	if (contmov == 0) {
-		cout << "No hay movimientos en el rango seleccionado" << endl;
 	}
 
+	delete[] vector;
 	system("pause");
 }
 
@@ -117,13 +110,6 @@ void InformesManager::Mostrar50(int* vec, int tam)
 	if (cont == 0) {
 		cout << "Ninguna unidad registro mas de 50 movimientos en la fecha seleccionada" << endl;
 		return;
-	}
-}
-
-void InformesManager::CargarVectorProveedores(Proveedor* reg, int cant)
-{
-	for (int x = 0;x < cant;x++) {
-		reg[x] = _archivoProveedores.Leer(x);
 	}
 }
 

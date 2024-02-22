@@ -28,7 +28,7 @@ void MenuInformes::Mostrar() {
             _manager.InformeProveedores();
             break;
         case 3:
-            _manager.MovimientosMensuales();
+            _manager.MovimientosPorUnidad();
             break;       
         case 0:
             return;
