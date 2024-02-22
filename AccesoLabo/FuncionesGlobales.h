@@ -12,6 +12,7 @@ int cargarDni();
 bool soloNumeros(std::string aux);
 bool soloLetras(std::string x);
 std::string ingresarLegajo();
+int ingresarCantUnidades();
 std::string ingresarIdUnidad();
 std::string cargarTelefono();
 void Creditos();
