@@ -52,12 +52,7 @@ void ListadoManager::AutorizadosPorApellido() {
 
 	OrdenarAutorizadosxApellido(vectorAut, cantReg);
 
-	cout << left;
-	cout << setw(20) << "|Nombre";
-	cout << setw(20) << "|Apellido";
-	cout << setw(16) << "|Motivo";
-	cout << setw(9) << "|Unidad";
-	cout << setw(15) << "|Autorizado hasta" << endl;
+	cabeceraAutorizados();
 	for (int j = 0;j < cantReg;j++) {
 		vectorAut[j].mostrarReporte();
 	}
@@ -68,11 +63,11 @@ void ListadoManager::AutorizadosPorApellido() {
 
 		// Verificar si el archivo se abrió correctamente
 		if (archivo.is_open()) {
-			archivo << "Apellido, fechaHasta, idUnidad\n";
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
 			// Escribir datos en el archivo
 			for (int i = 0; i < cantReg;i++) {
 				ra = vectorAut[i];
-				archivo << ra.getApellido() << "," << ra.getHasta().toString() << "," << ra.getIdUnidad() << "\n";
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";
 			}
 			// Cerrar el archivo
 			archivo.close();
@@ -101,6 +96,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
+		return;
 	}
 	vectorAut = new ReporteAutorizaciones[cantReg];
 	if (vectorAut == nullptr) {
@@ -131,46 +127,27 @@ void ListadoManager::AutorizadosPorUnidad() {
 			}
 		}
 	}
-// orenar por numero
 
-	cout << left;
-	cout << setw(2) << " || ID: ";
-	cout << setw(10) << " || idPersona: ";
-	cout << setw(10) << " || idUnidad: ";
-	cout << setw(10) << " || idTipo: ";
-	cout << setw(10) << " || Apellido: ";
-	cout << setw(10) << " || NombreTipo: ";
-	cout << setw(15) << " || Autorizado hasta: " << endl;
-	int cont = 0;
+	OrdenarAutorizadosxNumero(vectorAut, cantReg);
+
+	cabeceraAutorizados();
 	for (int j = 0;j < cantReg;j++) {
-		vectorAut[j].mostrarReporte(); //ver que pasa con los estado false
-		cont++;
-	}
-	if (cont == 0) {
-		cout << endl;
-		cout << "no hay registros de autorizaciones para mostrar" << endl;
+		vectorAut[j].mostrarReporte();
 	}
 
-	//exportar
-	char r;
-	ReporteAutorizaciones ra;
-	cout << "Desea exportar los datos? S/N";
-	cin >> r;
-	while (r != 'S' && r != 's' && r != 'N' && r != 'n') {
-		cout << "Desea exportar los datos? S/N";
-		cin >> r;
-	}
-	if (r == 'S' || r == 's') {
+	//exportar	
+	ReporteAutorizaciones ra;	
+	if (decisionExportar()) {
 		// Abrir un archivo para escribir
 		std::ofstream archivo("listadoAutorizadosPorUnidad.txt");
 
 		// Verificar si el archivo se abrió correctamente
 		if (archivo.is_open()) {
-			archivo << "Apellido, fechaHasta, idUnidad\n";
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
 			// Escribir datos en el archivo
 			for (int i = 0; i < cantReg;i++) {
 				ra = vectorAut[i];
-				archivo << ra.getApellido() << "," << ra.getHasta().toString() << "," << ra.getIdUnidad() << "\n";
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";
 			}
 			// Cerrar el archivo
 			archivo.close();
@@ -185,12 +162,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	else {
 		cout << "Accion cancelado.";
 	}
-
-
-
-
-	delete[] vectorAut;
-	
+	delete[] vectorAut;	
 	system("pause");
 }
 

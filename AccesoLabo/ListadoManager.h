@@ -29,7 +29,7 @@ class ListadoManager
 		void OrdenarVectorUnidadxNumero(Unidad *reg, int tam);	
 		void UnidadesPorFamilia();//punto 7
 		void OrdenarVectorUnidadxApellido(Unidad* reg, int tam);
-		void ListarRegistros();
+
 	private:
 		ArchivoAutorizacion _archivoAutorizacion = ArchivoAutorizacion("Autorizaciones.dat");
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");

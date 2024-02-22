@@ -378,6 +378,16 @@ string dosDigitos(int n) {
 	}
 	return aux;
 }
+
+void cabeceraAutorizados() {
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(16) << "|Motivo";
+	cout << setw(9) << "|Unidad";
+	cout << setw(15) << "|Autorizado hasta" << endl;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

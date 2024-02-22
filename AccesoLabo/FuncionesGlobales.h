@@ -29,3 +29,4 @@ std::string upper(std::string cadena);
 std::string ingresarPassword();
 Horario ingresarHorario(std::string campo);
 std::string dosDigitos(int n);
+void cabeceraAutorizados();
