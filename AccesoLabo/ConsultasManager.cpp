@@ -62,7 +62,7 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 		vectorAut[j].mostrarReporte();
 	}
 
-	ExportarAutorizaciones(vectorAut, cont, "consulta1");
+	//ExportarAutorizaciones(vectorAut, cont, "consulta1");
 
 	delete[] vectorAut;
 	system("pause");
@@ -162,7 +162,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 		vectorAut[j].mostrarReporte();
 	}
 
-	ExportarAutorizaciones(vectorAut, cont, "consulta2");
+	//ExportarAutorizaciones(vectorAut, cont, "consulta2");
 
 	delete[] vectorAut;
 	system("pause");
@@ -196,8 +196,6 @@ void ConsultasManager::ConsultaResidentesxUnidad() {
 		system("pause");
 		return;
 	}
-	//ordenar
-		//exportar
 	system("pause");
 }
 
@@ -231,9 +229,6 @@ void ConsultasManager::ConsultaResidentesxApellido() {
 			return;
 		}
 
-		//ordenar
-		//exportar
-
 		system("pause");
 	}
 
@@ -265,9 +260,6 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() {
 		system("pause");
 		return;
 	}
-
-	//ordenar 
-	//reporte
 
 	system("pause");
 }
@@ -301,9 +293,6 @@ void ConsultasManager::ConsultaProveedoresxCUIT() {
 
 	}
 
-	//ordenar
-	//exportar
-
 	system("pause");
 }
 
@@ -335,8 +324,6 @@ void ConsultasManager::ConsultaUnidadesxNombre() {
 		system("pause");
 		return;
 	}
-	//ordenar
-	//exportar
 
 	system("pause");
 }

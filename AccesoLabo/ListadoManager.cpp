@@ -176,15 +176,6 @@ void ListadoManager::ResidentesPorUnidad() {
 		// Abrir un archivo para escribir
 		std::ofstream archivo("listado3.txt");
 
-		cout << setw(20) << "|Nombre";
-		cout << setw(20) << "|Apellido";
-		cout << setw(12) << "|DNI";
-		cout << setw(9) << "|UF";
-		cout << setw(15) << "|Desde";
-		cout << setw(12) << "|prop/inqu" << endl;
-
-
-
 		// Verificar si el archivo se abrió correctamente
 		if (archivo.is_open()) {
 			archivo << "Nombre,Apellido, DNI, Unidad, Desde, Prop/Inqu \n";
