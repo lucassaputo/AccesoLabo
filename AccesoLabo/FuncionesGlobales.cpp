@@ -324,13 +324,19 @@ bool ingresarPropInq() {
 
 Fecha ingresarFechaAutorizacion() {
 	Fecha hasta;
+	Fecha hoy;
 	cout << "Ingrese fecha autorizacion hasta DD/MM/AAAA): ";
 	while (true) {
 		while (hasta.ingresarFecha() == false) {
 			cout << "Formato invalido, ingrese DD/MM/AAAA";
 			cout << "Ingrese fecha autorizacion hasta (DD/MM/AAAA): ";
 		}
-		break;
+		if (hasta < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else {
+			break;
+		}
 	}
 	return hasta;
 }
@@ -371,7 +377,7 @@ Fecha ingresarFechaDesdeReporte() {
 	return auxIngreso;
 }
 
-Fecha ingresarFechaHastaReporte() {
+Fecha ingresarFechaHastaReporte(Fecha f) {
 	Fecha hoy;
 	Fecha auxIngreso;
 	cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
@@ -379,8 +385,11 @@ Fecha ingresarFechaHastaReporte() {
 		while (auxIngreso.ingresarFecha() == false) {
 			cout << "Ingrese fecha de ingreso (DD/MM/AA): ";
 		}
-		if (auxIngreso > hoy) {
-			cout << "La fecha ingresada debe ser menor a hoy. Ingrese fecha: " << endl;
+		if (auxIngreso < hoy) {
+			cout << "La fecha ingresada debe ser mayor a hoy. Ingrese fecha: " << endl;
+		}
+		else if (auxIngreso < f) {
+			cout << "La fecha ingresada debe ser mayor a desde. Ingrese fecha: " << endl;
 		}
 		else {
 			break;

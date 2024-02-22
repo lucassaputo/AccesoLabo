@@ -48,7 +48,7 @@ void InformesManager::InformeProveedores(){
 	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio. " << endl;
 	
 	FechaInicial = ingresarFechaDesdeReporte();
-	FechaFinal = ingresarFechaHastaReporte();
+	FechaFinal = ingresarFechaHastaReporte(FechaInicial);
 
 	int cantReg = _archivoRegistros.ContarRegistros();
 	vector = new ReporteRegistro[cantReg];
@@ -109,7 +109,7 @@ void InformesManager::MovimientosPorUnidad(){
 	cout << "Este informe nos brindará entre dos fechas a elección del usuario los proveedores que ingresaron al Barrio al lote seleccionado." << endl;
 
 	FechaInicial = ingresarFechaDesdeReporte();
-	FechaFinal = ingresarFechaHastaReporte();
+	FechaFinal = ingresarFechaHastaReporte(FechaInicial);
 	u = ingresarUnidad("a consultar");
 
 	int cantReg = _archivoRegistros.ContarRegistros();
