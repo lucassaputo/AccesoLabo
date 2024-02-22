@@ -70,11 +70,10 @@ void Residente::editarResidente() {
 
 void Residente::mostrar() {     
     Persona::mostrar();
-    cout << "mostrar de residente" << endl;
     cout << left;
-    cout << setw(3) << _unidad << endl;
-    cout << setw(8) << _fechaIngreso.toString() << endl;
-    cout << setw(1) << _propietario_inquilino << endl;
+    cout << setw(3) << _unidad ;
+    cout << setw(8) << _fechaIngreso.toString() ;
+    cout << setw(1) << " " << _propietario_inquilino << endl;
 }
 
 string Residente::mostrarResidentestring() {

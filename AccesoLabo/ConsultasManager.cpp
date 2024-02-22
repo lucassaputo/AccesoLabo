@@ -126,7 +126,11 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 		cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 		cout << "Ingrese el Apellido: " << endl;
 		std::string Apellido = cargarApellido();
-	
+		for (char& c : Apellido) {
+			c = std::toupper(c);
+		}
+		//cout << Apellido;
+		
 		int cantReg = _archivoResidente.ContarRegistros();
 		if (cantReg == 0) {
 			cout << "No hay registros de Residentes cargados" << endl;
@@ -137,6 +141,13 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 				res = _archivoResidente.Leer(x);
 
 				if (strcmp(res.getApellidos().c_str(), Apellido.c_str()) == 0) {
+					cout << left;				
+					cout << setw(16) << "nombre";
+					cout << setw(20) << " | apellido";
+					cout << setw(12) << " | dni";
+					cout << setw(1) << " | UF";
+					cout << setw(9) << " | desde ";
+					cout << setw(1) << " | propietario/inquilino" << endl;
 					res.mostrar();
 					ContMuestras++;
 				}
@@ -144,8 +155,9 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			if (ContMuestras == 0) {
 				cout << "No hay Residentes dados de alta eb esa Unidad Funcional" << endl;
 			}
-			system("pause");
 		}
+		
+			system("pause");
 	}
 	
 void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
@@ -155,6 +167,9 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Inhgrese la razon Social: " << endl;
 	std::string RazonSocial = cargarNombre();
+	for (char& c : RazonSocial) {
+		c = std::toupper(c);
+	}
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de proveedores cargados" << endl;
@@ -213,6 +228,9 @@ void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 	cout << "Inhgrese el Apellido de la familia: " << endl;
 	Unidad uni;
 	std::string Apellido = cargarNombre();
+	for (char& c : Apellido) {
+		c = std::toupper(c);
+	}
 	int cantReg = _archivoUnidades.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de Unidades cargados" << endl;

@@ -175,7 +175,7 @@ void ListadoManager::ResidentesPorUnidad() {
 	Residente res;
 	int cant = _archivoResisente.ContarRegistros();
 	cout << "Cant: " << cant << endl;
-	/*Residente *reg;
+	Residente *reg;
 	int cantReg = _archivoResisente.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
@@ -200,8 +200,41 @@ void ListadoManager::ResidentesPorUnidad() {
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
+
+
+	//exportar	
+	
+	Residente ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado3.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Unidad, Desde, Prop/Inqu \n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = reg[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getFechaIngreso().toString() << "," << ra.getPropietarioInquilino() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+	
+
 	delete[] reg;
-	*/
+	
 	
 	system("pause");
 }
