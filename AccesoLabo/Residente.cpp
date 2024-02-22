@@ -70,6 +70,7 @@ void Residente::editarResidente() {
 
 void Residente::mostrar() {     
     Persona::mostrar();
+    cout << "mostrar de residente" << endl;
     cout << left;
     cout << setw(3) << _unidad << endl;
     cout << setw(8) << _fechaIngreso.toString() << endl;

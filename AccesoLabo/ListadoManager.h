@@ -19,6 +19,7 @@ class ListadoManager
 		void OrdenarAutorizadosxApellido(ReporteAutorizaciones* reg, int tam);
 		void AutorizadosPorUnidad(); // punto 2
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
+		void OrdenarAutorizadosxNumero(ReporteAutorizaciones* vec, int tam);
 		void ResidentesPorUnidad();//punto 3
 		void OrdenarResidentesxUnidad(Residente* reg, int tam);
 		void ProveedoresPorRazon();//punto4

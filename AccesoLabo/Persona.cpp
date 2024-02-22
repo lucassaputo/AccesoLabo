@@ -74,11 +74,11 @@ void  Persona::editarPersona() {
 void Persona::mostrar()
 {
 	cout << left;
-	cout << setw(3) << _id ;
+	cout << setw(5) << _id ;
 	cout << setw(10) << _nombres ;
-	cout << setw(10) << _apellidos ;
-	cout << setw(8) << _dni ;
-	cout << setw(1) << _estado ;
+	cout << setw(12) << _apellidos ;
+	cout << setw(12) << _dni ;
+	//cout << setw(1) << _estado ;
 }
 /*
 }void Persona::mostrar()
