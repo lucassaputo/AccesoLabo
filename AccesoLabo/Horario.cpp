@@ -50,17 +50,10 @@ bool Horario::cargar(int seg, int minuto, int hora) {
 }
 bool Horario::ingresarHorario() {
     std::string horarioStr;
-    // Pedir al usuario que ingrese la fecha
     std::cout << "Ingrese horario (HH:mm): ";
     std::cin >> horarioStr;
-
-    // Crear un objeto stringstream para analizar la cadena
     std::istringstream horarioStream(horarioStr);
-
-    // Variables para almacenar el día, mes y año
     int min, hora;
-
-    // Extraer los valores de día, mes y año de la cadena
     char delim1;
     horarioStream >> hora >> delim1 >> min;
 
@@ -75,4 +68,26 @@ bool Horario::ingresarHorario() {
         }
     }
     return true;
+}
+
+bool Horario::operator>(Horario& aux)
+{
+    if (this->getHora() > aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() >= aux.getMinuto()) {
+        return true;
+    }
+    return false;
+}
+
+bool Horario::operator<(Horario& aux)
+{
+    if (this->getHora() < aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() <= aux.getMinuto()) {
+        return true;
+    }
+    return false;
 }

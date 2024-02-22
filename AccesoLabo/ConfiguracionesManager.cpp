@@ -49,3 +49,21 @@ void ConfiguracionesManager::CantidadUnidades() {
 	std::cout << "Cantidad maxima de unidades/lotes: " << x << std::endl;
 	system("pause");
 }
+
+void ConfiguracionesManager::ModificarCantUnidades() {
+	ConfigSingleton& config = ConfigSingleton::getInstance();
+
+	system("cls");
+	std::cout << "MODIFICAR CANTIDAD DE UNIDADES" << std::endl;
+	std::cout << "++++++++++++++++++++++++++++++++" << std::endl;
+	
+	config.getConfig().setCantUnidades(ingresarCantUnidades());
+
+	if (_archivoConfiguraciones.Modificar(config.getConfig())) {
+		std::cout << "Registro editado correctamente." << std::endl;
+	}
+	else {
+		std::cout << "Error al guardar." << std::endl;
+	}
+	system("pause");
+}
