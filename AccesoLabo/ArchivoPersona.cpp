@@ -152,3 +152,13 @@ bool ArchivoPersona::Modificar(Persona reg) {
     fclose(p);
     return pudoEscribir;
 }
+bool ArchivoPersona::CrearArchivo(Persona reg) {
+    bool pudoEscribir;
+    FILE* p = fopen(_nombreArchivo.c_str(), "wb");
+    if (p == nullptr) {
+        return false;
+    }
+    pudoEscribir = fwrite(&reg, sizeof(Persona), 1, p);
+    fclose(p);
+    return pudoEscribir;
+}
