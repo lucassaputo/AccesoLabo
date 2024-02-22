@@ -405,6 +405,17 @@ void caberaUnidades() {
 	cout << setw(30) << "|Observaciones" << endl;
 }
 
+void caberaResidentes()
+{	
+	cout << left;
+	cout << setw(16) << "Nombre";
+	cout << setw(22) << " | Apellido";
+	cout << setw(10) << " | DNI";
+	cout << setw(3) << " | UF";
+	cout << setw(9) << " | Desde";
+	cout << setw(1) << " | prop/inqu" << endl;
+}
+
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

@@ -173,8 +173,6 @@ void ListadoManager::ResidentesPorUnidad() {
 	cout << "++++++ Residentes ordenados por unidad ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	Residente res;
-	int cant = _archivoResisente.ContarRegistros();
-	cout << "Cant: " << cant << endl;
 	Residente *reg;
 	int cantReg = _archivoResisente.ContarRegistros();
 	if (cantReg == 0) {
@@ -189,14 +187,7 @@ void ListadoManager::ResidentesPorUnidad() {
 		reg[x] = _archivoResisente.Leer(x);
 	}
 	OrdenarResidentesxUnidad(reg, cantReg);
-	cout << left;
-	cout << setw(3) << "id";
-	cout << setw(10) << " | nombre";
-	cout << setw(10) << " | apellido";
-	cout << setw(8) << " | dni";
-	cout << setw(1) << " | Unidad";
-	cout << setw(1) << " | desde";
-	cout << setw(1) << " | propietario/inquilino" << endl;
+	caberaResidentes();
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}

@@ -140,14 +140,8 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			for (int x = 0;x < cantReg;x++) {
 				res = _archivoResidente.Leer(x);
 
-				if (strcmp(res.getApellidos().c_str(), Apellido.c_str()) == 0) {
-					cout << left;				
-					cout << setw(16) << "nombre";
-					cout << setw(20) << " | apellido";
-					cout << setw(12) << " | dni";
-					cout << setw(1) << " | UF";
-					cout << setw(9) << " | desde ";
-					cout << setw(1) << " | propietario/inquilino" << endl;
+				if (strcmp(res.getApellidos().c_str(), Apellido.c_str()) == 0) {					
+					caberaResidentes();
 					res.mostrar();
 					ContMuestras++;
 				}
@@ -179,6 +173,7 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 		for (int x = 0;x < cantReg;x++) {
 			prov = _archivoProveedores.Leer(x);
 			if (strcmp(prov.getEmpresa().c_str(), RazonSocial.c_str()) == 0) {
+				cabeceraProveedores();
 				prov.mostrar();
 				ContMuestras++;
 				//break;
@@ -207,6 +202,7 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 		for (int x = 0;x < cantReg;x++) {
 			prov = _archivoProveedores.Leer(x);
 			if (stoi(DNI) == prov.getDni()) {
+				cabeceraProveedores();
 				prov.mostrar();
 				ContMuestras++;
 				//break;
@@ -240,6 +236,7 @@ void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 		for (int x = 0;x < cantReg;x++) {
 			uni = _archivoUnidades.Leer(x);
 			if (strcmp(uni.getFamilia().c_str(), Apellido.c_str()) == 0) {
+				caberaUnidades();
 				uni.mostrar();
 				ContMuestras++;
 				//break;

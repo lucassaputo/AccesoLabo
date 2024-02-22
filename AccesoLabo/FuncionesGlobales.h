@@ -32,3 +32,4 @@ std::string dosDigitos(int n);
 void cabeceraAutorizados();
 void cabeceraProveedores();
 void caberaUnidades();
+void caberaResidentes();
