@@ -462,6 +462,17 @@ void caberaUnidades() {
 	cout << setw(30) << "|Observaciones" << endl;
 }
 
+void caberaResidentes()
+{
+	cout << left;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(9) << "|UF";
+	cout << setw(15) << "|Desde";
+	cout << setw(12) << "|prop/inqu" << endl;
+}
+
 void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
 {
 	ReporteAutorizaciones aux;
@@ -505,6 +516,63 @@ void ExportarAutorizaciones(ReporteAutorizaciones* vectorAut, int cantReg, strin
 	}
 }
 
+void ExportarProveedores(Proveedor* regProv, int cantReg, std::string nombreArchivo) {
+	Proveedor ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = regProv[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";				
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+}
+void ExportarUnidades(Unidad* vector, int cantReg, std::string nombreArchivo){
+	Unidad ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Numero,Familia,Telefono,Observaciones\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vector[i];
+				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
+}
 void Creditos() {
 	system("cls");
 	cout << "----- CREDITOS -----" << endl;

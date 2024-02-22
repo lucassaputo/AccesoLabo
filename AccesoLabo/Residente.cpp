@@ -68,7 +68,12 @@ void Residente::editarResidente() {
     }
 }
 
-void Residente::mostrar() {     
+void Residente::mostrar() {    
+    cout << setw(9) << "|UF";
+    cout << setw(15) << "|Desde";
+    cout << setw(15) << "|prop/inqu" << endl;
+
+
     Persona::mostrar();
     cout << left;
     cout << setw(9) << _unidad << endl;

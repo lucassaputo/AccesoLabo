@@ -9,6 +9,7 @@
 #include "ReporteAutorizaciones.h"
 #include "Registro.h"
 
+
 class ListadoManager
 {
 	public:

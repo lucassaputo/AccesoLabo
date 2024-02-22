@@ -60,7 +60,6 @@ void ListadoManager::AutorizadosPorApellido() {
 		return;
 	}
 	OrdenarAutXApellido(vectorAut, cont);
-	//OrdenarAutorizadosxApellido(vectorAut, cantReg);
 
 	cabeceraAutorizados();
 
@@ -122,9 +121,9 @@ void ListadoManager::AutorizadosPorUnidad() {
 		return;
 	}
 	OrdenarAutXApellido(vectorAut, cont);
-	//OrdenarAutorizadosxNumero(vectorAut, cantReg);
 
 	cabeceraAutorizados();
+
 	for (int j = 0;j < cantReg;j++) {
 		vectorAut[j].mostrarReporte();
 	}
@@ -141,36 +140,73 @@ void ListadoManager::ResidentesPorUnidad() {
 	cout << "++++++ Residentes ordenados por unidad ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	Residente res;
-	int cant = _archivoResisente.ContarRegistros();
-	cout << "Cant: " << cant << endl;
-	/*Residente *reg;
+	Residente* reg;
 	int cantReg = _archivoResisente.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
+		system("pause");
+		return;
 	}
 	reg = new Residente[cantReg];
 	if (reg == nullptr) {
-		cout << "error de asignacion de memoria" << endl;
+		cout << "Error de asignacion de memoria" << endl;
+		system("pause");
 		return;
 	}
 	for (int x = 0;x < cantReg;x++) {
-		reg[x] = _archivoResisente.Leer(x);
+		res = _archivoResisente.Leer(x);
+		if (res.getEstado()) {
+			reg[x] = res;
+		}
 	}
+
 	OrdenarResidentesxUnidad(reg, cantReg);
-	cout << left;
-	cout << setw(3) << "id";
-	cout << setw(10) << " | nombre";
-	cout << setw(10) << " | apellido";
-	cout << setw(8) << " | dni";
-	cout << setw(1) << " | Unidad";
-	cout << setw(1) << " | desde";
-	cout << setw(1) << " | propietario/inquilino" << endl;
+
+	caberaResidentes();
+
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();
 	}
+
+
+	//exportar	
+
+	Residente ra;
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado3.txt");
+
+		cout << setw(20) << "|Nombre";
+		cout << setw(20) << "|Apellido";
+		cout << setw(12) << "|DNI";
+		cout << setw(9) << "|UF";
+		cout << setw(15) << "|Desde";
+		cout << setw(12) << "|prop/inqu" << endl;
+
+
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, DNI, Unidad, Desde, Prop/Inqu \n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = reg[i];
+				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getUnidad() << "," << ra.getFechaIngreso().toString() << "," << ra.getPropietarioInquilino() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			// Mostrar un mensaje de error si no se pudo abrir el archivo
+			std::cerr << "Error al abrir el archivo.";
+		}
+	}
+	else {
+		cout << "Accion cancelado.";
+	}
 	delete[] reg;
-	*/
-	
 	system("pause");
 }
 
@@ -217,34 +253,8 @@ void ListadoManager::ProveedoresPorRazon() {
 		regProv[i].mostrar();
 	}
 
-	//exportar	
-	Proveedor ra;
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado4.txt");
-
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = regProv[i];
-				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			// Mostrar un mensaje de error si no se pudo abrir el archivo
-			std::cerr << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
-
+	ExportarProveedores(regProv, cantReg, "listado4");
+	
 	delete[] regProv;
 	system("pause");
 }
@@ -290,33 +300,7 @@ void ListadoManager::ProveedoresPorDNI() {
 		regProv[j].mostrar();
 	}
 
-	//exportar	
-	Proveedor ra;
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado5.txt");
-
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Nombre,Apellido, DNI, Empresa, ART\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = regProv[i];
-				archivo << ra.getNombres() << "," << ra.getApellidos() << "," << ra.getDni() << "," << ra.getEmpresa() << "," << ra.getArtFecha().toString() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			// Mostrar un mensaje de error si no se pudo abrir el archivo
-			std::cerr << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
+	ExportarProveedores(regProv, cantReg, "listado5");
 
 	delete[] regProv;
 	system("pause");
@@ -365,33 +349,7 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 		vector[j].mostrar();
 	}
 
-	//exportar	
-	Unidad ra;
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado6.txt");
-
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Numero,Familia,Telefono,Observaciones\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = vector[i];
-				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			// Mostrar un mensaje de error si no se pudo abrir el archivo
-			std::cerr << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
+	ExportarUnidades(vector,cantReg,"listado6");
 
 	delete[] vector;
 	system("pause");
@@ -439,54 +397,11 @@ void ListadoManager::UnidadesPorFamilia(){
 		vector[j].mostrar();
 	}
 
-	//exportar	
-	Unidad ra;
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado7.txt");
-
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Numero,Familia,Telefono,Observaciones\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = vector[i];
-				archivo << ra.getId() << "," << ra.getFamilia() << "," << ra.getTelefono() << "," << ra.getObservaciones() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			// Mostrar un mensaje de error si no se pudo abrir el archivo
-			std::cerr << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
+	ExportarUnidades(vector, cantReg, "listado7");
 
 	delete[] vector;
 	system("pause");
 }
-
-
-
-//void ListadoManager::OrdenarAutorizadosxApellido(ReporteAutorizaciones* vec, int tam)
-//{
-//	ReporteAutorizaciones aux;
-//
-//	for (int i = 0;i < tam;i++) {
-//		for (int x = 0;x < tam - i - 1;x++) {
-//			if (strcmp(vec[x].getApellido().c_str(), vec[x + 1].getApellido().c_str()) > 0) {
-//				aux = vec[x];
-//				vec[x] = vec[x + 1];
-//				vec[x + 1] = aux;
-//			}
-//		}
-//	}
-//}
 
 void ListadoManager::OrdenarAutorizadosxNumero(ReporteAutorizaciones* vec, int tam)
 {
@@ -530,7 +445,6 @@ void ListadoManager::OrdenarResidentesxUnidad(Residente* reg, int tam)
 			}
 		}
 	}
-
 }
 
 void ListadoManager::OrdenarVectorProveedoresxRazon(Proveedor* reg, int tam)
