@@ -390,11 +390,11 @@ void cabeceraAutorizados() {
 
 void cabeceraProveedores() {
 	cout << left;
-	cout << setw(10) << " | nombre";
-	cout << setw(12) << " | apellido";
-	cout << setw(12) << " | dni";
-	cout << setw(25) << " | Empresa";
-	cout << setw(8) << " | art" << endl;
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(20) << "|Empresa";
+	cout << setw(15) << "|ART" << endl;
 }
 
 void Creditos() {

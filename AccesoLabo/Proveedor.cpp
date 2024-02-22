@@ -83,8 +83,8 @@ void Proveedor::mostrar() {
 	Persona::mostrar();
 	cout << left;
 	//cout << setw(1) << to_string(getTipo()) ;
-	cout << setw(25) << getEmpresa();
-	cout << setw(8) << getArt() << endl;
+	cout << setw(20) << getEmpresa();
+	cout << setw(15) << getArt() << endl;
 }
 
 

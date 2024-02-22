@@ -230,6 +230,7 @@ void ListadoManager::ProveedoresPorRazon() {
 	OrdenarVectorProveedoresxRazon(regProv, cantReg);
 
 	cabeceraProveedores();
+
 	for (int i = 0;i < cantReg;i++) {
 		regProv[i].mostrar();
 	}
