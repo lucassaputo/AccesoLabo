@@ -87,6 +87,7 @@ string cargarString(string campo) {
 string cargarStringTam(string campo, int tam) {
 	string cadena = "";
 	while(true){
+		cout << "Ingrese " << campo << ":";
 		getline(cin, cadena);
 		if (!(soloLetras(cadena))) {
 			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
@@ -97,8 +98,6 @@ string cargarStringTam(string campo, int tam) {
 		else {
 			return cadena;
 		}
-		//cin.ignore();
-		//getline(cin, cadena);
 	}
 	return cadena;
 }

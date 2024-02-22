@@ -75,6 +75,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 	Fecha hoy;
 	Unidad u;
 	Persona per;
+	string apellido;
 	int motivo;
 	int id;
 	int cont = 0;
@@ -84,7 +85,8 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 
 	motivo = ingresarMotivo();
-	string apellido = upper(cargarStringTam("Apellido", 50));
+	cin.ignore();
+	apellido = upper(cargarStringTam("Apellido", 50));
 
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
@@ -102,7 +104,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 	if (motivo == 1) //visita
 	{
 		Persona vis = _archivoVisitas.BuscarObjApellido(apellido);
-		vis.mostrar();
+		//vis.mostrar();
 		if (vis.getDni() > -1) {
 			
 			for (int i = 0;i < cantReg;i++) {
@@ -119,6 +121,8 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 		}
 		else {
 			cout << "La persona ingresada no existe." << endl;
+			system("pause");
+			return;
 		}
 	}
 	else // proveedor
@@ -139,6 +143,8 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 		}
 		else {
 			cout << "La persona ingresada no existe." << endl;
+			system("pause");
+			return;
 		}
 	}
 
@@ -163,39 +169,32 @@ void ConsultasManager::ConsultaAutorizadosxApellido() {
 }
 
 //"3 - Consulta de residentes por Unidad"
-void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
+void ConsultasManager::ConsultaResidentesxUnidad() {
 	system("cls");
 	std::string unidad;
-	Residente res;
+	Residente p;
+	Unidad u;
+	int cont = 0;
 	cout << "++++++ Consulta residentes por unidad ++++++" << endl;
 	cout << "++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	cout << "Ingrese el numero de Unidad: " << endl;
-	unidad = ingresarIdUnidad();
-	Unidad u;
-	u = buscarUnidad(stoi(unidad));
-	if (u.getId() == -1) {
-		cout << "no existe una unidad con ese ID" << endl;
-		system("pause");
-		return;
-	}
+	u = ingresarUnidad("a consultar");
 	int cantReg = _archivoResidente.ContarRegistros();
 	if (cantReg == 0) {
-		cout << "No hay registros de Residentes cargados" << endl;
+		cout << "No hay registros de residentes cargados" << endl;
+		system("pause");
+		return;
+	}	
+	for (int x = 0;x < cantReg;x++) {
+		p = _archivoResidente.Leer(x);
+		if (p.getEstado() && p.getUnidad() == u.getId()) {
+			p.mostrar();
+			cont++;
+		}
 	}
-	else {
-		int ContMuestras = 0;
-		for (int x = 0;x < cantReg;x++) {
-			res = _archivoResidente.Leer(x);
-
-			if (res.getUnidad() == stoi(unidad)) {
-				res.mostrar();
-				ContMuestras++;
-				//break;
-			}
-		}
-		if (ContMuestras == 0) {
-			cout << "No hay Residentes dados de alta en esa Unidad Funcional" << endl;
-		}
+	if (cont == 0) {
+		cout << "No hay Residentes dados de alta en esa unidad funcional" << endl;
+		system("pause");
+		return;
 	}
 
 	system("pause");
