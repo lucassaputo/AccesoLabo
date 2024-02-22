@@ -38,3 +38,4 @@ void caberaUnidades();
 Persona BuscarenVisita(int dni);
 Proveedor BuscarenProveedor(int dni);
 void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam);
+void ExportarAutorizaciones(ReporteAutorizaciones* vec, int tam, std::string nombreArchivo);

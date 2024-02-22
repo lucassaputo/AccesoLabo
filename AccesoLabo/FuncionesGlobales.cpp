@@ -9,6 +9,7 @@
 #include "Proveedor.h"
 #include "ArchivoPersona.h"
 #include "ArchivoProveedores.h"
+#include <fstream>
 
 using namespace std;
 
@@ -86,19 +87,16 @@ string cargarString(string campo) {
 string cargarStringTam(string campo, int tam) {
 	string cadena = "";
 	while(true){
-		cout << campo + "----------: ";
 		getline(cin, cadena);
 		if (!(soloLetras(cadena))) {
 			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
 		}
 		else if(cadena.length() > tam) {
-			cout << campo + " tiene un maximo de 50 caracteres. " + "Ingrese " + campo + ": ";
+			cout << campo + " tiene un maximo de " << tam << " caracteres. " << "Ingrese " + campo + ": ";
 		}
 		else {
 			return cadena;
 		}
-
-
 		//cin.ignore();
 		//getline(cin, cadena);
 	}
@@ -441,6 +439,34 @@ void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
 				vec[x + 1] = aux;
 			}
 		}
+	}
+}
+
+void ExportarAutorizaciones(ReporteAutorizaciones* vectorAut, int cantReg, string nombreArchivo){
+	if (decisionExportar()) {
+		ReporteAutorizaciones ra;
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vectorAut[i];
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";				
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo." << endl;
+		}
+		else {
+			std::cout << "Error al abrir el archivo." << endl;
+		}
+	}
+	else {
+		cout << "Accion cancelado." << endl;
 	}
 }
 

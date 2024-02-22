@@ -29,15 +29,13 @@ void ListadoManager::AutorizadosPorApellido() {
 		return;
 	}
 	int cont = 0;
+	Fecha hoy;
 	for (int i = 0;i < cantReg;i++) {
 		aux = _archivoAutorizacion.Leer(i);
-		//aux.mostrar();
-		if (aux.getEstado()) {
+		if (aux.getEstado() && aux.getHasta() >= hoy) {
+		//if (aux.getEstado()) {
 			cont++;
-			vectorAut[i].setId(aux.getId());			
-			vectorAut[i].setIdPersona(aux.getIdPersona());
 			vectorAut[i].setIdUnidad(aux.getIdUnidad());
-			vectorAut[i].setTipo(aux.getTipo());
 			vectorAut[i].setHasta(aux.getHasta());
 
 			if (aux.getTipo() == 1) { //visita
@@ -69,30 +67,7 @@ void ListadoManager::AutorizadosPorApellido() {
 		vectorAut[j].mostrarReporte();
 	}
 
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado1.txt");
-
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = vectorAut[i];
-				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			std::cout << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
+	ExportarAutorizaciones(vectorAut, cont, "listado1");
 
 	delete [] vectorAut;	
 	system("pause");
@@ -117,14 +92,12 @@ void ListadoManager::AutorizadosPorUnidad() {
 		return;
 	}
 	int cont = 0;
+	Fecha hoy;
 	for (int i = 0;i < cantReg;i++) {
 		aux = _archivoAutorizacion.Leer(i);
-		if (aux.getEstado()) {
+		if (aux.getEstado() && aux.getHasta() >= hoy) {
 			cont++;
-			vectorAut[i].setId(aux.getId());
-			vectorAut[i].setIdPersona(aux.getIdPersona());
 			vectorAut[i].setIdUnidad(aux.getIdUnidad());
-			vectorAut[i].setTipo(aux.getTipo());
 			vectorAut[i].setHasta(aux.getHasta());
 
 			if (aux.getTipo() == 1) { //visita
@@ -154,33 +127,8 @@ void ListadoManager::AutorizadosPorUnidad() {
 		vectorAut[j].mostrarReporte();
 	}
 
-	//exportar	
-	ReporteAutorizaciones ra;	
-	if (decisionExportar()) {
-		// Abrir un archivo para escribir
-		std::ofstream archivo("listado2.txt");
+	ExportarAutorizaciones(vectorAut, cont, "listado2");
 
-		// Verificar si el archivo se abrió correctamente
-		if (archivo.is_open()) {
-			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
-			// Escribir datos en el archivo
-			for (int i = 0; i < cantReg;i++) {
-				ra = vectorAut[i];
-				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";
-			}
-			// Cerrar el archivo
-			archivo.close();
-
-			std::cout << "Los datos se han exportado correctamente al archivo.";
-		}
-		else {
-			// Mostrar un mensaje de error si no se pudo abrir el archivo
-			std::cerr << "Error al abrir el archivo.";
-		}
-	}
-	else {
-		cout << "Accion cancelado.";
-	}
 	delete[] vectorAut;	
 	system("pause");
 }

@@ -1,4 +1,5 @@
 /*
+* sino encuentra la persona en los reportes que pasa? lo valido?
 * sacar campos que no se usen en clase reporteAutorizados
 * chequear que la autorizacion este vigente en consultas
 * ResidentesPorUnidad el 3 en listados no esta hecho
@@ -26,3 +27,4 @@ en listados quise hacer el exportar en una clase nueva dalidasGlobales y no me d
 
 ---mal nombre de archivo autorizados en vez de autorizacion
 no se valida estado en listados
+consulta por apellido, cuando compara con apellido?
