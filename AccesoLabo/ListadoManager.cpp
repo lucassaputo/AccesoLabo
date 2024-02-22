@@ -52,13 +52,13 @@ void ListadoManager::AutorizadosPorApellido() {
 	OrdenarAutorizadosxApellido(vectorAut, cantReg);
 
 	cout << left;
-	cout << setw(2) << " || ID: ";
-	cout << setw(10) << " || idPersona: ";
-	cout << setw(10) << " || idUnidad: ";
-	cout << setw(10) << " || idTipo: ";
-	cout << setw(10) << " || Apellido: ";
-	cout << setw(10) << " || NombreTipo: ";
-	cout << setw(15) << " || Autorizado hasta: " << endl;
+	cout << setw(2) << "ID";
+	cout << setw(9) << " |idPersona";
+	cout << setw(9) << "|idUnidad";
+	//cout << setw(1) << " || idTipo: ";
+	cout << setw(12) << "|Apellido";
+	cout << setw(12) << "|NombreTipo";
+	cout << setw(15) << "|Autorizado hasta" << endl;
 	int cont = 0;
 	for (int j = 0;j < cantReg;j++) {
 		vectorAut[j].mostrar2(); //ver que pasa con los estado false
@@ -329,7 +329,10 @@ void ListadoManager::OrdenarVectorAutorizadosxNumero(Autorizacion* reg, int tam)
 void ListadoManager::ResidentesPorUnidad() { // punto 3
 	system("cls");
 	cout << "ResidentesPorUnidad" << endl;
-	Residente *reg;
+	Residente res;
+	int cant = _archivoResisente.ContarRegistros();
+	cout << "Cant: " << cant << endl;
+	/*Residente *reg;
 	int cantReg = _archivoResisente.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
@@ -355,6 +358,8 @@ void ListadoManager::ResidentesPorUnidad() { // punto 3
 		reg[j].mostrar();
 	}
 	delete[] reg;
+	*/
+	
 	system("pause");
 }
 void ListadoManager::OrdenarResidentesxUnidad(Residente* reg, int tam)
@@ -387,13 +392,13 @@ void ListadoManager::ProveedoresPorRazon() { // punto 4
 	}
 	OrdenarVectorProveedoresxRazon(regProv, cantReg);
 	cout << left;
-	cout << setw(3) << "id";
+	cout << setw(2) << "id";
 	cout << setw(10) << " | nombre";
-	cout << setw(10) << " | apellido";
-	cout << setw(8) << " | dni";
-	cout << setw(1) << " | estado";
-	cout << setw(1) << " | tipo";
-	cout << setw(10) << " | Empresa";
+	cout << setw(12) << " | apellido";
+	cout << setw(12) << " | dni";
+	//cout << setw(1) << " | estado";
+	//cout << setw(1) << " | tipo";
+	cout << setw(25) << " | Empresa";
 	cout << setw(8) << " | art" << endl;
 	for (int i = 0;i < cantReg;i++) {
 		regProv[i].mostrar();
@@ -432,16 +437,15 @@ void ListadoManager::ProveedoresPorDNI() { // punto 5
 	}
 	OrdenarVectorProveedoresxDNI(regProv, cantReg);
 	cout << left;
-	cout << setw(3) << "id";
+	cout << setw(2) << "id";
 	cout << setw(10) << " | nombre";
-	cout << setw(10) << " | apellido";
-	cout << setw(8) << " | dni";
-	cout << setw(1) << " | estado";
-	cout << setw(1) << " | tipo";
-	cout << setw(10) << " | Empresa";
+	cout << setw(12) << " | apellido";
+	cout << setw(12) << " | dni";
+	//cout << setw(1) << " | estado";
+	//cout << setw(1) << " | tipo";
+	cout << setw(25) << " | Empresa";
 	cout << setw(8) << " | art" << endl;
 	for (int j = 0;j < cantReg;j++) {
-		cout << "j=" << j << endl;
 		regProv[j].mostrar();
 	}
 	delete[] regProv;
@@ -528,11 +532,11 @@ void ListadoManager::UnidadesPorFamilia(){ // punto 7
 	OrdenarVectorUnidadxApellido(reg, cantReg);
 
 
-	cout << right;
+	cout << left;
 	cout << setw(2) << "ID ";
-	cout << setw(8) << " | telefono ";
-	cout << setw(8) << " | Familia ";
-	cout << setw(15) << "| Observaciones" << endl;
+	cout << setw(10) << " | telefono ";
+	cout << setw(10) << " | Familia ";
+	cout << setw(10) << "| Observaciones" << endl;
 
 	for (int j = 0;j < cantReg;j++) {
 		reg[j].mostrar();

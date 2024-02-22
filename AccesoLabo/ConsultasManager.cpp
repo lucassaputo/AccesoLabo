@@ -32,7 +32,7 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() { // punto 1
 				per = _archivoPersona.Leer(posper);
 				per.mostrar();
 				ContMuestras++;
-				break;				
+				//break;				
 			}
 		}
 		if (ContMuestras == 0) {
@@ -65,7 +65,7 @@ void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 				if (idAutorizado==per.getId()) {
 					per.mostrar();
 					ContMuestras++;
-					break;
+					//break;
 				}
 			}			
 			
@@ -104,7 +104,7 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 			if (res.getUnidad() == stoi(unidad)) {
 				res.mostrar();
 				ContMuestras++;
-				break;
+				//break;
 			}
 		}
 		if (ContMuestras == 0) {
@@ -162,7 +162,7 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 			if (strcmp(prov.getEmpresa().c_str(), RazonSocial.c_str()) == 0) {
 				prov.mostrar();
 				ContMuestras++;
-				break;
+				//break;
 			}
 		}
 		if (ContMuestras == 0) {
@@ -177,7 +177,7 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 	Proveedor prov;
 	cout << "Consulta Proveedores por DNI" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
-	cout << "Inhgrese el DNI: " << endl;
+	//cout << "Inhgrese el DNI: " << endl;
 	std::string DNI = std::to_string(cargarDni());
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
@@ -190,7 +190,7 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 			if (stoi(DNI) == prov.getDni()) {
 				prov.mostrar();
 				ContMuestras++;
-				break;
+				//break;
 			}
 		}
 		if (ContMuestras == 0) {
@@ -220,7 +220,7 @@ void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 			if (strcmp(uni.getFamilia().c_str(), Apellido.c_str()) == 0) {
 				uni.mostrar();
 				ContMuestras++;
-				break;
+				//break;
 			}
 		}
 		if (ContMuestras == 0) {

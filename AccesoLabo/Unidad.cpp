@@ -48,10 +48,10 @@ void Unidad::editar() {
 void Unidad::mostrar() {	
 	
 	cout << left;
-	cout << setw(3) <<"" << _id;
-	cout << setw(3)  <<"" << _telefono;
-	cout << setw(3)  << "" << _familia;
-	cout << setw(6)  << "" << _observaciones << endl;
+	cout << setw(6)  << _id;
+	cout << setw(12) << _telefono;
+	cout << setw(10)  << _familia;
+	cout << setw(10)   << _observaciones << endl;
 	
 
 }

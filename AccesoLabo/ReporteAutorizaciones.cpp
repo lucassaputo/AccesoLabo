@@ -34,13 +34,13 @@ void ReporteAutorizaciones::mostrar()
 void ReporteAutorizaciones::mostrar2()
 {
     cout << left;
-    cout << setw(3) << _id;
-    cout << setw(3) << _idPersona;
-    cout << setw(3) << _idUnidad;
-    cout << setw(1) << _tipo;
-    cout << setw(10) << _apellido;
-    cout << setw(6) << _nombreTipo;
-    cout << setw(8) << _hasta.toString() << endl;
+    cout << setw(4) << _id;
+    cout << setw(10) << _idPersona;
+    cout << setw(9) << _idUnidad;
+    //cout << setw(1) << _tipo;
+    cout << setw(12) << _apellido;
+    cout << setw(12) << _nombreTipo;
+    cout << setw(15) << _hasta.toString() << endl;
 
 }
 
