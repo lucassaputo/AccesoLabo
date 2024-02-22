@@ -1,5 +1,5 @@
 /*
-* informe 2 faltan nombres y apellidos
+* informe 2 Y 3 faltan nombres y apellidos
 * falta ordenar y exportar en consultas
 * agregar estado en buscarObj?  pq lo chequea dsp en el cpp tb, ver si dejar asi o unificar
 * separar por seccion fx globales
