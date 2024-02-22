@@ -2,6 +2,9 @@
 #include "Fecha.h"
 #include "Unidad.h"
 #include "Horario.h"
+#include "Persona.h"
+#include "Proveedor.h"
+#include "ReporteAutorizaciones.h"
 
 bool decisionExportar();
 void cargarCadena(char* pal, int tam);
@@ -32,3 +35,7 @@ std::string dosDigitos(int n);
 void cabeceraAutorizados();
 void cabeceraProveedores();
 void caberaUnidades();
+Persona BuscarenVisita(int dni);
+Proveedor BuscarenProveedor(int dni);
+void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam);
+void ExportarAutorizaciones(ReporteAutorizaciones* vec, int tam, std::string nombreArchivo);

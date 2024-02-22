@@ -1,4 +1,10 @@
 /*
+* falta ordenar y exportar en consultas
+* agregar estado en buscarObj?  pq lo chequea dsp en el cpp tb, ver si dejar asi o unificar
+* separar por seccion fx globales
+* sino encuentra la persona en los reportes que pasa? lo valido?
+* sacar campos que no se usen en clase reporteAutorizados
+* chequear que la autorizacion este vigente en consultas
 * ResidentesPorUnidad el 3 en listados no esta hecho
 * OrdenarAutorizadosxNumero no funciona
 * pq muestra dos digitos en el año listado1? cambie validacion en cargar a >1900
@@ -16,3 +22,15 @@ poco importante:
 * como se hace referencia a un atributo de la clase padre en el cpp de la hija? quiero acceder a _dni pero no pude, sera pq el encapsulamiento? this no funciono
 * corregir o ver que autorizacion queda vigente si la persona se da de baja o no? rta: quedan vigentes en caso que la persona se vuelva a dar de alta con el mismo dni entonces quedaria con el mismo id que tenia la autorizacion anterior
 */
+
+para dsp
+en listados quise hacer el exportar en una clase nueva dalidasGlobales y no me dejaba, probarlo dsp.
+
+
+
+---mal nombre de archivo autorizados en vez de autorizacion
+no se valida estado en listados
+consulta por apellido, cuando compara con apellido?
+no se chequeaba que este vigente
+se muestran sin cabecera las consultas
+

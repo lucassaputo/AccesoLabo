@@ -5,6 +5,11 @@
 #include "ArchivoUnidad.h"
 #include "Horario.h"
 #include "ConfigSingleton.h"
+#include "Persona.h"
+#include "Proveedor.h"
+#include "ArchivoPersona.h"
+#include "ArchivoProveedores.h"
+#include <fstream>
 
 using namespace std;
 
@@ -82,21 +87,17 @@ string cargarString(string campo) {
 string cargarStringTam(string campo, int tam) {
 	string cadena = "";
 	while(true){
-		cout << campo + "----------: ";
+		cout << "Ingrese " << campo << ":";
 		getline(cin, cadena);
 		if (!(soloLetras(cadena))) {
 			cout << campo + " no puede contener números. " + "Ingrese " + campo + ": ";
 		}
 		else if(cadena.length() > tam) {
-			cout << campo + " tiene un maximo de 50 caracteres. " + "Ingrese " + campo + ": ";
+			cout << campo + " tiene un maximo de " << tam << " caracteres. " << "Ingrese " + campo + ": ";
 		}
 		else {
 			return cadena;
 		}
-
-
-		//cin.ignore();
-		//getline(cin, cadena);
 	}
 	return cadena;
 }
@@ -283,6 +284,26 @@ Unidad ingresarUnidad(string mensaje) {
 	}
 	return uni;
 }
+
+Persona BuscarenVisita(int id)
+{
+	
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
+	Persona reg;
+	int pos = _archivoVisitas.BuscarId(id);
+	reg = _archivoVisitas.Leer(pos);
+	return reg;
+}
+
+Proveedor BuscarenProveedor(int id)
+{
+	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
+	Proveedor reg;
+	int pos = _archivoProveedores.Buscar(id);
+	reg = _archivoProveedores.Leer(pos);
+	return reg;
+}
+
 bool ingresarPropInq() {
 	string aux;
 	while (true) {
@@ -403,6 +424,49 @@ void caberaUnidades() {
 	cout << setw(20) << "|Telefono";
 	cout << setw(20) << "|Familia";
 	cout << setw(30) << "|Observaciones" << endl;
+}
+
+void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
+{
+	ReporteAutorizaciones aux;
+
+	for (int i = 0;i < tam;i++) {
+		for (int x = 0;x < tam - i - 1;x++) {
+			if (strcmp(vec[x].getApellido().c_str(), vec[x + 1].getApellido().c_str()) > 0) {
+				aux = vec[x];
+				vec[x] = vec[x + 1];
+				vec[x + 1] = aux;
+			}
+		}
+	}
+}
+
+void ExportarAutorizaciones(ReporteAutorizaciones* vectorAut, int cantReg, string nombreArchivo){
+	if (decisionExportar()) {
+		ReporteAutorizaciones ra;
+		// Abrir un archivo para escribir
+		std::ofstream archivo(nombreArchivo + ".txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vectorAut[i];
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";				
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo." << endl;
+		}
+		else {
+			std::cout << "Error al abrir el archivo." << endl;
+		}
+	}
+	else {
+		cout << "Accion cancelado." << endl;
+	}
 }
 
 void Creditos() {

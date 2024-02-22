@@ -12,6 +12,7 @@ public:
     int Buscar(int dni);
     int BuscarId(int id);
     Proveedor BuscarObj(int dni);
+    Proveedor BuscarObjApellido(std::string apellido);
     bool Modificar(Proveedor reg);
 
 private:

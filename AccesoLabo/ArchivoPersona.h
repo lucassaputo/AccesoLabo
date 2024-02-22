@@ -12,6 +12,7 @@ public:
     int Buscar(int dni);
     int BuscarId(int id);
     Persona BuscarObj(int dni);
+    Persona BuscarObjApellido(std::string apellido);
     bool Modificar(Persona reg);
 
 private:

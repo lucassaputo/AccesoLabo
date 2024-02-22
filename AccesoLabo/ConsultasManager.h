@@ -18,12 +18,12 @@ public:
 	void ConsultaUnidadesxNombre(); // punto 7
 
 private:
-	ArchivoAutorizacion _archivoAutorizacion = ArchivoAutorizacion("Autorizados.dat");
+	ArchivoAutorizacion _archivoAutorizacion = ArchivoAutorizacion("Autorizaciones.dat");
 	ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");
 	ArchivoUnidad _archivoUnidades = ArchivoUnidad("Unidades.dat");
 	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
-	ArchivoPersona _archivoPersona = ArchivoPersona("Personas.dat");
 	ArchivoResidente _archivoResidente = ArchivoResidente("Residentes.dat");
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
 
 
 
