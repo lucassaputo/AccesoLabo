@@ -1,4 +1,5 @@
 /*
+* informe 2 Y 3 faltan nombres y apellidos
 * falta ordenar y exportar en consultas
 * agregar estado en buscarObj?  pq lo chequea dsp en el cpp tb, ver si dejar asi o unificar
 * separar por seccion fx globales
@@ -9,6 +10,7 @@
 * OrdenarAutorizadosxNumero no funciona
 * pq muestra dos digitos en el año listado1? cambie validacion en cargar a >1900
 * ver mensajes y validar las fechas segun se necesita myor o menor
+* que pasa si la unidad esta con estado false en las salidas
 
 poco importante:
 ----------------

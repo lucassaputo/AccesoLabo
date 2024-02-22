@@ -26,6 +26,8 @@ Unidad ingresarUnidad(std::string mensaje);
 bool ingresarPropInq();
 Fecha ingresarFechaAutorizacion();
 Fecha ingresarFechaIngreso();
+Fecha ingresarFechaDesdeReporte();
+Fecha ingresarFechaHastaReporte();
 Fecha ingresarFechaHasta();
 int ingresarOpcionMenu(int opciones);
 std::string upper(std::string cadena);
