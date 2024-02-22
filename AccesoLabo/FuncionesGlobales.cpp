@@ -4,6 +4,8 @@
 #include "Unidad.h"
 #include "ArchivoUnidad.h"
 #include "Horario.h"
+#include "ConfigSingleton.h"
+
 using namespace std;
 
 void cargarCadena(char* pal, int tam) {
@@ -143,7 +145,7 @@ int ingresarOpcionMenu(int opciones) {
 	string opcion;
 	//cin.ignore();
 	cin >> opcion;
-	cout << opcion << "----------" << endl;
+	//cout << opcion << "----------" << endl;
 	while (true) {
 		if (soloNumeros(opcion)) {
 			if (stoi(opcion) <= opciones) {
@@ -170,16 +172,45 @@ string ingresarLegajo() {
 }
 
 string ingresarIdUnidad() {
+	ConfigSingleton& config = ConfigSingleton::getInstance();
 	string id;
 	cout << "Ingrese numero de unidad: " << endl;
 	cin.ignore();
 	cin >> id;
-	while (soloNumeros(id) == false) {
-		cout << "Solo puede contener numeros, Ingrese unidad: ";
+	while (true) {
+		if (soloNumeros(id) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad: ";
+		}
+		else if (std::stoi(id) > config.getConfig().getCantUnidades()) {
+			cout << "La unidad debe ser menor a " << config.getConfig().getCantUnidades()+1 << ", Ingrese unidad : ";
+		}
+		else {
+			return id;
+		}
 		cin.ignore();
 		cin >> id;
 	}
 	return id;
+}
+
+int ingresarCantUnidades() {
+	string aux;
+	std::cout << "Ingrese cantidad maxima de unidades/lotes: ";
+	cin.ignore();
+	cin >> aux;
+	while (true) {
+		if (soloNumeros(aux) == false) {
+			cout << "Solo puede contener numeros, Ingrese unidad: ";
+		}else if (std::stoi(aux) > 1000) {
+			cout << "Cantidad maxima permitida 1000, Ingrese unidad: ";
+		}
+		else {
+			return std::stoi(aux);
+		}
+		cin.ignore();
+		cin >> aux;
+	}
+	return std::stoi(aux);
 }
 
 Unidad buscarUnidad(int u) {
@@ -324,10 +355,8 @@ Horario ingresarHorario(std::string campo) {
 	return aux;
 }
 string dosDigitos(int n) {
-	cout << "----" << n << "-------" << endl;
 	string aux = to_string(n);
 	if (n < 10) {
-		cout << "entra" << endl;
 		aux = "0" + to_string(n);		
 	}
 	return aux;
