@@ -44,6 +44,10 @@ void Registro::mostrar()
     cout << "Tipo Autorizacion: " << _tipoAutorizacion << endl;
     cout << "Estado: " << _estado << endl;
 }
+void Registro::mostrarReporte()
+{
+
+}
 void Registro::operator =(Proveedor p) {
     FechaHorario aux;
     _idPersona = p.getId();    

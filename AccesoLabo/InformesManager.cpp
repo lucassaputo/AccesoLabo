@@ -49,6 +49,7 @@ void InformesManager::InformeProveedores(){
 
 	int cantReg = _archivoRegistros.ContarRegistros();
 	vector = new Registro[cantReg];
+
 	if (vector == nullptr) {
 		cout << "Error en la asignacion de memoria" << endl;
 		system("pause");
@@ -56,8 +57,15 @@ void InformesManager::InformeProveedores(){
 	}
 	for (int x = 0;x < cantReg;x++) {
 		reg = _archivoRegistros.Leer(x);
-		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal) {
-			reg.mostrar();//faltan apellidos y nombres y tipos
+		if (reg.getFechaIngreso().getFecha() >= FechaFinal && reg.getFechaIngreso().getFecha() <= FechaFinal && reg.getTipoPersona()== 2) {
+			reg.mostrarReporte();//faltan apellidos y nombres y tipos
+
+			//Proveedor pro = BuscarenProveedor(aux.getIdPersona());
+			//vectorAut[i].setNombre(pro.getNombres());
+			//vectorAut[i].setApellido(pro.getApellidos());
+			//vectorAut[i].setNombreTipo("Proveedor");
+
+
 		}				
 	}
 
