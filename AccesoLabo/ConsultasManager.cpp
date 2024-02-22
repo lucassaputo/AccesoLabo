@@ -14,7 +14,7 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	Persona per;
 	ReporteAutorizaciones ra;
 	ReporteAutorizaciones* vectorAut;
-	cout << "++++++ Consulta Autorizados por Unidad ++++++" << endl;
+	cout << "++++++ Consulta autorizados por unidad ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	u = ingresarUnidad("a consultar");
 	int cantReg = _archivoAutorizacion.ContarRegistros();
@@ -91,9 +91,10 @@ void ConsultasManager::ConsultaAutorizadosxUnidad() {
 }
 
 //"2 - Consulta de autorizados por Apellido"
-void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
+void ConsultasManager::ConsultaAutorizadosxApellido() {
 	system("cls");
-	cout << "Consulta Autorizados por Apellido" << endl;
+	cout << "++++++ Consulta autorizados por apellido ++++++" << endl;
+	cout << "+++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	Autorizacion aut;
 	Persona per;
 	cout << "+++++++++++++++++++++++++++++++" << endl;
@@ -136,8 +137,8 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 	system("cls");
 	std::string unidad;
 	Residente res;
-	cout << "Consulta Residentes por Unidad" << endl;
-	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "++++++ Consulta residentes por unidad ++++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Ingrese el numero de Unidad: " << endl;
 	unidad = ingresarIdUnidad();
 	Unidad u;
@@ -174,8 +175,8 @@ void ConsultasManager::ConsultaResidentesxUnidad() {// punto 3
 void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
 		system("cls");
 		Residente res;
-		cout << "Consulta Residentes por Apellido" << endl;
-		cout << "+++++++++++++++++++++++++++++++++++++" << endl;
+		cout << "++++++ Consulta residentes por apellido ++++++" << endl;
+		cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 		cout << "Ingrese el Apellido: " << endl;
 		std::string Apellido = cargarApellido();
 	
@@ -204,8 +205,8 @@ void ConsultasManager::ConsultaResidentesxApellido() {// punto 4
 void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 	system("cls");
 	Proveedor prov;
-	cout << "Consulta Proveedores por Razon Social" << endl;
-	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "++++++ Consulta proveedores por empresa ++++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Inhgrese la razon Social: " << endl;
 	std::string RazonSocial = cargarNombre();
 	int cantReg = _archivoProveedores.ContarRegistros();
@@ -234,8 +235,8 @@ void ConsultasManager::ConsultaProveedoresxRazonSocial() { // punto 5
 void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 	system("cls");
 	Proveedor prov;
-	cout << "Consulta Proveedores por DNI" << endl;
-	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "++++++ Consulta proveedores por DNI ++++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
 	//cout << "Inhgrese el DNI: " << endl;
 	std::string DNI = std::to_string(cargarDni());
 	int cantReg = _archivoProveedores.ContarRegistros();
@@ -262,8 +263,8 @@ void ConsultasManager::ConsultaProveedoresxCUIT() { // punto 6
 //"7 - Consulta de unidades por Nombre"
 void ConsultasManager::ConsultaUnidadesxNombre() {// punto 7
 	system("cls");
-	cout << "Consulta Unidades por Nombre" << endl;
-	cout << "+++++++++++++++++++++++++++++++++++++" << endl;
+	cout << "++++++ Consulta unidades por nombre ++++++" << endl;
+	cout << "++++++++++++++++++++++++++++++++++++++++++" << endl;
 	cout << "Inhgrese el Apellido de la familia: " << endl;
 	Unidad uni;
 	std::string Apellido = cargarNombre();
