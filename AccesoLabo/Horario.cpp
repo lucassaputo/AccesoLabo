@@ -76,3 +76,25 @@ bool Horario::ingresarHorario() {
     }
     return true;
 }
+
+bool Horario::operator>(Horario& aux)
+{
+    if (this->getHora() > aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() >= aux.getMinuto()) {
+        return true;
+    }
+    return false;
+}
+
+bool Horario::operator<(Horario& aux)
+{
+    if (this->getHora() < aux.getHora()) {
+        return true;
+    }
+    else if (this->getHora() == aux.getHora() && this->getMinuto() <= aux.getMinuto()) {
+        return true;
+    }
+    return false;
+}

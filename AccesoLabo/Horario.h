@@ -20,4 +20,6 @@ public:
     bool cargar(int seg, int minuto, int hora);
     bool ingresarHorario();
     std::string toString();
+    bool operator>(Horario& fechaActual);
+    bool operator<(Horario& fechaActual);
 };

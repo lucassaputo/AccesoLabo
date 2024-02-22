@@ -145,7 +145,7 @@ int ingresarOpcionMenu(int opciones) {
 	string opcion;
 	//cin.ignore();
 	cin >> opcion;
-	cout << opcion << "----------" << endl;
+	//cout << opcion << "----------" << endl;
 	while (true) {
 		if (soloNumeros(opcion)) {
 			if (stoi(opcion) <= opciones) {
@@ -355,10 +355,8 @@ Horario ingresarHorario(std::string campo) {
 	return aux;
 }
 string dosDigitos(int n) {
-	cout << "----" << n << "-------" << endl;
 	string aux = to_string(n);
 	if (n < 10) {
-		cout << "entra" << endl;
 		aux = "0" + to_string(n);		
 	}
 	return aux;
