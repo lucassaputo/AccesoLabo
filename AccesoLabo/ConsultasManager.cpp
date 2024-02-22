@@ -1,46 +1,92 @@
 #include "ConsultasManager.h"
 #include <iostream>
+#include "ReporteAutorizaciones.h"
+#include <fstream>
+
 using namespace std;
-
-
 
 //"1 - Consulta de autorizados por Unidad"
 void ConsultasManager::ConsultaAutorizadosxUnidad() {
 	system("cls");
 	std::string unidad;
-	Autorizacion aut;
+	Autorizacion aux;
+	Unidad u;
 	Persona per;
+	ReporteAutorizaciones ra;
+	ReporteAutorizaciones* vectorAut;
 	cout << "++++++ Consulta Autorizados por Unidad ++++++" << endl;
 	cout << "+++++++++++++++++++++++++++++++++++++++++++++" << endl;
-	cout << "Ingrese el numero de Unidad: ";
-    unidad = ingresarIdUnidad();
-	Unidad u;
-	u = buscarUnidad(stoi(unidad));
-	if (u.getId() == -1) {
-		cout << "no existe una unidad con ese ID" << endl;
-		system("pause");
-		return;
-	}
+	u = ingresarUnidad("a consultar");
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizaciones cargados" << endl;
+		system("pause");
+		return;
 	}
-	else {
-		int ContMuestras = 0;
-		for (int x = 0;x < cantReg;x++) {
-			aut = _archivoAutorizacion.Leer(x);
-			if (aut.getIdUnidad() == stoi(unidad)) {
-				int posper = _archivoPersona.BuscarId(aut.getIdPersona());
-				per = _archivoPersona.Leer(posper);
-				per.mostrar();
-				ContMuestras++;
-				//break;				
+	vectorAut = new ReporteAutorizaciones[cantReg];
+	if (vectorAut == nullptr) {
+		cout << "Error de asignacion de memoria " << endl;
+		return;
+	}
+	for (int i = 0;i < cantReg;i++) {
+		aux = _archivoAutorizacion.Leer(i);
+		if (aux.getEstado()) {
+			//chequear que la fecha este vigente
+			vectorAut[i].setId(aux.getId());
+			vectorAut[i].setIdPersona(aux.getIdPersona());
+			vectorAut[i].setIdUnidad(aux.getIdUnidad());
+			vectorAut[i].setTipo(aux.getTipo());
+			vectorAut[i].setHasta(aux.getHasta());
+
+			if (aux.getTipo() == 1) { //visita
+				Persona per = BuscarenVisita(aux.getIdPersona());
+				vectorAut[i].setNombre(per.getNombres());
+				vectorAut[i].setApellido(per.getApellidos());
+				vectorAut[i].setNombreTipo("Visita");
+			}
+			else { // proveedor
+				Proveedor pro = BuscarenProveedor(aux.getIdPersona());
+				vectorAut[i].setNombre(pro.getNombres());
+				vectorAut[i].setApellido(pro.getApellidos());
+				vectorAut[i].setNombreTipo("Proveedor");
 			}
 		}
-		if (ContMuestras == 0) {
-			cout << "No hay autorizaciones asignadas a esa Unidad Funcional" << endl;
+	}
+
+	//ordenar por algo
+
+	cabeceraAutorizados();
+
+	for (int j = 0;j < cantReg;j++) {
+		vectorAut[j].mostrarReporte();
+	}
+
+	if (decisionExportar()) {
+		// Abrir un archivo para escribir
+		std::ofstream archivo("listado1.txt");
+
+		// Verificar si el archivo se abrió correctamente
+		if (archivo.is_open()) {
+			archivo << "Nombre,Apellido, Motivo, Unidad, Hasta\n";
+			// Escribir datos en el archivo
+			for (int i = 0; i < cantReg;i++) {
+				ra = vectorAut[i];
+				archivo << ra.getNombre() << "," << ra.getApellido() << "," << ra.getNombreTipo() << "," << ra.getIdUnidad() << "," << ra.getHasta().toString() << "\n";
+			}
+			// Cerrar el archivo
+			archivo.close();
+
+			std::cout << "Los datos se han exportado correctamente al archivo.";
+		}
+		else {
+			std::cout << "Error al abrir el archivo.";
 		}
 	}
+	else {
+		cout << "Accion cancelado.";
+	}
+
+	delete[] vectorAut;
 	system("pause");
 }
 

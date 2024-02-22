@@ -19,8 +19,7 @@ class ListadoManager
 		void ProveedoresPorDNI();//punto5
 		void UnidadesPorNumero();//punto 6
 		void UnidadesPorFamilia();//punto 7
-		Persona BuscarenVisita(int dni);
-		Proveedor BuscarenProveedor(int dni);
+
 		void OrdenarAutorizadosxApellido(ReporteAutorizaciones* reg, int tam);
 		void OrdenarVectorAutorizadosxNumero(Autorizacion *reg, int tam);
 		void OrdenarAutorizadosxNumero(ReporteAutorizaciones* vec, int tam);

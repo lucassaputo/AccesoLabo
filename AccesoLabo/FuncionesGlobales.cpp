@@ -5,6 +5,10 @@
 #include "ArchivoUnidad.h"
 #include "Horario.h"
 #include "ConfigSingleton.h"
+#include "Persona.h"
+#include "Proveedor.h"
+#include "ArchivoPersona.h"
+#include "ArchivoProveedores.h"
 
 using namespace std;
 
@@ -283,6 +287,26 @@ Unidad ingresarUnidad(string mensaje) {
 	}
 	return uni;
 }
+
+Persona BuscarenVisita(int id)
+{
+	
+	ArchivoPersona _archivoVisitas = ArchivoPersona("Visitas.dat");
+	Persona reg;
+	int pos = _archivoVisitas.BuscarId(id);
+	reg = _archivoVisitas.Leer(pos);
+	return reg;
+}
+
+Proveedor BuscarenProveedor(int id)
+{
+	ArchivoProveedores _archivoProveedores = ArchivoProveedores("Proveedores.dat");
+	Proveedor reg;
+	int pos = _archivoProveedores.Buscar(id);
+	reg = _archivoProveedores.Leer(pos);
+	return reg;
+}
+
 bool ingresarPropInq() {
 	string aux;
 	while (true) {

@@ -20,6 +20,7 @@ void ListadoManager::AutorizadosPorApellido() {
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay autorizaciones cargadas" << endl;
+		system("pause");
 		return;
 	}
 	vectorAut = new ReporteAutorizaciones[cantReg];
@@ -54,6 +55,7 @@ void ListadoManager::AutorizadosPorApellido() {
 	OrdenarAutorizadosxApellido(vectorAut, cantReg);
 
 	cabeceraAutorizados();
+
 	for (int j = 0;j < cantReg;j++) {
 		vectorAut[j].mostrarReporte();
 	}
@@ -97,6 +99,7 @@ void ListadoManager::AutorizadosPorUnidad() {
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros de autorizados cargados" << endl;
+		system("pause");
 		return;
 	}
 	vectorAut = new ReporteAutorizaciones[cantReg];
@@ -216,6 +219,7 @@ void ListadoManager::ProveedoresPorRazon() {
 	int cantReg = _archivoProveedores.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
+		system("pause");
 		return;
 	}
 	regProv = new Proveedor[cantReg];
@@ -277,6 +281,7 @@ void ListadoManager::ProveedoresPorDNI() { // punto 5
 	regProv = new Proveedor[cantReg];
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
+		system("pause");
 		return;
 	}
 	if (regProv == nullptr) {
@@ -335,6 +340,7 @@ void ListadoManager::UnidadesPorNumero() { // punto 6
 	reg = new Unidad[cantReg];
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
+		system("pause");
 		return;
 	}
 	if (reg == nullptr) {
@@ -394,6 +400,7 @@ void ListadoManager::UnidadesPorFamilia(){
 	int cantReg = _archivoUnidades.ContarRegistros();
 	if (cantReg == 0) {
 		cout << "No hay registros cargados" << endl;
+		system("pause");
 		return;
 	}
 	reg = new Unidad[cantReg];
@@ -444,21 +451,7 @@ void ListadoManager::UnidadesPorFamilia(){
 	system("pause");
 }
 
-Persona ListadoManager::BuscarenVisita(int id)
-{
-	Persona reg;
-	int pos=_archivoVisitas.BuscarId(id);
-	reg = _archivoVisitas.Leer(pos);	
-	return reg;
-}
 
-Proveedor ListadoManager::BuscarenProveedor(int id)
-{
-	Proveedor reg;
-	int pos = _archivoProveedores.Buscar(id);
-	reg = _archivoProveedores.Leer(pos);
-	return reg;
-}
 
 void ListadoManager::OrdenarAutorizadosxApellido(ReporteAutorizaciones* vec, int tam)
 {
