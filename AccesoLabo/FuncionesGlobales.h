@@ -38,6 +38,7 @@ void cabeceraAutorizados();
 void cabeceraProveedores();
 void caberaUnidades();
 void caberaResidentes();
+void cabeceraRegistros();
 Persona BuscarenVisita(int dni);
 Proveedor BuscarenProveedor(int dni);
 void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam);

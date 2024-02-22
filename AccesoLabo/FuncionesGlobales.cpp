@@ -473,6 +473,17 @@ void caberaResidentes()
 	cout << setw(12) << "|prop/inqu" << endl;
 }
 
+void cabeceraRegistros() {
+	cout << left;
+	cout << setw(9) << "|Unidad";
+	cout << setw(20) << "|Nombre";
+	cout << setw(20) << "|Apellido";
+	cout << setw(12) << "|DNI";
+	cout << setw(16) << "|Motivo";
+	cout << setw(15) << "|Ingreso" << endl;
+	cout << setw(15) << "|Egreso" << endl;
+}
+
 void OrdenarAutXApellido(ReporteAutorizaciones* vec, int tam)
 {
 	ReporteAutorizaciones aux;

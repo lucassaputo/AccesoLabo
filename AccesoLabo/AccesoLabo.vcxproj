@@ -179,6 +179,7 @@
     <ClCompile Include="Registro.cpp" />
     <ClCompile Include="RegistrosManager.cpp" />
     <ClCompile Include="ReporteAutorizaciones.cpp" />
+    <ClCompile Include="ReporteRegistro.cpp" />
     <ClCompile Include="Residente.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Unidad.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Registro.h" />
     <ClInclude Include="RegistrosManager.h" />
     <ClInclude Include="ReporteAutorizaciones.h" />
+    <ClInclude Include="ReporteRegistro.h" />
     <ClInclude Include="Residente.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="UserSingleton.h" />
