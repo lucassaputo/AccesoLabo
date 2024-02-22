@@ -49,6 +49,10 @@ void ConsultasManager::ConsultaAutorizadosxApellido() { //punto 2
 	cout << "+++++++++++++++++++++++++++++++" << endl;
 	cout << "Ingrese el apellido: " << endl;
 	std::string Apellido = cargarApellido();
+	for (char& c : Apellido) {
+		c = std::toupper(c);
+	}
+	cout << "Apellido " << Apellido << endl;
 	int cantregPersonas = _archivoPersona.ContarRegistros();
 	int cantReg = _archivoAutorizacion.ContarRegistros();
 	if (cantReg == 0) {
