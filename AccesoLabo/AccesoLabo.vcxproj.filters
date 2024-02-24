@@ -192,6 +192,9 @@
     <ClCompile Include="ReporteAutorizaciones.cpp">
       <Filter>Source Files\Reportes</Filter>
     </ClCompile>
+    <ClCompile Include="ReporteRegistro.cpp">
+      <Filter>Source Files\Reportes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuAbmPersonas.h">
@@ -334,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="ConfigSingleton.h">
       <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="ReporteRegistro.h">
+      <Filter>Header Files\Reportes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

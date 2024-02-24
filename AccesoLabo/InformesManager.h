@@ -18,17 +18,9 @@ class InformesManager
 {	
 	public:
 		void UnidadesMas50();// punto 1
-		int ID_Maximo();
-		void Mostrar50(int *vec, int tam);
 		void InformeProveedores(); // Punto 2
-		void CargarVectorRegistros(Registro *reg, int cant);
-		void CargarVectorProveedores(Proveedor *reg, int cant);
-		void MostrarMovimientos(Fecha fi, Fecha ff, Registro* reg, int cant);
-		void HistorialMovimientosxUnidades(); // punto 3
-		void CargarVectorIndices(int* vecIndices, int tam);
-		void OrdenarVectorEnterosxNumero(int* reg, int tam);
-		void CargarvectorUnidades(Unidad* u, int cant);
-		void MovimientosMensuales(); // punto 4
+		void MovimientosPorUnidad(); // punto 3
+		void Mostrar50(int *vec, int tam);
 
 	private:
 		ArchivoRegistro _archivoRegistros = ArchivoRegistro("Registros.dat");

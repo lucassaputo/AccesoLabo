@@ -14,6 +14,7 @@ public:
     Proveedor BuscarObj(int dni);
     Proveedor BuscarObjApellido(std::string apellido);
     bool Modificar(Proveedor reg);
+    bool CrearArchivo(Proveedor reg);
 
 private:
     std::string _nombreArchivo;

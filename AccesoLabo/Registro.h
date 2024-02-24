@@ -47,6 +47,7 @@ public:
 	
 	//acciones
 	void mostrar();
+	void mostrarReporte();
 	void operator=(Proveedor p);
 	void operator=(Persona p);
 };
